@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Bil372Proje
 {
-    public partial class Form2 : Form
+    public partial class Register : Form
     {
-        public Form2()
+        public Register()
         {
             InitializeComponent();
         }

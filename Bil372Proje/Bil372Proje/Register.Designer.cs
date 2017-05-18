@@ -1,6 +1,6 @@
 ﻿namespace Bil372Proje
 {
-    partial class Form2
+    partial class Register
     {
         /// <summary>
         /// Required designer variable.

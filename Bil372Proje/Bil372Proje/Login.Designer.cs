@@ -1,6 +1,6 @@
 ﻿namespace Bil372Proje
 {
-    partial class Form1
+    partial class Login
     {
         /// <summary>
         ///Gerekli tasarımcı değişkeni.
