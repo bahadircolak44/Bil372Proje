@@ -13,48 +13,79 @@ namespace Bil372Proje.Pages
 {
     public partial class Register : Form
     {
+        Login login;
         public Register()
         {
             InitializeComponent();
-            
+            login = new Login();
+
         }
 
+        //Back butonuna basıldığında Login sayfasına dönmek için
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Login login = new Login();
             login.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        async private void button1_Click(object sender, EventArgs e)
         {
-            // Fieldların doluluk durumunu kontrol ediyor
-            if (!(textBox1.Text.Equals(string.Empty) || textBox2.Text.Equals(string.Empty) 
-                || textBox3.Text.Equals(string.Empty) || textBox4.Text.Equals(string.Empty) 
-                || textBox5.Text.Equals(string.Empty) || !(checkBox1.Checked || checkBox2.Checked)))
-            {
-
-                //Password ların eşitliğini kontrol ediyor
-                if (textBox5.Text.Equals(textBox6.Text))
+            try
+            { 
+                // Fieldların doluluk durumunu kontrol ediyor
+                if (!(textBox1.Text.Equals(string.Empty) || textBox2.Text.Equals(string.Empty) 
+                    || textBox3.Text.Equals(string.Empty) || textBox4.Text.Equals(string.Empty) 
+                    || textBox5.Text.Equals(string.Empty) || !(checkBox1.Checked || checkBox2.Checked)))
                 {
-                    SqlConnection con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
-                    con.Open();
-                    SqlCommand cmd = new SqlCommand("insert into users(name,surname,email,username,password,sex)" +
-                    " values('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + textBox4.Text + "','" + textBox5.Text + "','" + checkbox(checkBox1, checkBox2) + "')", con);
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Registration has been completed");
+                    // E-mail in valid olup olmadığına bakıyor
+                    if (IsValidEmail(textBox3.Text))
+                    { 
+                        //Password ların eşitliğini kontrol ediyor
+                        if (textBox5.Text.Equals(textBox6.Text))
+                        {
+                            SqlConnection con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
+                            con.Open();
+                            SqlCommand cmd = new SqlCommand("insert into users(name,surname,email,username,password,sex)" +
+                            " values('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + textBox4.Text + "','" + textBox5.Text + "','" + checkbox(checkBox1, checkBox2) + "')", con);
+                            cmd.ExecuteNonQuery();
+                            MessageBox.Show("Registration has been completed", "Success");
+                            this.Hide();
+                            login.Show();
+                        }
+                        else
+                        {
+                            MessageBox.Show(" Passwords do not match! ", "ERROR");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(" E-mail is not valid! ", "ERROR");
+                    }
                 }
                 else
                 {
-                  MessageBox.Show(" Passwords do not match! ");
+                    MessageBox.Show("All fields must be filled in", "ERROR");
                 }
             }
-            else
+            catch
             {
-                MessageBox.Show("All fields must be filled in");
+                MessageBox.Show("Some problems have been occured", "ERROR");
             }
         }
 
+        bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        //Checkbox lardan hangisinin seçildiğini kontrol ediyor
         private string checkbox(CheckBox checkBox1, CheckBox checkBox2)
         {
             string control="";
