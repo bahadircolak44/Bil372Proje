@@ -28,7 +28,7 @@ namespace Bil372Proje.Pages
             login.Show();
         }
 
-        async private void button1_Click(object sender, EventArgs e)
+         private void button1_Click(object sender, EventArgs e)
         {
             try
             { 
@@ -48,28 +48,28 @@ namespace Bil372Proje.Pages
                             SqlCommand cmd = new SqlCommand("insert into users(name,surname,email,username,password,sex)" +
                             " values('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + textBox4.Text + "','" + textBox5.Text + "','" + checkbox(checkBox1, checkBox2) + "')", con);
                             cmd.ExecuteNonQuery();
-                            MessageBox.Show("Registration has been completed", "Success");
+                            MessageBox.Show("Registration Has Been Completed", "Success");
                             this.Hide();
                             login.Show();
                         }
                         else
                         {
-                            MessageBox.Show(" Passwords do not match! ", "ERROR");
+                            MessageBox.Show(" Passwords Do Not Match! ", "ERROR");
                         }
                     }
                     else
                     {
-                        MessageBox.Show(" E-mail is not valid! ", "ERROR");
+                        MessageBox.Show(" E-mail Is Not Valid! ", "ERROR");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("All fields must be filled in", "ERROR");
+                    MessageBox.Show("All Fields Must be Filled In", "ERROR");
                 }
             }
             catch
             {
-                MessageBox.Show("Some problems have been occured", "ERROR");
+                MessageBox.Show("Some Problems Have Been Occured", "ERROR");
             }
         }
 
@@ -103,6 +103,8 @@ namespace Bil372Proje.Pages
             return control;
         }
 
+        //Bu iki fonksiyon da checkboxlardan tek seferde bir tanesinin seçilmesini sağlar
+        //
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {      
             checkBox2.CheckState = CheckState.Unchecked;

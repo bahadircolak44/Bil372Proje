@@ -15,6 +15,10 @@ namespace Bil372Proje
 
         private void button1_Click(object sender, EventArgs e)
         {
+            try
+            {
+
+            
             SqlConnection con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
             SqlDataAdapter sda = new SqlDataAdapter("Select Id From users where username='"+ textBox1.Text+"'and password='"+ textBox2.Text+"'",con);
             DataTable dt = new DataTable();
@@ -26,6 +30,11 @@ namespace Bil372Proje
             else
             {
                 MessageBox.Show("Yanlış");
+            }
+            }
+            catch
+            {
+                MessageBox.Show("Some Problems Have Been Occured","ERROR");
             }
         }
 
