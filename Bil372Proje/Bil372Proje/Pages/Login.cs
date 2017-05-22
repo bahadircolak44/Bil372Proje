@@ -40,31 +40,7 @@ namespace Bil372Proje
 
 /*
  
-      if (textBox5.Text.Equals(textBox6.Text))
-            {
-                SqlConnection con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
-                con.Open();
-                SqlCommand cmd = new SqlCommand("insert into users(name,surname,email,username,password,sex)" +
-                    " values('"+ textBox1.Text+ "','" + textBox2.Text + "','" + textBox3.Text + "','" + textBox4.Text + "','" + textBox5.Text + "','" + checkbox(checkBox1,checkBox2) + "')", con);
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Başarılı");
-            }
-            else
-            {
-                MessageBox.Show("Şifreler Uyuşmuyor");
-            }
+    
 
-    private string checkbox(CheckBox checkBox1, CheckBox checkBox2)
-        {
-            string control="";
-            if (checkBox1.Checked)
-            {
-                control = checkBox1.Text;
-            }
-            else if(checkBox2.Checked)
-            {
-                control = checkBox2.Text;
-            }
-            return control;
-        }
+    
      */
