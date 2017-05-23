@@ -28,6 +28,7 @@ namespace Bil372Proje.Pages
             login.Show();
         }
 
+        //Kullanıcı kayıt ekranında register düğmesine bastığında yapılacak olan
          private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -104,7 +105,6 @@ namespace Bil372Proje.Pages
         }
 
         //Bu iki fonksiyon da checkboxlardan tek seferde bir tanesinin seçilmesini sağlar
-        //
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {      
             checkBox2.CheckState = CheckState.Unchecked;
@@ -117,6 +117,57 @@ namespace Bil372Proje.Pages
         {
             checkBox1.CheckState = CheckState.Unchecked;
             checkBox2.CheckState = CheckState.Checked;
+        }
+        //Okul kayıt ekranında back tuşuna basıldığında login ekranına geri dönmeyi sağlar
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            login.Show();
+        }
+
+        //Okul kayıt ekranında register düğmesine bastığında yapılacak olan
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Fieldların doluluk durumunu kontrol ediyor
+                if (!(textBox7.Text.Equals(string.Empty) || textBox8.Text.Equals(string.Empty)
+                || textBox9.Text.Equals(string.Empty) || textBox10.Text.Equals(string.Empty)
+                || textBox11.Text.Equals(string.Empty) || textBox12.Text.Equals(string.Empty) 
+                || textBox12.Text.Equals(string.Empty) || textBox13.Text.Equals(string.Empty) 
+                || textBox13.Text.Equals(string.Empty)))
+                {
+                    //E-mail in valid olup olmadığına bakıyor
+                    if (IsValidEmail(textBox3.Text))
+                    {
+                        //Şifrelerin uyuşup uyuşmadığını kontrol ediyor.
+                        if (textBox13.Text.Equals(textBox14.Text))
+                        {
+                            //Database sistemi oluşturulduktan sonra
+                            MessageBox.Show("Registration Has Been Completed", "Success");
+                            this.Hide();
+                            login.Show();
+                        }
+                        else
+                        {
+                            MessageBox.Show(" Passwords Do Not Match! ", "ERROR");
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show(" E-mail Is Not Valid! ", "ERROR");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("All Fields Must be Filled In", "ERROR");
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Some Problems Have Been Occured", "ERROR");
+            }
         }
     }
 }
