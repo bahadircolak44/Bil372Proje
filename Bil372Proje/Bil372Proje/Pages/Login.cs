@@ -19,10 +19,10 @@ namespace Bil372Proje
             {
             SqlConnection con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
             SqlDataAdapter sda = new SqlDataAdapter("Select * From yardimsever as y,okul as o,tedarikci as t,admin as a where " +
-                "y.kullanici_adi='"+ textBox1.Text+"'and y.password='"+ textBox2.Text+ "' " +
-                "or o.kullanici_adi='" + textBox1.Text + "'and o.password='" + textBox2.Text + "'" +
-                "or t.kullanici_adi='" + textBox1.Text + "'and t.password='" + textBox2.Text + "' " +
-                "or a.kullanici_adi='" + textBox1.Text + "'and a.password='" + textBox2.Text + "'", con);
+                "y.kullanci_adi='"+ kullanici_adi.Text+"'and y.sifre='"+ sifre.Text+ "' " +
+                "or o.kullanci_adi='" + kullanici_adi.Text + "'and o.sifre='" + sifre.Text + "'" +
+                "or t.kullanci_adi='" + kullanici_adi.Text + "'and t.sifre='" + sifre.Text + "' " +
+                "or a.kullanci_adi='" + kullanici_adi.Text + "'and a.sifre='" + sifre.Text + "'", con);
             DataTable dt = new DataTable();
             sda.Fill(dt);
             if (dt.Rows.Count == 1)

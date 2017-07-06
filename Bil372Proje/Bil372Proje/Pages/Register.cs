@@ -17,8 +17,8 @@ namespace Bil372Proje.Pages
         SqlConnection con;
         public Register()
         {
-            con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
             InitializeComponent();
+            con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
             login = new Login();
 
         }
@@ -31,28 +31,33 @@ namespace Bil372Proje.Pages
         }
 
         //Kullanıcı kayıt ekranında register düğmesine bastığında yapılacak olan
-         private void button1_Click(object sender, EventArgs e)
+         private void button5_Click(object sender, EventArgs e)
         {
             try
             { 
                 // Fieldların doluluk durumunu kontrol ediyor
-                if (!(textBox1.Text.Equals(string.Empty) || textBox2.Text.Equals(string.Empty) 
-                    || textBox3.Text.Equals(string.Empty) || textBox4.Text.Equals(string.Empty) 
-                    || textBox5.Text.Equals(string.Empty) || !(checkBox1.Checked || checkBox2.Checked)))
+                if (!(Ad.Text.Equals(string.Empty) || soyAd.Text.Equals(string.Empty) 
+                    || email.Text.Equals(string.Empty) || kullanici_adi.Text.Equals(string.Empty) 
+                    || sifre.Text.Equals(string.Empty) || sifre_tekrar.Text.Equals(string.Empty) 
+                    || yas.Text.Equals(string.Empty) || adress.Text.Equals(string.Empty) || tel.Text.Equals(string.Empty)
+                    || !(checkBox1.Checked || checkBox2.Checked)))
                 {
                     // E-mail in valid olup olmadığına bakıyor
-                    if (IsValidEmail(textBox3.Text))
+                    if (IsValidEmail(email.Text))
                     { 
                         //Password ların eşitliğini kontrol ediyor
-                        if (textBox5.Text.Equals(textBox6.Text))
+                        if (sifre.Text.Equals(sifre_tekrar.Text))
                         {
                             con.Open();
-                            SqlCommand cmd = new SqlCommand("insert into users(name,surname,email,username,password,sex)" +
-                            " values('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + textBox4.Text + "','" + textBox5.Text + "','" + checkbox(checkBox1, checkBox2) + "')", con);
+                            SqlCommand cmd = new SqlCommand("insert into yardimsever(ad,soyad,cinsiyet,email,kullanci_adi,sifre,yas,adres,tel,yetki,bakiye)" +
+                            " values('" + Ad.Text + "','" + soyAd.Text + "' ,'" + checkbox(checkBox1, checkBox2) + "'" +
+                            ",'" + email.Text + "','" + kullanici_adi.Text + "','" + sifre.Text + "','" + yas.Text + "'" +
+                            ",'" + adress.Text + "','" + tel.Text + "',' yardimsever',0)", con);
                             cmd.ExecuteNonQuery();
                             MessageBox.Show("Registration Has Been Completed", "Success");
                             this.Hide();
                             login.Show();
+                           
                         }
                         else
                         {
@@ -71,7 +76,7 @@ namespace Bil372Proje.Pages
             }
             catch
             {
-                MessageBox.Show("Some Problems Have Been Occured", "ERROR");
+                MessageBox.Show(e.ToString(), "ERROR");
             }
         }
 
@@ -139,7 +144,7 @@ namespace Bil372Proje.Pages
                 || textBox13.Text.Equals(string.Empty)))
                 {
                     //E-mail in valid olup olmadığına bakıyor
-                    if (IsValidEmail(textBox3.Text))
+                    if (IsValidEmail(email.Text))
                     {
                         //Şifrelerin uyuşup uyuşmadığını kontrol ediyor.
                         if (textBox13.Text.Equals(textBox14.Text))
@@ -147,7 +152,7 @@ namespace Bil372Proje.Pages
                             //Database sistemi oluşturulduktan sonra
                             con.Open();
                             SqlCommand cmd = new SqlCommand("insert into users(name,surname,email,username,password,sex)" +
-                            " values('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + textBox4.Text + "','" + textBox5.Text + "','" + checkbox(checkBox1, checkBox2) + "')", con);
+                            " values('" + Ad.Text + "','" + soyAd.Text + "','" + email.Text + "','" + kullanici_adi.Text + "','" + sifre.Text + "','" + checkbox(checkBox1, checkBox2) + "')", con);
                             cmd.ExecuteNonQuery();
                             MessageBox.Show("Registration Has Been Completed", "Success");
                             this.Hide();
@@ -174,5 +179,7 @@ namespace Bil372Proje.Pages
                 MessageBox.Show("Some Problems Have Been Occured", "ERROR");
             }
         }
+
+        
     }
 }
