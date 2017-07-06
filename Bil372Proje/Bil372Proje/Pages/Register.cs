@@ -14,8 +14,10 @@ namespace Bil372Proje.Pages
     public partial class Register : Form
     {
         Login login;
+        SqlConnection con;
         public Register()
         {
+            con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
             InitializeComponent();
             login = new Login();
 
@@ -44,7 +46,6 @@ namespace Bil372Proje.Pages
                         //Password ların eşitliğini kontrol ediyor
                         if (textBox5.Text.Equals(textBox6.Text))
                         {
-                            SqlConnection con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
                             con.Open();
                             SqlCommand cmd = new SqlCommand("insert into users(name,surname,email,username,password,sex)" +
                             " values('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + textBox4.Text + "','" + textBox5.Text + "','" + checkbox(checkBox1, checkBox2) + "')", con);
@@ -144,6 +145,10 @@ namespace Bil372Proje.Pages
                         if (textBox13.Text.Equals(textBox14.Text))
                         {
                             //Database sistemi oluşturulduktan sonra
+                            con.Open();
+                            SqlCommand cmd = new SqlCommand("insert into users(name,surname,email,username,password,sex)" +
+                            " values('" + textBox1.Text + "','" + textBox2.Text + "','" + textBox3.Text + "','" + textBox4.Text + "','" + textBox5.Text + "','" + checkbox(checkBox1, checkBox2) + "')", con);
+                            cmd.ExecuteNonQuery();
                             MessageBox.Show("Registration Has Been Completed", "Success");
                             this.Hide();
                             login.Show();
