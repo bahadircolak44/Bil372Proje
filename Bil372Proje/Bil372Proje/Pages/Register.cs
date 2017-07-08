@@ -34,17 +34,19 @@ namespace Bil372Proje.Pages
          private void button5_Click(object sender, EventArgs e)
         {
             try
-            { 
+            {
                 // Fieldların doluluk durumunu kontrol ediyor
-                if (!(Ad.Text.Equals(string.Empty) || soyAd.Text.Equals(string.Empty) 
-                    || email.Text.Equals(string.Empty) || kullanici_adi.Text.Equals(string.Empty) 
-                    || sifre.Text.Equals(string.Empty) || sifre_tekrar.Text.Equals(string.Empty) 
+                if (!(Ad.Text.Equals(string.Empty) || soyAd.Text.Equals(string.Empty)
+                    || email.Text.Equals(string.Empty) || kullanici_adi.Text.Equals(string.Empty)
+                    || sifre.Text.Equals(string.Empty) || sifre_tekrar.Text.Equals(string.Empty)
                     || yas.Text.Equals(string.Empty) || adress.Text.Equals(string.Empty) || tel.Text.Equals(string.Empty)
                     || !(checkBox1.Checked || checkBox2.Checked)))
                 {
+                    if (sifre.Text.Length<6)
+                    { 
                     // E-mail in valid olup olmadığına bakıyor
                     if (IsValidEmail(email.Text))
-                    { 
+                    {
                         //Password ların eşitliğini kontrol ediyor
                         if (sifre.Text.Equals(sifre_tekrar.Text))
                         {
@@ -54,29 +56,35 @@ namespace Bil372Proje.Pages
                             ",'" + email.Text + "','" + kullanici_adi.Text + "','" + sifre.Text + "','" + yas.Text + "'" +
                             ",'" + adress.Text + "','" + tel.Text + "',' yardimsever',0)", con);
                             cmd.ExecuteNonQuery();
-                            MessageBox.Show("Registration Has Been Completed", "Success");
+                            MessageBox.Show("Kayıt Başarılı", "BAŞARILI");
                             this.Hide();
                             login.Show();
-                           
+
                         }
                         else
                         {
-                            MessageBox.Show(" Passwords Do Not Match! ", "ERROR");
+                            MessageBox.Show(" Şifreler Eşleşmiyor! ", "HATA");
                         }
                     }
                     else
                     {
-                        MessageBox.Show(" E-mail Is Not Valid! ", "ERROR");
+                        MessageBox.Show("Lüften Geçerli Bir E-mail Adresi Girin! ", "HATA");
                     }
+
                 }
                 else
                 {
-                    MessageBox.Show("All Fields Must be Filled In", "ERROR");
+                    MessageBox.Show("Şifre En Az 6 Haneli Olmalıdır ", "HATA");
+                }
+            }
+                else
+                {
+                    MessageBox.Show("Tüm Alanların Doldurulması Gerekli", "HATA");
                 }
             }
             catch
             {
-                MessageBox.Show(e.ToString(), "ERROR");
+                MessageBox.Show("Bir Şeyler Ters Gitti", "HATA");
             }
         }
 
@@ -137,49 +145,59 @@ namespace Bil372Proje.Pages
             try
             {
                 // Fieldların doluluk durumunu kontrol ediyor
-                if (!(textBox7.Text.Equals(string.Empty) || textBox8.Text.Equals(string.Empty)
-                || textBox9.Text.Equals(string.Empty) || textBox10.Text.Equals(string.Empty)
-                || textBox11.Text.Equals(string.Empty) || textBox12.Text.Equals(string.Empty) 
-                || textBox12.Text.Equals(string.Empty) || textBox13.Text.Equals(string.Empty) 
-                || textBox13.Text.Equals(string.Empty)))
+                if (!(okul_adi.Text.Equals(string.Empty) || il.Text.Equals(string.Empty)
+                || ilce.Text.Equals(string.Empty) || okul_adres.Text.Equals(string.Empty)
+                || okul_email.Text.Equals(string.Empty) || okul_kullanici_adi.Text.Equals(string.Empty) 
+                || okul_sifre.Text.Equals(string.Empty)|| okul_sifre.Text.Equals(string.Empty)))
                 {
-                    //E-mail in valid olup olmadığına bakıyor
-                    if (IsValidEmail(email.Text))
+                    if (okul_sifre.TextLength<6)
                     {
-                        //Şifrelerin uyuşup uyuşmadığını kontrol ediyor.
-                        if (textBox13.Text.Equals(textBox14.Text))
+                        //E-mail in valid olup olmadığına bakıyor
+                        if (IsValidEmail(okul_email.Text))
                         {
-                            //Database sistemi oluşturulduktan sonra
-                            con.Open();
-                            SqlCommand cmd = new SqlCommand("insert into users(name,surname,email,username,password,sex)" +
-                            " values('" + Ad.Text + "','" + soyAd.Text + "','" + email.Text + "','" + kullanici_adi.Text + "','" + sifre.Text + "','" + checkbox(checkBox1, checkBox2) + "')", con);
-                            cmd.ExecuteNonQuery();
-                            MessageBox.Show("Registration Has Been Completed", "Success");
-                            this.Hide();
-                            login.Show();
+                            //Şifrelerin uyuşup uyuşmadığını kontrol ediyor.
+                            if (okul_sifre.Text.Equals(okul_sifre_tekrar.Text))
+                            {
+                                //Database sistemi oluşturulduktan sonra
+                                con.Open();
+                                SqlCommand cmd = new SqlCommand("insert into okul(okul_id,okul_adi,il,ilce,kullanci_adi,sifre,email,adres,tel,yetki,bakiye,valid)" +
+                                " values(5,'" + okul_adi.Text + "','" + il.Text + "','" + ilce.Text + "','" + okul_kullanici_adi.Text + "'," +
+                                " '" + okul_sifre.Text + "','" + okul_email.Text + "','" + okul_adres.Text + "','123123','okul',0,0)", con);
+                                cmd.ExecuteNonQuery();
+                                MessageBox.Show("Kaydınız Alınmıştır. Kontrol Sonrası Bilgilendirileceksiniz", "BAŞARILI");
+                                this.Hide();
+                                login.Show();
+                            }
+                            else
+                            {
+                                MessageBox.Show(" Şifreler Eşleşmiyor ", "HATA");
+                            }
+
                         }
                         else
                         {
-                            MessageBox.Show(" Passwords Do Not Match! ", "ERROR");
+                            MessageBox.Show("Lüften Geçerli Bir E-mail Adresi Girin! ", "HATA");
                         }
-
                     }
                     else
                     {
-                        MessageBox.Show(" E-mail Is Not Valid! ", "ERROR");
+                        MessageBox.Show("Şifre En Az 6 Haneli Olmalıdır ", "HATA");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("All Fields Must be Filled In", "ERROR");
+                    MessageBox.Show("Tüm Alanların Doldurulması Gerekli", "HATA");
                 }
             }
-            catch
+            catch(Exception exc)
             {
-                MessageBox.Show("Some Problems Have Been Occured", "ERROR");
+                MessageBox.Show(exc.ToString(), "HATA");
             }
         }
 
-        
+        private void tedarikci_kayit_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -18,11 +18,12 @@ namespace Bil372Proje
             try
             {
             SqlConnection con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
-            SqlDataAdapter sda = new SqlDataAdapter("Select * From yardimsever as y,okul as o,tedarikci as t,admin as a where " +
-                "y.kullanci_adi='"+ kullanici_adi.Text+"'and y.sifre='"+ sifre.Text+ "' " , con);
+            SqlDataAdapter sda = new SqlDataAdapter("Select * From yardimsever as y,okul as o  where " +
+                "(y.kullanci_adi='" + kullanici_adi.Text+ "'and y.sifre='" + sifre.Text+ "') " +
+                "or (o.kullanci_adi='" + kullanici_adi.Text + "'and o.sifre='" + sifre.Text + "')", con);
             DataTable dt = new DataTable();
             sda.Fill(dt);
-            if (dt.Rows.Count == 1)
+            if (dt.Rows.Count > 1)
             {
                 MessageBox.Show("Doğru");
             }
