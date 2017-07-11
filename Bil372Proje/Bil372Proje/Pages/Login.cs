@@ -22,10 +22,12 @@ namespace Bil372Proje
                 "(y.kullanci_adi='" + kullanici_adi.Text+ "'and y.sifre='" + sifre.Text+ "') " +
                 "or (o.kullanci_adi='" + kullanici_adi.Text + "'and o.sifre='" + sifre.Text + "')", con);
             DataTable dt = new DataTable();
-            sda.Fill(dt);
-            if (dt.Rows.Count > 1)
+           
+              //  if (dt.TableName.Equals("okul")) { MessageBox.Show("1111111111"); }
+            if (dt.Rows.Count == 1)
             {
                 MessageBox.Show("Doğru");
+
             }
             else
             {

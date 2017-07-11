@@ -33,9 +33,7 @@
             this.Geri = new System.Windows.Forms.Button();
             this.yardimsever_kayit = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
             this.tel = new System.Windows.Forms.TextBox();
-            this.adress = new System.Windows.Forms.TextBox();
             this.yas = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.sifre_tekrar = new System.Windows.Forms.TextBox();
@@ -44,15 +42,12 @@
             this.email = new System.Windows.Forms.TextBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.soyAd = new System.Windows.Forms.TextBox();
-            this.Ad = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.button4 = new System.Windows.Forms.Button();
             this.register_okul = new System.Windows.Forms.Button();
@@ -73,22 +68,32 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.firma_adi = new System.Windows.Forms.Label();
-            this.tedarikci_kullanici_adi = new System.Windows.Forms.Label();
-            this.tedarikci_sifre = new System.Windows.Forms.Label();
-            this.tedarikci_sifre_tekrar = new System.Windows.Forms.Label();
-            this.tedarikci_email = new System.Windows.Forms.Label();
-            this.tedarikci_adres = new System.Windows.Forms.Label();
-            this.tedarikci_tel = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.tedarikci_kayit = new System.Windows.Forms.Button();
             this.tedarikci_geri = new System.Windows.Forms.Button();
+            this.tedarikci_kayit = new System.Windows.Forms.Button();
+            this.tedarikci_telefon = new System.Windows.Forms.TextBox();
+            this.tedarikci_adres = new System.Windows.Forms.TextBox();
+            this.tedarikci_email = new System.Windows.Forms.TextBox();
+            this.tedarikci_sifre_tekrar = new System.Windows.Forms.TextBox();
+            this.tedarikci_sifre = new System.Windows.Forms.TextBox();
+            this.tedarikci_kullanici_adi = new System.Windows.Forms.TextBox();
+            this.firma_adi = new System.Windows.Forms.TextBox();
+            this.label_tedarikci_tel = new System.Windows.Forms.Label();
+            this.label_tedarikci_adres = new System.Windows.Forms.Label();
+            this.label_tedarikci_email = new System.Windows.Forms.Label();
+            this.label_tedarikci_sifre_tekrar = new System.Windows.Forms.Label();
+            this.label_tedarikci_sifre = new System.Windows.Forms.Label();
+            this.label_tedarikci_kullanici_adi = new System.Windows.Forms.Label();
+            this.label_firma_adi = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.soyAd = new System.Windows.Forms.TextBox();
+            this.Ad = new System.Windows.Forms.TextBox();
+            this.yar_il = new System.Windows.Forms.Label();
+            this.yardimsever_il = new System.Windows.Forms.TextBox();
+            this.yardimsever_ilce = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.mahalle = new System.Windows.Forms.TextBox();
+            this.adres = new System.Windows.Forms.TextBox();
+            this.posta_kutusu = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -109,12 +114,17 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Azure;
+            this.tabPage1.Controls.Add(this.posta_kutusu);
+            this.tabPage1.Controls.Add(this.adres);
+            this.tabPage1.Controls.Add(this.mahalle);
+            this.tabPage1.Controls.Add(this.label17);
+            this.tabPage1.Controls.Add(this.yardimsever_ilce);
+            this.tabPage1.Controls.Add(this.yardimsever_il);
+            this.tabPage1.Controls.Add(this.yar_il);
             this.tabPage1.Controls.Add(this.Geri);
             this.tabPage1.Controls.Add(this.yardimsever_kayit);
             this.tabPage1.Controls.Add(this.label18);
-            this.tabPage1.Controls.Add(this.label17);
             this.tabPage1.Controls.Add(this.tel);
-            this.tabPage1.Controls.Add(this.adress);
             this.tabPage1.Controls.Add(this.yas);
             this.tabPage1.Controls.Add(this.label16);
             this.tabPage1.Controls.Add(this.sifre_tekrar);
@@ -160,43 +170,25 @@
             this.yardimsever_kayit.TabIndex = 25;
             this.yardimsever_kayit.Text = "Kayıt";
             this.yardimsever_kayit.UseVisualStyleBackColor = true;
-            this.yardimsever_kayit.Click += new System.EventHandler(this.button5_Click);
+            this.yardimsever_kayit.Click += new System.EventHandler(this.yardimsever_kayit_Click);
             // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label18.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label18.Location = new System.Drawing.Point(241, 500);
+            this.label18.Location = new System.Drawing.Point(235, 530);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(46, 17);
             this.label18.TabIndex = 24;
             this.label18.Text = "Tel : ";
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label17.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label17.Location = new System.Drawing.Point(219, 450);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(68, 17);
-            this.label17.TabIndex = 23;
-            this.label17.Text = "Adress :";
-            // 
             // tel
             // 
-            this.tel.Location = new System.Drawing.Point(400, 500);
+            this.tel.Location = new System.Drawing.Point(400, 530);
             this.tel.Name = "tel";
             this.tel.Size = new System.Drawing.Size(302, 22);
             this.tel.TabIndex = 22;
-            // 
-            // adress
-            // 
-            this.adress.Location = new System.Drawing.Point(400, 450);
-            this.adress.Name = "adress";
-            this.adress.Size = new System.Drawing.Size(302, 22);
-            this.adress.TabIndex = 21;
             // 
             // yas
             // 
@@ -270,20 +262,6 @@
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.Click += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // soyAd
-            // 
-            this.soyAd.Location = new System.Drawing.Point(400, 100);
-            this.soyAd.Name = "soyAd";
-            this.soyAd.Size = new System.Drawing.Size(302, 22);
-            this.soyAd.TabIndex = 10;
-            // 
-            // Ad
-            // 
-            this.Ad.Location = new System.Drawing.Point(400, 50);
-            this.Ad.Name = "Ad";
-            this.Ad.Size = new System.Drawing.Size(302, 22);
-            this.Ad.TabIndex = 9;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -350,17 +328,6 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Soyad :";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(250, 50);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Ad :";
-            // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.Azure;
@@ -407,7 +374,7 @@
             this.register_okul.TabIndex = 16;
             this.register_okul.Text = "Kayıt";
             this.register_okul.UseVisualStyleBackColor = true;
-            this.register_okul.Click += new System.EventHandler(this.button3_Click);
+            this.register_okul.Click += new System.EventHandler(this.okul_kayit);
             // 
             // okul_sifre_tekrar
             // 
@@ -550,137 +517,35 @@
             this.tabPage4.BackColor = System.Drawing.Color.Azure;
             this.tabPage4.Controls.Add(this.tedarikci_geri);
             this.tabPage4.Controls.Add(this.tedarikci_kayit);
-            this.tabPage4.Controls.Add(this.textBox7);
-            this.tabPage4.Controls.Add(this.textBox6);
-            this.tabPage4.Controls.Add(this.textBox5);
-            this.tabPage4.Controls.Add(this.textBox4);
-            this.tabPage4.Controls.Add(this.textBox3);
-            this.tabPage4.Controls.Add(this.textBox2);
-            this.tabPage4.Controls.Add(this.textBox1);
-            this.tabPage4.Controls.Add(this.tedarikci_tel);
+            this.tabPage4.Controls.Add(this.tedarikci_telefon);
             this.tabPage4.Controls.Add(this.tedarikci_adres);
             this.tabPage4.Controls.Add(this.tedarikci_email);
             this.tabPage4.Controls.Add(this.tedarikci_sifre_tekrar);
             this.tabPage4.Controls.Add(this.tedarikci_sifre);
             this.tabPage4.Controls.Add(this.tedarikci_kullanici_adi);
             this.tabPage4.Controls.Add(this.firma_adi);
+            this.tabPage4.Controls.Add(this.label_tedarikci_tel);
+            this.tabPage4.Controls.Add(this.label_tedarikci_adres);
+            this.tabPage4.Controls.Add(this.label_tedarikci_email);
+            this.tabPage4.Controls.Add(this.label_tedarikci_sifre_tekrar);
+            this.tabPage4.Controls.Add(this.label_tedarikci_sifre);
+            this.tabPage4.Controls.Add(this.label_tedarikci_kullanici_adi);
+            this.tabPage4.Controls.Add(this.label_firma_adi);
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(1041, 677);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Tedarikçi";
             // 
-            // firma_adi
+            // tedarikci_geri
             // 
-            this.firma_adi.AutoSize = true;
-            this.firma_adi.Location = new System.Drawing.Point(243, 81);
-            this.firma_adi.Name = "firma_adi";
-            this.firma_adi.Size = new System.Drawing.Size(75, 17);
-            this.firma_adi.TabIndex = 0;
-            this.firma_adi.Text = "Firma Adı :";
-            // 
-            // tedarikci_kullanici_adi
-            // 
-            this.tedarikci_kullanici_adi.AutoSize = true;
-            this.tedarikci_kullanici_adi.Location = new System.Drawing.Point(222, 144);
-            this.tedarikci_kullanici_adi.Name = "tedarikci_kullanici_adi";
-            this.tedarikci_kullanici_adi.Size = new System.Drawing.Size(96, 17);
-            this.tedarikci_kullanici_adi.TabIndex = 1;
-            this.tedarikci_kullanici_adi.Text = "Kullanıcı Adı : ";
-            // 
-            // tedarikci_sifre
-            // 
-            this.tedarikci_sifre.AutoSize = true;
-            this.tedarikci_sifre.Location = new System.Drawing.Point(273, 208);
-            this.tedarikci_sifre.Name = "tedarikci_sifre";
-            this.tedarikci_sifre.Size = new System.Drawing.Size(45, 17);
-            this.tedarikci_sifre.TabIndex = 2;
-            this.tedarikci_sifre.Text = "Şifre :";
-            // 
-            // tedarikci_sifre_tekrar
-            // 
-            this.tedarikci_sifre_tekrar.AutoSize = true;
-            this.tedarikci_sifre_tekrar.Location = new System.Drawing.Point(223, 280);
-            this.tedarikci_sifre_tekrar.Name = "tedarikci_sifre_tekrar";
-            this.tedarikci_sifre_tekrar.Size = new System.Drawing.Size(95, 17);
-            this.tedarikci_sifre_tekrar.TabIndex = 3;
-            this.tedarikci_sifre_tekrar.Text = "Şifre Tekrar : ";
-            // 
-            // tedarikci_email
-            // 
-            this.tedarikci_email.AutoSize = true;
-            this.tedarikci_email.Location = new System.Drawing.Point(259, 347);
-            this.tedarikci_email.Name = "tedarikci_email";
-            this.tedarikci_email.Size = new System.Drawing.Size(59, 17);
-            this.tedarikci_email.TabIndex = 4;
-            this.tedarikci_email.Text = "E-Mail : ";
-            // 
-            // tedarikci_adres
-            // 
-            this.tedarikci_adres.AutoSize = true;
-            this.tedarikci_adres.Location = new System.Drawing.Point(265, 413);
-            this.tedarikci_adres.Name = "tedarikci_adres";
-            this.tedarikci_adres.Size = new System.Drawing.Size(53, 17);
-            this.tedarikci_adres.TabIndex = 5;
-            this.tedarikci_adres.Text = "Adres :";
-            // 
-            // tedarikci_tel
-            // 
-            this.tedarikci_tel.AutoSize = true;
-            this.tedarikci_tel.Location = new System.Drawing.Point(254, 483);
-            this.tedarikci_tel.Name = "tedarikci_tel";
-            this.tedarikci_tel.Size = new System.Drawing.Size(64, 17);
-            this.tedarikci_tel.TabIndex = 6;
-            this.tedarikci_tel.Text = "Telefon :";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(467, 81);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(276, 22);
-            this.textBox1.TabIndex = 7;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(467, 141);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(276, 22);
-            this.textBox2.TabIndex = 8;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(467, 208);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(276, 22);
-            this.textBox3.TabIndex = 9;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(467, 280);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(276, 22);
-            this.textBox4.TabIndex = 10;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(467, 342);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(276, 22);
-            this.textBox5.TabIndex = 11;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(467, 408);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(276, 22);
-            this.textBox6.TabIndex = 12;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(467, 483);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(276, 22);
-            this.textBox7.TabIndex = 13;
+            this.tedarikci_geri.Location = new System.Drawing.Point(621, 571);
+            this.tedarikci_geri.Name = "tedarikci_geri";
+            this.tedarikci_geri.Size = new System.Drawing.Size(115, 40);
+            this.tedarikci_geri.TabIndex = 15;
+            this.tedarikci_geri.Text = "Geri";
+            this.tedarikci_geri.UseVisualStyleBackColor = true;
+            this.tedarikci_geri.Click += new System.EventHandler(this.button4_Click);
             // 
             // tedarikci_kayit
             // 
@@ -692,15 +557,196 @@
             this.tedarikci_kayit.UseVisualStyleBackColor = true;
             this.tedarikci_kayit.Click += new System.EventHandler(this.tedarikci_kayit_Click);
             // 
-            // tedarikci_geri
+            // tedarikci_telefon
             // 
-            this.tedarikci_geri.Location = new System.Drawing.Point(621, 571);
-            this.tedarikci_geri.Name = "tedarikci_geri";
-            this.tedarikci_geri.Size = new System.Drawing.Size(115, 40);
-            this.tedarikci_geri.TabIndex = 15;
-            this.tedarikci_geri.Text = "Geri";
-            this.tedarikci_geri.UseVisualStyleBackColor = true;
-            this.tedarikci_geri.Click += new System.EventHandler(this.button4_Click);
+            this.tedarikci_telefon.Location = new System.Drawing.Point(467, 483);
+            this.tedarikci_telefon.Name = "tedarikci_telefon";
+            this.tedarikci_telefon.Size = new System.Drawing.Size(276, 22);
+            this.tedarikci_telefon.TabIndex = 13;
+            // 
+            // tedarikci_adres
+            // 
+            this.tedarikci_adres.Location = new System.Drawing.Point(467, 408);
+            this.tedarikci_adres.Name = "tedarikci_adres";
+            this.tedarikci_adres.Size = new System.Drawing.Size(276, 22);
+            this.tedarikci_adres.TabIndex = 12;
+            // 
+            // tedarikci_email
+            // 
+            this.tedarikci_email.Location = new System.Drawing.Point(467, 342);
+            this.tedarikci_email.Name = "tedarikci_email";
+            this.tedarikci_email.Size = new System.Drawing.Size(276, 22);
+            this.tedarikci_email.TabIndex = 11;
+            // 
+            // tedarikci_sifre_tekrar
+            // 
+            this.tedarikci_sifre_tekrar.Location = new System.Drawing.Point(467, 280);
+            this.tedarikci_sifre_tekrar.Name = "tedarikci_sifre_tekrar";
+            this.tedarikci_sifre_tekrar.Size = new System.Drawing.Size(276, 22);
+            this.tedarikci_sifre_tekrar.TabIndex = 10;
+            // 
+            // tedarikci_sifre
+            // 
+            this.tedarikci_sifre.Location = new System.Drawing.Point(467, 208);
+            this.tedarikci_sifre.Name = "tedarikci_sifre";
+            this.tedarikci_sifre.Size = new System.Drawing.Size(276, 22);
+            this.tedarikci_sifre.TabIndex = 9;
+            // 
+            // tedarikci_kullanici_adi
+            // 
+            this.tedarikci_kullanici_adi.Location = new System.Drawing.Point(467, 141);
+            this.tedarikci_kullanici_adi.Name = "tedarikci_kullanici_adi";
+            this.tedarikci_kullanici_adi.Size = new System.Drawing.Size(276, 22);
+            this.tedarikci_kullanici_adi.TabIndex = 8;
+            // 
+            // firma_adi
+            // 
+            this.firma_adi.Location = new System.Drawing.Point(467, 81);
+            this.firma_adi.Name = "firma_adi";
+            this.firma_adi.Size = new System.Drawing.Size(276, 22);
+            this.firma_adi.TabIndex = 7;
+            // 
+            // label_tedarikci_tel
+            // 
+            this.label_tedarikci_tel.AutoSize = true;
+            this.label_tedarikci_tel.Location = new System.Drawing.Point(254, 483);
+            this.label_tedarikci_tel.Name = "label_tedarikci_tel";
+            this.label_tedarikci_tel.Size = new System.Drawing.Size(64, 17);
+            this.label_tedarikci_tel.TabIndex = 6;
+            this.label_tedarikci_tel.Text = "Telefon :";
+            // 
+            // label_tedarikci_adres
+            // 
+            this.label_tedarikci_adres.AutoSize = true;
+            this.label_tedarikci_adres.Location = new System.Drawing.Point(265, 413);
+            this.label_tedarikci_adres.Name = "label_tedarikci_adres";
+            this.label_tedarikci_adres.Size = new System.Drawing.Size(53, 17);
+            this.label_tedarikci_adres.TabIndex = 5;
+            this.label_tedarikci_adres.Text = "Adres :";
+            // 
+            // label_tedarikci_email
+            // 
+            this.label_tedarikci_email.AutoSize = true;
+            this.label_tedarikci_email.Location = new System.Drawing.Point(259, 347);
+            this.label_tedarikci_email.Name = "label_tedarikci_email";
+            this.label_tedarikci_email.Size = new System.Drawing.Size(59, 17);
+            this.label_tedarikci_email.TabIndex = 4;
+            this.label_tedarikci_email.Text = "E-Mail : ";
+            // 
+            // label_tedarikci_sifre_tekrar
+            // 
+            this.label_tedarikci_sifre_tekrar.AutoSize = true;
+            this.label_tedarikci_sifre_tekrar.Location = new System.Drawing.Point(223, 280);
+            this.label_tedarikci_sifre_tekrar.Name = "label_tedarikci_sifre_tekrar";
+            this.label_tedarikci_sifre_tekrar.Size = new System.Drawing.Size(95, 17);
+            this.label_tedarikci_sifre_tekrar.TabIndex = 3;
+            this.label_tedarikci_sifre_tekrar.Text = "Şifre Tekrar : ";
+            // 
+            // label_tedarikci_sifre
+            // 
+            this.label_tedarikci_sifre.AutoSize = true;
+            this.label_tedarikci_sifre.Location = new System.Drawing.Point(273, 208);
+            this.label_tedarikci_sifre.Name = "label_tedarikci_sifre";
+            this.label_tedarikci_sifre.Size = new System.Drawing.Size(45, 17);
+            this.label_tedarikci_sifre.TabIndex = 2;
+            this.label_tedarikci_sifre.Text = "Şifre :";
+            // 
+            // label_tedarikci_kullanici_adi
+            // 
+            this.label_tedarikci_kullanici_adi.AutoSize = true;
+            this.label_tedarikci_kullanici_adi.Location = new System.Drawing.Point(222, 144);
+            this.label_tedarikci_kullanici_adi.Name = "label_tedarikci_kullanici_adi";
+            this.label_tedarikci_kullanici_adi.Size = new System.Drawing.Size(96, 17);
+            this.label_tedarikci_kullanici_adi.TabIndex = 1;
+            this.label_tedarikci_kullanici_adi.Text = "Kullanıcı Adı : ";
+            // 
+            // label_firma_adi
+            // 
+            this.label_firma_adi.AutoSize = true;
+            this.label_firma_adi.Location = new System.Drawing.Point(243, 81);
+            this.label_firma_adi.Name = "label_firma_adi";
+            this.label_firma_adi.Size = new System.Drawing.Size(75, 17);
+            this.label_firma_adi.TabIndex = 0;
+            this.label_firma_adi.Text = "Firma Adı :";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label1.Location = new System.Drawing.Point(250, 50);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(37, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Ad :";
+            // 
+            // soyAd
+            // 
+            this.soyAd.Location = new System.Drawing.Point(400, 100);
+            this.soyAd.Name = "soyAd";
+            this.soyAd.Size = new System.Drawing.Size(302, 22);
+            this.soyAd.TabIndex = 10;
+            // 
+            // Ad
+            // 
+            this.Ad.Location = new System.Drawing.Point(400, 50);
+            this.Ad.Name = "Ad";
+            this.Ad.Size = new System.Drawing.Size(302, 22);
+            this.Ad.TabIndex = 9;
+            // 
+            // yar_il
+            // 
+            this.yar_il.AutoSize = true;
+            this.yar_il.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.yar_il.Location = new System.Drawing.Point(239, 444);
+            this.yar_il.Name = "yar_il";
+            this.yar_il.Size = new System.Drawing.Size(22, 25);
+            this.yar_il.TabIndex = 27;
+            this.yar_il.Text = "il";
+            // 
+            // yardimsever_il
+            // 
+            this.yardimsever_il.Location = new System.Drawing.Point(400, 446);
+            this.yardimsever_il.Name = "yardimsever_il";
+            this.yardimsever_il.Size = new System.Drawing.Size(302, 22);
+            this.yardimsever_il.TabIndex = 28;
+            // 
+            // yardimsever_ilce
+            // 
+            this.yardimsever_ilce.Location = new System.Drawing.Point(400, 485);
+            this.yardimsever_ilce.Name = "yardimsever_ilce";
+            this.yardimsever_ilce.Size = new System.Drawing.Size(302, 22);
+            this.yardimsever_ilce.TabIndex = 29;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(244, 489);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(29, 17);
+            this.label17.TabIndex = 30;
+            this.label17.Text = "ilce";
+            // 
+            // mahalle
+            // 
+            this.mahalle.Location = new System.Drawing.Point(762, 489);
+            this.mahalle.Name = "mahalle";
+            this.mahalle.Size = new System.Drawing.Size(124, 22);
+            this.mahalle.TabIndex = 31;
+            // 
+            // adres
+            // 
+            this.adres.Location = new System.Drawing.Point(762, 550);
+            this.adres.Name = "adres";
+            this.adres.Size = new System.Drawing.Size(124, 22);
+            this.adres.TabIndex = 32;
+            // 
+            // posta_kutusu
+            // 
+            this.posta_kutusu.Location = new System.Drawing.Point(762, 603);
+            this.posta_kutusu.Name = "posta_kutusu";
+            this.posta_kutusu.Size = new System.Drawing.Size(100, 22);
+            this.posta_kutusu.TabIndex = 33;
             // 
             // Register
             // 
@@ -731,15 +777,12 @@
         private System.Windows.Forms.TextBox email;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TextBox soyAd;
-        private System.Windows.Forms.TextBox Ad;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Button button4;
@@ -762,27 +805,35 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox tel;
-        private System.Windows.Forms.TextBox adress;
         private System.Windows.Forms.TextBox yas;
         private System.Windows.Forms.Button Geri;
         private System.Windows.Forms.Button yardimsever_kayit;
-        private System.Windows.Forms.Label tedarikci_sifre_tekrar;
-        private System.Windows.Forms.Label tedarikci_sifre;
-        private System.Windows.Forms.Label tedarikci_kullanici_adi;
-        private System.Windows.Forms.Label firma_adi;
-        private System.Windows.Forms.Label tedarikci_tel;
-        private System.Windows.Forms.Label tedarikci_adres;
-        private System.Windows.Forms.Label tedarikci_email;
+        private System.Windows.Forms.Label label_tedarikci_sifre_tekrar;
+        private System.Windows.Forms.Label label_tedarikci_sifre;
+        private System.Windows.Forms.Label label_tedarikci_kullanici_adi;
+        private System.Windows.Forms.Label label_firma_adi;
+        private System.Windows.Forms.Label label_tedarikci_tel;
+        private System.Windows.Forms.Label label_tedarikci_adres;
+        private System.Windows.Forms.Label label_tedarikci_email;
         private System.Windows.Forms.Button tedarikci_geri;
         private System.Windows.Forms.Button tedarikci_kayit;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tedarikci_telefon;
+        private System.Windows.Forms.TextBox tedarikci_adres;
+        private System.Windows.Forms.TextBox tedarikci_email;
+        private System.Windows.Forms.TextBox tedarikci_sifre_tekrar;
+        private System.Windows.Forms.TextBox tedarikci_sifre;
+        private System.Windows.Forms.TextBox tedarikci_kullanici_adi;
+        private System.Windows.Forms.TextBox firma_adi;
+        private System.Windows.Forms.TextBox soyAd;
+        private System.Windows.Forms.TextBox Ad;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox yardimsever_ilce;
+        private System.Windows.Forms.TextBox yardimsever_il;
+        private System.Windows.Forms.Label yar_il;
+        private System.Windows.Forms.TextBox mahalle;
+        private System.Windows.Forms.TextBox adres;
+        private System.Windows.Forms.TextBox posta_kutusu;
     }
 }
