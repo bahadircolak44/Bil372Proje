@@ -8,25 +8,33 @@ namespace Bil372Proje
 {
     public partial class Login : Form
     {
+        Form1 f1;
         public Login()
         {
             InitializeComponent();
+             f1 = new Form1();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Prepare pr;
+           
             try
             {
             SqlConnection con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
-            SqlDataAdapter sda = new SqlDataAdapter("Select * From kullanici  where " +
-                "kullanici_adi='" + kullanici_adi.Text+ "'and sifre='" + sifre.Text+ "') ", con);
-            DataTable dt = new DataTable();
-           
-              //  if (dt.TableName.Equals("okul")) { MessageBox.Show("1111111111"); }
-            if (dt.Rows.Count >= 1)
+            SqlCommand cmd = new SqlCommand("Select * from kullanici where kullanici_adi=@kullanici_adi and sifre=@sifre", con);
+                cmd.Parameters.AddWithValue("@kullanici_adi", kullanici_adi.Text);
+                cmd.Parameters.AddWithValue("@sifre", sifre.Text);
+                con.Open();
+                SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                adapt.Fill(ds);
+                con.Close();
+                int count = ds.Tables[0].Rows.Count;
+                if (count == 1)
             {
                 MessageBox.Show("Doğru");
+                this.Hide();
+                    f1.Show();
 
             }
             else
@@ -34,9 +42,9 @@ namespace Bil372Proje
                 MessageBox.Show("Yanlış");
             }
             }
-            catch
+            catch(Exception exc)
             {
-                MessageBox.Show("Some Problems Have Been Occured","ERROR");
+                MessageBox.Show(exc.ToString(),"ERROR");
             }
         }
 
