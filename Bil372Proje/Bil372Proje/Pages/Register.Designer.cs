@@ -745,14 +745,14 @@
             // 
             this.posta_kutusu.Location = new System.Drawing.Point(762, 603);
             this.posta_kutusu.Name = "posta_kutusu";
-            this.posta_kutusu.Size = new System.Drawing.Size(100, 22);
+            this.posta_kutusu.Size = new System.Drawing.Size(124, 22);
             this.posta_kutusu.TabIndex = 33;
             // 
             // Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1058, 717);
+            this.ClientSize = new System.Drawing.Size(1210, 888);
             this.Controls.Add(this.tabControl1);
             this.Name = "Register";
             this.Text = "Register";

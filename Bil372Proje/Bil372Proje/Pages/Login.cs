@@ -15,16 +15,16 @@ namespace Bil372Proje
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Prepare pr;
             try
             {
             SqlConnection con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
-            SqlDataAdapter sda = new SqlDataAdapter("Select * From yardimsever as y,okul as o  where " +
-                "(y.kullanci_adi='" + kullanici_adi.Text+ "'and y.sifre='" + sifre.Text+ "') " +
-                "or (o.kullanci_adi='" + kullanici_adi.Text + "'and o.sifre='" + sifre.Text + "')", con);
+            SqlDataAdapter sda = new SqlDataAdapter("Select * From kullanici  where " +
+                "kullanici_adi='" + kullanici_adi.Text+ "'and sifre='" + sifre.Text+ "') ", con);
             DataTable dt = new DataTable();
            
               //  if (dt.TableName.Equals("okul")) { MessageBox.Show("1111111111"); }
-            if (dt.Rows.Count == 1)
+            if (dt.Rows.Count >= 1)
             {
                 MessageBox.Show("Doğru");
 
