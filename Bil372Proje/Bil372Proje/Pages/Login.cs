@@ -8,11 +8,11 @@ namespace Bil372Proje
 {
     public partial class Login : Form
     {
-        Form1 f1;
+        yardimsever f1;
         public Login()
         {
             InitializeComponent();
-             f1 = new Form1();
+             f1 = new yardimsever();
         }
 
         private void button1_Click(object sender, EventArgs e)
