@@ -65,11 +65,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>bil372DBDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Pages\yardimsever.cs">
+    <Compile Include="Pages\yardimsever\yardimsever1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pages\yardimsever.Designer.cs">
-      <DependentUpon>yardimsever.cs</DependentUpon>
+    <Compile Include="Pages\yardimsever\yardimsever1.Designer.cs">
+      <DependentUpon>yardimsever1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\yardimsever\yardimsever2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\yardimsever\yardimsever2.Designer.cs">
+      <DependentUpon>yardimsever2.cs</DependentUpon>
     </Compile>
     <Compile Include="Pages\Login.cs">
       <SubType>Form</SubType>
@@ -91,8 +97,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Pages\yardimsever.resx">
-      <DependentUpon>yardimsever.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\yardimsever\yardimsever1.resx">
+      <DependentUpon>yardimsever1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\yardimsever\yardimsever2.resx">
+      <DependentUpon>yardimsever2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

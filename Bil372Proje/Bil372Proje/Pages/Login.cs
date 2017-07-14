@@ -8,11 +8,11 @@ namespace Bil372Proje
 {
     public partial class Login : Form
     {
-        yardimsever f1;
+        yardimsever1 y1;
         public Login()
         {
             InitializeComponent();
-             f1 = new yardimsever();
+             y1 = new yardimsever1();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -32,9 +32,9 @@ namespace Bil372Proje
                 int count = ds.Tables[0].Rows.Count;
                 if (count == 1)
             {
-                MessageBox.Show("Doğru");
+                
                 this.Hide();
-                    f1.Show();
+                y1.Show();
 
             }
             else

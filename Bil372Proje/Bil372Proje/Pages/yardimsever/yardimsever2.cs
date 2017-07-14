@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace Bil372Proje.Pages
 {
-    public partial class yardimsever : Form
+    public partial class yardimsever2 : Form
     {
-        public yardimsever()
+        public yardimsever2()
         {
             InitializeComponent();
         }
@@ -43,6 +43,7 @@ namespace Bil372Proje.Pages
 
         private void goto_okulpage(object sender, MouseEventArgs e)
         {
+            MessageBox.Show(dataGridView1.CurrentRow.Cells[0].Value.ToString(),"Uyarı");
             Okul okul = new Okul();
             this.Hide();
             okul.Show();
