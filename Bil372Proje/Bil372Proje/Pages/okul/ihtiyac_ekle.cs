@@ -37,7 +37,7 @@ namespace Bil372Proje.Pages.okul
 
         private void button3_Click(object sender, EventArgs e)
         {
-            mobilya mobilya = new mobilya(kAdi);
+            mobilya mobilya = new mobilya(kAdi,Id);
             this.Hide();
             mobilya.Show();
         }

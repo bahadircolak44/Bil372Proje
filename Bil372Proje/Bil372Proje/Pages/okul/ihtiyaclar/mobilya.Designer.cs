@@ -146,6 +146,7 @@
             this.mobilya_ekle.TabIndex = 11;
             this.mobilya_ekle.Text = "Ekle";
             this.mobilya_ekle.UseVisualStyleBackColor = false;
+            this.mobilya_ekle.Click += new System.EventHandler(this.mobilya_ekle_Click);
             // 
             // mobilya_geri
             // 
