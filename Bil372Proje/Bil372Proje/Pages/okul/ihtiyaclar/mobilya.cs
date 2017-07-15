@@ -12,8 +12,10 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
 {
     public partial class mobilya : Form
     {
-        public mobilya()
+        public string kAdi;
+        public mobilya(string kullanici)
         {
+            kAdi = kullanici;
             InitializeComponent();
         }
     }

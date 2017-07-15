@@ -12,8 +12,10 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
 {
     public partial class teknoloji : Form
     {
-        public teknoloji()
+        public string kAdi;
+        public teknoloji(string kullanici)
         {
+            kAdi = kullanici;
             InitializeComponent();
         }
     }

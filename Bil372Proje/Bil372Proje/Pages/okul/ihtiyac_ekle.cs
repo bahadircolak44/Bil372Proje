@@ -13,14 +13,16 @@ namespace Bil372Proje.Pages.okul
 {
     public partial class ihtiyac_ekle : Form
     {
-        public ihtiyac_ekle()
+        public string kAdi;
+        public ihtiyac_ekle(string kullanici )
         {
+            kAdi = kullanici;
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            kirtasiye kir = new kirtasiye();
+            kirtasiye kir = new kirtasiye(kAdi);
             this.Hide();
             kir.Show();
         }
@@ -51,6 +53,14 @@ namespace Bil372Proje.Pages.okul
             teknoloji teknoloji = new teknoloji();
             this.Hide();
             teknoloji.Show();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            okul_pages okul = new okul_pages(kAdi);
+            this.Hide();
+            okul.Show();
+
         }
     }
 }

@@ -12,8 +12,10 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
 {
     public partial class giysi : Form
     {
-        public giysi()
+        public string kAdi;
+        public giysi(string kullanici)
         {
+            kAdi = kullanici;
             InitializeComponent();
         }
     }

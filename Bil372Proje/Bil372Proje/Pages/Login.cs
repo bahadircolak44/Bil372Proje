@@ -11,8 +11,8 @@ namespace Bil372Proje
 {
     public partial class Login : Form
     {
-        
-        
+
+   
         
        
         public Login()

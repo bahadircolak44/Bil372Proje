@@ -15,15 +15,16 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
     public partial class kirtasiye : Form
     {
         SqlConnection con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
-
-        public kirtasiye()
+        public string kAdi;
+        public kirtasiye(string kullanici)
         {
+            kAdi = kullanici;
             InitializeComponent();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ihtiyac_ekle ie = new ihtiyac_ekle();
+            ihtiyac_ekle ie = new ihtiyac_ekle(kAdi);
             this.Hide();
             ie.Show();
         }

@@ -24,7 +24,7 @@ namespace Bil372Proje.Pages.okul
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ihtiyac_ekle ie = new ihtiyac_ekle();
+            ihtiyac_ekle ie = new ihtiyac_ekle(kAdi);
             this.Hide();
             ie.Show();
         }

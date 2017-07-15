@@ -12,8 +12,10 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
 {
     public partial class kitap : Form
     {
-        public kitap()
+        public string kAdi;
+        public kitap(string kullanici)
         {
+            kAdi = kullanici;
             InitializeComponent();
         }
     }
