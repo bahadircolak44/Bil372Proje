@@ -43,7 +43,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(233, 159);
+            this.label1.Location = new System.Drawing.Point(140, 159);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 17);
             this.label1.TabIndex = 0;
@@ -52,7 +52,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(233, 315);
+            this.label2.Location = new System.Drawing.Point(140, 315);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 17);
             this.label2.TabIndex = 1;
@@ -61,7 +61,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(233, 237);
+            this.label3.Location = new System.Drawing.Point(140, 237);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 17);
             this.label3.TabIndex = 2;
@@ -80,7 +80,7 @@
             "bant",
             "cilt",
             "dolma kalem"});
-            this.kirtasiye_ihtiyac.Location = new System.Drawing.Point(408, 159);
+            this.kirtasiye_ihtiyac.Location = new System.Drawing.Point(267, 156);
             this.kirtasiye_ihtiyac.Name = "kirtasiye_ihtiyac";
             this.kirtasiye_ihtiyac.Size = new System.Drawing.Size(248, 24);
             this.kirtasiye_ihtiyac.TabIndex = 3;
@@ -90,7 +90,7 @@
             this.kirtasiye_marka.FormattingEnabled = true;
             this.kirtasiye_marka.Items.AddRange(new object[] {
             "Faber Castel"});
-            this.kirtasiye_marka.Location = new System.Drawing.Point(408, 237);
+            this.kirtasiye_marka.Location = new System.Drawing.Point(267, 237);
             this.kirtasiye_marka.Name = "kirtasiye_marka";
             this.kirtasiye_marka.Size = new System.Drawing.Size(248, 24);
             this.kirtasiye_marka.TabIndex = 4;
@@ -119,14 +119,14 @@
             "18",
             "19",
             "20"});
-            this.kirtasiye_adet.Location = new System.Drawing.Point(408, 315);
+            this.kirtasiye_adet.Location = new System.Drawing.Point(267, 315);
             this.kirtasiye_adet.Name = "kirtasiye_adet";
             this.kirtasiye_adet.Size = new System.Drawing.Size(248, 24);
             this.kirtasiye_adet.TabIndex = 5;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(408, 433);
+            this.button1.Location = new System.Drawing.Point(267, 410);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(107, 48);
             this.button1.TabIndex = 6;
@@ -136,7 +136,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(549, 434);
+            this.button2.Location = new System.Drawing.Point(408, 411);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(107, 47);
             this.button2.TabIndex = 7;
@@ -147,10 +147,10 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(752, 116);
+            this.dataGridView1.Location = new System.Drawing.Point(722, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(457, 322);
+            this.dataGridView1.Size = new System.Drawing.Size(487, 589);
             this.dataGridView1.TabIndex = 8;
             // 
             // kirtasiye
@@ -169,6 +169,7 @@
             this.Controls.Add(this.label1);
             this.Name = "kirtasiye";
             this.Text = "kirtasiye";
+            this.Load += new System.EventHandler(this.kirtasiye_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

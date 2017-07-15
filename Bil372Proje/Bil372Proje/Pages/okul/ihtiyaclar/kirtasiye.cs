@@ -16,9 +16,11 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
     {
         SqlConnection con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
         public string kAdi;
-        public kirtasiye(string kullanici)
+        public int okul_id;
+        public kirtasiye(string kullanici,int Id)
         {
             kAdi = kullanici;
+            okul_id = Id;
             InitializeComponent();
         }
 
@@ -28,15 +30,22 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             this.Hide();
             ie.Show();
         }
-
+        /*kirtasiye tablosunda ki en büyük Id bulunur.
+         *insert into ile ara yüzden alınan ihtiyaçlar önce veri tabanına sonra datagridviewe eklenir         *
+         */
         private void button1_Click(object sender, EventArgs e)
         {
             con.Open();
+            SqlCommand komut = new SqlCommand("select max(Id) from kirtasiye", con);
+            int count = Convert.ToInt32(komut.ExecuteScalar());
+            count = count + 1;
             SqlCommand cmd = new SqlCommand("insert into kirtasiye(Id,okul_id,isim,adet,marka)" +
-                " values(2,1,@isim,@adet,@marka)",con);
+                " values(@Id,@okul_id,@isim,@adet,@marka)", con);
             cmd.Parameters.AddWithValue("@isim",kirtasiye_ihtiyac.Text);
             cmd.Parameters.AddWithValue("@adet", kirtasiye_adet.Text);
             cmd.Parameters.AddWithValue("@marka", kirtasiye_marka.Text);
+            cmd.Parameters.AddWithValue("@Id", count);
+            cmd.Parameters.AddWithValue("@okul_id", okul_id);
             cmd.ExecuteNonQuery();
             con.Close();
             kayitGetir();
@@ -44,9 +53,14 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
         private void kayitGetir()
         {
             con.Open();
-            string kayit = "SELECT * from kirtasiye";
+            MessageBox.Show(okul_id.ToString());
+            string kayit = "SELECT k.isim,k.adet" +
+                " from okul o" +
+                " inner join kirtasiye k on k.okul_id =@okul_id";
+
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             SqlCommand komut = new SqlCommand(kayit, con);
+            komut.Parameters.AddWithValue("@okul_id", okul_id);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
             SqlDataAdapter da = new SqlDataAdapter(komut);
             //SqlDataAdapter sınıfı verilerin databaseden aktarılması işlemini gerçekleştirir.
@@ -56,6 +70,11 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             dataGridView1.DataSource = dt;
             //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
             con.Close();
+        }
+
+        private void kirtasiye_Load(object sender, EventArgs e)
+        {
+            kayitGetir();
         }
     }
 }

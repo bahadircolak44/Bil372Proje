@@ -38,7 +38,6 @@ namespace Bil372Proje
                 con.Close();
                 int count = ds.Tables[0].Rows.Count; 
 
-                MessageBox.Show(yetki.ToString(), "uyarı");
                 if (count == 1)
                 {
                     this.Hide();
