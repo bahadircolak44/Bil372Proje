@@ -34,7 +34,6 @@ namespace Bil372Proje.Pages
             login = new Login();
 
         }
-
         //Back butonuna basıldığında Login sayfasına dönmek için
         private void button2_Click(object sender, EventArgs e)
         {
