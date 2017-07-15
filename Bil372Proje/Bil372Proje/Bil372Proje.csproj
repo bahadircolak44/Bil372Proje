@@ -65,6 +65,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>bil372DBDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Pages\admin\admin_pages.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\admin\admin_pages.Designer.cs">
+      <DependentUpon>admin_pages.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\okul\ihtiyaclar\kirtasiye.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,17 +83,23 @@
     <Compile Include="Pages\okul\ihtiyac_ekle.Designer.cs">
       <DependentUpon>ihtiyac_ekle.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pages\okul\okul_ekrani.cs">
+    <Compile Include="Pages\okul\okul_pages.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pages\okul\okul_ekrani.Designer.cs">
-      <DependentUpon>okul_ekrani.cs</DependentUpon>
+    <Compile Include="Pages\okul\okul_pages.Designer.cs">
+      <DependentUpon>okul_pages.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pages\yardimsever\yardimsever1.cs">
+    <Compile Include="Pages\tedarikci\tedarikci_pages.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pages\yardimsever\yardimsever1.Designer.cs">
-      <DependentUpon>yardimsever1.cs</DependentUpon>
+    <Compile Include="Pages\tedarikci\tedarikci_pages.Designer.cs">
+      <DependentUpon>tedarikci_pages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\yardimsever\yardimsever_pages.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\yardimsever\yardimsever_pages.Designer.cs">
+      <DependentUpon>yardimsever_pages.cs</DependentUpon>
     </Compile>
     <Compile Include="Pages\yardimsever\yardimsever2.cs">
       <SubType>Form</SubType>
@@ -115,17 +127,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Pages\admin\admin_pages.resx">
+      <DependentUpon>admin_pages.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pages\okul\ihtiyaclar\kirtasiye.resx">
       <DependentUpon>kirtasiye.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\okul\ihtiyac_ekle.resx">
       <DependentUpon>ihtiyac_ekle.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\okul\okul_ekrani.resx">
-      <DependentUpon>okul_ekrani.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\okul\okul_pages.resx">
+      <DependentUpon>okul_pages.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\yardimsever\yardimsever1.resx">
-      <DependentUpon>yardimsever1.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\tedarikci\tedarikci_pages.resx">
+      <DependentUpon>tedarikci_pages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\yardimsever\yardimsever_pages.resx">
+      <DependentUpon>yardimsever_pages.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\yardimsever\yardimsever2.resx">
       <DependentUpon>yardimsever2.cs</DependentUpon>

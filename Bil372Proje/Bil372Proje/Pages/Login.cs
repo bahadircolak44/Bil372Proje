@@ -4,18 +4,24 @@ using System.Data.SqlClient;
 using System.Data;
 using Bil372Proje.Pages;
 using Bil372Proje.Pages.okul;
+using Bil372Proje.Pages.admin;
+using Bil372Proje.Pages.tedarikci;
 
 namespace Bil372Proje
 {
     public partial class Login : Form
     {
-        yardimsever1 y1;
-        okul_ekrani oe ;
+        yardimsever1 yardimseverpages;
+        okul_pages okulpages ;
+        tedarikci_pages tedarikcipages;
+        admin_pages admin;
         public Login()
         {
             InitializeComponent();
-             y1 = new yardimsever1();
-             oe = new okul_ekrani();
+            yardimseverpages = new yardimsever1();
+            okulpages = new okul_pages();
+            tedarikcipages = new tedarikci_pages();
+            admin = new admin_pages();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -38,10 +44,25 @@ namespace Bil372Proje
                 MessageBox.Show(yetki.ToString(), "uyarı");
                 if (count == 1)
                 {
+                    this.Hide();
+                    if (yetki == 1)
+                    {
+                        yardimseverpages.Show();
 
+                    }else if (yetki==2)
+                    {
+                        okulpages.Show();
+
+                    }else if (yetki == 3)
+                    {
+                        tedarikcipages.Show();
+                    }
+                    else
+                    {
+                        admin.Show();
+                    }
                 
-                this.Hide();
-                oe.Show();
+                
 
             }
             else

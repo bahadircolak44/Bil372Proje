@@ -1,6 +1,6 @@
 ﻿namespace Bil372Proje.Pages.okul
 {
-    partial class okul_ekrani
+    partial class okul_pages
     {
         /// <summary>
         /// Required designer variable.

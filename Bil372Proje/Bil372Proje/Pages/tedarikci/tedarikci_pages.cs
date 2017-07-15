@@ -8,20 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Bil372Proje.Pages.okul
+namespace Bil372Proje.Pages.tedarikci
 {
-    public partial class okul_ekrani : Form
+    public partial class tedarikci_pages : Form
     {
-        public okul_ekrani()
+        public tedarikci_pages()
         {
             InitializeComponent();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            ihtiyac_ekle ie = new ihtiyac_ekle();
-            this.Hide();
-            ie.Show();
         }
     }
 }
