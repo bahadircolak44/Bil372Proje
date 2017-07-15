@@ -24,5 +24,33 @@ namespace Bil372Proje.Pages.okul
             this.Hide();
             kir.Show();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            mobilya mobilya = new mobilya();
+            this.Hide();
+            mobilya.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            kitap kitap = new kitap();
+            this.Hide();
+            kitap.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            giysi giysi = new giysi();
+            this.Hide();
+            giysi.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            teknoloji teknoloji = new teknoloji();
+            this.Hide();
+            teknoloji.Show();
+        }
     }
 }

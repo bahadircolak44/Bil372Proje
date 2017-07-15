@@ -71,11 +71,35 @@
     <Compile Include="Pages\admin\admin_pages.Designer.cs">
       <DependentUpon>admin_pages.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\okul\ihtiyaclar\giysi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\okul\ihtiyaclar\giysi.Designer.cs">
+      <DependentUpon>giysi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\okul\ihtiyaclar\kirtasiye.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Pages\okul\ihtiyaclar\kirtasiye.Designer.cs">
       <DependentUpon>kirtasiye.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\okul\ihtiyaclar\kitap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\okul\ihtiyaclar\kitap.Designer.cs">
+      <DependentUpon>kitap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\okul\ihtiyaclar\mobilya.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\okul\ihtiyaclar\mobilya.Designer.cs">
+      <DependentUpon>mobilya.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\okul\ihtiyaclar\teknoloji.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\okul\ihtiyaclar\teknoloji.Designer.cs">
+      <DependentUpon>teknoloji.cs</DependentUpon>
     </Compile>
     <Compile Include="Pages\okul\ihtiyac_ekle.cs">
       <SubType>Form</SubType>
@@ -130,8 +154,14 @@
     <EmbeddedResource Include="Pages\admin\admin_pages.resx">
       <DependentUpon>admin_pages.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\okul\ihtiyaclar\giysi.resx">
+      <DependentUpon>giysi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pages\okul\ihtiyaclar\kirtasiye.resx">
       <DependentUpon>kirtasiye.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\okul\ihtiyaclar\mobilya.resx">
+      <DependentUpon>mobilya.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\okul\ihtiyac_ekle.resx">
       <DependentUpon>ihtiyac_ekle.cs</DependentUpon>

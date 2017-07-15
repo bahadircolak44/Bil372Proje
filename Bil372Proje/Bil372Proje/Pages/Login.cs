@@ -11,17 +11,14 @@ namespace Bil372Proje
 {
     public partial class Login : Form
     {
-        yardimsever1 yardimseverpages;
-        okul_pages okulpages ;
-        tedarikci_pages tedarikcipages;
-        admin_pages admin;
+        
+        
+        
+       
         public Login()
         {
-            InitializeComponent();
-            yardimseverpages = new yardimsever1();
-            okulpages = new okul_pages();
-            tedarikcipages = new tedarikci_pages();
-            admin = new admin_pages();
+            InitializeComponent();                   
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -47,18 +44,22 @@ namespace Bil372Proje
                     this.Hide();
                     if (yetki == 1)
                     {
+                        yardimsever1 yardimseverpages = new yardimsever1();
                         yardimseverpages.Show();
 
                     }else if (yetki==2)
                     {
+                        okul_pages okulpages = new okul_pages(kullanici_adi.Text);
                         okulpages.Show();
 
                     }else if (yetki == 3)
                     {
+                        tedarikci_pages tedarikcipages = new tedarikci_pages();
                         tedarikcipages.Show();
                     }
                     else
                     {
+                        admin_pages admin = new admin_pages();
                         admin.Show();
                     }
                 
