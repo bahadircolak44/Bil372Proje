@@ -24,17 +24,20 @@ namespace Bil372Proje
             try
             {
             SqlConnection con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
-            SqlCommand cmd = new SqlCommand("Select * from kullanici where kullanici_adi=@kullanici_adi and sifre=@sifre", con);
+                con.Open();
+                SqlCommand cmd = new SqlCommand("Select yetki from kullanici where kullanici_adi=@kullanici_adi and sifre=@sifre", con);
                 cmd.Parameters.AddWithValue("@kullanici_adi", kullanici_adi.Text);
                 cmd.Parameters.AddWithValue("@sifre", sifre.Text);
-                con.Open();
-                SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+               SqlDataAdapter adapt = new SqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
                 adapt.Fill(ds);
+                int yetki = Convert.ToInt32(cmd.ExecuteScalar()); //yetkiyi burada alıyoruz. dönen degere göre bir sayfaya yönlendirilecek
                 con.Close();
-                int count = ds.Tables[0].Rows.Count;
+                int count = ds.Tables[0].Rows.Count; 
+
+                MessageBox.Show(yetki.ToString(), "uyarı");
                 if (count == 1)
-            {
+                {
                 
                 this.Hide();
                 oe.Show();
