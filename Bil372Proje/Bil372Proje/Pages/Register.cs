@@ -13,6 +13,18 @@ namespace Bil372Proje.Pages
 {
     public partial class Register : Form
     {
+        /*YAPILACAKLAR
+         *1-) yardimsever_kayit_Click fonksiyonunda insert into yardimsever(.....) values(..) kısmı eklenecek
+         *2-) aynı fonksiyonda injection önlemesi yapılacak (cmd.Parameters.AddWithValue("@kullanici_adi", kullanici_adi.Text);)
+         * Injection için login ekranından kopya çekebilirsin
+         * 3) Okul için kullanici kayit kısmı oluşturulacak.
+         *    insert into kullanici(.....) values(..) ve insert into okul(.....) values(..)  şeklinde
+         * 4) aynı şey tedarikçi içinde yapılacak.
+         * NOT: Yetkilendirmeler: 
+         *  Yardimsever =1 
+         *  Okul =2
+         *  Tedarikci =3 şeklinde olacak
+         */
         Login login;
         SqlConnection con;
         public Register()
