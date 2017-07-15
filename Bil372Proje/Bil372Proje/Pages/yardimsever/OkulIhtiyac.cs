@@ -13,8 +13,10 @@ namespace Bil372Proje.Pages
 {
     public partial class OkulIhtiyac : Form
     {
-        public OkulIhtiyac()
+        int okul_id;
+        public OkulIhtiyac(int Id)
         {
+            okul_id = Id;
             //Yardimsever2 den sonra bu sayfaya gelinir seçilen okulun ihtiyaçlarını listeler
             InitializeComponent();
         }
@@ -28,12 +30,11 @@ namespace Bil372Proje.Pages
         private void kayitGetir()
         {
             baglanti.Open();
-            string kayit = "SELECT k.isim,k.adet,g.isim,g.adet,ki.isim,ki.adet from okul o " +
-                "inner join kirtasiye k on o.Id=k.okul_id " +
-                "inner join giysi g on o.Id=g.okul_id " +
-                "inner join kitap ki on o.Id=ki.okul_id " ;
+            string kayit = "SELECT k.isim,k.adet,k.marka" +
+                " from kirtasiye k where k.okul_id =@okul_id";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             SqlCommand komut = new SqlCommand(kayit, baglanti);
+            komut.Parameters.AddWithValue("@okul_id", okul_id);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
             SqlDataAdapter da = new SqlDataAdapter(komut);
             //SqlDataAdapter sınıfı verilerin databaseden aktarılması işlemini gerçekleştirir.
