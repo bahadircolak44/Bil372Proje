@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace Bil372Proje.Pages
 {
-    public partial class Okul : Form
+    public partial class OkulIhtiyac : Form
     {
-        public Okul()
+        public OkulIhtiyac()
         {
             InitializeComponent();
         }

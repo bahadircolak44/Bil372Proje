@@ -44,7 +44,7 @@ namespace Bil372Proje.Pages
         private void goto_okulpage(object sender, MouseEventArgs e)
         {
             MessageBox.Show(dataGridView1.CurrentRow.Cells[0].Value.ToString(),"Uyarı");
-            Okul okul = new Okul();
+            OkulIhtiyac okul = new OkulIhtiyac();
             this.Hide();
             okul.Show();
         }

@@ -65,6 +65,24 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>bil372DBDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Pages\okul\ihtiyaclar\kirtasiye.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\okul\ihtiyaclar\kirtasiye.Designer.cs">
+      <DependentUpon>kirtasiye.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\okul\ihtiyac_ekle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\okul\ihtiyac_ekle.Designer.cs">
+      <DependentUpon>ihtiyac_ekle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\okul\okul_ekrani.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\okul\okul_ekrani.Designer.cs">
+      <DependentUpon>okul_ekrani.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\yardimsever\yardimsever1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,11 +101,11 @@
     <Compile Include="Pages\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Okul.cs">
+    <Compile Include="Pages\OkulIhtiyac.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pages\Okul.Designer.cs">
-      <DependentUpon>Okul.cs</DependentUpon>
+    <Compile Include="Pages\OkulIhtiyac.Designer.cs">
+      <DependentUpon>OkulIhtiyac.cs</DependentUpon>
     </Compile>
     <Compile Include="Pages\Register.cs">
       <SubType>Form</SubType>
@@ -97,6 +115,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Pages\okul\ihtiyaclar\kirtasiye.resx">
+      <DependentUpon>kirtasiye.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\okul\ihtiyac_ekle.resx">
+      <DependentUpon>ihtiyac_ekle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\okul\okul_ekrani.resx">
+      <DependentUpon>okul_ekrani.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pages\yardimsever\yardimsever1.resx">
       <DependentUpon>yardimsever1.cs</DependentUpon>
     </EmbeddedResource>
@@ -106,8 +133,8 @@
     <EmbeddedResource Include="Pages\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\Okul.resx">
-      <DependentUpon>Okul.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\OkulIhtiyac.resx">
+      <DependentUpon>OkulIhtiyac.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Register.resx">
       <DependentUpon>Register.cs</DependentUpon>

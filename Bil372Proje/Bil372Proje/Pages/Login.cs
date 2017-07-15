@@ -3,16 +3,19 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data;
 using Bil372Proje.Pages;
+using Bil372Proje.Pages.okul;
 
 namespace Bil372Proje
 {
     public partial class Login : Form
     {
         yardimsever1 y1;
+        okul_ekrani oe ;
         public Login()
         {
             InitializeComponent();
              y1 = new yardimsever1();
+             oe = new okul_ekrani();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -34,7 +37,7 @@ namespace Bil372Proje
             {
                 
                 this.Hide();
-                y1.Show();
+                oe.Show();
 
             }
             else

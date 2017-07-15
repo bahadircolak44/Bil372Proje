@@ -1,6 +1,6 @@
 ﻿namespace Bil372Proje.Pages
 {
-    partial class Okul
+    partial class OkulIhtiyac
     {
         /// <summary>
         /// Required designer variable.
