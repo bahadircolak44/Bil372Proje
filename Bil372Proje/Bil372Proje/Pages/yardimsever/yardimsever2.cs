@@ -29,7 +29,7 @@ namespace Bil372Proje.Pages
         private void kayitGetir()
         {
             baglanti.Open();
-            string kayit = "SELECT * from kullanici";
+            string kayit = "SELECT * from kullanici where yetki =2";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             SqlCommand komut = new SqlCommand(kayit, baglanti);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
