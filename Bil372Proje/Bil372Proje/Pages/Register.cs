@@ -248,5 +248,10 @@ namespace Bil372Proje.Pages
                 MessageBox.Show(exc.ToString(), "HATA");
             }
         }
+
+        private void label17_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
