@@ -15,6 +15,8 @@ namespace Bil372Proje.Pages
     {
         public yardimsever2()
         {
+
+            //Var olan okulları listeler liste üzerinde tıkladığın okulun ihtiyaç listeleri açılır.
             InitializeComponent();
         }
         SqlConnection baglanti = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");

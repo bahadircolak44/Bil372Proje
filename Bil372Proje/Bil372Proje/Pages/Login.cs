@@ -38,6 +38,7 @@ namespace Bil372Proje
                 MessageBox.Show(yetki.ToString(), "uyarı");
                 if (count == 1)
                 {
+
                 
                 this.Hide();
                 oe.Show();

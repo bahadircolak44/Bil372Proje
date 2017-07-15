@@ -14,6 +14,8 @@ namespace Bil372Proje.Pages
     {
         public yardimsever1()
         {
+
+            // Okul Arama Sayfasıdır.
             InitializeComponent();
         }
 

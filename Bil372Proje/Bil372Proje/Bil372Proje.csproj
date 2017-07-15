@@ -101,10 +101,10 @@
     <Compile Include="Pages\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pages\OkulIhtiyac.cs">
+    <Compile Include="Pages\yardimsever\OkulIhtiyac.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pages\OkulIhtiyac.Designer.cs">
+    <Compile Include="Pages\yardimsever\OkulIhtiyac.Designer.cs">
       <DependentUpon>OkulIhtiyac.cs</DependentUpon>
     </Compile>
     <Compile Include="Pages\Register.cs">
@@ -133,7 +133,7 @@
     <EmbeddedResource Include="Pages\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\OkulIhtiyac.resx">
+    <EmbeddedResource Include="Pages\yardimsever\OkulIhtiyac.resx">
       <DependentUpon>OkulIhtiyac.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Register.resx">
