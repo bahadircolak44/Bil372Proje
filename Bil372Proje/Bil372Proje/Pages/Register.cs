@@ -33,6 +33,7 @@ namespace Bil372Proje.Pages
             con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
             login = new Login();
 
+
         }
         //Back butonuna basıldığında Login sayfasına dönmek için
         private void button2_Click(object sender, EventArgs e)
