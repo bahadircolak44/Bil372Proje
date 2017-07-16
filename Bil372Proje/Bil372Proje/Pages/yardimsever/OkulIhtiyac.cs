@@ -30,8 +30,7 @@ namespace Bil372Proje.Pages
         private void kayitGetir()
         {
             baglanti.Open();
-            string kayit = "SELECT k.isim,k.adet,k.marka" +
-                " from kirtasiye k where k.okul_id =@okul_id";
+            string kayit = "select isim,adet from kirtasiye select isim, adet from giysi";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             SqlCommand komut = new SqlCommand(kayit, baglanti);
             komut.Parameters.AddWithValue("@okul_id", okul_id);

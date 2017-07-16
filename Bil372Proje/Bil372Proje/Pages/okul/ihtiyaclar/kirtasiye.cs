@@ -37,6 +37,7 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
         {
             con.Open();
             SqlCommand komut = new SqlCommand("select max(Id) from kirtasiye", con);
+            SqlCommand komut2 = new SqlCommand("select adet from kirtasiye where isim=@isim", con);
             int count = Convert.ToInt32(komut.ExecuteScalar());
             count = count + 1;
             SqlCommand cmd = new SqlCommand("insert into kirtasiye(Id,okul_id,isim,adet,marka)" +
