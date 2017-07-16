@@ -68,5 +68,10 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
             con.Close();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
