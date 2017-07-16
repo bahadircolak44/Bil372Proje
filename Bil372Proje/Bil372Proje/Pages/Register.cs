@@ -73,9 +73,7 @@ namespace Bil372Proje.Pages
                                                                 
 
                                 cmd.ExecuteNonQuery();
-                                SqlCommand komut = new SqlCommand("select max(Id) from yardimsever", con);
-                                int count = Convert.ToInt32(komut.ExecuteScalar());
-                                count = count + 1;
+                                
                                  SqlCommand cmd2 = new SqlCommand("insert into yardimsever(kAdi,ad,soyad,cinsiyet,bakiye)"+
                                      " values(@kAdi, @Id, @ad, @soyAd, @cinsiyet, 0" ,con );
                                 cmd2.Parameters.AddWithValue("@kAdi", kullanici_adi.Text);
@@ -191,8 +189,6 @@ namespace Bil372Proje.Pages
                                 //Database sistemi oluşturulduktan sonra
                                 con.Open();
                                
-
-
                                 SqlCommand cmd = new SqlCommand("insert into kullanici(kullanici_adi,sifre,email,il,ilce,mahalle,adress,posta_kodu,telefon,yetki)" +
                             " values(@kullanici_adi, @sifre, @email, @il, @ilce, @mahalle, @adres, @posta, @telefon ,2)", con);
 
