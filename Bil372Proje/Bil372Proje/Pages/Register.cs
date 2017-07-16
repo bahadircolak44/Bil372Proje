@@ -14,9 +14,9 @@ namespace Bil372Proje.Pages
     public partial class Register : Form
     {
         /*YAPILACAKLAR
-         *1-) yardimsever_kayit_Click fonksiyonunda insert into yardimsever(.....) values(..) kısmı eklenecek
+         *1-) yardimsever_kayit_Click fonksiyonunda insert into yardimsever(.....) values(..) kısmı eklenecek **yapildi.
          *2-) aynı fonksiyonda injection önlemesi yapılacak (cmd.Parameters.AddWithValue("@kullanici_adi", kullanici_adi.Text);)
-         * Injection için login ekranından kopya çekebilirsin
+         * Injection için login ekranından kopya çekebilirsin. **yapildi.
          * 3) Okul için kullanici kayit kısmı oluşturulacak.
          *    insert into kullanici(.....) values(..) ve insert into okul(.....) values(..)  şeklinde
          * 4) aynı şey tedarikçi içinde yapılacak.
@@ -53,6 +53,7 @@ namespace Bil372Proje.Pages
                     || yas.Text.Equals(string.Empty) || adres.Text.Equals(string.Empty) || tel.Text.Equals(string.Empty)
                     || !(checkBox1.Checked || checkBox2.Checked)))
                 {
+                    
                     if (sifre.TextLength>=6)
                     { 
                     // E-mail in valid olup olmadığına bakıyor
@@ -63,10 +64,35 @@ namespace Bil372Proje.Pages
                         {
                             con.Open();
                             SqlCommand cmd = new SqlCommand("insert into kullanici(kullanici_adi,sifre,email,il,ilce,mahalle,adress,posta_kodu,telefon,yetki)" +
-                            " values('" + kullanici_adi.Text + "','" + sifre.Text + "','" + email.Text + "','"+yardimsever_il.Text+ "','" + yardimsever_ilce.Text
-                            + "','" + mahalle.Text + "','" + adres.Text + "','" + posta_kutusu.Text + "','" + tel.Text + "',1)", con);
-                            cmd.ExecuteNonQuery();
-                            MessageBox.Show("Kayıt Başarılı", "BASARILI");
+                            " values(@kullanici_adi, @sifre, @email, @il, @ilce, @mahalle, @adres, @posta, @telefon ,1)", con);
+
+                                cmd.Parameters.AddWithValue("@kullanici_adi", kullanici_adi.Text);
+                                cmd.Parameters.AddWithValue("@sifre", sifre.Text);
+                                cmd.Parameters.AddWithValue("@email", email.Text);
+                                cmd.Parameters.AddWithValue("@il", yardimsever_il.Text);
+                                cmd.Parameters.AddWithValue("@ilce", yardimsever_ilce.Text);
+                                cmd.Parameters.AddWithValue("@mahalle", mahalle.Text);
+                                cmd.Parameters.AddWithValue("@adres", adres.Text);
+                                cmd.Parameters.AddWithValue("@posta", posta_kutusu.Text);
+                                cmd.Parameters.AddWithValue("@telefon", tel.Text);
+                                                                
+
+                                cmd.ExecuteNonQuery();
+                                SqlCommand komut = new SqlCommand("select max(Id) from yardimsever", con);
+                                int count = Convert.ToInt32(komut.ExecuteScalar());
+                                count = count + 1;
+                                 SqlCommand cmd2 = new SqlCommand("insert into yardimsever(kAdi,Id,ad,soyad,cinsiyet,bakiye)"+
+                                     " values(@kAdi, @Id, @ad, @soyAd, @cinsiyet, 0" ,con );
+                                cmd2.Parameters.AddWithValue("@kAdi", kullanici_adi.Text);
+                                cmd2.Parameters.AddWithValue("@Id", count); // silinecek.
+                                cmd2.Parameters.AddWithValue("@ad", Ad.Text);
+                                cmd2.Parameters.AddWithValue("@soyAd", soyAd.Text);
+                                cmd2.Parameters.AddWithValue("@cinsiyet", checkbox(checkBox1, checkBox2));
+                                
+                                //bakiye icin yapmadim cunku ilk baslangicta hep 0 veriyoruz.
+                                cmd2.ExecuteNonQuery();
+                                 
+                                MessageBox.Show("Kayıt Başarılı", "BASARILI");
                             this.Hide();
                             login.Show();
 
@@ -155,8 +181,8 @@ namespace Bil372Proje.Pages
             try
             {
                 // Fieldların doluluk durumunu kontrol ediyor
-                if (!(okul_adi.Text.Equals(string.Empty) || il.Text.Equals(string.Empty)
-                || ilce.Text.Equals(string.Empty) || okul_adres.Text.Equals(string.Empty)
+                if (!(okul_adi.Text.Equals(string.Empty) || okul_il.Text.Equals(string.Empty)
+                || okul_ilce.Text.Equals(string.Empty) || okul_adres.Text.Equals(string.Empty)
                 || okul_email.Text.Equals(string.Empty) || okul_kullanici_adi.Text.Equals(string.Empty) 
                 || okul_sifre.Text.Equals(string.Empty)|| okul_sifre.Text.Equals(string.Empty)))
                 {
@@ -170,10 +196,30 @@ namespace Bil372Proje.Pages
                             {
                                 //Database sistemi oluşturulduktan sonra
                                 con.Open();
-                                SqlCommand cmd = new SqlCommand("insert into okul(okul_id,okul_adi,il,ilce,kullanci_adi,sifre,email,adres,tel,yetki,bakiye,valid)" +
-                                " values(5,'" + okul_adi.Text + "','" + il.Text + "','" + ilce.Text + "','" + okul_kullanici_adi.Text + "'," +
-                                " '" + okul_sifre.Text + "','" + okul_email.Text + "','" + okul_adres.Text + "','123123','okul',0,0)", con);
+                               
+
+
+                                SqlCommand cmd = new SqlCommand("insert into kullanici(kullanici_adi,sifre,email,il,ilce,mahalle,adress,posta_kodu,telefon,yetki)" +
+                            " values(@kullanici_adi, @sifre, @email, @il, @ilce, @mahalle, @adres, @posta, @telefon ,2)", con);
+
+                                cmd.Parameters.AddWithValue("@kullanici_adi", okul_kullanici_adi.Text);
+                                cmd.Parameters.AddWithValue("@sifre", okul_sifre.Text);
+                                cmd.Parameters.AddWithValue("@email", okul_email.Text);
+                                cmd.Parameters.AddWithValue("@il", okul_il.Text);
+                                cmd.Parameters.AddWithValue("@ilce", okul_ilce.Text);
+                                cmd.Parameters.AddWithValue("@mahalle", okul_mahalle.Text);
+                                cmd.Parameters.AddWithValue("@adres", okul_adres.Text);
+                                cmd.Parameters.AddWithValue("@posta", okul_posta.Text);
+                                cmd.Parameters.AddWithValue("@telefon", okul_telefon.Text);
+
                                 cmd.ExecuteNonQuery();
+                                
+                                SqlCommand cmd2 = new SqlCommand("insert into okul(kAdi,bakiye,valid) values(@kAdi,0,0)", con);
+
+                                cmd2.Parameters.AddWithValue("@kAdi", okul_kullanici_adi.Text);
+
+                                cmd2.ExecuteNonQuery();
+
                                 MessageBox.Show("Kaydınız Alınmıştır. Kontrol Sonrası Bilgilendirileceksiniz", "BAŞARILI");
                                 this.Hide();
                                 login.Show();
@@ -225,10 +271,29 @@ namespace Bil372Proje.Pages
                             {
                                 //Database sistemi oluşturulduktan sonra
                                 con.Open();
-                                SqlCommand cmd = new SqlCommand("insert into tedarikci(firma_adi,kullanci_adi,sifre,email,adres,tel,yetki,bakiye,valid)" +
-                                " values('" + firma_adi.Text + "','" + tedarikci_kullanici_adi.Text + "','" + tedarikci_sifre.Text + "','" + tedarikci_email.Text + "'," +
-                                " '" + tedarikci_adres.Text + "','" + tedarikci_telefon.Text + "','tedarikci',0)", con);
+                                SqlCommand cmd = new SqlCommand("insert into kullanici(kullanici_adi,sifre,email,il,ilce,mahalle,adress,posta_kodu,telefon,yetki)" +
+                            " values(@kullanici_adi, @sifre, @email, @il, @ilce, @mahalle, @adres, @posta, @telefon ,3)", con);
+
+                                cmd.Parameters.AddWithValue("@kullanici_adi", tedarikci_kullanici_adi.Text);
+                                cmd.Parameters.AddWithValue("@sifre", tedarikci_sifre.Text);
+                                cmd.Parameters.AddWithValue("@email", tedarikci_email.Text);
+                                cmd.Parameters.AddWithValue("@il", tedarikci_il.Text);
+                                cmd.Parameters.AddWithValue("@ilce", tedarikci_ilce.Text);
+                                cmd.Parameters.AddWithValue("@mahalle", tedarikci_mahalle.Text);
+                                cmd.Parameters.AddWithValue("@adres", tedarikci_adres.Text);
+                                cmd.Parameters.AddWithValue("@posta", tedarikci_posta.Text);
+                                cmd.Parameters.AddWithValue("@telefon", tedarikci_telefon.Text);
+
                                 cmd.ExecuteNonQuery();
+
+
+                                SqlCommand cmd2 = new SqlCommand("insert into tedarikci(kAdi,firma_adi,bakiye,valid) values(@kAdi,@firma_adi,0,0)", con);
+
+                                cmd2.Parameters.AddWithValue("@kAdi", tedarikci_kullanici_adi.Text);
+                                cmd2.Parameters.AddWithValue("@firma_adi", firma_adi.Text);
+
+                                cmd2.ExecuteNonQuery();
+
                                 MessageBox.Show("Kaydınız Alınmıştır. Kontrol Sonrası Bilgilendirileceksiniz", "BAŞARILI");
                                 this.Hide();
                                 login.Show();
@@ -258,6 +323,46 @@ namespace Bil372Proje.Pages
             {
                 MessageBox.Show(exc.ToString(), "HATA");
             }
+        }
+
+        private void label17_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox2_CheckedChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void yar_il_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label_firma_adi_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label19_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label22_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label24_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -18,5 +18,10 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             kAdi = kullanici;
             InitializeComponent();
         }
+
+        private void teknoloji_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
