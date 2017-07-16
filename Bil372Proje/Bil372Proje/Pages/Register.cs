@@ -13,13 +13,7 @@ namespace Bil372Proje.Pages
 {
     public partial class Register : Form
     {
-        /*YAPILACAKLAR
-         *1-) yardimsever_kayit_Click fonksiyonunda insert into yardimsever(.....) values(..) kısmı eklenecek **yapildi.
-         *2-) aynı fonksiyonda injection önlemesi yapılacak (cmd.Parameters.AddWithValue("@kullanici_adi", kullanici_adi.Text);)
-         * Injection için login ekranından kopya çekebilirsin. **yapildi.
-         * 3) Okul için kullanici kayit kısmı oluşturulacak.
-         *    insert into kullanici(.....) values(..) ve insert into okul(.....) values(..)  şeklinde
-         * 4) aynı şey tedarikçi içinde yapılacak.
+        /*
          * NOT: Yetkilendirmeler: 
          *  Yardimsever =1 
          *  Okul =2
@@ -81,10 +75,9 @@ namespace Bil372Proje.Pages
                                 SqlCommand komut = new SqlCommand("select max(Id) from yardimsever", con);
                                 int count = Convert.ToInt32(komut.ExecuteScalar());
                                 count = count + 1;
-                                 SqlCommand cmd2 = new SqlCommand("insert into yardimsever(kAdi,Id,ad,soyad,cinsiyet,bakiye)"+
+                                 SqlCommand cmd2 = new SqlCommand("insert into yardimsever(kAdi,ad,soyad,cinsiyet,bakiye)"+
                                      " values(@kAdi, @Id, @ad, @soyAd, @cinsiyet, 0" ,con );
                                 cmd2.Parameters.AddWithValue("@kAdi", kullanici_adi.Text);
-                                cmd2.Parameters.AddWithValue("@Id", count); // silinecek.
                                 cmd2.Parameters.AddWithValue("@ad", Ad.Text);
                                 cmd2.Parameters.AddWithValue("@soyAd", soyAd.Text);
                                 cmd2.Parameters.AddWithValue("@cinsiyet", checkbox(checkBox1, checkBox2));
