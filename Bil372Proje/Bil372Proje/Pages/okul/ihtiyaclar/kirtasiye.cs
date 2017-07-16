@@ -44,7 +44,6 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             cmd.Parameters.AddWithValue("@isim",kirtasiye_ihtiyac.Text);
             cmd.Parameters.AddWithValue("@adet", kirtasiye_adet.Text);
             cmd.Parameters.AddWithValue("@marka", kirtasiye_marka.Text);
-            cmd.Parameters.AddWithValue("@Id", count);
             cmd.Parameters.AddWithValue("@okul_id", okul_id);
             cmd.ExecuteNonQuery();
             kayitGetir();
