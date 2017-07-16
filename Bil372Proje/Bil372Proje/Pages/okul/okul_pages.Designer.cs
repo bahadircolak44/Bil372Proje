@@ -35,7 +35,7 @@
             // 
             // bakiye_btn
             // 
-            this.bakiye_btn.Location = new System.Drawing.Point(1037, 72);
+            this.bakiye_btn.Location = new System.Drawing.Point(998, 53);
             this.bakiye_btn.Name = "bakiye_btn";
             this.bakiye_btn.Size = new System.Drawing.Size(133, 52);
             this.bakiye_btn.TabIndex = 0;
@@ -44,7 +44,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1081, 127);
+            this.label1.Location = new System.Drawing.Point(1044, 132);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 17);
             this.label1.TabIndex = 1;

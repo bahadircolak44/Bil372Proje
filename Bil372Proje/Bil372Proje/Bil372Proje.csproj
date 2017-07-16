@@ -101,6 +101,12 @@
     <Compile Include="Pages\okul\ihtiyaclar\teknoloji.Designer.cs">
       <DependentUpon>teknoloji.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\okul\ihtiyaclar\tum_ihtiyaclar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\okul\ihtiyaclar\tum_ihtiyaclar.Designer.cs">
+      <DependentUpon>tum_ihtiyaclar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\okul\ihtiyac_ekle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,8 +169,8 @@
     <EmbeddedResource Include="Pages\okul\ihtiyaclar\mobilya.resx">
       <DependentUpon>mobilya.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\okul\ihtiyaclar\teknoloji.resx">
-      <DependentUpon>teknoloji.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\okul\ihtiyaclar\tum_ihtiyaclar.resx">
+      <DependentUpon>tum_ihtiyaclar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\okul\ihtiyac_ekle.resx">
       <DependentUpon>ihtiyac_ekle.cs</DependentUpon>

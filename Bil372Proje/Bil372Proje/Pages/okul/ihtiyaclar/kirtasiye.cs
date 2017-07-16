@@ -47,16 +47,20 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             cmd.Parameters.AddWithValue("@Id", count);
             cmd.Parameters.AddWithValue("@okul_id", okul_id);
             cmd.ExecuteNonQuery();
-            con.Close();
             kayitGetir();
+            clear();
+        }
+        private void clear()
+        {
+            kirtasiye_ihtiyac.Text = string.Empty;
+            kirtasiye_adet.Text = string.Empty;
+            kirtasiye_marka.Text = string.Empty;
+            
         }
         private void kayitGetir()
         {
-            con.Open();
-            MessageBox.Show(okul_id.ToString());
-            string kayit = "SELECT k.isim,k.adet" +
-                " from okul o" +
-                " inner join kirtasiye k on k.okul_id =@okul_id";
+            string kayit = "SELECT k.isim,k.adet,k.marka" +
+                " from kirtasiye k where k.okul_id =@okul_id";
 
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             SqlCommand komut = new SqlCommand(kayit, con);

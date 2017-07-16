@@ -29,7 +29,7 @@ namespace Bil372Proje.Pages
         private void kayitGetir()
         {
             baglanti.Open();
-            string kayit = "SELECT * from kullanici";
+            string kayit = "SELECT * from kullanici where yetki =2";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             SqlCommand komut = new SqlCommand(kayit, baglanti);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -45,10 +45,15 @@ namespace Bil372Proje.Pages
 
         private void goto_okulpage(object sender, MouseEventArgs e)
         {
-            MessageBox.Show(dataGridView1.CurrentRow.Cells[0].Value.ToString(),"Uyarı");
-            OkulIhtiyac okul = new OkulIhtiyac();
+            baglanti.Open();
+            string kullaniciAdi = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            SqlCommand cmd = new SqlCommand("select Id from okul where kAdi=@kullanici_adi" , baglanti);
+            cmd.Parameters.AddWithValue("@kullanici_adi", kullaniciAdi);
+            int Id= Convert.ToInt32(cmd.ExecuteScalar());
+            OkulIhtiyac okul = new OkulIhtiyac(Id);
             this.Hide();
             okul.Show();
+            baglanti.Close();
         }
     }
 }

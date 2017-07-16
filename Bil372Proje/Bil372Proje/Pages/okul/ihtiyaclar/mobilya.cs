@@ -33,27 +33,37 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
         private void mobilya_ekle_Click(object sender, EventArgs e)
         {
             con.Open();
-            SqlCommand komut = new SqlCommand("select max(Id) from kirtasiye", con);
+            SqlCommand komut = new SqlCommand("select max(Id) from mobilya", con);
             int count = Convert.ToInt32(komut.ExecuteScalar());
             count = count + 1;
-            SqlCommand cmd = new SqlCommand("insert into kirtasiye(Id,okul_id,isim,adet,marka)" +
-                " values(@Id,@okul_id,@isim,@adet,@marka)", con);
+            SqlCommand cmd = new SqlCommand("insert into mobilya(Id,okul_id,isim,adet,marka,ölcü,renk)" +
+                " values(@Id,@okul_id,@isim,@adet,@marka,@olcu,@renk)", con);
             cmd.Parameters.AddWithValue("@isim", mobilya_ihtiyac.Text);
             cmd.Parameters.AddWithValue("@adet", mobilya_adet.Text);
             cmd.Parameters.AddWithValue("@marka", mobilya_marka.Text);
+            cmd.Parameters.AddWithValue("@olcu", mobilya_olcu.Text);
+            cmd.Parameters.AddWithValue("@renk", mobilya_renk.Text);
             cmd.Parameters.AddWithValue("@Id", count);
             cmd.Parameters.AddWithValue("@okul_id", okul_id);
             cmd.ExecuteNonQuery();
-            con.Close();
             kayitGetir();
+            clear();
         }
+
+        private void clear()
+        {
+            mobilya_ihtiyac.Text = string.Empty;
+            mobilya_adet.Text =string.Empty;
+            mobilya_marka.Text = string.Empty;
+            mobilya_olcu.Text = string.Empty;
+            mobilya_renk.Text = string.Empty;
+        }
+
         private void kayitGetir()
         {
-            con.Open();
-            MessageBox.Show(okul_id.ToString());
-            string kayit = "SELECT k.isim,k.adet" +
-                " from okul o" +
-                " inner join kirtasiye k on k.okul_id =@okul_id";
+            
+            string kayit = "SELECT m.isim,m.adet,m.marka" +
+                " from mobilya m where m.okul_id =@okul_id";
 
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             SqlCommand komut = new SqlCommand(kayit, con);
@@ -69,9 +79,10 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             con.Close();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void mobilya_Load(object sender, EventArgs e)
         {
+            kayitGetir();
 
         }
-    }
+}
 }
