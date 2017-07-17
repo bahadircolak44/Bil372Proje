@@ -98,7 +98,7 @@
             // 
             this.mobilya_ihtiyac.FormattingEnabled = true;
             this.mobilya_ihtiyac.Location = new System.Drawing.Point(281, 98);
-            this.mobilya_ihtiyac.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mobilya_ihtiyac.Margin = new System.Windows.Forms.Padding(4);
             this.mobilya_ihtiyac.Name = "mobilya_ihtiyac";
             this.mobilya_ihtiyac.Size = new System.Drawing.Size(231, 24);
             this.mobilya_ihtiyac.TabIndex = 5;
@@ -107,7 +107,7 @@
             // 
             this.mobilya_marka.FormattingEnabled = true;
             this.mobilya_marka.Location = new System.Drawing.Point(281, 167);
-            this.mobilya_marka.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mobilya_marka.Margin = new System.Windows.Forms.Padding(4);
             this.mobilya_marka.Name = "mobilya_marka";
             this.mobilya_marka.Size = new System.Drawing.Size(231, 24);
             this.mobilya_marka.TabIndex = 6;
@@ -116,7 +116,7 @@
             // 
             this.mobilya_adet.FormattingEnabled = true;
             this.mobilya_adet.Location = new System.Drawing.Point(281, 238);
-            this.mobilya_adet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mobilya_adet.Margin = new System.Windows.Forms.Padding(4);
             this.mobilya_adet.Name = "mobilya_adet";
             this.mobilya_adet.Size = new System.Drawing.Size(231, 24);
             this.mobilya_adet.TabIndex = 7;
@@ -125,7 +125,7 @@
             // 
             this.mobilya_olcu.FormattingEnabled = true;
             this.mobilya_olcu.Location = new System.Drawing.Point(281, 309);
-            this.mobilya_olcu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mobilya_olcu.Margin = new System.Windows.Forms.Padding(4);
             this.mobilya_olcu.Name = "mobilya_olcu";
             this.mobilya_olcu.Size = new System.Drawing.Size(231, 24);
             this.mobilya_olcu.TabIndex = 8;
@@ -134,7 +134,7 @@
             // 
             this.mobilya_renk.FormattingEnabled = true;
             this.mobilya_renk.Location = new System.Drawing.Point(281, 377);
-            this.mobilya_renk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mobilya_renk.Margin = new System.Windows.Forms.Padding(4);
             this.mobilya_renk.Name = "mobilya_renk";
             this.mobilya_renk.Size = new System.Drawing.Size(231, 24);
             this.mobilya_renk.TabIndex = 9;
@@ -175,6 +175,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(1119, 567);
             this.Controls.Add(this.mobilya_geri);
             this.Controls.Add(this.mobilya_ekle);
