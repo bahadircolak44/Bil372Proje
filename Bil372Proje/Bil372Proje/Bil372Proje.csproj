@@ -125,6 +125,12 @@
     <Compile Include="Pages\tedarikci\tedarikci_pages.Designer.cs">
       <DependentUpon>tedarikci_pages.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\yapilacaklar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\yapilacaklar.Designer.cs">
+      <DependentUpon>yapilacaklar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\yardimsever\yardimsever_pages.cs">
       <SubType>Form</SubType>
     </Compile>

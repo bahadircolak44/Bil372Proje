@@ -48,9 +48,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(189, 62);
+            this.label1.Location = new System.Drawing.Point(252, 76);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 13);
+            this.label1.Size = new System.Drawing.Size(55, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "ihtiyac";
             // 
@@ -58,9 +59,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(189, 122);
+            this.label2.Location = new System.Drawing.Point(252, 150);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(30, 13);
+            this.label2.Size = new System.Drawing.Size(38, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "tür :";
             // 
@@ -68,9 +70,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(189, 185);
+            this.label3.Location = new System.Drawing.Point(252, 228);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 13);
+            this.label3.Size = new System.Drawing.Size(58, 17);
             this.label3.TabIndex = 2;
             this.label3.Text = "yazar :";
             // 
@@ -78,9 +81,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(189, 248);
+            this.label4.Location = new System.Drawing.Point(252, 305);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 13);
+            this.label4.Size = new System.Drawing.Size(84, 17);
             this.label4.TabIndex = 3;
             this.label4.Text = "Yayin evi :";
             // 
@@ -88,42 +92,47 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(189, 319);
+            this.label5.Location = new System.Drawing.Point(252, 393);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 13);
+            this.label5.Size = new System.Drawing.Size(83, 17);
             this.label5.TabIndex = 4;
             this.label5.Text = "Yayin yili :";
             // 
             // kitap_ihtiyac
             // 
             this.kitap_ihtiyac.FormattingEnabled = true;
-            this.kitap_ihtiyac.Location = new System.Drawing.Point(372, 62);
+            this.kitap_ihtiyac.Location = new System.Drawing.Point(496, 76);
+            this.kitap_ihtiyac.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.kitap_ihtiyac.Name = "kitap_ihtiyac";
-            this.kitap_ihtiyac.Size = new System.Drawing.Size(188, 21);
+            this.kitap_ihtiyac.Size = new System.Drawing.Size(249, 24);
             this.kitap_ihtiyac.TabIndex = 5;
             // 
             // kitap_tur
             // 
             this.kitap_tur.FormattingEnabled = true;
-            this.kitap_tur.Location = new System.Drawing.Point(372, 119);
+            this.kitap_tur.Location = new System.Drawing.Point(496, 146);
+            this.kitap_tur.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.kitap_tur.Name = "kitap_tur";
-            this.kitap_tur.Size = new System.Drawing.Size(188, 21);
+            this.kitap_tur.Size = new System.Drawing.Size(249, 24);
             this.kitap_tur.TabIndex = 6;
             // 
             // kitap_yayin_yili
             // 
             this.kitap_yayin_yili.FormattingEnabled = true;
-            this.kitap_yayin_yili.Location = new System.Drawing.Point(372, 319);
+            this.kitap_yayin_yili.Location = new System.Drawing.Point(496, 393);
+            this.kitap_yayin_yili.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.kitap_yayin_yili.Name = "kitap_yayin_yili";
-            this.kitap_yayin_yili.Size = new System.Drawing.Size(188, 21);
+            this.kitap_yayin_yili.Size = new System.Drawing.Size(249, 24);
             this.kitap_yayin_yili.TabIndex = 9;
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
-            this.button1.Location = new System.Drawing.Point(255, 437);
+            this.button1.Location = new System.Drawing.Point(340, 538);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(100, 28);
             this.button1.TabIndex = 10;
             this.button1.Text = "Ekle";
             this.button1.UseVisualStyleBackColor = true;
@@ -131,51 +140,56 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
-            this.button2.Location = new System.Drawing.Point(434, 437);
+            this.button2.Location = new System.Drawing.Point(579, 538);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(100, 28);
             this.button2.TabIndex = 11;
             this.button2.Text = "Geri";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // kitap_yazar
             // 
-            this.kitap_yazar.Location = new System.Drawing.Point(372, 185);
+            this.kitap_yazar.Location = new System.Drawing.Point(496, 228);
+            this.kitap_yazar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.kitap_yazar.Name = "kitap_yazar";
-            this.kitap_yazar.Size = new System.Drawing.Size(188, 20);
+            this.kitap_yazar.Size = new System.Drawing.Size(249, 22);
             this.kitap_yazar.TabIndex = 12;
             // 
             // kitap_yayin_evi
             // 
-            this.kitap_yayin_evi.Location = new System.Drawing.Point(372, 248);
+            this.kitap_yayin_evi.Location = new System.Drawing.Point(496, 305);
+            this.kitap_yayin_evi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.kitap_yayin_evi.Name = "kitap_yayin_evi";
-            this.kitap_yayin_evi.Size = new System.Drawing.Size(188, 20);
+            this.kitap_yayin_evi.Size = new System.Drawing.Size(249, 22);
             this.kitap_yayin_evi.TabIndex = 13;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
-            this.label6.Location = new System.Drawing.Point(192, 383);
+            this.label6.Location = new System.Drawing.Point(256, 471);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 13);
+            this.label6.Size = new System.Drawing.Size(51, 17);
             this.label6.TabIndex = 14;
             this.label6.Text = "Adet :";
             // 
             // kitap_adet
             // 
             this.kitap_adet.FormattingEnabled = true;
-            this.kitap_adet.Location = new System.Drawing.Point(372, 380);
+            this.kitap_adet.Location = new System.Drawing.Point(496, 468);
+            this.kitap_adet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.kitap_adet.Name = "kitap_adet";
-            this.kitap_adet.Size = new System.Drawing.Size(188, 21);
+            this.kitap_adet.Size = new System.Drawing.Size(249, 24);
             this.kitap_adet.TabIndex = 15;
             // 
             // kitap
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(803, 497);
+            this.ClientSize = new System.Drawing.Size(1185, 612);
             this.Controls.Add(this.kitap_adet);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.kitap_yayin_evi);
@@ -190,6 +204,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "kitap";
             this.Text = "kitap";
             this.ResumeLayout(false);
