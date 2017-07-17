@@ -36,7 +36,7 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             //sql den adet çekiliyor
             SqlCommand kontrol = new SqlCommand("select adet from ihtiyac where isim=@isim and marka=@marka", con);
             kontrol.Parameters.AddWithValue("@isim", mobilya_ihtiyac.Text);
-            kontrol.Parameters.AddWithValue("@isim", mobilya_marka.Text);
+            kontrol.Parameters.AddWithValue("@marka", mobilya_marka.Text);
             SqlDataAdapter adapt = new SqlDataAdapter(kontrol);
             DataSet ds = new DataSet();
             adapt.Fill(ds);
@@ -47,7 +47,7 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
                 //var olan adeti istenen kadar arttırıyor
                 SqlCommand cmd = new SqlCommand("Update ihtiyac set adet=@Adet Where isim = @isim", con);
                 int cnt = Convert.ToInt32(kontrol.ExecuteScalar()) + Convert.ToInt32(mobilya_adet.Text.Trim());
-                MessageBox.Show(cnt.ToString());
+
                 cmd.Parameters.AddWithValue("@Adet", cnt);
                 cmd.Parameters.AddWithValue("@isim", mobilya_ihtiyac.Text);
                 cmd.ExecuteNonQuery();
@@ -71,8 +71,8 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             SqlCommand cmd2 = new SqlCommand("insert into mobilya(ihtiyac_id,renk,olcu)" +
             " values(@ihtiyac_id,@renk,@olcu)", con);
             cmd2.Parameters.AddWithValue("@ihtiyac_id", count);
-            cmd2.Parameters.AddWithValue("@renk", count);
-            cmd2.Parameters.AddWithValue("@olcu", count);
+            cmd2.Parameters.AddWithValue("@renk", mobilya_renk);
+            cmd2.Parameters.AddWithValue("@olcu", mobilya_olcu);
             cmd2.ExecuteNonQuery();
             kayitGetir();
             clear();

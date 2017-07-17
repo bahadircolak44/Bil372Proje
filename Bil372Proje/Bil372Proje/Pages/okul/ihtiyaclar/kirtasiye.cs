@@ -36,8 +36,9 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
         private void button1_Click(object sender, EventArgs e)
         {
             con.Open();
-            SqlCommand kontrol = new SqlCommand("select adet from ihtiyac where isim=@isim", con);
+            SqlCommand kontrol = new SqlCommand("select adet from ihtiyac where isim=@isim and marka=@marka", con);
             kontrol.Parameters.AddWithValue("@isim", kirtasiye_ihtiyac.Text);
+            kontrol.Parameters.AddWithValue("@marka", kirtasiye_marka.Text);
             SqlDataAdapter adapt = new SqlDataAdapter(kontrol);
             DataSet ds = new DataSet();
             adapt.Fill(ds);
@@ -46,7 +47,6 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             {
                 SqlCommand cmd = new SqlCommand("Update ihtiyac set adet=@Adet Where isim = @isim", con);
                 int cnt = Convert.ToInt32(kontrol.ExecuteScalar())+Convert.ToInt32(kirtasiye_adet.Text.Trim());
-                MessageBox.Show(cnt.ToString());
                 cmd.Parameters.AddWithValue("@Adet", cnt);
                 cmd.Parameters.AddWithValue("@isim", kirtasiye_ihtiyac.Text);
                 cmd.ExecuteNonQuery();
