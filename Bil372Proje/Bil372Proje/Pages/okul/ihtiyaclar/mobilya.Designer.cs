@@ -97,7 +97,13 @@
             // mobilya_ihtiyac
             // 
             this.mobilya_ihtiyac.FormattingEnabled = true;
-            this.mobilya_ihtiyac.Location = new System.Drawing.Point(281, 98);
+            this.mobilya_ihtiyac.Items.AddRange(new object[] {
+            "koltuk",
+            "kanepe",
+            "masa",
+            "sıra",
+            "sandalye"});
+            this.mobilya_ihtiyac.Location = new System.Drawing.Point(281, 79);
             this.mobilya_ihtiyac.Margin = new System.Windows.Forms.Padding(4);
             this.mobilya_ihtiyac.Name = "mobilya_ihtiyac";
             this.mobilya_ihtiyac.Size = new System.Drawing.Size(231, 24);
@@ -106,7 +112,10 @@
             // mobilya_marka
             // 
             this.mobilya_marka.FormattingEnabled = true;
-            this.mobilya_marka.Location = new System.Drawing.Point(281, 167);
+            this.mobilya_marka.Items.AddRange(new object[] {
+            "istikbal",
+            "bellona"});
+            this.mobilya_marka.Location = new System.Drawing.Point(281, 163);
             this.mobilya_marka.Margin = new System.Windows.Forms.Padding(4);
             this.mobilya_marka.Name = "mobilya_marka";
             this.mobilya_marka.Size = new System.Drawing.Size(231, 24);
@@ -115,6 +124,27 @@
             // mobilya_adet
             // 
             this.mobilya_adet.FormattingEnabled = true;
+            this.mobilya_adet.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20"});
             this.mobilya_adet.Location = new System.Drawing.Point(281, 238);
             this.mobilya_adet.Margin = new System.Windows.Forms.Padding(4);
             this.mobilya_adet.Name = "mobilya_adet";
@@ -124,6 +154,11 @@
             // mobilya_olcu
             // 
             this.mobilya_olcu.FormattingEnabled = true;
+            this.mobilya_olcu.Items.AddRange(new object[] {
+            "1 kişilik",
+            "2 kişilik",
+            "3 kişilik",
+            "4 kişilik"});
             this.mobilya_olcu.Location = new System.Drawing.Point(281, 309);
             this.mobilya_olcu.Margin = new System.Windows.Forms.Padding(4);
             this.mobilya_olcu.Name = "mobilya_olcu";
@@ -133,6 +168,13 @@
             // mobilya_renk
             // 
             this.mobilya_renk.FormattingEnabled = true;
+            this.mobilya_renk.Items.AddRange(new object[] {
+            "Sarı",
+            "Kırmızı",
+            "Mavi",
+            "Yeşil",
+            "Beyaz",
+            "Siyah"});
             this.mobilya_renk.Location = new System.Drawing.Point(281, 377);
             this.mobilya_renk.Margin = new System.Windows.Forms.Padding(4);
             this.mobilya_renk.Name = "mobilya_renk";

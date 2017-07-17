@@ -82,7 +82,7 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
         }
         private void kayitGetir()
         {
-            string kayit = "SELECT isim,adet,marka" +
+            string kayit = "SELECT * " +
                 " from ihtiyac where ihtiyac.okul_id =@okul_id";
 
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
