@@ -58,6 +58,7 @@ namespace Bil372Proje.Pages
                         if (sifre.Text.Equals(sifre_tekrar.Text))
                         {
                             con.Open();
+                               // SqlCommand cmd1 = con.CreateCommand();
                             SqlCommand cmd = new SqlCommand("insert into kullanici(kullanici_adi,sifre,email,il,ilce,mahalle,adress,posta_kodu,telefon,yetki)" +
                             " values(@kullanici_adi, @sifre, @email, @il, @ilce, @mahalle, @adres, @posta, @telefon ,1)", con);
 
@@ -113,6 +114,7 @@ namespace Bil372Proje.Pages
             {
                 MessageBox.Show(exc.ToString(), "HATA");
             }
+            
         }
 
         bool IsValidEmail(string email)
@@ -208,7 +210,7 @@ namespace Bil372Proje.Pages
                                 cmd2.Parameters.AddWithValue("@kAdi", okul_kullanici_adi.Text);
                                 cmd.ExecuteNonQuery();
                                 cmd2.ExecuteScalar();
-
+                                con.Close();
                                 MessageBox.Show("Kaydınız Alınmıştır. Kontrol Sonrası Bilgilendirileceksiniz", "BAŞARILI");
                                 this.Hide();
                                 login.Show();
@@ -238,10 +240,7 @@ namespace Bil372Proje.Pages
             {
                 MessageBox.Show(exc.ToString(), "HATA");
             }
-            finally
-            {
-                con.Close();
-            }
+            
         }
         //Tedarikci kayıt ekranında register düğmesine bastığında yapılacak olan
         private void tedarikci_kayit_Click(object sender, EventArgs e)
@@ -286,7 +285,7 @@ namespace Bil372Proje.Pages
                                 cmd2.Parameters.AddWithValue("@firma_adi", firma_adi.Text);
 
                                 cmd2.ExecuteScalar();
-
+                                con.Close();
                                 MessageBox.Show("Kaydınız Alınmıştır. Kontrol Sonrası Bilgilendirileceksiniz", "BAŞARILI");
                                 this.Hide();
                                 login.Show();
@@ -318,6 +317,6 @@ namespace Bil372Proje.Pages
             }
         }
 
-
+        
     }
 }
