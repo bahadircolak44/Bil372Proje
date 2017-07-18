@@ -44,7 +44,7 @@ namespace Bil372Proje.Pages.okul
 
         private void button2_Click(object sender, EventArgs e)
         {
-            kitap kitap = new kitap(kAdi);
+            kitap kitap = new kitap(kAdi,Id);
             this.Hide();
             kitap.Show();
         }
