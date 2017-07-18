@@ -75,14 +75,14 @@ namespace Bil372Proje.Pages
                                 cmd.ExecuteNonQuery();
                                 
                                  SqlCommand cmd2 = new SqlCommand("insert into yardimsever(kAdi,ad,soyad,cinsiyet,bakiye)"+
-                                     " values(@kAdi, @Id, @ad, @soyAd, @cinsiyet, 0" ,con );
+                                     " values(@kAdi, @ad, @soyAd, @cinsiyet, 0" ,con );
                                 cmd2.Parameters.AddWithValue("@kAdi", kullanici_adi.Text);
                                 cmd2.Parameters.AddWithValue("@ad", Ad.Text);
                                 cmd2.Parameters.AddWithValue("@soyAd", soyAd.Text);
                                 cmd2.Parameters.AddWithValue("@cinsiyet", checkbox(checkBox1, checkBox2));
-                                
+
                                 //bakiye icin yapmadim cunku ilk baslangicta hep 0 veriyoruz.
-                                cmd2.ExecuteNonQuery();
+                                cmd2.ExecuteScalar();
                                  
                                 MessageBox.Show("Kayıt Başarılı", "BASARILI");
                             this.Hide();
@@ -202,13 +202,13 @@ namespace Bil372Proje.Pages
                                 cmd.Parameters.AddWithValue("@posta", okul_posta.Text);
                                 cmd.Parameters.AddWithValue("@telefon", okul_telefon.Text);
 
-                                cmd.ExecuteNonQuery();
+                               
                                 
                                 SqlCommand cmd2 = new SqlCommand("insert into okul(kAdi,bakiye,valid) values(@kAdi,0,0)", con);
 
                                 cmd2.Parameters.AddWithValue("@kAdi", okul_kullanici_adi.Text);
-
-                                cmd2.ExecuteNonQuery();
+                                cmd.ExecuteNonQuery();
+                                cmd2.ExecuteScalar();
 
                                 MessageBox.Show("Kaydınız Alınmıştır. Kontrol Sonrası Bilgilendirileceksiniz", "BAŞARILI");
                                 this.Hide();
@@ -238,6 +238,10 @@ namespace Bil372Proje.Pages
             catch(Exception exc)
             {
                 MessageBox.Show(exc.ToString(), "HATA");
+            }
+            finally
+            {
+                con.Close();
             }
         }
         //Tedarikci kayıt ekranında register düğmesine bastığında yapılacak olan
@@ -282,7 +286,7 @@ namespace Bil372Proje.Pages
                                 cmd2.Parameters.AddWithValue("@kAdi", tedarikci_kullanici_adi.Text);
                                 cmd2.Parameters.AddWithValue("@firma_adi", firma_adi.Text);
 
-                                cmd2.ExecuteNonQuery();
+                                cmd2.ExecuteScalar();
 
                                 MessageBox.Show("Kaydınız Alınmıştır. Kontrol Sonrası Bilgilendirileceksiniz", "BAŞARILI");
                                 this.Hide();

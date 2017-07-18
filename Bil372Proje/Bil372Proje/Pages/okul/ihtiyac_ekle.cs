@@ -51,7 +51,7 @@ namespace Bil372Proje.Pages.okul
 
         private void button4_Click(object sender, EventArgs e)
         {
-            giysi giysi = new giysi(kAdi);
+            giysi giysi = new giysi(kAdi); // burada hata veriyor. 2. parametre vermeyi unutmussun sanirim. (id)
             this.Hide();
             giysi.Show();
         }
