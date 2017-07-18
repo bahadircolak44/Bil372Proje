@@ -28,9 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // yapilacaklar
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(282, 253);
+            this.Name = "yapilacaklar";
             this.Text = "yapilacaklar";
+            this.Load += new System.EventHandler(this.yapilacaklar_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion

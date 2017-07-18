@@ -260,7 +260,7 @@ namespace Bil372Proje.Pages
                         if (IsValidEmail(tedarikci_email.Text))
                         {
                             //Şifrelerin uyuşup uyuşmadığını kontrol ediyor.
-                            if (label_tedarikci_sifre.Text.Equals(label_tedarikci_sifre_tekrar.Text))
+                            if (tedarikci_sifre.Text.Equals(tedarikci_sifre_tekrar.Text))
                             {
                                 //Database sistemi oluşturulduktan sonra
                                 con.Open();
@@ -318,44 +318,6 @@ namespace Bil372Proje.Pages
             }
         }
 
-        private void label17_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void checkBox2_CheckedChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void yar_il_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label_firma_adi_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label19_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label22_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabPage4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label24_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

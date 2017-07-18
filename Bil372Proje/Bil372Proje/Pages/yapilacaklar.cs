@@ -17,6 +17,11 @@ namespace Bil372Proje.Pages
             InitializeComponent();
         }
 
+        private void yapilacaklar_Load(object sender, EventArgs e)
+        {
+
+        }
+
 
         /*
          1-)Yardımsever_pages da okul ara butonu var ama başka ne konulabilir bilmiyorum. Bir kaç iş daha eklememiz lazım orya

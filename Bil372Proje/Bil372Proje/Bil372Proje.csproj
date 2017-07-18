@@ -202,6 +202,9 @@
     <EmbeddedResource Include="Pages\tedarikci\tedarikci_pages.resx">
       <DependentUpon>tedarikci_pages.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\yapilacaklar.resx">
+      <DependentUpon>yapilacaklar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pages\yardimsever\para_bagisla.resx">
       <DependentUpon>para_bagisla.cs</DependentUpon>
     </EmbeddedResource>
