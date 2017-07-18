@@ -137,6 +137,12 @@
     <Compile Include="Pages\yardimsever\para_bagisla.Designer.cs">
       <DependentUpon>para_bagisla.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\yardimsever\para_yukle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\yardimsever\para_yukle.Designer.cs">
+      <DependentUpon>para_yukle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\yardimsever\yardimsever_pages.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,6 +204,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\yardimsever\para_bagisla.resx">
       <DependentUpon>para_bagisla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\yardimsever\para_yukle.resx">
+      <DependentUpon>para_yukle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\yardimsever\yardimsever_pages.resx">
       <DependentUpon>yardimsever_pages.cs</DependentUpon>

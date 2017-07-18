@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bil372Proje.Pages.yardimsever;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -50,6 +51,13 @@ namespace Bil372Proje.Pages
             //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
             con.Close();
             return bakiye;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            para_yukle yukle = new para_yukle(kullanici_adi);
+            this.Hide();
+            yukle.Show();
         }
     }
 }
