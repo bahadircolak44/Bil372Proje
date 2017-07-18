@@ -72,7 +72,6 @@ namespace Bil372Proje.Pages
                                 cmd.Parameters.AddWithValue("@posta", posta_kutusu.Text);
                                 cmd.Parameters.AddWithValue("@telefon", tel.Text);
                                                                 
-
                                 cmd.ExecuteNonQuery();
                                 
                                  SqlCommand cmd2 = new SqlCommand("insert into yardimsever(kAdi,ad,soyad,cinsiyet,bakiye)"+
