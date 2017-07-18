@@ -74,7 +74,7 @@ namespace Bil372Proje.Pages
                                 cmd.ExecuteNonQuery();
                                 
                                  SqlCommand cmd2 = new SqlCommand("insert into yardimsever(kAdi,ad,soyad,cinsiyet,bakiye)"+
-                                     " values(@kAdi, @ad, @soyAd, @cinsiyet, 0" ,con );
+                                     " values(@kAdi, @ad, @soyAd, @cinsiyet, 0)" ,con );
                                 cmd2.Parameters.AddWithValue("@kAdi", kullanici_adi.Text);
                                 cmd2.Parameters.AddWithValue("@ad", Ad.Text);
                                 cmd2.Parameters.AddWithValue("@soyAd", soyAd.Text);
@@ -82,7 +82,7 @@ namespace Bil372Proje.Pages
 
                                 //bakiye icin yapmadim cunku ilk baslangicta hep 0 veriyoruz.
                                 cmd2.ExecuteScalar();
-                                 
+                                con.Close();
                                 MessageBox.Show("Kayıt Başarılı", "BASARILI");
                             this.Hide();
                             login.Show();
