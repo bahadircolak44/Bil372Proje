@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bil372Proje.Pages.yardimsever;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,13 +15,15 @@ namespace Bil372Proje.Pages
     public partial class OkulIhtiyac : Form
     {
         int okul_id;
-        public OkulIhtiyac(int Id)
+        public string kullanici_adi;
+        public OkulIhtiyac(int Id, string kAdi)
         {
+            kullanici_adi = kAdi;
             okul_id = Id;
             //Yardimsever2 den sonra bu sayfaya gelinir seçilen okulun ihtiyaçlarını listeler
             InitializeComponent();
         }
-        SqlConnection baglanti = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
+        SqlConnection con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -29,10 +32,10 @@ namespace Bil372Proje.Pages
 
         private void kayitGetir()
         {
-            baglanti.Open();
-            string kayit = "select isim,adet from kirtasiye select isim, adet from giysi";
+            con.Open();
+            string kayit = "select isim,adet from ihtiyac";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
-            SqlCommand komut = new SqlCommand(kayit, baglanti);
+            SqlCommand komut = new SqlCommand(kayit, con);
             komut.Parameters.AddWithValue("@okul_id", okul_id);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
             SqlDataAdapter da = new SqlDataAdapter(komut);
@@ -42,12 +45,27 @@ namespace Bil372Proje.Pages
             //Bir DataTable oluşturarak DataAdapter ile getirilen verileri tablo içerisine dolduruyoruz.
             dataGridView1.DataSource = dt;
             //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
-            baglanti.Close();
+            con.Close();
         }
 
         private void Okul_Load(object sender, EventArgs e)
         {
             kayitGetir();
         }
+
+        private void Geri_Click(object sender, EventArgs e)
+        {
+            yardimsever2 ys2 = new yardimsever2(kullanici_adi);
+            this.Hide();
+            ys2.Show();
+        }
+
+        private void para_bagisla_Click(object sender, EventArgs e)
+        {
+            para_bagisla bagisla = new para_bagisla(okul_id,kullanici_adi);
+            this.Hide();
+            bagisla.Show();
+        }
+
     }
 }

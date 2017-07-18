@@ -131,6 +131,12 @@
     <Compile Include="Pages\yapilacaklar.Designer.cs">
       <DependentUpon>yapilacaklar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\yardimsever\para_bagisla.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\yardimsever\para_bagisla.Designer.cs">
+      <DependentUpon>para_bagisla.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\yardimsever\yardimsever_pages.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,6 +195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\tedarikci\tedarikci_pages.resx">
       <DependentUpon>tedarikci_pages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\yardimsever\para_bagisla.resx">
+      <DependentUpon>para_bagisla.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\yardimsever\yardimsever_pages.resx">
       <DependentUpon>yardimsever_pages.cs</DependentUpon>
