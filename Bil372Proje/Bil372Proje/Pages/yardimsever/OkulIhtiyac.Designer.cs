@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
+            this.para_bagisla = new System.Windows.Forms.Button();
+            this.Geri = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -36,12 +39,41 @@
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.Color.Azure;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
+            this.dataGridView1.Location = new System.Drawing.Point(586, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1134, 544);
+            this.dataGridView1.Size = new System.Drawing.Size(560, 644);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(264, 154);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(167, 58);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "İhtiyaç Seç/Karşıla";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // para_bagisla
+            // 
+            this.para_bagisla.Location = new System.Drawing.Point(264, 282);
+            this.para_bagisla.Name = "para_bagisla";
+            this.para_bagisla.Size = new System.Drawing.Size(167, 58);
+            this.para_bagisla.TabIndex = 2;
+            this.para_bagisla.Text = "Para Bağışla";
+            this.para_bagisla.UseVisualStyleBackColor = true;
+            this.para_bagisla.Click += new System.EventHandler(this.para_bagisla_Click);
+            // 
+            // Geri
+            // 
+            this.Geri.Location = new System.Drawing.Point(264, 404);
+            this.Geri.Name = "Geri";
+            this.Geri.Size = new System.Drawing.Size(167, 58);
+            this.Geri.TabIndex = 3;
+            this.Geri.Text = "Geri";
+            this.Geri.UseVisualStyleBackColor = true;
+            this.Geri.Click += new System.EventHandler(this.Geri_Click);
             // 
             // OkulIhtiyac
             // 
@@ -49,6 +81,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(1158, 668);
+            this.Controls.Add(this.Geri);
+            this.Controls.Add(this.para_bagisla);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "OkulIhtiyac";
             this.Text = "Okul";
@@ -61,5 +96,8 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button para_bagisla;
+        private System.Windows.Forms.Button Geri;
     }
 }

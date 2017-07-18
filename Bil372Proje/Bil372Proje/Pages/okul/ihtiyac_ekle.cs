@@ -44,14 +44,14 @@ namespace Bil372Proje.Pages.okul
 
         private void button2_Click(object sender, EventArgs e)
         {
-            kitap kitap = new kitap(kAdi);
+            kitap kitap = new kitap(kAdi,Id);
             this.Hide();
             kitap.Show();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            giysi giysi = new giysi(kAdi); // burada hata veriyor. 2. parametre vermeyi unutmussun sanirim. (id)
+            giysi giysi = new giysi(kAdi,Id);
             this.Hide();
             giysi.Show();
         }

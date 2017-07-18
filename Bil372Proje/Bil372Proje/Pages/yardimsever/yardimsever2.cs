@@ -13,12 +13,14 @@ namespace Bil372Proje.Pages
 {
     public partial class yardimsever2 : Form
     {
-        public yardimsever2()
+        public string kullanici_adi;
+        public yardimsever2(string kAdi)
         {
-
-            //Var olan okulları listeler liste üzerinde tıkladığın okulun ihtiyaç listeleri açılır.
+            kullanici_adi = kAdi;
+            // Okul Arama Sayfasıdır.
             InitializeComponent();
         }
+
         SqlConnection baglanti = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
 
 
@@ -29,7 +31,7 @@ namespace Bil372Proje.Pages
         private void kayitGetir()
         {
             baglanti.Open();
-            string kayit = "SELECT * from kullanici where yetki =2";
+            string kayit = "SELECT kullanici_adi,il,ilce,telefon from kullanici where yetki =2";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             SqlCommand komut = new SqlCommand(kayit, baglanti);
             //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
@@ -50,10 +52,17 @@ namespace Bil372Proje.Pages
             SqlCommand cmd = new SqlCommand("select Id from okul where kAdi=@kullanici_adi" , baglanti);
             cmd.Parameters.AddWithValue("@kullanici_adi", kullaniciAdi);
             int Id= Convert.ToInt32(cmd.ExecuteScalar());
-            OkulIhtiyac okul = new OkulIhtiyac(Id);
+            OkulIhtiyac okul = new OkulIhtiyac(Id,kullanici_adi);
             this.Hide();
             okul.Show();
             baglanti.Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            yardimsever1 y1 = new yardimsever1(kullanici_adi);
+            this.Hide();
+            y1.Show();
         }
     }
 }

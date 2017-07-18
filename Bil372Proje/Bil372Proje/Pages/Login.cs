@@ -43,7 +43,7 @@ namespace Bil372Proje
                     this.Hide();
                     if (yetki == 1)
                     {
-                        yardimsever1 yardimseverpages = new yardimsever1();
+                        yardimsever1 yardimseverpages = new yardimsever1(kullanici_adi.Text);
                         yardimseverpages.Show();
 
                     }else if (yetki==2)
