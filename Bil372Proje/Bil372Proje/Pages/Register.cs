@@ -316,7 +316,6 @@ namespace Bil372Proje.Pages
                 MessageBox.Show(exc.ToString(), "HATA");
             }
         }
-
         
     }
 }

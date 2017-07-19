@@ -33,7 +33,7 @@ namespace Bil372Proje.Pages
         private void kayitGetir()
         {
             con.Open();
-            string kayit = "select isim,adet from ihtiyac";
+            string kayit = "select isim,adet from ihtiyac where okul_id=@okul_id";
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             SqlCommand komut = new SqlCommand(kayit, con);
             komut.Parameters.AddWithValue("@okul_id", okul_id);

@@ -150,7 +150,7 @@
             this.tabPage4.Size = new System.Drawing.Size(1041, 677);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Tedarikçi";
-            this.tabPage4.Click += new System.EventHandler(this.tabPage4_Click);
+
             // 
             // tedarikci_posta
             // 
@@ -261,7 +261,7 @@
             this.label24.Size = new System.Drawing.Size(74, 17);
             this.label24.TabIndex = 21;
             this.label24.Text = "Mahalle :";
-            this.label24.Click += new System.EventHandler(this.label24_Click);
+
             // 
             // label23
             // 
@@ -284,7 +284,7 @@
             this.label22.Size = new System.Drawing.Size(31, 17);
             this.label22.TabIndex = 19;
             this.label22.Text = "il : ";
-            this.label22.Click += new System.EventHandler(this.label22_Click);
+
             // 
             // tedarikci_geri
             // 
@@ -377,7 +377,7 @@
             this.label_firma_adi.Size = new System.Drawing.Size(86, 17);
             this.label_firma_adi.TabIndex = 0;
             this.label_firma_adi.Text = "Firma Adı :";
-            this.label_firma_adi.Click += new System.EventHandler(this.label_firma_adi_Click);
+
             // 
             // tabPage1
             // 
@@ -454,7 +454,7 @@
             this.label19.Size = new System.Drawing.Size(74, 17);
             this.label19.TabIndex = 34;
             this.label19.Text = "Mahalle :";
-            this.label19.Click += new System.EventHandler(this.label19_Click);
+
             // 
             // posta_kutusu
             // 
@@ -571,7 +571,7 @@
             this.label17.Size = new System.Drawing.Size(43, 17);
             this.label17.TabIndex = 30;
             this.label17.Text = "ilce :";
-            this.label17.Click += new System.EventHandler(this.label17_Click);
+
             // 
             // yar_il
             // 
@@ -582,7 +582,7 @@
             this.yar_il.Size = new System.Drawing.Size(26, 17);
             this.yar_il.TabIndex = 27;
             this.yar_il.Text = "il :";
-            this.yar_il.Click += new System.EventHandler(this.yar_il_Click);
+
             // 
             // Geri
             // 
@@ -641,7 +641,7 @@
             this.checkBox2.TabIndex = 12;
             this.checkBox2.Text = "Kadin";
             this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged_1);
+
             this.checkBox2.Click += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // checkBox1
