@@ -30,7 +30,7 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             con.Open();
             //sql den adet çekiliyor
             SqlCommand kontrol = new SqlCommand("select adet from ihtiyac where isim=@isim and marka=@marka", con);
-            SqlCommand kontrol2 = new SqlCommand("select * from giysi where beden=@beden and renk=@renk and kumas=@kumas and cinsiyet=@cinsiyet ", con);
+            SqlCommand kontrol2 = new SqlCommand("select ihtiyac_id from giysi where beden=@beden and renk=@renk and kumas=@kumas and cinsiyet=@cinsiyet ", con);
 
             kontrol.Parameters.AddWithValue("@isim", giysi_ihtiyac.Text);
             kontrol.Parameters.AddWithValue("@marka", giysi_marka.Text);
@@ -56,10 +56,13 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             if (i > 0 && j > 0)
             {
                 //var olan adeti istenen kadar arttırıyor
-                SqlCommand cmd = new SqlCommand("Update ihtiyac set adet=@Adet Where isim = @isim", con);
+                SqlCommand cmd = new SqlCommand("Update ihtiyac set adet=@Adet Where isim = @isim and Id=@Id", con);
                 int cnt = Convert.ToInt32(kontrol.ExecuteScalar()) + Convert.ToInt32(giysi_adet.Text.Trim());
+                int cnt2 = Convert.ToInt32(kontrol2.ExecuteScalar());
+
                 cmd.Parameters.AddWithValue("@Adet", cnt);
                 cmd.Parameters.AddWithValue("@isim", giysi_ihtiyac.Text);
+                cmd.Parameters.AddWithValue("@Id", cnt2);
                 cmd.ExecuteNonQuery();
             }
             else
