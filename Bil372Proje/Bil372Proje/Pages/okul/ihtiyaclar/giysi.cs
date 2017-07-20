@@ -47,6 +47,7 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             adapt.Fill(ds);
             adapt2.Fill(ds2);
 
+
             //eğer sorgunun sonucunda birşey dönerse o zaman listenin üzerine ekleme yapacak yani if'e girecek yoksa else'e girecek
             int i = ds.Tables[0].Rows.Count;
             int j = ds2.Tables[0].Rows.Count;
