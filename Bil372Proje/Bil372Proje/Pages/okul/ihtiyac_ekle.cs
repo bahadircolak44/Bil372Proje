@@ -58,7 +58,7 @@ namespace Bil372Proje.Pages.okul
 
         private void button5_Click(object sender, EventArgs e)
         {
-            teknoloji teknoloji = new teknoloji(kAdi);
+            teknoloji teknoloji = new teknoloji(kAdi, Id);
             this.Hide();
             teknoloji.Show();
         }
