@@ -51,6 +51,7 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             int i = ds.Tables[0].Rows.Count;
             int j = ds2.Tables[0].Rows.Count;
 
+
             if (i > 0 && j > 0)
             {
                 //var olan adeti istenen kadar arttırıyor
