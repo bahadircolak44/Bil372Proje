@@ -30,8 +30,16 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             con.Open();
             //sql den adet çekiliyor
             SqlCommand kontrol = new SqlCommand("select adet from ihtiyac where isim=@isim and marka=@marka", con);
+            SqlCommand kontrol2 = new SqlCommand("select adet from giysi where beden=@beden and renk=@renk and kumas=@kumas and cinsiyet=@cinsiyet ", con);
+
             kontrol.Parameters.AddWithValue("@isim", giysi_ihtiyac.Text);
             kontrol.Parameters.AddWithValue("@marka", giysi_marka.Text);
+
+            kontrol2.Parameters.AddWithValue("@beden", giysi_beden.Text);
+            kontrol2.Parameters.AddWithValue("@renk", giysi_renk.Text);
+            kontrol2.Parameters.AddWithValue("@kumas", giysi_kumas.Text);
+            kontrol2.Parameters.AddWithValue("@cinsiyet", giysi_cinsiyet.Text);
+
             SqlDataAdapter adapt = new SqlDataAdapter(kontrol);
             DataSet ds = new DataSet();
             adapt.Fill(ds);
