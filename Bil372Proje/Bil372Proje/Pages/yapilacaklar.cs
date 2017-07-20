@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace Bil372Proje.Pages
 {
+    //berk test
     public partial class yapilacaklar : Form
     {
         public yapilacaklar()
