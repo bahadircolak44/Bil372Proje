@@ -30,7 +30,7 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             con.Open();
             //sql den adet çekiliyor
             SqlCommand kontrol = new SqlCommand("select adet from ihtiyac where isim=@isim and marka=@marka", con);
-            SqlCommand kontrol2 = new SqlCommand("select adet from giysi where beden=@beden and renk=@renk and kumas=@kumas and cinsiyet=@cinsiyet ", con);
+            SqlCommand kontrol2 = new SqlCommand("select * from giysi where beden=@beden and renk=@renk and kumas=@kumas and cinsiyet=@cinsiyet ", con);
 
             kontrol.Parameters.AddWithValue("@isim", giysi_ihtiyac.Text);
             kontrol.Parameters.AddWithValue("@marka", giysi_marka.Text);
@@ -41,11 +41,19 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             kontrol2.Parameters.AddWithValue("@cinsiyet", giysi_cinsiyet.Text);
 
             SqlDataAdapter adapt = new SqlDataAdapter(kontrol);
+            SqlDataAdapter adapt2 = new SqlDataAdapter(kontrol2);
             DataSet ds = new DataSet();
+            DataSet ds2 = new DataSet();
             adapt.Fill(ds);
-            //eğer sorgunun sonucunda birşy dönerse o zaman listenin üzerine ekleme yapacak yani if'e girecek yoksa else'e girecek
+            adapt2.Fill(ds2);
+
+
+            //eğer sorgunun sonucunda birşey dönerse o zaman listenin üzerine ekleme yapacak yani if'e girecek yoksa else'e girecek
             int i = ds.Tables[0].Rows.Count;
-            if (i > 0)
+            int j = ds2.Tables[0].Rows.Count;
+
+
+            if (i > 0 && j > 0)
             {
                 //var olan adeti istenen kadar arttırıyor
                 SqlCommand cmd = new SqlCommand("Update ihtiyac set adet=@Adet Where isim = @isim", con);
