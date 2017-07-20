@@ -35,21 +35,36 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             con.Open();
             //sql den adet çekiliyor
             SqlCommand kontrol = new SqlCommand("select adet from ihtiyac where isim=@isim and marka=@marka", con);
+            SqlCommand kontrol2 = new SqlCommand("select ihtiyac_id from mobilya where olcu=@olcu and renk=@renk", con);
+
             kontrol.Parameters.AddWithValue("@isim", mobilya_ihtiyac.Text);
             kontrol.Parameters.AddWithValue("@marka", mobilya_marka.Text);
+
+            kontrol2.Parameters.AddWithValue("@olcu", mobilya_olcu.Text);
+            kontrol2.Parameters.AddWithValue("@renk", mobilya_renk.Text);
+
             SqlDataAdapter adapt = new SqlDataAdapter(kontrol);
+            SqlDataAdapter adapt2 = new SqlDataAdapter(kontrol2);
+
             DataSet ds = new DataSet();
+            DataSet ds2 = new DataSet();
+
             adapt.Fill(ds);
+            adapt2.Fill(ds2);
             //eğer sorgunun sonucunda birşy dönerse o zaman listenin üzerine ekleme yapacak yani if'e girecek yoksa else'e girecek
             int i = ds.Tables[0].Rows.Count;
-            if (i > 0)
+            int j = ds2.Tables[0].Rows.Count;
+
+            if (i > 0 && j > 0)
             {
                 //var olan adeti istenen kadar arttırıyor
-                SqlCommand cmd = new SqlCommand("Update ihtiyac set adet=@Adet Where isim = @isim", con);
+                SqlCommand cmd = new SqlCommand("Update ihtiyac set adet=@Adet Where isim = @isim and Id=@Id", con);
                 int cnt = Convert.ToInt32(kontrol.ExecuteScalar()) + Convert.ToInt32(mobilya_adet.Text.Trim());
+                int cnt2 = Convert.ToInt32(kontrol2.ExecuteScalar());
 
                 cmd.Parameters.AddWithValue("@Adet", cnt);
                 cmd.Parameters.AddWithValue("@isim", mobilya_ihtiyac.Text);
+                cmd.Parameters.AddWithValue("@Id", cnt2);
                 cmd.ExecuteNonQuery();
             }
             else
