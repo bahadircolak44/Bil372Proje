@@ -70,8 +70,8 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             else
             {
                 //eski bir kayıt yoksa yenisini ekliyor
-                SqlCommand cmd = new SqlCommand("insert into ihtiyac(okul_id,isim,adet,marka,fiyat)" +
-    " values(@okul_id,@isim,@adet,@marka,10)", con);
+                SqlCommand cmd = new SqlCommand("insert into ihtiyac(okul_id,isim,adet,marka,fiyat,tur)" +
+    " values(@okul_id,@isim,@adet,@marka,10,'mobilya')", con);
                 cmd.Parameters.AddWithValue("@isim", mobilya_ihtiyac.Text);
                 cmd.Parameters.AddWithValue("@adet", mobilya_adet.Text);
                 cmd.Parameters.AddWithValue("@marka", mobilya_marka.Text);

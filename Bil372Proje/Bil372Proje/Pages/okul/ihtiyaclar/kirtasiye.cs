@@ -53,8 +53,8 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             }
             else
             {
-                SqlCommand cmd = new SqlCommand("insert into ihtiyac(okul_id,isim,adet,marka,fiyat)" +
-    " values(@okul_id,@isim,@adet,@marka,10)", con);
+                SqlCommand cmd = new SqlCommand("insert into ihtiyac(okul_id,isim,adet,marka,fiyat,tur)" +
+    " values(@okul_id,@isim,@adet,@marka,10,'kirtasiye')", con);
                 cmd.Parameters.AddWithValue("@isim", kirtasiye_ihtiyac.Text);
                 cmd.Parameters.AddWithValue("@adet", kirtasiye_adet.Text);
                 cmd.Parameters.AddWithValue("@marka", kirtasiye_marka.Text);

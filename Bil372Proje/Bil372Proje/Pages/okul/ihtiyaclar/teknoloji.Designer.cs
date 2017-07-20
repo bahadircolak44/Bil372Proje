@@ -103,6 +103,7 @@
             this.button1.TabIndex = 5;
             this.button1.Text = "Ekle";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.teknoloji_ekle);
             // 
             // button2
             // 
@@ -113,6 +114,7 @@
             this.button2.TabIndex = 6;
             this.button2.Text = "Geri";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.teknoloji_geri_Click);
             // 
             // teknoloji_ihtiyac
             // 
