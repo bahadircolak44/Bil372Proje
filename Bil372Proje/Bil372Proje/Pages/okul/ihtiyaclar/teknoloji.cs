@@ -118,6 +118,7 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             cmd2.ExecuteNonQuery();
             kayitGetir();
             clear();
+
         }
         private void clear()
         {
