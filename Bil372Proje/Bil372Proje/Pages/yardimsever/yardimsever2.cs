@@ -32,16 +32,11 @@ namespace Bil372Proje.Pages
         {
             baglanti.Open();
             string kayit = "SELECT kullanici_adi,il,ilce,telefon from kullanici where yetki =2";
-            //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             SqlCommand komut = new SqlCommand(kayit, baglanti);
-            //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
             SqlDataAdapter da = new SqlDataAdapter(komut);
-            //SqlDataAdapter sınıfı verilerin databaseden aktarılması işlemini gerçekleştirir.
             DataTable dt = new DataTable();
             da.Fill(dt);
-            //Bir DataTable oluşturarak DataAdapter ile getirilen verileri tablo içerisine dolduruyoruz.
             dataGridView1.DataSource = dt;
-            //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
             baglanti.Close();
         }
 
@@ -63,6 +58,22 @@ namespace Bil372Proje.Pages
             yardimsever1 y1 = new yardimsever1(kullanici_adi);
             this.Hide();
             y1.Show();
+        }
+
+        private void okul_ara_Click(object sender, EventArgs e)
+        {
+            if (okul_adi.Text.Equals(string.Empty)) { kayitGetir(); }
+            else { 
+            baglanti.Open();
+            SqlCommand komut = new SqlCommand("SELECT kullanici_adi,il,ilce,telefon from kullanici where yetki =2 and kullanici_adi=@okul_adi ", baglanti);
+            komut.Parameters.AddWithValue("@okul_adi", okul_adi.Text);
+            SqlDataAdapter da = new SqlDataAdapter(komut);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            dataGridView1.DataSource = dt;
+            baglanti.Close();
+            }
+
         }
     }
 }
