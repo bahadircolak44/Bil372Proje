@@ -159,6 +159,9 @@
             // giysi_ihtiyac
             // 
             this.giysi_ihtiyac.FormattingEnabled = true;
+            this.giysi_ihtiyac.Items.AddRange(new object[] {
+            "Tshirt",
+            "kot"});
             this.giysi_ihtiyac.Location = new System.Drawing.Point(347, 55);
             this.giysi_ihtiyac.Name = "giysi_ihtiyac";
             this.giysi_ihtiyac.Size = new System.Drawing.Size(235, 24);
@@ -167,6 +170,17 @@
             // giysi_adet
             // 
             this.giysi_adet.FormattingEnabled = true;
+            this.giysi_adet.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
             this.giysi_adet.Location = new System.Drawing.Point(347, 119);
             this.giysi_adet.Name = "giysi_adet";
             this.giysi_adet.Size = new System.Drawing.Size(235, 24);
@@ -175,6 +189,8 @@
             // giysi_marka
             // 
             this.giysi_marka.FormattingEnabled = true;
+            this.giysi_marka.Items.AddRange(new object[] {
+            "asdsfsf"});
             this.giysi_marka.Location = new System.Drawing.Point(347, 180);
             this.giysi_marka.Name = "giysi_marka";
             this.giysi_marka.Size = new System.Drawing.Size(235, 24);
@@ -183,6 +199,11 @@
             // giysi_beden
             // 
             this.giysi_beden.FormattingEnabled = true;
+            this.giysi_beden.Items.AddRange(new object[] {
+            "Small",
+            "Medium",
+            "Larga",
+            "X-Large"});
             this.giysi_beden.Location = new System.Drawing.Point(347, 239);
             this.giysi_beden.Name = "giysi_beden";
             this.giysi_beden.Size = new System.Drawing.Size(235, 24);
@@ -191,6 +212,10 @@
             // giysi_renk
             // 
             this.giysi_renk.FormattingEnabled = true;
+            this.giysi_renk.Items.AddRange(new object[] {
+            "Sarı",
+            "Kırmızı",
+            "Mavi"});
             this.giysi_renk.Location = new System.Drawing.Point(347, 307);
             this.giysi_renk.Name = "giysi_renk";
             this.giysi_renk.Size = new System.Drawing.Size(235, 24);
@@ -199,6 +224,11 @@
             // giysi_kumas
             // 
             this.giysi_kumas.FormattingEnabled = true;
+            this.giysi_kumas.Items.AddRange(new object[] {
+            "a",
+            "b",
+            "c",
+            "d"});
             this.giysi_kumas.Location = new System.Drawing.Point(347, 375);
             this.giysi_kumas.Name = "giysi_kumas";
             this.giysi_kumas.Size = new System.Drawing.Size(235, 24);
@@ -207,6 +237,9 @@
             // giysi_cinsiyet
             // 
             this.giysi_cinsiyet.FormattingEnabled = true;
+            this.giysi_cinsiyet.Items.AddRange(new object[] {
+            "kız",
+            "erkek"});
             this.giysi_cinsiyet.Location = new System.Drawing.Point(347, 438);
             this.giysi_cinsiyet.Name = "giysi_cinsiyet";
             this.giysi_cinsiyet.Size = new System.Drawing.Size(235, 24);

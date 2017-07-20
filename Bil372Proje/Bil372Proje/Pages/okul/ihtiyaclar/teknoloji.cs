@@ -23,5 +23,10 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

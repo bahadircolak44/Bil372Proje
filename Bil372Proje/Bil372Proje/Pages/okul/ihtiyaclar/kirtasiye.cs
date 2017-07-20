@@ -53,8 +53,8 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             }
             else
             {
-                SqlCommand cmd = new SqlCommand("insert into ihtiyac(okul_id,isim,adet,marka)" +
-    " values(@okul_id,@isim,@adet,@marka)", con);
+                SqlCommand cmd = new SqlCommand("insert into ihtiyac(okul_id,isim,adet,marka,fiyat)" +
+    " values(@okul_id,@isim,@adet,@marka,10)", con);
                 cmd.Parameters.AddWithValue("@isim", kirtasiye_ihtiyac.Text);
                 cmd.Parameters.AddWithValue("@adet", kirtasiye_adet.Text);
                 cmd.Parameters.AddWithValue("@marka", kirtasiye_marka.Text);
@@ -82,8 +82,8 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
         }
         private void kayitGetir()
         {
-            string kayit = "SELECT * " +
-                " from ihtiyac where ihtiyac.okul_id =@okul_id";
+            string kayit = "SELECT isim,marka,adet " +
+                          " from ihtiyac where ihtiyac.okul_id =@okul_id";
 
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             SqlCommand komut = new SqlCommand(kayit, con);

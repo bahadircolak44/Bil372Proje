@@ -55,8 +55,8 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             else
             {
                 //eski bir kayıt yoksa yenisini ekliyor
-                SqlCommand cmd = new SqlCommand("insert into ihtiyac(okul_id,isim,adet,marka)" +
-    " values(@okul_id,@isim,@adet,@marka)", con);
+                SqlCommand cmd = new SqlCommand("insert into ihtiyac(okul_id,isim,adet,marka,fiyat)" +
+    " values(@okul_id,@isim,@adet,@marka,10)", con);
                 cmd.Parameters.AddWithValue("@isim", mobilya_ihtiyac.Text);
                 cmd.Parameters.AddWithValue("@adet", mobilya_adet.Text);
                 cmd.Parameters.AddWithValue("@marka", mobilya_marka.Text);
@@ -71,8 +71,8 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             SqlCommand cmd2 = new SqlCommand("insert into mobilya(ihtiyac_id,renk,olcu)" +
             " values(@ihtiyac_id,@renk,@olcu)", con);
             cmd2.Parameters.AddWithValue("@ihtiyac_id", count);
-            cmd2.Parameters.AddWithValue("@renk", mobilya_renk);
-            cmd2.Parameters.AddWithValue("@olcu", mobilya_olcu);
+            cmd2.Parameters.AddWithValue("@renk", mobilya_renk.Text);
+            cmd2.Parameters.AddWithValue("@olcu", mobilya_olcu.Text);
             cmd2.ExecuteNonQuery();
             kayitGetir();
             clear();
@@ -90,7 +90,7 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
         private void kayitGetir()
         {
 
-            string kayit = "SELECT * " +
+            string kayit = "SELECT isim,marka,adet " +
                " from ihtiyac where ihtiyac.okul_id =@okul_id";
 
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.

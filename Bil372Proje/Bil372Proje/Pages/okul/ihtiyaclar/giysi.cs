@@ -49,8 +49,8 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             else
             {
                 //eski bir kayıt yoksa yenisini ekliyor
-                SqlCommand cmd = new SqlCommand("insert into ihtiyac(okul_id,isim,adet,marka)" +
-    " values(@okul_id,@isim,@adet,@marka)", con);
+                SqlCommand cmd = new SqlCommand("insert into ihtiyac(okul_id,isim,adet,marka,fiyat)" +
+    " values(@okul_id,@isim,@adet,@marka,10)", con);
                 cmd.Parameters.AddWithValue("@isim", giysi_ihtiyac.Text);
                 cmd.Parameters.AddWithValue("@adet", giysi_adet.Text);
                 cmd.Parameters.AddWithValue("@marka", giysi_marka.Text);
@@ -65,10 +65,10 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             SqlCommand cmd2 = new SqlCommand("insert into giysi(ihtiyac_id,beden,renk,kumas,cinsiyet)" +
             " values(@ihtiyac_id,@beden,@renk,@kumas,@cinsiyet)", con);
             cmd2.Parameters.AddWithValue("@ihtiyac_id", count);
-            cmd2.Parameters.AddWithValue("@beden", giysi_beden);
-            cmd2.Parameters.AddWithValue("@renk", giysi_renk);
-            cmd2.Parameters.AddWithValue("@kumas", giysi_kumas);
-            cmd2.Parameters.AddWithValue("@cinsiyet", giysi_cinsiyet);
+            cmd2.Parameters.AddWithValue("@beden", giysi_beden.Text);
+            cmd2.Parameters.AddWithValue("@renk", giysi_renk.Text);
+            cmd2.Parameters.AddWithValue("@kumas", giysi_kumas.Text);
+            cmd2.Parameters.AddWithValue("@cinsiyet", giysi_cinsiyet.Text);
             cmd2.ExecuteNonQuery();
             kayitGetir();
             clear();
@@ -92,8 +92,8 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
         private void kayitGetir()
         {
 
-            string kayit = "SELECT * " +
-               " from ihtiyac where ihtiyac.okul_id =@okul_id";
+            string kayit = "SELECT isim,marka,adet " +
+                          " from ihtiyac where ihtiyac.okul_id =@okul_id";
 
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             SqlCommand komut = new SqlCommand(kayit, con);

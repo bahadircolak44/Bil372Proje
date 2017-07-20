@@ -67,5 +67,11 @@ namespace Bil372Proje.Pages
             bagisla.Show();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ihtiyac_karsila karsila = new ihtiyac_karsila();
+            this.Hide();
+            karsila.Show();
+        }
     }
 }

@@ -101,18 +101,19 @@
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
             this.button1.Location = new System.Drawing.Point(328, 478);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 28);
             this.button1.TabIndex = 5;
             this.button1.Text = "Ekle";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
             this.button2.Location = new System.Drawing.Point(564, 478);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 28);
             this.button2.TabIndex = 6;
@@ -123,7 +124,7 @@
             // 
             this.teknoloji_ihtiyac.FormattingEnabled = true;
             this.teknoloji_ihtiyac.Location = new System.Drawing.Point(421, 82);
-            this.teknoloji_ihtiyac.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.teknoloji_ihtiyac.Margin = new System.Windows.Forms.Padding(4);
             this.teknoloji_ihtiyac.Name = "teknoloji_ihtiyac";
             this.teknoloji_ihtiyac.Size = new System.Drawing.Size(276, 24);
             this.teknoloji_ihtiyac.TabIndex = 7;
@@ -132,7 +133,7 @@
             // 
             this.teknoloji_uretim_yili.FormattingEnabled = true;
             this.teknoloji_uretim_yili.Location = new System.Drawing.Point(421, 235);
-            this.teknoloji_uretim_yili.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.teknoloji_uretim_yili.Margin = new System.Windows.Forms.Padding(4);
             this.teknoloji_uretim_yili.Name = "teknoloji_uretim_yili";
             this.teknoloji_uretim_yili.Size = new System.Drawing.Size(276, 24);
             this.teknoloji_uretim_yili.TabIndex = 8;
@@ -141,7 +142,7 @@
             // 
             this.teknoloji_marka.FormattingEnabled = true;
             this.teknoloji_marka.Location = new System.Drawing.Point(421, 319);
-            this.teknoloji_marka.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.teknoloji_marka.Margin = new System.Windows.Forms.Padding(4);
             this.teknoloji_marka.Name = "teknoloji_marka";
             this.teknoloji_marka.Size = new System.Drawing.Size(276, 24);
             this.teknoloji_marka.TabIndex = 9;
@@ -150,7 +151,7 @@
             // 
             this.teknoloji_adet.FormattingEnabled = true;
             this.teknoloji_adet.Location = new System.Drawing.Point(421, 401);
-            this.teknoloji_adet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.teknoloji_adet.Margin = new System.Windows.Forms.Padding(4);
             this.teknoloji_adet.Name = "teknoloji_adet";
             this.teknoloji_adet.Size = new System.Drawing.Size(276, 24);
             this.teknoloji_adet.TabIndex = 10;
@@ -158,7 +159,7 @@
             // teknoloji_model
             // 
             this.teknoloji_model.Location = new System.Drawing.Point(421, 156);
-            this.teknoloji_model.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.teknoloji_model.Margin = new System.Windows.Forms.Padding(4);
             this.teknoloji_model.Name = "teknoloji_model";
             this.teknoloji_model.Size = new System.Drawing.Size(276, 22);
             this.teknoloji_model.TabIndex = 11;
@@ -181,7 +182,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "teknoloji";
             this.Text = "teknoloji";
             this.Load += new System.EventHandler(this.teknoloji_Load);
