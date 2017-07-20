@@ -240,7 +240,10 @@ namespace Bil372Proje.Pages
             {
                 MessageBox.Show(exc.ToString(), "HATA");
             }
-            
+            finally
+            {
+                con.Close();
+            }
         }
         //Tedarikci kayıt ekranında register düğmesine bastığında yapılacak olan
         private void tedarikci_kayit_Click(object sender, EventArgs e)
@@ -317,36 +320,6 @@ namespace Bil372Proje.Pages
             }
         }
 
-        private void label17_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox2_CheckedChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void yar_il_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label_firma_adi_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label19_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label22_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void tabPage4_Click(object sender, EventArgs e)
         {
 
@@ -356,7 +329,5 @@ namespace Bil372Proje.Pages
         {
 
         }
-
-        
     }
 }
