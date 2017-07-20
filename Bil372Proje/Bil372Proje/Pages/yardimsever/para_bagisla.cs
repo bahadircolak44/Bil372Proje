@@ -31,7 +31,7 @@ namespace Bil372Proje.Pages.yardimsever
             this.Hide();
             oi.Show();
         }
-        private void kayitGuncelle()
+        private bool kayitGuncelle()
         {
             con.Open();
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
@@ -44,6 +44,11 @@ namespace Bil372Proje.Pages.yardimsever
             da.Fill(dt);
             //Bir DataTable oluşturarak DataAdapter ile getirilen verileri tablo içerisine dolduruyoruz.
             int bakiye = Convert.ToInt32(komut.ExecuteScalar());
+            if (bakiye == 0)
+            {
+                MessageBox.Show("Bakiyeniz Yetersiz");
+                return false;
+            }
             SqlCommand yardimsever = new SqlCommand("update yardimsever set bakiye=bakiye - @ybakiye where kAdi=@kullanici_adi ", con);
             SqlCommand okul = new SqlCommand("update okul set bakiye=bakiye + @obakiye where id=@okul_id", con);
             yardimsever.Parameters.AddWithValue("@kullanici_adi", kullanici_adi);
@@ -58,6 +63,7 @@ namespace Bil372Proje.Pages.yardimsever
             y1.Show();
             //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
             con.Close();
+            return true;
 
         }
 
