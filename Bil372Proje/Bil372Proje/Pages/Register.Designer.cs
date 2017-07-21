@@ -150,12 +150,11 @@
             this.tabPage4.Size = new System.Drawing.Size(1041, 677);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Tedarikçi";
-
             // 
             // tedarikci_posta
             // 
             this.tedarikci_posta.Location = new System.Drawing.Point(603, 518);
-            this.tedarikci_posta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tedarikci_posta.Margin = new System.Windows.Forms.Padding(4);
             this.tedarikci_posta.Name = "tedarikci_posta";
             this.tedarikci_posta.Size = new System.Drawing.Size(261, 22);
             this.tedarikci_posta.TabIndex = 23;
@@ -163,7 +162,7 @@
             // tedarikci_mahalle
             // 
             this.tedarikci_mahalle.Location = new System.Drawing.Point(105, 518);
-            this.tedarikci_mahalle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tedarikci_mahalle.Margin = new System.Windows.Forms.Padding(4);
             this.tedarikci_mahalle.Name = "tedarikci_mahalle";
             this.tedarikci_mahalle.Size = new System.Drawing.Size(247, 22);
             this.tedarikci_mahalle.TabIndex = 18;
@@ -171,7 +170,7 @@
             // tedarikci_ilce
             // 
             this.tedarikci_ilce.Location = new System.Drawing.Point(603, 465);
-            this.tedarikci_ilce.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tedarikci_ilce.Margin = new System.Windows.Forms.Padding(4);
             this.tedarikci_ilce.Name = "tedarikci_ilce";
             this.tedarikci_ilce.Size = new System.Drawing.Size(261, 22);
             this.tedarikci_ilce.TabIndex = 17;
@@ -179,7 +178,7 @@
             // tedarikci_il
             // 
             this.tedarikci_il.Location = new System.Drawing.Point(105, 465);
-            this.tedarikci_il.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tedarikci_il.Margin = new System.Windows.Forms.Padding(4);
             this.tedarikci_il.Name = "tedarikci_il";
             this.tedarikci_il.Size = new System.Drawing.Size(247, 22);
             this.tedarikci_il.TabIndex = 16;
@@ -261,7 +260,6 @@
             this.label24.Size = new System.Drawing.Size(74, 17);
             this.label24.TabIndex = 21;
             this.label24.Text = "Mahalle :";
-
             // 
             // label23
             // 
@@ -284,7 +282,6 @@
             this.label22.Size = new System.Drawing.Size(31, 17);
             this.label22.TabIndex = 19;
             this.label22.Text = "il : ";
-
             // 
             // tedarikci_geri
             // 
@@ -377,7 +374,6 @@
             this.label_firma_adi.Size = new System.Drawing.Size(86, 17);
             this.label_firma_adi.TabIndex = 0;
             this.label_firma_adi.Text = "Firma Adı :";
-
             // 
             // tabPage1
             // 
@@ -454,7 +450,6 @@
             this.label19.Size = new System.Drawing.Size(74, 17);
             this.label19.TabIndex = 34;
             this.label19.Text = "Mahalle :";
-
             // 
             // posta_kutusu
             // 
@@ -571,7 +566,6 @@
             this.label17.Size = new System.Drawing.Size(43, 17);
             this.label17.TabIndex = 30;
             this.label17.Text = "ilce :";
-
             // 
             // yar_il
             // 
@@ -582,7 +576,6 @@
             this.yar_il.Size = new System.Drawing.Size(26, 17);
             this.yar_il.TabIndex = 27;
             this.yar_il.Text = "il :";
-
             // 
             // Geri
             // 
@@ -641,7 +634,6 @@
             this.checkBox2.TabIndex = 12;
             this.checkBox2.Text = "Kadin";
             this.checkBox2.UseVisualStyleBackColor = true;
-
             this.checkBox2.Click += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // checkBox1
@@ -774,7 +766,7 @@
             this.tabPage2.Controls.Add(this.label15);
             this.tabPage2.Controls.Add(this.label26);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Size = new System.Drawing.Size(1041, 677);
             this.tabPage2.TabIndex = 4;
@@ -805,7 +797,7 @@
             // okul_posta
             // 
             this.okul_posta.Location = new System.Drawing.Point(636, 529);
-            this.okul_posta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.okul_posta.Margin = new System.Windows.Forms.Padding(4);
             this.okul_posta.Name = "okul_posta";
             this.okul_posta.Size = new System.Drawing.Size(261, 22);
             this.okul_posta.TabIndex = 45;
@@ -813,7 +805,7 @@
             // okul_mahalle
             // 
             this.okul_mahalle.Location = new System.Drawing.Point(139, 529);
-            this.okul_mahalle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.okul_mahalle.Margin = new System.Windows.Forms.Padding(4);
             this.okul_mahalle.Name = "okul_mahalle";
             this.okul_mahalle.Size = new System.Drawing.Size(247, 22);
             this.okul_mahalle.TabIndex = 42;
@@ -821,7 +813,7 @@
             // okul_ilce
             // 
             this.okul_ilce.Location = new System.Drawing.Point(636, 476);
-            this.okul_ilce.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.okul_ilce.Margin = new System.Windows.Forms.Padding(4);
             this.okul_ilce.Name = "okul_ilce";
             this.okul_ilce.Size = new System.Drawing.Size(261, 22);
             this.okul_ilce.TabIndex = 41;
@@ -829,7 +821,7 @@
             // okul_il
             // 
             this.okul_il.Location = new System.Drawing.Point(139, 476);
-            this.okul_il.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.okul_il.Margin = new System.Windows.Forms.Padding(4);
             this.okul_il.Name = "okul_il";
             this.okul_il.Size = new System.Drawing.Size(247, 22);
             this.okul_il.TabIndex = 40;
