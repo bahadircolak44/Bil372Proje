@@ -60,5 +60,19 @@ namespace Bil372Proje.Pages.admin.istek_sayfalari
             //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
             con.Close();
         }
+
+        private void sil_btn_Click(object sender, EventArgs e)
+        {
+            con.Open();
+            string kullaniciAdi = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            SqlCommand cmd = new SqlCommand("delete from tedarikci where kAdi=@kullanici_adi", con);
+            SqlCommand cmd2 = new SqlCommand("delete from kullanici where kullanici_adi=@kullanici_adi", con);
+            cmd.Parameters.AddWithValue("@kullanici_adi", kullaniciAdi);
+            cmd2.Parameters.AddWithValue("@kullanici_adi", kullaniciAdi);
+            cmd.ExecuteNonQuery();
+            cmd2.ExecuteNonQuery();
+            con.Close();
+            kayitGetir();
+        }
     }
 }

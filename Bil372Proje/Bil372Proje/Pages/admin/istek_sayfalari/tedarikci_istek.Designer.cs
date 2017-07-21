@@ -31,6 +31,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.onayla_btn = new System.Windows.Forms.Button();
             this.geri_btn = new System.Windows.Forms.Button();
+            this.sil_btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,7 +46,7 @@
             // 
             // onayla_btn
             // 
-            this.onayla_btn.Location = new System.Drawing.Point(336, 418);
+            this.onayla_btn.Location = new System.Drawing.Point(262, 418);
             this.onayla_btn.Name = "onayla_btn";
             this.onayla_btn.Size = new System.Drawing.Size(151, 56);
             this.onayla_btn.TabIndex = 1;
@@ -55,7 +56,7 @@
             // 
             // geri_btn
             // 
-            this.geri_btn.Location = new System.Drawing.Point(655, 418);
+            this.geri_btn.Location = new System.Drawing.Point(815, 418);
             this.geri_btn.Name = "geri_btn";
             this.geri_btn.Size = new System.Drawing.Size(151, 56);
             this.geri_btn.TabIndex = 2;
@@ -63,11 +64,22 @@
             this.geri_btn.UseVisualStyleBackColor = true;
             this.geri_btn.Click += new System.EventHandler(this.geri_btn_Click);
             // 
+            // sil_btn
+            // 
+            this.sil_btn.Location = new System.Drawing.Point(528, 418);
+            this.sil_btn.Name = "sil_btn";
+            this.sil_btn.Size = new System.Drawing.Size(151, 56);
+            this.sil_btn.TabIndex = 3;
+            this.sil_btn.Text = "Sil";
+            this.sil_btn.UseVisualStyleBackColor = true;
+            this.sil_btn.Click += new System.EventHandler(this.sil_btn_Click);
+            // 
             // tedarikci_istek
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1177, 563);
+            this.Controls.Add(this.sil_btn);
             this.Controls.Add(this.geri_btn);
             this.Controls.Add(this.onayla_btn);
             this.Controls.Add(this.dataGridView1);
@@ -84,5 +96,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button onayla_btn;
         private System.Windows.Forms.Button geri_btn;
+        private System.Windows.Forms.Button sil_btn;
     }
 }
