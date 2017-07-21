@@ -58,10 +58,10 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
         private void teknoloji_ekle(object sender, EventArgs e)
         {
             if (!(teknoloji_model.Text.Equals(string.Empty) || 
-                !teknoloji_marka .Text.Equals(string.Empty) || 
-                !teknoloji_adet.Text.Equals(string.Empty) ||
-                !teknoloji_uretim_yili.Text.Equals(string.Empty) ||
-                !teknoloji_ihtiyac.Text.Equals(string.Empty)))
+                teknoloji_marka .Text.Equals(string.Empty) || 
+                teknoloji_adet.Text.Equals(string.Empty) ||
+                teknoloji_uretim_yili.Text.Equals(string.Empty) ||
+                teknoloji_ihtiyac.Text.Equals(string.Empty)))
             {
 
            

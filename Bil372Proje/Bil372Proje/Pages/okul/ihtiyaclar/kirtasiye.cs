@@ -35,43 +35,55 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
          */
         private void button1_Click(object sender, EventArgs e)
         {
-            con.Open();
-            SqlCommand kontrol = new SqlCommand("select adet from ihtiyac where isim=@isim and marka=@marka", con);
-            kontrol.Parameters.AddWithValue("@isim", kirtasiye_ihtiyac.Text);
-            kontrol.Parameters.AddWithValue("@marka", kirtasiye_marka.Text);
-            SqlDataAdapter adapt = new SqlDataAdapter(kontrol);
-            DataSet ds = new DataSet();
-            adapt.Fill(ds);
-            int i = ds.Tables[0].Rows.Count;
-            if (i > 0)
+
+            if (!(kirtasiye_adet.Text.Equals(string.Empty) ||
+                kirtasiye_ihtiyac.Text.Equals(string.Empty) ||
+                kirtasiye_marka.Text.Equals(string.Empty)))
             {
-                SqlCommand cmd = new SqlCommand("Update ihtiyac set adet=@Adet Where isim = @isim", con);
-                int cnt = Convert.ToInt32(kontrol.ExecuteScalar())+Convert.ToInt32(kirtasiye_adet.Text.Trim());
-                cmd.Parameters.AddWithValue("@Adet", cnt);
-                cmd.Parameters.AddWithValue("@isim", kirtasiye_ihtiyac.Text);
-                cmd.ExecuteNonQuery();
+                con.Open();
+                SqlCommand kontrol = new SqlCommand("select adet from ihtiyac where isim=@isim and marka=@marka", con);
+                kontrol.Parameters.AddWithValue("@isim", kirtasiye_ihtiyac.Text);
+                kontrol.Parameters.AddWithValue("@marka", kirtasiye_marka.Text);
+                SqlDataAdapter adapt = new SqlDataAdapter(kontrol);
+                DataSet ds = new DataSet();
+                adapt.Fill(ds);
+                int i = ds.Tables[0].Rows.Count;
+                if (i > 0)
+                {
+                    SqlCommand cmd = new SqlCommand("Update ihtiyac set adet=@Adet Where isim = @isim", con);
+                    int cnt = Convert.ToInt32(kontrol.ExecuteScalar()) + Convert.ToInt32(kirtasiye_adet.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Adet", cnt);
+                    cmd.Parameters.AddWithValue("@isim", kirtasiye_ihtiyac.Text);
+                    cmd.ExecuteNonQuery();
+                }
+                else
+                {
+                    SqlCommand cmd = new SqlCommand("insert into ihtiyac(okul_id,isim,adet,marka,fiyat,tur)" +
+        " values(@okul_id,@isim,@adet,@marka,10,'kirtasiye')", con);
+                    cmd.Parameters.AddWithValue("@isim", kirtasiye_ihtiyac.Text);
+                    cmd.Parameters.AddWithValue("@adet", kirtasiye_adet.Text);
+                    cmd.Parameters.AddWithValue("@marka", kirtasiye_marka.Text);
+                    cmd.Parameters.AddWithValue("@okul_id", okul_id);
+                    cmd.ExecuteNonQuery();
+                }
+
+
+
+                SqlCommand komut = new SqlCommand("select max(id) from ihtiyac", con);
+                int count = Convert.ToInt32(komut.ExecuteScalar());
+                SqlCommand cmd2 = new SqlCommand("insert into kirtasiye(ihtiyac_id)" +
+                " values(@ihtiyac_id)", con);
+                cmd2.Parameters.AddWithValue("@ihtiyac_id", count);
+                cmd2.ExecuteNonQuery();
+                kayitGetir();
+                clear();
+
             }
             else
             {
-                SqlCommand cmd = new SqlCommand("insert into ihtiyac(okul_id,isim,adet,marka,fiyat,tur)" +
-    " values(@okul_id,@isim,@adet,@marka,10,'kirtasiye')", con);
-                cmd.Parameters.AddWithValue("@isim", kirtasiye_ihtiyac.Text);
-                cmd.Parameters.AddWithValue("@adet", kirtasiye_adet.Text);
-                cmd.Parameters.AddWithValue("@marka", kirtasiye_marka.Text);
-                cmd.Parameters.AddWithValue("@okul_id", okul_id);
-                cmd.ExecuteNonQuery();
+                MessageBox.Show("Bütün alanlar doldurulmalıdır!", "Uyarı");
+                clear();
             }
-
-
-
-            SqlCommand komut = new SqlCommand("select max(id) from ihtiyac", con);
-            int count = Convert.ToInt32(komut.ExecuteScalar());
-            SqlCommand cmd2 = new SqlCommand("insert into kirtasiye(ihtiyac_id)" +
-            " values(@ihtiyac_id)", con);
-            cmd2.Parameters.AddWithValue("@ihtiyac_id", count);
-            cmd2.ExecuteNonQuery();
-            kayitGetir();
-            clear();
         }
         private void clear()
         {

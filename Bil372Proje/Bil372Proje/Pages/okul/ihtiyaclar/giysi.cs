@@ -27,7 +27,13 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
         }
         private void giysi_ekle_Click(object sender, EventArgs e)
         {
-            con.Open();
+            if (!(giysi_adet.Text.Equals(string.Empty) ||
+                giysi_beden.Text.Equals(string.Empty) ||
+                giysi_cinsiyet.Text.Equals(string.Empty) ||
+                giysi_kumas.Text.Equals(string.Empty) ||
+                giysi_renk.Text.Equals(string.Empty)))
+            {
+                con.Open();
             //sql den adet çekiliyor
             SqlCommand kontrol = new SqlCommand("select adet from ihtiyac where isim=@isim and marka=@marka", con);
             SqlCommand kontrol2 = new SqlCommand("select ihtiyac_id from giysi where beden=@beden and renk=@renk and kumas=@kumas and cinsiyet=@cinsiyet ", con);
@@ -91,6 +97,12 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             cmd2.ExecuteNonQuery();
             kayitGetir();
             clear();
+            }
+            else
+            {
+                MessageBox.Show("Bütün alanlar doldurulmalıdır!", "Uyarı");
+                clear();
+            }
         }
         private void giysi_geri_Click(object sender, EventArgs e)
         {
