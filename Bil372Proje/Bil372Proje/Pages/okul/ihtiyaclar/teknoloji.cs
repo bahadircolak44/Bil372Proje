@@ -57,6 +57,14 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
 
         private void teknoloji_ekle(object sender, EventArgs e)
         {
+            if (!(teknoloji_model.Text.Equals(string.Empty) || 
+                !teknoloji_marka .Text.Equals(string.Empty) || 
+                !teknoloji_adet.Text.Equals(string.Empty) ||
+                !teknoloji_uretim_yili.Text.Equals(string.Empty) ||
+                !teknoloji_ihtiyac.Text.Equals(string.Empty)))
+            {
+
+           
             con.Open();
             //sql den adet çekiliyor
             SqlCommand kontrol = new SqlCommand("select adet from ihtiyac where isim=@isim and marka=@marka", con);
@@ -118,6 +126,12 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             cmd2.ExecuteNonQuery();
             kayitGetir();
             clear();
+            }
+            else
+            {
+                MessageBox.Show("Bütün alanlar doldurulmalıdır!","Uyarı");
+                clear();
+            }
 
         }
         private void clear()
