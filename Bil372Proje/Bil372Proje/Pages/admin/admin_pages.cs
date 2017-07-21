@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bil372Proje.Pages.admin.istek_sayfalari;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,20 @@ namespace Bil372Proje.Pages.admin
         public admin_pages()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            okul_istek okul = new okul_istek();
+            this.Hide();
+            okul.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            tedarikci_istek tedarikci = new tedarikci_istek();
+            this.Hide();
+            tedarikci.Show();
         }
     }
 }

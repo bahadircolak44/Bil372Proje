@@ -71,6 +71,18 @@
     <Compile Include="Pages\admin\admin_pages.Designer.cs">
       <DependentUpon>admin_pages.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\admin\istek_sayfalari\okul_istek.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\admin\istek_sayfalari\okul_istek.Designer.cs">
+      <DependentUpon>okul_istek.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\admin\istek_sayfalari\tedarikci_istek.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\admin\istek_sayfalari\tedarikci_istek.Designer.cs">
+      <DependentUpon>tedarikci_istek.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\okul\ihtiyaclar\giysi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +195,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Pages\admin\admin_pages.resx">
       <DependentUpon>admin_pages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\admin\istek_sayfalari\okul_istek.resx">
+      <DependentUpon>okul_istek.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\admin\istek_sayfalari\tedarikci_istek.resx">
+      <DependentUpon>tedarikci_istek.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\okul\ihtiyaclar\giysi.resx">
       <DependentUpon>giysi.cs</DependentUpon>
