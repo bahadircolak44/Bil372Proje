@@ -32,64 +32,78 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
 
         private void button1_Click(object sender, EventArgs e)
         {
-            con.Open();
-            SqlCommand kontrol = new SqlCommand("select adet from ihtiyac where isim=@isim", con);
-            SqlCommand kontrol2 = new SqlCommand("select ihtiyac_id from kitap where tur=@tur and yayin_evi=@yayin_evi and yazar=@yazar and yayin_yili=@yayin_yili", con);
-
-            kontrol.Parameters.AddWithValue("@isim", kitap_ihtiyac.Text);
-
-            kontrol2.Parameters.AddWithValue("@tur",kitap_tur.Text);
-            kontrol2.Parameters.AddWithValue("@yayin_evi", kitap_yayin_evi.Text);
-            kontrol2.Parameters.AddWithValue("@yazar", kitap_yazar.Text);
-            kontrol2.Parameters.AddWithValue("@yayin_yili",kitap_yayin_yili.Text);
-
-            SqlDataAdapter adapt = new SqlDataAdapter(kontrol);
-            SqlDataAdapter adapt2 = new SqlDataAdapter(kontrol2);
-            DataSet ds = new DataSet();
-            DataSet ds2 = new DataSet();
-
-            adapt.Fill(ds);
-            adapt2.Fill(ds2);
-
-            int i = ds.Tables[0].Rows.Count;
-            int j= ds2.Tables[0].Rows.Count;
-
-            if (i > 0 && j > 0)
+            if (!(kitap_ihtiyac.Text.Equals(string.Empty) ||
+                kitap_adet.Text.Equals(string.Empty) ||
+                kitap_tur.Text.Equals(string.Empty) ||
+                kitap_yayin_evi.Text.Equals(string.Empty) ||
+                kitap_yayin_yili.Text.Equals(string.Empty) ||
+                kitap_yazar.Text.Equals(string.Empty)))
             {
-                SqlCommand cmd = new SqlCommand("Update ihtiyac set adet=@Adet Where isim = @isim and Id=@Id", con);
-                int cnt = Convert.ToInt32(kontrol.ExecuteScalar()) + Convert.ToInt32(kitap_adet.Text.Trim());
-                int cnt2 = Convert.ToInt32(kontrol2.ExecuteScalar());
-                cmd.Parameters.AddWithValue("@Adet", cnt);
-                cmd.Parameters.AddWithValue("@isim", kitap_ihtiyac.Text);
-                cmd.Parameters.AddWithValue("@Id", cnt2);
-                cmd.ExecuteNonQuery();
+                con.Open();
+                SqlCommand kontrol = new SqlCommand("select adet from ihtiyac where isim=@isim", con);
+                SqlCommand kontrol2 = new SqlCommand("select ihtiyac_id from kitap where tur=@tur and yayin_evi=@yayin_evi and yazar=@yazar and yayin_yili=@yayin_yili", con);
+
+                kontrol.Parameters.AddWithValue("@isim", kitap_ihtiyac.Text);
+
+                kontrol2.Parameters.AddWithValue("@tur", kitap_tur.Text);
+                kontrol2.Parameters.AddWithValue("@yayin_evi", kitap_yayin_evi.Text);
+                kontrol2.Parameters.AddWithValue("@yazar", kitap_yazar.Text);
+                kontrol2.Parameters.AddWithValue("@yayin_yili", kitap_yayin_yili.Text);
+
+                SqlDataAdapter adapt = new SqlDataAdapter(kontrol);
+                SqlDataAdapter adapt2 = new SqlDataAdapter(kontrol2);
+                DataSet ds = new DataSet();
+                DataSet ds2 = new DataSet();
+
+                adapt.Fill(ds);
+                adapt2.Fill(ds2);
+
+                int i = ds.Tables[0].Rows.Count;
+                int j = ds2.Tables[0].Rows.Count;
+
+                if (i > 0 && j > 0)
+                {
+                    SqlCommand cmd = new SqlCommand("Update ihtiyac set adet=@Adet Where isim = @isim and Id=@Id", con);
+                    int cnt = Convert.ToInt32(kontrol.ExecuteScalar()) + Convert.ToInt32(kitap_adet.Text.Trim());
+                    int cnt2 = Convert.ToInt32(kontrol2.ExecuteScalar());
+                    cmd.Parameters.AddWithValue("@Adet", cnt);
+                    cmd.Parameters.AddWithValue("@isim", kitap_ihtiyac.Text);
+                    cmd.Parameters.AddWithValue("@Id", cnt2);
+                    cmd.ExecuteNonQuery();
+                }
+                else
+                {
+                    SqlCommand cmd = new SqlCommand("insert into ihtiyac(okul_id,isim,adet,marka,fiyat,tur)" +
+        " values(@okul_id,@isim,@adet,@marka,10,'kitap')", con);
+                    cmd.Parameters.AddWithValue("@isim", kitap_ihtiyac.Text);
+                    cmd.Parameters.AddWithValue("@adet", kitap_adet.Text);
+                    cmd.Parameters.AddWithValue("@marka", string.Empty);
+                    cmd.Parameters.AddWithValue("@okul_id", okul_id);
+                    cmd.ExecuteNonQuery();
+                }
+
+
+
+                SqlCommand komut = new SqlCommand("select max(id) from ihtiyac", con);
+                int count = Convert.ToInt32(komut.ExecuteScalar());
+                SqlCommand cmd2 = new SqlCommand("insert into kitap(ihtiyac_id,tur,yazar,yayin_evi,yayin_yili)" +
+                " values(@ihtiyac_id,@tur,@yazar,@yayin_evi,@yayin_yili)", con);
+                cmd2.Parameters.AddWithValue("@ihtiyac_id", count);
+                cmd2.Parameters.AddWithValue("@tur", kitap_tur.Text);
+                cmd2.Parameters.AddWithValue("@yazar", kitap_yazar.Text);
+                cmd2.Parameters.AddWithValue("@yayin_evi", kitap_yayin_evi.Text);
+                cmd2.Parameters.AddWithValue("@yayin_yili", kitap_yayin_yili.Text);
+                cmd2.ExecuteNonQuery();
+                kayitGetir();
+                clear();
+
             }
             else
             {
-                SqlCommand cmd = new SqlCommand("insert into ihtiyac(okul_id,isim,adet,marka,fiyat,tur)" +
-    " values(@okul_id,@isim,@adet,@marka,10,'kitap')", con);
-                cmd.Parameters.AddWithValue("@isim", kitap_ihtiyac.Text);
-                cmd.Parameters.AddWithValue("@adet", kitap_adet.Text);
-                cmd.Parameters.AddWithValue("@marka", string.Empty);
-                cmd.Parameters.AddWithValue("@okul_id", okul_id);
-                cmd.ExecuteNonQuery();
+                MessageBox.Show("Bütün alanlar doldurulmalıdır!", "Uyarı");
+                clear();
             }
-
-
-
-            SqlCommand komut = new SqlCommand("select max(id) from ihtiyac", con);
-            int count = Convert.ToInt32(komut.ExecuteScalar());
-            SqlCommand cmd2 = new SqlCommand("insert into kitap(ihtiyac_id,tur,yazar,yayin_evi,yayin_yili)" +
-            " values(@ihtiyac_id,@tur,@yazar,@yayin_evi,@yayin_yili)", con);
-            cmd2.Parameters.AddWithValue("@ihtiyac_id", count);
-            cmd2.Parameters.AddWithValue("@tur", kitap_tur.Text);
-            cmd2.Parameters.AddWithValue("@yazar", kitap_yazar.Text);
-            cmd2.Parameters.AddWithValue("@yayin_evi", kitap_yayin_evi.Text);
-            cmd2.Parameters.AddWithValue("@yayin_yili", kitap_yayin_yili.Text);
-            cmd2.ExecuteNonQuery();
-            kayitGetir();
-            clear();
-        }
+            }
         private void clear()
         {
             kitap_ihtiyac.Text = string.Empty;
