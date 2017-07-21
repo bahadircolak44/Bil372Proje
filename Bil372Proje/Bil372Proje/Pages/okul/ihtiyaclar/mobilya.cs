@@ -32,66 +32,81 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
 
         private void mobilya_ekle_Click(object sender, EventArgs e)
         {
-            con.Open();
-            //sql den adet çekiliyor
-            SqlCommand kontrol = new SqlCommand("select adet from ihtiyac where isim=@isim and marka=@marka", con);
-            SqlCommand kontrol2 = new SqlCommand("select ihtiyac_id from mobilya where olcu=@olcu and renk=@renk", con);
 
-            kontrol.Parameters.AddWithValue("@isim", mobilya_ihtiyac.Text);
-            kontrol.Parameters.AddWithValue("@marka", mobilya_marka.Text);
-
-            kontrol2.Parameters.AddWithValue("@olcu", mobilya_olcu.Text);
-            kontrol2.Parameters.AddWithValue("@renk", mobilya_renk.Text);
-
-            SqlDataAdapter adapt = new SqlDataAdapter(kontrol);
-            SqlDataAdapter adapt2 = new SqlDataAdapter(kontrol2);
-
-            DataSet ds = new DataSet();
-            DataSet ds2 = new DataSet();
-
-            adapt.Fill(ds);
-            adapt2.Fill(ds2);
-            //eğer sorgunun sonucunda birşy dönerse o zaman listenin üzerine ekleme yapacak yani if'e girecek yoksa else'e girecek
-            int i = ds.Tables[0].Rows.Count;
-            int j = ds2.Tables[0].Rows.Count;
-
-            if (i > 0 && j > 0)
+            if (!(mobilya_adet.Text.Equals(string.Empty) ||
+                mobilya_ihtiyac.Text.Equals(string.Empty) ||
+                mobilya_marka.Text.Equals(string.Empty) ||
+                mobilya_renk.Text.Equals(string.Empty) ||
+                mobilya_olcu.Text.Equals(string.Empty)))
             {
-                //var olan adeti istenen kadar arttırıyor
-                SqlCommand cmd = new SqlCommand("Update ihtiyac set adet=@Adet Where isim = @isim and Id=@Id", con);
-                int cnt = Convert.ToInt32(kontrol.ExecuteScalar()) + Convert.ToInt32(mobilya_adet.Text.Trim());
-                int cnt2 = Convert.ToInt32(kontrol2.ExecuteScalar());
+                con.Open();
+                //sql den adet çekiliyor
+                SqlCommand kontrol = new SqlCommand("select adet from ihtiyac where isim=@isim and marka=@marka", con);
+                SqlCommand kontrol2 = new SqlCommand("select ihtiyac_id from mobilya where olcu=@olcu and renk=@renk", con);
 
-                cmd.Parameters.AddWithValue("@Adet", cnt);
-                cmd.Parameters.AddWithValue("@isim", mobilya_ihtiyac.Text);
-                cmd.Parameters.AddWithValue("@Id", cnt2);
-                cmd.ExecuteNonQuery();
+                kontrol.Parameters.AddWithValue("@isim", mobilya_ihtiyac.Text);
+                kontrol.Parameters.AddWithValue("@marka", mobilya_marka.Text);
+
+                kontrol2.Parameters.AddWithValue("@olcu", mobilya_olcu.Text);
+                kontrol2.Parameters.AddWithValue("@renk", mobilya_renk.Text);
+
+                SqlDataAdapter adapt = new SqlDataAdapter(kontrol);
+                SqlDataAdapter adapt2 = new SqlDataAdapter(kontrol2);
+
+                DataSet ds = new DataSet();
+                DataSet ds2 = new DataSet();
+
+                adapt.Fill(ds);
+                adapt2.Fill(ds2);
+                //eğer sorgunun sonucunda birşy dönerse o zaman listenin üzerine ekleme yapacak yani if'e girecek yoksa else'e girecek
+                int i = ds.Tables[0].Rows.Count;
+                int j = ds2.Tables[0].Rows.Count;
+
+                if (i > 0 && j > 0)
+                {
+                    //var olan adeti istenen kadar arttırıyor
+                    SqlCommand cmd = new SqlCommand("Update ihtiyac set adet=@Adet Where isim = @isim and Id=@Id", con);
+                    int cnt = Convert.ToInt32(kontrol.ExecuteScalar()) + Convert.ToInt32(mobilya_adet.Text.Trim());
+                    int cnt2 = Convert.ToInt32(kontrol2.ExecuteScalar());
+
+                    cmd.Parameters.AddWithValue("@Adet", cnt);
+                    cmd.Parameters.AddWithValue("@isim", mobilya_ihtiyac.Text);
+                    cmd.Parameters.AddWithValue("@Id", cnt2);
+                    cmd.ExecuteNonQuery();
+                }
+                else
+                {
+                    //eski bir kayıt yoksa yenisini ekliyor
+                    SqlCommand cmd = new SqlCommand("insert into ihtiyac(okul_id,isim,adet,marka,fiyat,tur)" +
+        " values(@okul_id,@isim,@adet,@marka,10,'mobilya')", con);
+                    cmd.Parameters.AddWithValue("@isim", mobilya_ihtiyac.Text);
+                    cmd.Parameters.AddWithValue("@adet", mobilya_adet.Text);
+                    cmd.Parameters.AddWithValue("@marka", mobilya_marka.Text);
+                    cmd.Parameters.AddWithValue("@okul_id", okul_id);
+                    cmd.ExecuteNonQuery();
+                }
+
+
+
+                //en son da gerekli bilgileri mobilyaya ekliyor
+                SqlCommand komut = new SqlCommand("select max(id) from ihtiyac", con);
+                int count = Convert.ToInt32(komut.ExecuteScalar());
+                SqlCommand cmd2 = new SqlCommand("insert into mobilya(ihtiyac_id,renk,olcu)" +
+                " values(@ihtiyac_id,@renk,@olcu)", con);
+                cmd2.Parameters.AddWithValue("@ihtiyac_id", count);
+                cmd2.Parameters.AddWithValue("@renk", mobilya_renk.Text);
+                cmd2.Parameters.AddWithValue("@olcu", mobilya_olcu.Text);
+                cmd2.ExecuteNonQuery();
+                kayitGetir();
+                clear();
+
             }
             else
             {
-                //eski bir kayıt yoksa yenisini ekliyor
-                SqlCommand cmd = new SqlCommand("insert into ihtiyac(okul_id,isim,adet,marka,fiyat,tur)" +
-    " values(@okul_id,@isim,@adet,@marka,10,'mobilya')", con);
-                cmd.Parameters.AddWithValue("@isim", mobilya_ihtiyac.Text);
-                cmd.Parameters.AddWithValue("@adet", mobilya_adet.Text);
-                cmd.Parameters.AddWithValue("@marka", mobilya_marka.Text);
-                cmd.Parameters.AddWithValue("@okul_id", okul_id);
-                cmd.ExecuteNonQuery();
+                MessageBox.Show("Bütün alanlar doldurulmalıdır!", "Uyarı");
+                clear();
             }
-
-
-            //en son da gerekli bilgileri mobilyaya ekliyor
-            SqlCommand komut = new SqlCommand("select max(id) from ihtiyac", con);
-            int count = Convert.ToInt32(komut.ExecuteScalar());
-            SqlCommand cmd2 = new SqlCommand("insert into mobilya(ihtiyac_id,renk,olcu)" +
-            " values(@ihtiyac_id,@renk,@olcu)", con);
-            cmd2.Parameters.AddWithValue("@ihtiyac_id", count);
-            cmd2.Parameters.AddWithValue("@renk", mobilya_renk.Text);
-            cmd2.Parameters.AddWithValue("@olcu", mobilya_olcu.Text);
-            cmd2.ExecuteNonQuery();
-            kayitGetir();
-            clear();
-        }
+            }
         //ekran üzerindeki textleri kayıt sonrasında siliyor
         private void clear()
         {
