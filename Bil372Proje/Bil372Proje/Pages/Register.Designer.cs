@@ -377,7 +377,8 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.Azure;
+            this.tabPage1.BackColor = System.Drawing.Color.LavenderBlush;
+            this.tabPage1.BackgroundImage = global::Bil372Proje.Properties.Resources.homeBox_fdcd3087cd12079a35c76302932e6356;
             this.tabPage1.Controls.Add(this.label21);
             this.tabPage1.Controls.Add(this.label20);
             this.tabPage1.Controls.Add(this.label19);
