@@ -31,5 +31,11 @@ namespace Bil372Proje.Pages.admin
             this.Hide();
             tedarikci.Show();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+
+        }
     }
 }

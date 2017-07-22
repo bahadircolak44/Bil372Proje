@@ -48,6 +48,7 @@ namespace Bil372Proje.Pages.yardimsever
             if ((bakiye == 0 || bakiye < mik))
             {
                 MessageBox.Show("Bakiyeniz Yetersiz");
+                con.Close();
                 return false;
             }
             SqlCommand yardimsever = new SqlCommand("update yardimsever set bakiye=bakiye - @ybakiye where kAdi=@kullanici_adi ", con);
