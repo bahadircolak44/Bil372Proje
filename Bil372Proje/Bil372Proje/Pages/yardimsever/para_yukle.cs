@@ -36,12 +36,18 @@ namespace Bil372Proje.Pages.yardimsever
         private void kayiitGuncelle()
         {
             con.Open();
-            string kayit = "update yardimsever set bakiye=bakiye+@bakiye where kAdi=@kullanici_adi";
+            string kayit1 = "select bakiye from yardimsever where kAdi=@kullanici_adi ";
+            SqlCommand komut1 = new SqlCommand(kayit1, con);
+            komut1.Parameters.AddWithValue("@kullanici_adi", kullanici_adi);
 
-
+            string kayit = "update yardimsever set bakiye=@bakiye where kAdi=@kullanici_adi";
+            
+            int bakiye1 = Convert.ToInt32(komut1.ExecuteScalar());
+            int bakiye2 = bakiye1 + Convert.ToInt32(miktar.Text);
             SqlCommand komut = new SqlCommand(kayit, con);
-            komut.Parameters.AddWithValue("@bakiye", miktar.Text);
+
             komut.Parameters.AddWithValue("@kullanici_adi", kullanici_adi);
+            komut.Parameters.AddWithValue("@bakiye", bakiye2);
             komut.ExecuteNonQuery();
             con.Close();
             MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir");
