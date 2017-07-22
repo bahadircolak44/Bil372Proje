@@ -137,9 +137,32 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             con.Close();
         }
 
+        private String totalfiyatgetir()
+        {
+            con.Open();
+            string kayit = "SELECT SUM(fiyat) " +
+                          " from ihtiyac where ihtiyac.okul_id =@okul_id";
+
+            //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
+            SqlCommand komut = new SqlCommand(kayit, con);
+            komut.Parameters.AddWithValue("@okul_id", okul_id);
+            //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
+            SqlDataAdapter da = new SqlDataAdapter(komut);
+            //SqlDataAdapter sınıfı verilerin databaseden aktarılması işlemini gerçekleştirir.
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            //Bir DataTable oluşturarak DataAdapter ile getirilen verileri tablo içerisine dolduruyoruz.
+            var total = komut.ExecuteScalar().ToString();
+            //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
+            con.Close();
+
+            return total;
+        }
+
         private void mobilya_Load(object sender, EventArgs e)
         {
             kayitGetir();
+            button1.Text = totalfiyatgetir() + " TL";
 
         }
 }
