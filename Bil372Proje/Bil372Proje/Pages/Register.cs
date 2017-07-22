@@ -205,9 +205,10 @@ namespace Bil372Proje.Pages
 
                                
                                 
-                                SqlCommand cmd2 = new SqlCommand("insert into okul(kAdi,bakiye,valid) values(@kAdi,0,0)", con);
+                                SqlCommand cmd2 = new SqlCommand("insert into okul(kAdi,bakiye,valid,okul_adi) values(@kAdi,0,0,@okul_adi)", con);
 
                                 cmd2.Parameters.AddWithValue("@kAdi", okul_kullanici_adi.Text);
+                                cmd2.Parameters.AddWithValue("@okul_adi", okul_adi.Text);
                                 cmd.ExecuteNonQuery();
                                 cmd2.ExecuteScalar();
                                 con.Close();
@@ -326,6 +327,11 @@ namespace Bil372Proje.Pages
         }
 
         private void label24_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Ad_TextChanged(object sender, EventArgs e)
         {
 
         }

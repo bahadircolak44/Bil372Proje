@@ -1,4 +1,5 @@
 ﻿using Bil372Proje.Pages.admin.istek_sayfalari;
+using Bil372Proje.Pages.admin.silme_sayfalari;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,7 +35,9 @@ namespace Bil372Proje.Pages.admin
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            okul_sil okul_sil = new okul_sil();
+            this.Hide();
+            okul_sil.Show();
 
         }
     }

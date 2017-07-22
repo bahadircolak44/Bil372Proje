@@ -83,6 +83,12 @@
     <Compile Include="Pages\admin\istek_sayfalari\tedarikci_istek.Designer.cs">
       <DependentUpon>tedarikci_istek.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\admin\silme_sayfalari\okul_sil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\admin\silme_sayfalari\okul_sil.Designer.cs">
+      <DependentUpon>okul_sil.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\okul\ihtiyaclar\giysi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,6 +226,9 @@
     <EmbeddedResource Include="Pages\admin\istek_sayfalari\tedarikci_istek.resx">
       <DependentUpon>tedarikci_istek.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\admin\silme_sayfalari\okul_sil.resx">
+      <DependentUpon>okul_sil.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pages\okul\ihtiyaclar\giysi.resx">
       <DependentUpon>giysi.cs</DependentUpon>
     </EmbeddedResource>
@@ -329,5 +338,6 @@
   <ItemGroup>
     <None Include="Resources\homeBox-fdcd3087cd12079a35c76302932e6356.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
