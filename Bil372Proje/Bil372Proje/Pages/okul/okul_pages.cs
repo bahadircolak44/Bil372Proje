@@ -31,7 +31,7 @@ namespace Bil372Proje.Pages.okul
 
         private void okul_pages_Load(object sender, EventArgs e)
         {
-           bakiye_btn.Text= kayitGetir();
+           bakiye_btn.Text= kayitGetir()+ " TL";
         }
 
         private String kayitGetir()
@@ -51,5 +51,6 @@ namespace Bil372Proje.Pages.okul
             con.Close();
             return bakiye;
         }
+
     }
 }
