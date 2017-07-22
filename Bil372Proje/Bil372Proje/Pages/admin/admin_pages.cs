@@ -40,5 +40,19 @@ namespace Bil372Proje.Pages.admin
             okul_sil.Show();
 
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            yardimsever_sil yardimseverSil = new yardimsever_sil();
+            this.Hide();
+            yardimseverSil.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            tedarikci_sil tedarikciSil = new tedarikci_sil();
+            this.Hide();
+            tedarikciSil.Show();
+        }
     }
 }

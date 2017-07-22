@@ -89,6 +89,18 @@
     <Compile Include="Pages\admin\silme_sayfalari\okul_sil.Designer.cs">
       <DependentUpon>okul_sil.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\admin\silme_sayfalari\tedarikci_sil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\admin\silme_sayfalari\tedarikci_sil.Designer.cs">
+      <DependentUpon>tedarikci_sil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\admin\silme_sayfalari\yardimsever_sil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\admin\silme_sayfalari\yardimsever_sil.Designer.cs">
+      <DependentUpon>yardimsever_sil.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\okul\ihtiyaclar\giysi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -228,6 +240,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\admin\silme_sayfalari\okul_sil.resx">
       <DependentUpon>okul_sil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\admin\silme_sayfalari\tedarikci_sil.resx">
+      <DependentUpon>tedarikci_sil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\admin\silme_sayfalari\yardimsever_sil.resx">
+      <DependentUpon>yardimsever_sil.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\okul\ihtiyaclar\giysi.resx">
       <DependentUpon>giysi.cs</DependentUpon>

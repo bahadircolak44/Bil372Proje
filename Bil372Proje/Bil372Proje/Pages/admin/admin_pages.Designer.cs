@@ -38,7 +38,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(188, 124);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(124, 59);
             this.button1.TabIndex = 0;
@@ -49,7 +49,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(436, 124);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(126, 59);
             this.button2.TabIndex = 1;
@@ -75,6 +75,7 @@
             this.button4.TabIndex = 3;
             this.button4.Text = "Tedarikçi Sil";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -84,6 +85,7 @@
             this.button5.TabIndex = 4;
             this.button5.Text = "Yardımsever Sil";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // admin_pages
             // 
@@ -95,7 +97,7 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "admin_pages";
             this.Text = "admin_pages";
             this.ResumeLayout(false);
