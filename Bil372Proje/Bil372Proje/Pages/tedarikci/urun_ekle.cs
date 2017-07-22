@@ -30,19 +30,31 @@ namespace Bil372Proje.Pages.tedarikci
 
         private void ekle_btn_Click(object sender, EventArgs e)
         {
-            con.Open();
-            string kayit = "insert into urun(kategori,ad,stok_miktari,fiyat,marka) " +
-                "values(@kategori,@ad,@stok_miktari,@fiyat,@marka)";
-            SqlCommand komut = new SqlCommand(kayit, con);
-            komut.Parameters.AddWithValue("@kategori", katagori.Text);
-            komut.Parameters.AddWithValue("@ad", ad.Text);
-            komut.Parameters.AddWithValue("@stok_miktari", stok_miktari.Text);
-            komut.Parameters.AddWithValue("@fiyat", fiyat.Text);
-            komut.Parameters.AddWithValue("@marka", marka.Text);
-            komut.ExecuteNonQuery();
-            con.Close();
-            kayitGetir();
-            clear();
+
+            if (! ( katagori.Text.Equals(string.Empty) ||ad.Text.Equals(string.Empty) ||
+                 marka.Text.Equals(string.Empty) || stok_miktari.Text.Equals(string.Empty) ||
+                 fiyat.Text.Equals(string.Empty) )) {
+                con.Open();
+                string kayit = "insert into urun(kategori,ad,stok_miktari,fiyat,marka) " +
+                    "values(@kategori,@ad,@stok_miktari,@fiyat,@marka)";
+                SqlCommand komut = new SqlCommand(kayit, con);
+                komut.Parameters.AddWithValue("@kategori", katagori.Text);
+                komut.Parameters.AddWithValue("@ad", ad.Text);
+                komut.Parameters.AddWithValue("@stok_miktari", stok_miktari.Text);
+                komut.Parameters.AddWithValue("@fiyat", fiyat.Text);
+                komut.Parameters.AddWithValue("@marka", marka.Text);
+                komut.ExecuteNonQuery();
+                con.Close();
+                kayitGetir();
+                clear();
+            }
+            else
+            {
+                MessageBox.Show("Tüm Alanların Doldurulması Gerekli", "HATA");
+
+            }
+
+            
         }
         private void clear()
         {
