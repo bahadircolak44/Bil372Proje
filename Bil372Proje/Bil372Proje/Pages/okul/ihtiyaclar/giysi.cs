@@ -95,6 +95,7 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             cmd2.Parameters.AddWithValue("@kumas", giysi_kumas.Text);
             cmd2.Parameters.AddWithValue("@cinsiyet", giysi_cinsiyet.Text);
             cmd2.ExecuteNonQuery();
+            
             kayitGetir();
             clear();
             }
