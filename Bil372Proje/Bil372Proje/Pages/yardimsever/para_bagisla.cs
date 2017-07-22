@@ -69,7 +69,32 @@ namespace Bil372Proje.Pages.yardimsever
 
         private void bagisla_Click(object sender, EventArgs e)
         {
+         
             kayitGuncelle();
+
+        }
+
+        private int bakiyeGetir()
+        {
+            con.Open();
+            //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
+            SqlCommand komut = new SqlCommand("SELECT bakiye from yardimsever where kAdi=@kullanici_adi", con);
+            komut.Parameters.AddWithValue("@kullanici_adi", kullanici_adi);
+            //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
+            SqlDataAdapter da = new SqlDataAdapter(komut);
+            //SqlDataAdapter sınıfı verilerin databaseden aktarılması işlemini gerçekleştirir.
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            //Bir DataTable oluşturarak DataAdapter ile getirilen verileri tablo içerisine dolduruyoruz.
+            int bakiye = Convert.ToInt32(komut.ExecuteScalar());
+            //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
+            con.Close();
+            return bakiye;
+        }
+
+        private void para_bagisla_Load(object sender, EventArgs e)
+        {
+            button1.Text = bakiyeGetir() + " TL";
         }
     }
 }
