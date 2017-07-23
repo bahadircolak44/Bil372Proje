@@ -52,5 +52,11 @@ namespace Bil372Proje.Pages.okul
             return bakiye;
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ihtiyac_karsila karsila = new ihtiyac_karsila(kAdi);
+            this.Hide();
+            karsila.Show();
+        }
     }
 }
