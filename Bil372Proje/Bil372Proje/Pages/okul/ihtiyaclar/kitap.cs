@@ -156,8 +156,32 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
 
         private void kitap_Load(object sender, EventArgs e)
         {
+            comboboxGetir();
             kayitGetir();
             button3.Text = totalfiyatgetir() + " TL";
+        }
+
+        private void comboboxGetir()
+        {
+            SqlCommand komut = new SqlCommand();
+            komut.CommandText = "SELECT * FROM urun where kategori = @kategori";
+            komut.Parameters.AddWithValue("@kategori", "kitap");
+            komut.Connection = con;
+            komut.CommandType = CommandType.Text;
+
+            SqlDataReader dr;
+            con.Open();
+            dr = komut.ExecuteReader();
+            while (dr.Read())
+            {
+                kitap_ihtiyac.Items.Add(dr["ad"]);
+                kitap_tur.Items.Add(dr["tur"]);
+                kitap_yazar.Items.Add(dr["yazar"]);
+                kitap_yayin_evi.Items.Add(dr["yayin_evi"]);
+                kitap_yayin_yili.Items.Add(dr["yayin_yili"]);
+
+            }
+            con.Close();
         }
     }
 }

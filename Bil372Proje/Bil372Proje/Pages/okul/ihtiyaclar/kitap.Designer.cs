@@ -38,12 +38,12 @@
             this.kitap_yayin_yili = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.kitap_yazar = new System.Windows.Forms.TextBox();
-            this.kitap_yayin_evi = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.kitap_adet = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button3 = new System.Windows.Forms.Button();
+            this.kitap_yayin_evi = new System.Windows.Forms.ComboBox();
+            this.kitap_yazar = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,8 +100,6 @@
             // kitap_ihtiyac
             // 
             this.kitap_ihtiyac.FormattingEnabled = true;
-            this.kitap_ihtiyac.Items.AddRange(new object[] {
-            "kitap"});
             this.kitap_ihtiyac.Location = new System.Drawing.Point(372, 62);
             this.kitap_ihtiyac.Name = "kitap_ihtiyac";
             this.kitap_ihtiyac.Size = new System.Drawing.Size(188, 21);
@@ -110,8 +108,6 @@
             // kitap_tur
             // 
             this.kitap_tur.FormattingEnabled = true;
-            this.kitap_tur.Items.AddRange(new object[] {
-            "roman"});
             this.kitap_tur.Location = new System.Drawing.Point(372, 119);
             this.kitap_tur.Name = "kitap_tur";
             this.kitap_tur.Size = new System.Drawing.Size(188, 21);
@@ -122,8 +118,6 @@
             this.kitap_yayin_yili.AutoCompleteCustomSource.AddRange(new string[] {
             "2017"});
             this.kitap_yayin_yili.FormattingEnabled = true;
-            this.kitap_yayin_yili.Items.AddRange(new object[] {
-            "1819-Dec-14"});
             this.kitap_yayin_yili.Location = new System.Drawing.Point(372, 319);
             this.kitap_yayin_yili.Name = "kitap_yayin_yili";
             this.kitap_yayin_yili.Size = new System.Drawing.Size(188, 21);
@@ -151,24 +145,6 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // kitap_yazar
-            // 
-            this.kitap_yazar.AutoCompleteCustomSource.AddRange(new string[] {
-            "orhan pamuk"});
-            this.kitap_yazar.Location = new System.Drawing.Point(372, 185);
-            this.kitap_yazar.Name = "kitap_yazar";
-            this.kitap_yazar.Size = new System.Drawing.Size(188, 20);
-            this.kitap_yazar.TabIndex = 12;
-            // 
-            // kitap_yayin_evi
-            // 
-            this.kitap_yayin_evi.AutoCompleteCustomSource.AddRange(new string[] {
-            "pi"});
-            this.kitap_yayin_evi.Location = new System.Drawing.Point(372, 248);
-            this.kitap_yayin_evi.Name = "kitap_yayin_evi";
-            this.kitap_yayin_evi.Size = new System.Drawing.Size(188, 20);
-            this.kitap_yayin_evi.TabIndex = 13;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -193,16 +169,6 @@
             "9",
             "10"});
             this.kitap_adet.FormattingEnabled = true;
-            this.kitap_adet.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9"});
             this.kitap_adet.Location = new System.Drawing.Point(372, 380);
             this.kitap_adet.Name = "kitap_adet";
             this.kitap_adet.Size = new System.Drawing.Size(188, 21);
@@ -212,7 +178,7 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(601, 24);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(279, 464);
@@ -227,18 +193,34 @@
             this.button3.Text = "button3";
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // kitap_yayin_evi
+            // 
+            this.kitap_yayin_evi.FormattingEnabled = true;
+            this.kitap_yayin_evi.Location = new System.Drawing.Point(372, 248);
+            this.kitap_yayin_evi.Name = "kitap_yayin_evi";
+            this.kitap_yayin_evi.Size = new System.Drawing.Size(188, 21);
+            this.kitap_yayin_evi.TabIndex = 18;
+            // 
+            // kitap_yazar
+            // 
+            this.kitap_yazar.FormattingEnabled = true;
+            this.kitap_yazar.Location = new System.Drawing.Point(372, 185);
+            this.kitap_yazar.Name = "kitap_yazar";
+            this.kitap_yazar.Size = new System.Drawing.Size(187, 21);
+            this.kitap_yazar.TabIndex = 19;
+            // 
             // kitap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(889, 497);
+            this.Controls.Add(this.kitap_yazar);
+            this.Controls.Add(this.kitap_yayin_evi);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.kitap_adet);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.kitap_yayin_evi);
-            this.Controls.Add(this.kitap_yazar);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.kitap_yayin_yili);
@@ -270,11 +252,11 @@
         private System.Windows.Forms.ComboBox kitap_yayin_yili;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox kitap_yazar;
-        private System.Windows.Forms.TextBox kitap_yayin_evi;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox kitap_adet;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ComboBox kitap_yayin_evi;
+        private System.Windows.Forms.ComboBox kitap_yazar;
     }
 }

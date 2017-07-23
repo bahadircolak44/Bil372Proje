@@ -77,18 +77,8 @@
             // kirtasiye_ihtiyac
             // 
             this.kirtasiye_ihtiyac.FormattingEnabled = true;
-            this.kirtasiye_ihtiyac.Items.AddRange(new object[] {
-            "kalem",
-            "silgi",
-            "kağıt",
-            "makas",
-            "tükenmez kalem",
-            "kırmızı kalem",
-            "bant",
-            "cilt",
-            "dolma kalem"});
             this.kirtasiye_ihtiyac.Location = new System.Drawing.Point(200, 127);
-            this.kirtasiye_ihtiyac.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.kirtasiye_ihtiyac.Margin = new System.Windows.Forms.Padding(2);
             this.kirtasiye_ihtiyac.Name = "kirtasiye_ihtiyac";
             this.kirtasiye_ihtiyac.Size = new System.Drawing.Size(187, 21);
             this.kirtasiye_ihtiyac.TabIndex = 3;
@@ -96,10 +86,8 @@
             // kirtasiye_marka
             // 
             this.kirtasiye_marka.FormattingEnabled = true;
-            this.kirtasiye_marka.Items.AddRange(new object[] {
-            "Faber Castel"});
             this.kirtasiye_marka.Location = new System.Drawing.Point(200, 193);
-            this.kirtasiye_marka.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.kirtasiye_marka.Margin = new System.Windows.Forms.Padding(2);
             this.kirtasiye_marka.Name = "kirtasiye_marka";
             this.kirtasiye_marka.Size = new System.Drawing.Size(187, 21);
             this.kirtasiye_marka.TabIndex = 4;
@@ -107,29 +95,8 @@
             // kirtasiye_adet
             // 
             this.kirtasiye_adet.FormattingEnabled = true;
-            this.kirtasiye_adet.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20"});
             this.kirtasiye_adet.Location = new System.Drawing.Point(200, 256);
-            this.kirtasiye_adet.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.kirtasiye_adet.Margin = new System.Windows.Forms.Padding(2);
             this.kirtasiye_adet.Name = "kirtasiye_adet";
             this.kirtasiye_adet.Size = new System.Drawing.Size(187, 21);
             this.kirtasiye_adet.TabIndex = 5;
@@ -137,7 +104,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(200, 333);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(80, 39);
             this.button1.TabIndex = 6;
@@ -148,7 +115,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(306, 334);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(80, 38);
             this.button2.TabIndex = 7;
@@ -161,7 +128,7 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.Azure;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(542, 9);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(365, 479);
@@ -192,7 +159,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "kirtasiye";
             this.Text = "kirtasiye";
             this.Load += new System.EventHandler(this.kirtasiye_Load);

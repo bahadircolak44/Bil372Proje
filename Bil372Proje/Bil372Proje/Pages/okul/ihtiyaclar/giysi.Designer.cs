@@ -156,14 +156,12 @@
             // giysi_ihtiyac
             // 
             this.giysi_ihtiyac.FormattingEnabled = true;
-            this.giysi_ihtiyac.Items.AddRange(new object[] {
-            "Tshirt",
-            "kot"});
             this.giysi_ihtiyac.Location = new System.Drawing.Point(260, 45);
             this.giysi_ihtiyac.Margin = new System.Windows.Forms.Padding(2);
             this.giysi_ihtiyac.Name = "giysi_ihtiyac";
             this.giysi_ihtiyac.Size = new System.Drawing.Size(177, 21);
             this.giysi_ihtiyac.TabIndex = 16;
+            this.giysi_ihtiyac.SelectedIndexChanged += new System.EventHandler(this.giysi_ihtiyac_SelectedIndexChanged);
             // 
             // giysi_adet
             // 
@@ -188,22 +186,16 @@
             // giysi_marka
             // 
             this.giysi_marka.FormattingEnabled = true;
-            this.giysi_marka.Items.AddRange(new object[] {
-            "asdsfsf"});
             this.giysi_marka.Location = new System.Drawing.Point(260, 146);
             this.giysi_marka.Margin = new System.Windows.Forms.Padding(2);
             this.giysi_marka.Name = "giysi_marka";
             this.giysi_marka.Size = new System.Drawing.Size(177, 21);
             this.giysi_marka.TabIndex = 18;
+            this.giysi_marka.SelectedIndexChanged += new System.EventHandler(this.giysi_marka_SelectedIndexChanged);
             // 
             // giysi_beden
             // 
             this.giysi_beden.FormattingEnabled = true;
-            this.giysi_beden.Items.AddRange(new object[] {
-            "Small",
-            "Medium",
-            "Larga",
-            "X-Large"});
             this.giysi_beden.Location = new System.Drawing.Point(260, 194);
             this.giysi_beden.Margin = new System.Windows.Forms.Padding(2);
             this.giysi_beden.Name = "giysi_beden";
@@ -213,10 +205,6 @@
             // giysi_renk
             // 
             this.giysi_renk.FormattingEnabled = true;
-            this.giysi_renk.Items.AddRange(new object[] {
-            "Sari",
-            "Kirmizi",
-            "Mavi"});
             this.giysi_renk.Location = new System.Drawing.Point(260, 249);
             this.giysi_renk.Margin = new System.Windows.Forms.Padding(2);
             this.giysi_renk.Name = "giysi_renk";
@@ -226,11 +214,6 @@
             // giysi_kumas
             // 
             this.giysi_kumas.FormattingEnabled = true;
-            this.giysi_kumas.Items.AddRange(new object[] {
-            "a",
-            "b",
-            "c",
-            "d"});
             this.giysi_kumas.Location = new System.Drawing.Point(260, 305);
             this.giysi_kumas.Margin = new System.Windows.Forms.Padding(2);
             this.giysi_kumas.Name = "giysi_kumas";
@@ -240,9 +223,6 @@
             // giysi_cinsiyet
             // 
             this.giysi_cinsiyet.FormattingEnabled = true;
-            this.giysi_cinsiyet.Items.AddRange(new object[] {
-            "kiz",
-            "erkek"});
             this.giysi_cinsiyet.Location = new System.Drawing.Point(260, 356);
             this.giysi_cinsiyet.Margin = new System.Windows.Forms.Padding(2);
             this.giysi_cinsiyet.Name = "giysi_cinsiyet";
