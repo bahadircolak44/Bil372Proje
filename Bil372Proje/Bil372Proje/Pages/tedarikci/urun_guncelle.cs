@@ -50,15 +50,27 @@ namespace Bil372Proje.Pages.tedarikci
 
         private void Guncelle_Click(object sender, EventArgs e)
         {
+            int Id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[1].Value.ToString());
+            guncelle gun = new guncelle(Id);
+            this.Hide();
+            gun.Show();
+        }
 
+        private void Guncelle_Click(object sender, MouseEventArgs e)
+        {
 
+        }
 
-
-
-
-
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+            con.Open();
+            int Id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[1].Value.ToString());
+            SqlCommand cmd = new SqlCommand("delete from urun where Id=@Id", con);
+            cmd.Parameters.AddWithValue("@Id",Id);
+            cmd.ExecuteNonQuery();
+            con.Close();
             kayitGetir();
+
         }
     }
 }

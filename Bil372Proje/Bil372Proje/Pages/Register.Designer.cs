@@ -150,6 +150,7 @@
             this.tabPage4.Size = new System.Drawing.Size(779, 548);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Tedarikçi";
+
             // 
             // tedarikci_posta
             // 
