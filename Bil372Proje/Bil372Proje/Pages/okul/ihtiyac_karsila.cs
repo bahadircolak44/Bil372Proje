@@ -51,7 +51,8 @@ namespace Bil372Proje.Pages.okul
             string[] row = {Id.ToString(),isim,adet,marka,fiyat.ToString(),tur};
             var satir = new ListViewItem(row);
             listView1.Items.Add(satir);
-            label2.Text = toplam.ToString() ;
+            label2.Text = toplam.ToString();
+            dataGridView1.Rows.RemoveAt(dataGridView1.CurrentRow.Index);
 
         }
 
