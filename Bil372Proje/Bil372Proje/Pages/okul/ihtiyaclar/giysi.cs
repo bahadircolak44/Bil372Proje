@@ -166,8 +166,10 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
 
             return total;
         }
-      
 
+        private void button1_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

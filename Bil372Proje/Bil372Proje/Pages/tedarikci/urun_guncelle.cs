@@ -50,15 +50,10 @@ namespace Bil372Proje.Pages.tedarikci
 
         private void Guncelle_Click(object sender, EventArgs e)
         {
-
-
-
-
-
-
-
-
-            kayitGetir();
+            int Id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[1].Value.ToString());
+            guncelle gun = new guncelle(Id);
+            this.Hide();
+            gun.Show();
         }
     }
 }
