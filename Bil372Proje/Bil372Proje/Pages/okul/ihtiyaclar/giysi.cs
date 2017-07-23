@@ -142,9 +142,37 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
         }
         private void giysi_Load(object sender, EventArgs e)
         {
+            comboboxGetir();
             kayitGetir();
             button1.Text=totalfiyatgetir() + " TL";
         }
+
+        private void comboboxGetir()
+        {
+           
+            SqlCommand komut = new SqlCommand();
+            komut.CommandText = "SELECT * FROM urun where kategori = @kategori";
+            komut.Parameters.AddWithValue("@kategori", "giysi");
+            komut.Connection = con;
+            komut.CommandType = CommandType.Text;
+
+            SqlDataReader dr;
+            con.Open();
+            dr = komut.ExecuteReader();
+            while (dr.Read())
+            {
+                giysi_ihtiyac.Items.Add(dr["ad"]);
+                giysi_marka.Items.Add(dr["marka"]);
+                giysi_beden.Items.Add(dr["beden"]);
+                giysi_renk.Items.Add(dr["renk"]);
+                giysi_kumas.Items.Add(dr["kumas"]);
+                giysi_cinsiyet.Items.Add(dr["cinsiyet"]);
+
+            }
+            con.Close();
+
+        }
+
         private String totalfiyatgetir()
         {
             con.Open();
@@ -167,7 +195,12 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             return total;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void giysi_ihtiyac_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void giysi_marka_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

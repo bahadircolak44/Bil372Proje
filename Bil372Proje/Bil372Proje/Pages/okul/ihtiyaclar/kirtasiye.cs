@@ -113,9 +113,31 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
 
         private void kirtasiye_Load(object sender, EventArgs e)
         {
+            comboboxGetir();
             kayitGetir();
             button3.Text = totalfiyatgetir();
         }
+
+        private void comboboxGetir()
+        {
+            SqlCommand komut = new SqlCommand();
+            komut.CommandText = "SELECT * FROM urun where kategori = @kategori";
+            komut.Parameters.AddWithValue("@kategori", "kirtasiye");
+            komut.Connection = con;
+            komut.CommandType = CommandType.Text;
+
+            SqlDataReader dr;
+            con.Open();
+            dr = komut.ExecuteReader();
+            while (dr.Read())
+            {
+                kirtasiye_ihtiyac.Items.Add(dr["ad"]);
+                kirtasiye_marka.Items.Add(dr["marka"]);
+                
+            }
+            con.Close();
+        }
+
         private String totalfiyatgetir()
         {
             con.Open();
