@@ -46,6 +46,7 @@
             this.giysi_kumas = new System.Windows.Forms.ComboBox();
             this.giysi_cinsiyet = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,8 +108,8 @@
             // giysi_ekle
             // 
             this.giysi_ekle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
-            this.giysi_ekle.Location = new System.Drawing.Point(347, 506);
-            this.giysi_ekle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.giysi_ekle.Location = new System.Drawing.Point(206, 562);
+            this.giysi_ekle.Margin = new System.Windows.Forms.Padding(4);
             this.giysi_ekle.Name = "giysi_ekle";
             this.giysi_ekle.Size = new System.Drawing.Size(125, 41);
             this.giysi_ekle.TabIndex = 11;
@@ -119,8 +120,8 @@
             // giysi_geri
             // 
             this.giysi_geri.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold);
-            this.giysi_geri.Location = new System.Drawing.Point(559, 506);
-            this.giysi_geri.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.giysi_geri.Location = new System.Drawing.Point(453, 562);
+            this.giysi_geri.Margin = new System.Windows.Forms.Padding(4);
             this.giysi_geri.Name = "giysi_geri";
             this.giysi_geri.Size = new System.Drawing.Size(129, 39);
             this.giysi_geri.TabIndex = 12;
@@ -135,7 +136,7 @@
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(361, 452);
+            this.dataGridView1.Size = new System.Drawing.Size(361, 436);
             this.dataGridView1.TabIndex = 13;
             // 
             // label5
@@ -256,14 +257,24 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(43, 58);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Location = new System.Drawing.Point(787, 550);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(136, 62);
+            this.button1.Size = new System.Drawing.Size(361, 62);
             this.button1.TabIndex = 23;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label7.Location = new System.Drawing.Point(897, 497);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(97, 25);
+            this.label7.TabIndex = 24;
+            this.label7.Text = "Toplam :";
             // 
             // giysi
             // 
@@ -271,6 +282,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(1159, 692);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.giysi_cinsiyet);
             this.Controls.Add(this.giysi_kumas);
@@ -319,5 +331,6 @@
         private System.Windows.Forms.ComboBox giysi_kumas;
         private System.Windows.Forms.ComboBox giysi_cinsiyet;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label7;
     }
 }

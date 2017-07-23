@@ -149,6 +149,12 @@
     <Compile Include="Pages\okul\ihtiyac_ekle.Designer.cs">
       <DependentUpon>ihtiyac_ekle.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\okul\ihtiyac_karsila.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\okul\ihtiyac_karsila.Designer.cs">
+      <DependentUpon>ihtiyac_karsila.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\okul\okul_pages.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -276,6 +282,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\okul\ihtiyac_ekle.resx">
       <DependentUpon>ihtiyac_ekle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\okul\ihtiyac_karsila.resx">
+      <DependentUpon>ihtiyac_karsila.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\okul\okul_pages.resx">
       <DependentUpon>okul_pages.cs</DependentUpon>
