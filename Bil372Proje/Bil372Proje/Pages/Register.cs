@@ -1,5 +1,4 @@
-﻿using Npgsql;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,12 +20,11 @@ namespace Bil372Proje.Pages
          *  Tedarikci =3 şeklinde olacak
          */
         Login login;
-        NpgsqlConnection con; 
+        SqlConnection con;
         public Register()
         {
             InitializeComponent();
-            
-            con = new NpgsqlConnection("Host = bil372db.postgres.database.azure.com; Username = bahadir@bil372db; Password = Qwerty123; Database = bil372");
+            con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
             login = new Login();
 
 
@@ -61,7 +59,7 @@ namespace Bil372Proje.Pages
                         {
                             con.Open();
                                // SqlCommand cmd1 = con.CreateCommand();
-                            NpgsqlCommand cmd = new NpgsqlCommand("insert into kullanici(kullanici_adi,sifre,email,il,ilce,mahalle,adress,posta_kodu,telefon,yetki)" +
+                            SqlCommand cmd = new SqlCommand("insert into kullanici(kullanici_adi,sifre,email,il,ilce,mahalle,adress,posta_kodu,telefon,yetki)" +
                             " values(@kullanici_adi, @sifre, @email, @il, @ilce, @mahalle, @adres, @posta, @telefon ,1)", con);
 
                                 cmd.Parameters.AddWithValue("@kullanici_adi", kullanici_adi.Text);
@@ -72,11 +70,11 @@ namespace Bil372Proje.Pages
                                 cmd.Parameters.AddWithValue("@mahalle", mahalle.Text);
                                 cmd.Parameters.AddWithValue("@adres", adres.Text);
                                 cmd.Parameters.AddWithValue("@posta", posta_kutusu.Text);
-                                cmd.Parameters.AddWithValue("@telefon", Convert.ToInt32(tel.Text));
+                                cmd.Parameters.AddWithValue("@telefon", tel.Text);
                                                                 
                                 cmd.ExecuteNonQuery();
-
-                                NpgsqlCommand cmd2 = new NpgsqlCommand("insert into yardimsever(kAdi,ad,soyad,cinsiyet,bakiye)"+
+                                
+                                 SqlCommand cmd2 = new SqlCommand("insert into yardimsever(kAdi,ad,soyad,cinsiyet,bakiye)"+
                                      " values(@kAdi, @ad, @soyAd, @cinsiyet, 0)" ,con );
                                 cmd2.Parameters.AddWithValue("@kAdi", kullanici_adi.Text);
                                 cmd2.Parameters.AddWithValue("@ad", Ad.Text);
@@ -191,8 +189,8 @@ namespace Bil372Proje.Pages
                             {
                                 //Database sistemi oluşturulduktan sonra
                                 con.Open();
-
-                                NpgsqlCommand cmd = new NpgsqlCommand("insert into kullanici(kullanici_adi,sifre,email,il,ilce,mahalle,adress,posta_kodu,telefon,yetki)" +
+                               
+                                SqlCommand cmd = new SqlCommand("insert into kullanici(kullanici_adi,sifre,email,il,ilce,mahalle,adress,posta_kodu,telefon,yetki)" +
                             " values(@kullanici_adi, @sifre, @email, @il, @ilce, @mahalle, @adres, @posta, @telefon ,2)", con);
 
                                 cmd.Parameters.AddWithValue("@kullanici_adi", okul_kullanici_adi.Text);
@@ -205,11 +203,12 @@ namespace Bil372Proje.Pages
                                 cmd.Parameters.AddWithValue("@posta", okul_posta.Text);
                                 cmd.Parameters.AddWithValue("@telefon", okul_telefon.Text);
 
-
-
-                                NpgsqlCommand cmd2 = new NpgsqlCommand("insert into okul(kAdi,bakiye,valid) values(@kAdi,0,0)", con);
+                               
+                                
+                                SqlCommand cmd2 = new SqlCommand("insert into okul(kAdi,bakiye,valid,okul_adi) values(@kAdi,0,0,@okul_adi)", con);
 
                                 cmd2.Parameters.AddWithValue("@kAdi", okul_kullanici_adi.Text);
+                                cmd2.Parameters.AddWithValue("@okul_adi", okul_adi.Text);
                                 cmd.ExecuteNonQuery();
                                 cmd2.ExecuteScalar();
                                 con.Close();
@@ -268,7 +267,7 @@ namespace Bil372Proje.Pages
                             {
                                 //Database sistemi oluşturulduktan sonra
                                 con.Open();
-                                NpgsqlCommand cmd = new NpgsqlCommand("insert into kullanici(kullanici_adi,sifre,email,il,ilce,mahalle,adress,posta_kodu,telefon,yetki)" +
+                                SqlCommand cmd = new SqlCommand("insert into kullanici(kullanici_adi,sifre,email,il,ilce,mahalle,adress,posta_kodu,telefon,yetki)" +
                             " values(@kullanici_adi, @sifre, @email, @il, @ilce, @mahalle, @adres, @posta, @telefon ,3)", con);
 
                                 cmd.Parameters.AddWithValue("@kullanici_adi", tedarikci_kullanici_adi.Text);
@@ -284,7 +283,7 @@ namespace Bil372Proje.Pages
                                 cmd.ExecuteNonQuery();
 
 
-                                NpgsqlCommand cmd2 = new NpgsqlCommand("insert into tedarikci(kAdi,firma_adi,bakiye,valid) values(@kAdi,@firma_adi,0,0)", con);
+                                SqlCommand cmd2 = new SqlCommand("insert into tedarikci(kAdi,firma_adi,bakiye,valid) values(@kAdi,@firma_adi,0,0)", con);
 
                                 cmd2.Parameters.AddWithValue("@kAdi", tedarikci_kullanici_adi.Text);
                                 cmd2.Parameters.AddWithValue("@firma_adi", firma_adi.Text);
@@ -332,7 +331,7 @@ namespace Bil372Proje.Pages
 
         }
 
-        private void tabPage4_Click_1(object sender, EventArgs e)
+        private void Ad_TextChanged(object sender, EventArgs e)
         {
 
         }

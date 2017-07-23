@@ -59,5 +59,10 @@ namespace Bil372Proje.Pages
             this.Hide();
             yukle.Show();
         }
+
+        private void bakiye_btn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

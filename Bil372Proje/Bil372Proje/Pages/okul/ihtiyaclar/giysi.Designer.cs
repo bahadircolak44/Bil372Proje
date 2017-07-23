@@ -45,6 +45,7 @@
             this.giysi_renk = new System.Windows.Forms.ComboBox();
             this.giysi_kumas = new System.Windows.Forms.ComboBox();
             this.giysi_cinsiyet = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -124,7 +125,7 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(590, 10);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(271, 367);
@@ -159,7 +160,7 @@
             "Tshirt",
             "kot"});
             this.giysi_ihtiyac.Location = new System.Drawing.Point(260, 45);
-            this.giysi_ihtiyac.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.giysi_ihtiyac.Margin = new System.Windows.Forms.Padding(2);
             this.giysi_ihtiyac.Name = "giysi_ihtiyac";
             this.giysi_ihtiyac.Size = new System.Drawing.Size(177, 21);
             this.giysi_ihtiyac.TabIndex = 16;
@@ -179,7 +180,7 @@
             "9",
             "10"});
             this.giysi_adet.Location = new System.Drawing.Point(260, 97);
-            this.giysi_adet.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.giysi_adet.Margin = new System.Windows.Forms.Padding(2);
             this.giysi_adet.Name = "giysi_adet";
             this.giysi_adet.Size = new System.Drawing.Size(177, 21);
             this.giysi_adet.TabIndex = 17;
@@ -190,7 +191,7 @@
             this.giysi_marka.Items.AddRange(new object[] {
             "asdsfsf"});
             this.giysi_marka.Location = new System.Drawing.Point(260, 146);
-            this.giysi_marka.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.giysi_marka.Margin = new System.Windows.Forms.Padding(2);
             this.giysi_marka.Name = "giysi_marka";
             this.giysi_marka.Size = new System.Drawing.Size(177, 21);
             this.giysi_marka.TabIndex = 18;
@@ -204,7 +205,7 @@
             "Larga",
             "X-Large"});
             this.giysi_beden.Location = new System.Drawing.Point(260, 194);
-            this.giysi_beden.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.giysi_beden.Margin = new System.Windows.Forms.Padding(2);
             this.giysi_beden.Name = "giysi_beden";
             this.giysi_beden.Size = new System.Drawing.Size(177, 21);
             this.giysi_beden.TabIndex = 19;
@@ -217,7 +218,7 @@
             "Kirmizi",
             "Mavi"});
             this.giysi_renk.Location = new System.Drawing.Point(260, 249);
-            this.giysi_renk.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.giysi_renk.Margin = new System.Windows.Forms.Padding(2);
             this.giysi_renk.Name = "giysi_renk";
             this.giysi_renk.Size = new System.Drawing.Size(177, 21);
             this.giysi_renk.TabIndex = 20;
@@ -231,7 +232,7 @@
             "c",
             "d"});
             this.giysi_kumas.Location = new System.Drawing.Point(260, 305);
-            this.giysi_kumas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.giysi_kumas.Margin = new System.Windows.Forms.Padding(2);
             this.giysi_kumas.Name = "giysi_kumas";
             this.giysi_kumas.Size = new System.Drawing.Size(177, 21);
             this.giysi_kumas.TabIndex = 21;
@@ -243,10 +244,19 @@
             "kiz",
             "erkek"});
             this.giysi_cinsiyet.Location = new System.Drawing.Point(260, 356);
-            this.giysi_cinsiyet.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.giysi_cinsiyet.Margin = new System.Windows.Forms.Padding(2);
             this.giysi_cinsiyet.Name = "giysi_cinsiyet";
             this.giysi_cinsiyet.Size = new System.Drawing.Size(177, 21);
             this.giysi_cinsiyet.TabIndex = 22;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(32, 47);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(102, 50);
+            this.button1.TabIndex = 23;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // giysi
             // 
@@ -254,6 +264,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(869, 562);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.giysi_cinsiyet);
             this.Controls.Add(this.giysi_kumas);
             this.Controls.Add(this.giysi_renk);
@@ -271,7 +282,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "giysi";
             this.Text = "giysi";
             this.Load += new System.EventHandler(this.giysi_Load);
@@ -300,5 +311,6 @@
         private System.Windows.Forms.ComboBox giysi_renk;
         private System.Windows.Forms.ComboBox giysi_kumas;
         private System.Windows.Forms.ComboBox giysi_cinsiyet;
+        private System.Windows.Forms.Button button1;
     }
 }

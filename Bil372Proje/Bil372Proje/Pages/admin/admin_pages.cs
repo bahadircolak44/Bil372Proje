@@ -1,4 +1,5 @@
 ﻿using Bil372Proje.Pages.admin.istek_sayfalari;
+using Bil372Proje.Pages.admin.silme_sayfalari;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,6 +31,28 @@ namespace Bil372Proje.Pages.admin
             tedarikci_istek tedarikci = new tedarikci_istek();
             this.Hide();
             tedarikci.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            okul_sil okul_sil = new okul_sil();
+            this.Hide();
+            okul_sil.Show();
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            yardimsever_sil yardimseverSil = new yardimsever_sil();
+            this.Hide();
+            yardimseverSil.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            tedarikci_sil tedarikciSil = new tedarikci_sil();
+            this.Hide();
+            tedarikciSil.Show();
         }
     }
 }
