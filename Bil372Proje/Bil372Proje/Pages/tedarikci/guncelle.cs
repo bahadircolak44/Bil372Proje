@@ -29,6 +29,7 @@ namespace Bil372Proje.Pages.tedarikci
                 string kayit = "update urun set stok_miktari=@adet where Id=@Id";
                 SqlCommand komut = new SqlCommand(kayit, con);
                 komut.Parameters.AddWithValue("@adet", adet.Text);
+                komut.Parameters.AddWithValue("@Id", urun_Id);
                 komut.ExecuteNonQuery();
             }
   
@@ -37,10 +38,21 @@ namespace Bil372Proje.Pages.tedarikci
                 string kayit2 = "update urun set fiyat=@fiyat where Id=@Id";
                 SqlCommand komut2 = new SqlCommand(kayit2, con);
                 komut2.Parameters.AddWithValue("@fiyat", fiyat.Text);
+                komut2.Parameters.AddWithValue("@Id", urun_Id);
                 komut2.ExecuteNonQuery();
             }
 
             con.Close();
+            urun_guncelle guncelle = new urun_guncelle();
+            this.Hide();
+            guncelle.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            urun_guncelle guncelle = new urun_guncelle();
+            this.Hide();
+            guncelle.Show();
         }
     }
 }
