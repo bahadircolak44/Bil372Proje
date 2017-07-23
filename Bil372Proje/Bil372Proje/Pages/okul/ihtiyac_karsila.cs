@@ -13,6 +13,7 @@ namespace Bil372Proje.Pages.okul
 {
     public partial class ihtiyac_karsila : Form
     {
+        int toplam=0;
         String kAdi;
         SqlConnection con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
 
@@ -25,6 +26,16 @@ namespace Bil372Proje.Pages.okul
         private void ihtiyac_karsila_Load(object sender, EventArgs e)
         {
             kayitGetir();
+            listView1.View = View.Details;
+            listView1.GridLines = true;
+            listView1.FullRowSelect = true;
+
+            listView1.Columns.Add("ID");
+            listView1.Columns.Add("İSİM");
+            listView1.Columns.Add("Adet");
+            listView1.Columns.Add("MARKA");
+            listView1.Columns.Add("FİYAT");
+            listView1.Columns.Add("TÜR");
 
         }
 
@@ -35,10 +46,12 @@ namespace Bil372Proje.Pages.okul
             string adet = dataGridView1.CurrentRow.Cells[2].Value.ToString();
             string marka = dataGridView1.CurrentRow.Cells[3].Value.ToString();
             int fiyat = Convert.ToInt32(dataGridView1.CurrentRow.Cells[4].Value.ToString());
+            toplam += fiyat;
             string tur = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            string[] row = { Id.ToString(),isim,adet,marka,fiyat.ToString(),tur};
+            string[] row = {Id.ToString(),isim,adet,marka,fiyat.ToString(),tur};
             var satir = new ListViewItem(row);
             listView1.Items.Add(satir);
+            label2.Text = toplam.ToString() ;
 
         }
 
