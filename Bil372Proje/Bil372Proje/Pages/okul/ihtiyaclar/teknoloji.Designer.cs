@@ -39,9 +39,9 @@
             this.teknoloji_uretim_yili = new System.Windows.Forms.ComboBox();
             this.teknoloji_marka = new System.Windows.Forms.ComboBox();
             this.teknoloji_adet = new System.Windows.Forms.ComboBox();
-            this.teknoloji_model = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button3 = new System.Windows.Forms.Button();
+            this.teknoloji_model = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -120,14 +120,6 @@
             // teknoloji_ihtiyac
             // 
             this.teknoloji_ihtiyac.FormattingEnabled = true;
-            this.teknoloji_ihtiyac.Items.AddRange(new object[] {
-            "Tablet",
-            "Fare",
-            "Ethernet Kablosu",
-            "Modem",
-            "Dizustu Bilgisayar",
-            "Masaustu Bilgisayar",
-            "Televizyon"});
             this.teknoloji_ihtiyac.Location = new System.Drawing.Point(234, 37);
             this.teknoloji_ihtiyac.Name = "teknoloji_ihtiyac";
             this.teknoloji_ihtiyac.Size = new System.Drawing.Size(208, 21);
@@ -136,24 +128,6 @@
             // teknoloji_uretim_yili
             // 
             this.teknoloji_uretim_yili.FormattingEnabled = true;
-            this.teknoloji_uretim_yili.Items.AddRange(new object[] {
-            "2000",
-            "2001",
-            "2002",
-            "2003",
-            "2004",
-            "2005",
-            "2006",
-            "2007",
-            "2008",
-            "2009",
-            "2010",
-            "2011",
-            "2012",
-            "2013",
-            "2014",
-            "2015",
-            "2017"});
             this.teknoloji_uretim_yili.Location = new System.Drawing.Point(234, 161);
             this.teknoloji_uretim_yili.Name = "teknoloji_uretim_yili";
             this.teknoloji_uretim_yili.Size = new System.Drawing.Size(208, 21);
@@ -162,10 +136,6 @@
             // teknoloji_marka
             // 
             this.teknoloji_marka.FormattingEnabled = true;
-            this.teknoloji_marka.Items.AddRange(new object[] {
-            "Apple",
-            "Asus",
-            "Dell"});
             this.teknoloji_marka.Location = new System.Drawing.Point(234, 229);
             this.teknoloji_marka.Name = "teknoloji_marka";
             this.teknoloji_marka.Size = new System.Drawing.Size(208, 21);
@@ -174,28 +144,10 @@
             // teknoloji_adet
             // 
             this.teknoloji_adet.FormattingEnabled = true;
-            this.teknoloji_adet.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10"});
             this.teknoloji_adet.Location = new System.Drawing.Point(234, 296);
             this.teknoloji_adet.Name = "teknoloji_adet";
             this.teknoloji_adet.Size = new System.Drawing.Size(208, 21);
             this.teknoloji_adet.TabIndex = 10;
-            // 
-            // teknoloji_model
-            // 
-            this.teknoloji_model.Location = new System.Drawing.Point(234, 97);
-            this.teknoloji_model.Name = "teknoloji_model";
-            this.teknoloji_model.Size = new System.Drawing.Size(208, 20);
-            this.teknoloji_model.TabIndex = 11;
             // 
             // dataGridView1
             // 
@@ -214,15 +166,23 @@
             this.button3.Text = "button3";
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // teknoloji_model
+            // 
+            this.teknoloji_model.FormattingEnabled = true;
+            this.teknoloji_model.Location = new System.Drawing.Point(234, 100);
+            this.teknoloji_model.Name = "teknoloji_model";
+            this.teknoloji_model.Size = new System.Drawing.Size(208, 21);
+            this.teknoloji_model.TabIndex = 14;
+            // 
             // teknoloji
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(876, 485);
+            this.Controls.Add(this.teknoloji_model);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.teknoloji_model);
             this.Controls.Add(this.teknoloji_adet);
             this.Controls.Add(this.teknoloji_marka);
             this.Controls.Add(this.teknoloji_uretim_yili);
@@ -257,8 +217,8 @@
         private System.Windows.Forms.ComboBox teknoloji_uretim_yili;
         private System.Windows.Forms.ComboBox teknoloji_marka;
         private System.Windows.Forms.ComboBox teknoloji_adet;
-        private System.Windows.Forms.TextBox teknoloji_model;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ComboBox teknoloji_model;
     }
 }

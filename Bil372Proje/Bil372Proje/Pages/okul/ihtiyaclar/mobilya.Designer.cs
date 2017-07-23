@@ -103,12 +103,6 @@
             // mobilya_ihtiyac
             // 
             this.mobilya_ihtiyac.FormattingEnabled = true;
-            this.mobilya_ihtiyac.Items.AddRange(new object[] {
-            "koltuk",
-            "kanepe",
-            "masa",
-            "sıra",
-            "sandalye"});
             this.mobilya_ihtiyac.Location = new System.Drawing.Point(285, 54);
             this.mobilya_ihtiyac.Name = "mobilya_ihtiyac";
             this.mobilya_ihtiyac.Size = new System.Drawing.Size(174, 21);
@@ -117,9 +111,6 @@
             // mobilya_marka
             // 
             this.mobilya_marka.FormattingEnabled = true;
-            this.mobilya_marka.Items.AddRange(new object[] {
-            "istikbal",
-            "bellona"});
             this.mobilya_marka.Location = new System.Drawing.Point(285, 122);
             this.mobilya_marka.Name = "mobilya_marka";
             this.mobilya_marka.Size = new System.Drawing.Size(174, 21);
@@ -128,27 +119,6 @@
             // mobilya_adet
             // 
             this.mobilya_adet.FormattingEnabled = true;
-            this.mobilya_adet.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20"});
             this.mobilya_adet.Location = new System.Drawing.Point(285, 183);
             this.mobilya_adet.Name = "mobilya_adet";
             this.mobilya_adet.Size = new System.Drawing.Size(174, 21);
@@ -162,11 +132,6 @@
             "3 kisilik",
             "4 kisilik"});
             this.mobilya_olcu.FormattingEnabled = true;
-            this.mobilya_olcu.Items.AddRange(new object[] {
-            "1 kisilik",
-            "2 kisilik",
-            "3 kisilik",
-            "4 kisilik"});
             this.mobilya_olcu.Location = new System.Drawing.Point(285, 241);
             this.mobilya_olcu.Name = "mobilya_olcu";
             this.mobilya_olcu.Size = new System.Drawing.Size(174, 21);
@@ -181,13 +146,6 @@
             "beyaz",
             "mavi"});
             this.mobilya_renk.FormattingEnabled = true;
-            this.mobilya_renk.Items.AddRange(new object[] {
-            "Sari",
-            "Kirmizi",
-            "Mavi",
-            "Yeşil",
-            "Beyaz",
-            "Siyah"});
             this.mobilya_renk.Location = new System.Drawing.Point(285, 296);
             this.mobilya_renk.Name = "mobilya_renk";
             this.mobilya_renk.Size = new System.Drawing.Size(174, 21);

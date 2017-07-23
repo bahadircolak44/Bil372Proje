@@ -26,8 +26,32 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
 
         private void teknoloji_Load(object sender, EventArgs e)
         {
+            comboboxGetir();
             kayitGetir();
             button3.Text = totalfiyatgetir() + " TL";
+        }
+
+        private void comboboxGetir()
+        {
+            SqlCommand komut = new SqlCommand();
+            komut.CommandText = "SELECT * FROM urun where kategori = @kategori";
+            komut.Parameters.AddWithValue("@kategori", "teknoloji");
+            komut.Connection = con;
+            komut.CommandType = CommandType.Text;
+
+            SqlDataReader dr;
+            con.Open();
+            dr = komut.ExecuteReader();
+            while (dr.Read())
+            {
+                teknoloji_ihtiyac.Items.Add(dr["ad"]);
+                teknoloji_marka.Items.Add(dr["marka"]);
+                teknoloji_model.Items.Add(dr["model"]);
+                teknoloji_uretim_yili.Items.Add(dr["uretim_yili"]);
+
+            }
+            con.Close();
+
         }
 
         private void teknoloji_geri_Click(object sender, EventArgs e)

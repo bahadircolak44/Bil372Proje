@@ -161,9 +161,33 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
 
         private void mobilya_Load(object sender, EventArgs e)
         {
+            comboBoxGetir();
             kayitGetir();
             button1.Text = totalfiyatgetir() + " TL";
 
         }
-}
+
+        private void comboBoxGetir()
+        {
+            SqlCommand komut = new SqlCommand();
+            komut.CommandText = "SELECT * FROM urun where kategori = @kategori";
+            komut.Parameters.AddWithValue("@kategori", "mobilya");
+            komut.Connection = con;
+            komut.CommandType = CommandType.Text;
+
+            SqlDataReader dr;
+            con.Open();
+            dr = komut.ExecuteReader();
+            while (dr.Read())
+            {
+                mobilya_ihtiyac.Items.Add(dr["ad"]);
+                mobilya_marka.Items.Add(dr["marka"]);
+                mobilya_olcu.Items.Add(dr["olcu"]);
+                mobilya_renk.Items.Add(dr["renk"]);
+        
+            }
+            con.Close();
+
+        }
+    }
 }
