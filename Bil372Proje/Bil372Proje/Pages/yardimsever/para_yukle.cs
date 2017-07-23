@@ -37,10 +37,8 @@ namespace Bil372Proje.Pages.yardimsever
         {
             con.Open();
             string kayit = "update yardimsever set bakiye=bakiye+@bakiye where kAdi=@kullanici_adi";
-
-
             SqlCommand komut = new SqlCommand(kayit, con);
-            komut.Parameters.AddWithValue("@bakiye", miktar.Text);
+            komut.Parameters.AddWithValue("@bakiye", Convert.ToInt32(miktar.Text));
             komut.Parameters.AddWithValue("@kullanici_adi", kullanici_adi);
             komut.ExecuteNonQuery();
             con.Close();

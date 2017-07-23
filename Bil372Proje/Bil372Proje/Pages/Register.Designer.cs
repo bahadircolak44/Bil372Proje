@@ -150,6 +150,7 @@
             this.tabPage4.Size = new System.Drawing.Size(1041, 677);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Tedarikçi";
+            this.tabPage4.Click += new System.EventHandler(this.tabPage4_Click_1);
             // 
             // tedarikci_posta
             // 
