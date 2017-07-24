@@ -73,9 +73,7 @@ namespace Bil372Proje.Pages.okul
 
         private void button7_Click(object sender, EventArgs e)
         {
-            tum_ihtiyaclar tum_ihtiyaclar = new tum_ihtiyaclar();
-            this.Hide();
-            tum_ihtiyaclar.Show();
+            
         }
     }
 }
