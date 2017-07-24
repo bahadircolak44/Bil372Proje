@@ -79,13 +79,17 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             {
                 //var olan adeti istenen kadar arttırıyor
                 SqlCommand cmd = new SqlCommand("Update ihtiyac set adet=@Adet Where isim = @isim and Id=@Id", con);
+                SqlCommand cmd3 = new SqlCommand("Update ihtiyac set fiyat=@fiyat Where isim = @isim and Id=@Id", con);
+
                 int cnt = Convert.ToInt32(kontrol.ExecuteScalar()) + Convert.ToInt32(giysi_adet.Text.Trim());
                 int cnt2 = Convert.ToInt32(kontrol2.ExecuteScalar());
                 int fiyat = cnt* (fiyatHesapla(giysi_ihtiyac.Text, giysi_marka.Text, giysi_beden.Text, giysi_renk.Text, giysi_kumas.Text, giysi_cinsiyet.Text));
                 cmd.Parameters.AddWithValue("@Adet", cnt);
                 cmd.Parameters.AddWithValue("@isim", giysi_ihtiyac.Text);
                 cmd.Parameters.AddWithValue("@Id", cnt2);
+                cmd3.Parameters.AddWithValue("@fiyat",fiyat);
                 cmd.ExecuteNonQuery();
+                cmd3.ExecuteNonQuery();
             }
             else
             {

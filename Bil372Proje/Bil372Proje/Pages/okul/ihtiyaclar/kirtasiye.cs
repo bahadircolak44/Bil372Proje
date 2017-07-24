@@ -23,6 +23,19 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             okul_id = Id;
             InitializeComponent();
         }
+        private int fiyatHesapla(string ad, string marka, string renk, string cinsiyet)
+        {
+
+            SqlCommand cmd = new SqlCommand("select fiyat from urun where ad=@ad and marka=@marka" +
+                " and renk =@renk and cinsiyet =@cinsiyet", con);
+            cmd.Parameters.AddWithValue("@ad", ad);
+            cmd.Parameters.AddWithValue("@marka", marka);
+            cmd.Parameters.AddWithValue("@renk", renk);
+            cmd.Parameters.AddWithValue("@cinsiyet", cinsiyet);
+            int fiyat = Convert.ToInt32(cmd.ExecuteScalar());
+            return fiyat;
+
+        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -51,19 +64,25 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
                 if (i > 0)
                 {
                     SqlCommand cmd = new SqlCommand("Update ihtiyac set adet=@Adet Where isim = @isim", con);
+                    SqlCommand cmd3 = new SqlCommand("Update ihtiyac set fiyat=@fiyat Where isim = @isim", con);
                     int cnt = Convert.ToInt32(kontrol.ExecuteScalar()) + Convert.ToInt32(kirtasiye_adet.Text.Trim());
                     cmd.Parameters.AddWithValue("@Adet", cnt);
                     cmd.Parameters.AddWithValue("@isim", kirtasiye_ihtiyac.Text);
+                    int fiyat = cnt * (fiyatHesapla(kirtasiye_ihtiyac.Text, kirtasiye_marka.Text, kirtasiye_renk.Text, "erkek-kadin"));
+                    cmd3.Parameters.AddWithValue("@fiyat",fiyat);
+                    cmd3.ExecuteNonQuery();
                     cmd.ExecuteNonQuery();
                 }
                 else
                 {
                     SqlCommand cmd = new SqlCommand("insert into ihtiyac(okul_id,isim,adet,marka,fiyat,tur)" +
-        " values(@okul_id,@isim,@adet,@marka,10,'kirtasiye')", con);
+        " values(@okul_id,@isim,@adet,@marka,@fiyat,'kirtasiye')", con);
                     cmd.Parameters.AddWithValue("@isim", kirtasiye_ihtiyac.Text);
                     cmd.Parameters.AddWithValue("@adet", kirtasiye_adet.Text);
                     cmd.Parameters.AddWithValue("@marka", kirtasiye_marka.Text);
                     cmd.Parameters.AddWithValue("@okul_id", okul_id);
+                    int fiyat = Convert.ToInt32(kirtasiye_adet.Text) * (fiyatHesapla(kirtasiye_ihtiyac.Text, kirtasiye_marka.Text, kirtasiye_renk.Text, "erkek-kadin"));
+                    cmd.Parameters.AddWithValue("@fiyat", fiyat);
                     cmd.ExecuteNonQuery();
                 }
 
@@ -77,7 +96,7 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
                 cmd2.ExecuteNonQuery();
                 kayitGetir();
                 clear();
-
+                label7.Text = totalfiyatgetir() + " TL";
             }
             else
             {
@@ -90,7 +109,7 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             kirtasiye_ihtiyac.Text = string.Empty;
             kirtasiye_adet.Text = string.Empty;
             kirtasiye_marka.Text = string.Empty;
-            
+            kirtasiye_renk.Text = string.Empty;
         }
         private void kayitGetir()
         {
@@ -133,7 +152,8 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             {
                 kirtasiye_ihtiyac.Items.Add(dr["ad"]);
                 kirtasiye_marka.Items.Add(dr["marka"]);
-                
+                kirtasiye_renk.Items.Add(dr["renk"]);
+
             }
             con.Close();
         }

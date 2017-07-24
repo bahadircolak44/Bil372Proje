@@ -23,6 +23,8 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             InitializeComponent();
         }
 
+
+
         private void button2_Click(object sender, EventArgs e)
         {
             ihtiyac_ekle ie = new ihtiyac_ekle(kAdi);
