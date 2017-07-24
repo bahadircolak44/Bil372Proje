@@ -100,7 +100,7 @@ namespace Bil372Proje.Pages.okul
             {
                 string kayit = "insert into gecmis(okul_id,yardimsever_id,ad,marka,adet,fiyat) values(@okul_id,null,@ad,@marka,@adet,@fiyat)";
                 SqlCommand komut = new SqlCommand(kayit, con);
-                komut.Parameters.AddWithValue("@okul_id",);
+                //komut.Parameters.AddWithValue("@okul_id");
                 string x = listView1.Items[i].SubItems[0].Text;
                 MessageBox.Show(x);
             }
