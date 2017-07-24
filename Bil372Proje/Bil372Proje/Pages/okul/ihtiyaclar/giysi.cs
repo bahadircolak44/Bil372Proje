@@ -25,6 +25,22 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             okul_id = Id;
             InitializeComponent();
         }
+
+        private int fiyatHesapla(string ad,string marka,string beden,string renk, string kumas,string cinsiyet)
+        {
+           
+            SqlCommand cmd = new SqlCommand("select fiyat from urun where ad=@ad and marka=@marka and beden =@beden" +
+                " and renk =@renk and kumas=@kumas and cinsiyet =@cinsiyet",con);
+            cmd.Parameters.AddWithValue("@ad",ad);
+            cmd.Parameters.AddWithValue("@marka", marka);
+            cmd.Parameters.AddWithValue("@beden", beden);
+            cmd.Parameters.AddWithValue("@renk", renk);
+            cmd.Parameters.AddWithValue("@kumas", kumas);
+            cmd.Parameters.AddWithValue("@cinsiyet", cinsiyet);
+            int fiyat=Convert.ToInt32(cmd.ExecuteScalar());
+            return fiyat;
+
+        }
         private void giysi_ekle_Click(object sender, EventArgs e)
         {
             if (!(giysi_adet.Text.Equals(string.Empty) ||
@@ -65,7 +81,7 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
                 SqlCommand cmd = new SqlCommand("Update ihtiyac set adet=@Adet Where isim = @isim and Id=@Id", con);
                 int cnt = Convert.ToInt32(kontrol.ExecuteScalar()) + Convert.ToInt32(giysi_adet.Text.Trim());
                 int cnt2 = Convert.ToInt32(kontrol2.ExecuteScalar());
-
+                int fiyat = cnt* (fiyatHesapla(giysi_ihtiyac.Text, giysi_marka.Text, giysi_beden.Text, giysi_renk.Text, giysi_kumas.Text, giysi_cinsiyet.Text));
                 cmd.Parameters.AddWithValue("@Adet", cnt);
                 cmd.Parameters.AddWithValue("@isim", giysi_ihtiyac.Text);
                 cmd.Parameters.AddWithValue("@Id", cnt2);
@@ -75,11 +91,13 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             {
                 //eski bir kayıt yoksa yenisini ekliyor
                 SqlCommand cmd = new SqlCommand("insert into ihtiyac(okul_id,isim,adet,marka,fiyat,tur)" +
-    " values(@okul_id,@isim,@adet,@marka,10,'giysi')", con);
+    " values(@okul_id,@isim,@adet,@marka,@fiyat,'giysi')", con);
                 cmd.Parameters.AddWithValue("@isim", giysi_ihtiyac.Text);
                 cmd.Parameters.AddWithValue("@adet", giysi_adet.Text);
                 cmd.Parameters.AddWithValue("@marka", giysi_marka.Text);
                 cmd.Parameters.AddWithValue("@okul_id", okul_id);
+                int fiyat = Convert.ToInt32(giysi_adet.Text)*(fiyatHesapla(giysi_ihtiyac.Text, giysi_marka.Text,giysi_beden.Text,giysi_renk.Text,giysi_kumas.Text, giysi_cinsiyet.Text));
+                cmd.Parameters.AddWithValue("fiyat",fiyat);
                 cmd.ExecuteNonQuery();
             }
 
@@ -97,6 +115,7 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             cmd2.ExecuteNonQuery();
             
             kayitGetir();
+            label7.Text = totalfiyatgetir() + " TL";
             clear();
             }
             else
@@ -127,17 +146,12 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             string kayit = "SELECT isim,marka,adet " +
                           " from ihtiyac where ihtiyac.okul_id =@okul_id";
 
-            //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
             SqlCommand komut = new SqlCommand(kayit, con);
             komut.Parameters.AddWithValue("@okul_id", okul_id);
-            //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
             SqlDataAdapter da = new SqlDataAdapter(komut);
-            //SqlDataAdapter sınıfı verilerin databaseden aktarılması işlemini gerçekleştirir.
             DataTable dt = new DataTable();
             da.Fill(dt);
-            //Bir DataTable oluşturarak DataAdapter ile getirilen verileri tablo içerisine dolduruyoruz.
             dataGridView1.DataSource = dt;
-            //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
             con.Close();
         }
         private void giysi_Load(object sender, EventArgs e)
