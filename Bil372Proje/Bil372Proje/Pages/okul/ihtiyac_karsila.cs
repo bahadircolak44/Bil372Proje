@@ -17,12 +17,15 @@ namespace Bil372Proje.Pages.okul
         int price =0;
         int toplam=0;
         String kAdi;
+        int Id;
+        int ihtiyac_id;
         SqlConnection con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
 
-        public ihtiyac_karsila(String kullaniciAdi)
+        public ihtiyac_karsila(String kullaniciAdi,int okul_id)
         {
             InitializeComponent();
             kAdi = kullaniciAdi;
+            Id = okul_id;
         }
 
         private void ihtiyac_karsila_Load(object sender, EventArgs e)
@@ -47,11 +50,12 @@ namespace Bil372Proje.Pages.okul
             if (adet <= toplam)
             {
             int Id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                ihtiyac_id = Id;
             string isim = dataGridView1.CurrentRow.Cells[1].Value.ToString();
             string marka = dataGridView1.CurrentRow.Cells[3].Value.ToString();
             int fiyat = adet*Convert.ToInt32(dataGridView1.CurrentRow.Cells[4].Value.ToString());
             price += fiyat;
-            string tur = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            string tur = dataGridView1.CurrentRow.Cells[5].Value.ToString();
             string[] row = {Id.ToString(),isim,adet.ToString(),marka,fiyat.ToString(),tur};
             var satir = new ListViewItem(row);
             listView1.Items.Add(satir);
@@ -96,20 +100,36 @@ namespace Bil372Proje.Pages.okul
 
         private void karsila_Click(object sender, EventArgs e)
         {
+            MessageBox.Show(ihtiyac_id.ToString());
+            con.Open();
             for (int i = 0; i < count; i++)
             {
-                string kayit = "insert into gecmis(okul_id,yardimsever_id,ad,marka,adet,fiyat) values(@okul_id,null,@ad,@marka,@adet,@fiyat)";
+                MessageBox.Show(listView1.Items[i].SubItems[5].Text);
+                string kayit = "insert into gecmis(okul_id,yardimsever_id,ad,marka,adet,fiyat,tur) values(@okul_id,1,@ad,@marka,@adet,@fiyat,@tur)";
+                string kayit2 = "delete from "+ listView1.Items[i].SubItems[5].Text + " where ihtiyac_id = @ihtiyac_id";
                 SqlCommand komut = new SqlCommand(kayit, con);
-                komut.Parameters.AddWithValue("@okul_id",);
-                string x = listView1.Items[i].SubItems[0].Text;
-                MessageBox.Show(x);
+                SqlCommand komut2 = new SqlCommand(kayit2, con);
+                komut.Parameters.AddWithValue("@okul_id",Id);
+                komut.Parameters.AddWithValue("@ad", listView1.Items[i].SubItems[1].Text);
+                komut.Parameters.AddWithValue("@adet", listView1.Items[i].SubItems[2].Text);
+                komut.Parameters.AddWithValue("@marka", listView1.Items[i].SubItems[3].Text);
+                komut.Parameters.AddWithValue("@fiyat", listView1.Items[i].SubItems[4].Text);
+                komut.Parameters.AddWithValue("@tur", listView1.Items[i].SubItems[5].Text);
+                komut.Parameters.AddWithValue("@table", listView1.Items[i].SubItems[5].Text);
+                komut2.Parameters.AddWithValue("@ihtiyac_id", ihtiyac_id);
+                komut.ExecuteNonQuery();
+                komut2.ExecuteNonQuery();
+                
             }
-
+            con.Close();
+            okul_pages okul = new okul_pages(kAdi);
+            this.Hide();
+            okul.Show();
         }
-
         private void deneme(object sender, DataGridViewCellEventArgs e)
         {
             toplam = Convert.ToInt32(dataGridView1.CurrentRow.Cells[2].Value.ToString());
         }
+
     }
 }
