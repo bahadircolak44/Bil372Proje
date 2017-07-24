@@ -13,7 +13,8 @@ namespace Bil372Proje.Pages.okul
 {
     public partial class ihtiyac_karsila : Form
     {
-        int price = 0;
+        int count = 0;
+        int price =0;
         int toplam=0;
         String kAdi;
         SqlConnection con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
@@ -42,12 +43,14 @@ namespace Bil372Proje.Pages.okul
 
         private void listeye_ekle_Click(object sender, EventArgs e)
         {
+            int adet = Convert.ToInt32(dataGridView1.CurrentRow.Cells[2].Value.ToString());
+            if (adet <= toplam)
+            {
             int Id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
             string isim = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            int adet = Convert.ToInt32(dataGridView1.CurrentRow.Cells[2].Value.ToString());
             string marka = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-            int fiyat = Convert.ToInt32(dataGridView1.CurrentRow.Cells[4].Value.ToString());
-            price += adet*fiyat;
+            int fiyat = adet*Convert.ToInt32(dataGridView1.CurrentRow.Cells[4].Value.ToString());
+            price += fiyat;
             string tur = dataGridView1.CurrentRow.Cells[1].Value.ToString();
             string[] row = {Id.ToString(),isim,adet.ToString(),marka,fiyat.ToString(),tur};
             var satir = new ListViewItem(row);
@@ -61,7 +64,12 @@ namespace Bil372Proje.Pages.okul
             {
                 dataGridView1.CurrentRow.Cells[2].Value = toplam-adet;
             }
-            kayitGetir();
+            }
+            else
+            {
+                MessageBox.Show("Listede Var Olandan Fazlasını Ekleyemezsiniz","HATA");
+            }
+            count++;
 
         }
 
@@ -82,13 +90,26 @@ namespace Bil372Proje.Pages.okul
             DataTable dt = new DataTable();
             da.Fill(dt);
             dataGridView1.DataSource = dt;
+           
             con.Close();
-            toplam = Convert.ToInt32(dataGridView1.CurrentRow.Cells[2].Value.ToString());
         }
 
         private void karsila_Click(object sender, EventArgs e)
         {
+            for (int i = 0; i < count; i++)
+            {
+                string kayit = "insert into gecmis(okul_id,yardimsever_id,ad,marka,adet,fiyat) values(@okul_id,null,@ad,@marka,@adet,@fiyat)";
+                SqlCommand komut = new SqlCommand(kayit, con);
+                komut.Parameters.AddWithValue("@okul_id",);
+                string x = listView1.Items[i].SubItems[0].Text;
+                MessageBox.Show(x);
+            }
 
+        }
+
+        private void deneme(object sender, DataGridViewCellEventArgs e)
+        {
+            toplam = Convert.ToInt32(dataGridView1.CurrentRow.Cells[2].Value.ToString());
         }
     }
 }
