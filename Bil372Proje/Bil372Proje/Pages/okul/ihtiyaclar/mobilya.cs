@@ -30,6 +30,20 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             ie.Show();
         }
 
+        private int fiyatHesapla(string ad, string marka, string renk, string olcu)
+        {
+
+            SqlCommand cmd = new SqlCommand("select fiyat from urun where ad=@ad and  marka = @marka and renk = @renk and olcu = @olcu", con);
+            cmd.Parameters.AddWithValue("@ad", ad);
+            cmd.Parameters.AddWithValue("@marka", marka);
+            cmd.Parameters.AddWithValue("@renk", renk);
+            cmd.Parameters.AddWithValue("@olcu", olcu);
+
+            int fiyat = Convert.ToInt32(cmd.ExecuteScalar());
+            return fiyat;
+
+        }
+
         private void mobilya_ekle_Click(object sender, EventArgs e)
         {
 
@@ -66,12 +80,21 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
                 {
                     //var olan adeti istenen kadar arttırıyor
                     SqlCommand cmd = new SqlCommand("Update ihtiyac set adet=@Adet Where isim = @isim and Id=@Id", con);
+                    SqlCommand cmd3 = new SqlCommand("Update ihtiyac set fiyat=@fiyat Where isim = @isim and Id=@Id", con);
+
                     int cnt = Convert.ToInt32(kontrol.ExecuteScalar()) + Convert.ToInt32(mobilya_adet.Text.Trim());
                     int cnt2 = Convert.ToInt32(kontrol2.ExecuteScalar());
+                    //string ad, string marka, string renk, string olcu
+                    int fiyat = cnt * (fiyatHesapla(mobilya_ihtiyac.Text, mobilya_marka.Text, mobilya_renk.Text, mobilya_olcu.Text));
 
                     cmd.Parameters.AddWithValue("@Adet", cnt);
                     cmd.Parameters.AddWithValue("@isim", mobilya_ihtiyac.Text);
                     cmd.Parameters.AddWithValue("@Id", cnt2);
+
+                    cmd3.Parameters.AddWithValue("@Id", cnt2);
+                    cmd3.Parameters.AddWithValue("@isim", mobilya_ihtiyac.Text);
+                    cmd3.Parameters.AddWithValue("@fiyat", fiyat);
+
                     cmd.ExecuteNonQuery();
                 }
                 else
@@ -82,7 +105,9 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
                     cmd.Parameters.AddWithValue("@isim", mobilya_ihtiyac.Text);
                     cmd.Parameters.AddWithValue("@adet", mobilya_adet.Text);
                     cmd.Parameters.AddWithValue("@marka", mobilya_marka.Text);
+                    int fiyat = Convert.ToInt32(mobilya_adet.Text) * (fiyatHesapla(mobilya_ihtiyac.Text, mobilya_marka.Text, mobilya_renk.Text, mobilya_olcu.Text));
                     cmd.Parameters.AddWithValue("@okul_id", okul_id);
+                    cmd.Parameters.AddWithValue("fiyat", fiyat);
                     cmd.ExecuteNonQuery();
                 }
 
@@ -98,6 +123,7 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
                 cmd2.Parameters.AddWithValue("@olcu", mobilya_olcu.Text);
                 cmd2.ExecuteNonQuery();
                 kayitGetir();
+                label7.Text = totalfiyatgetir() + " TL";
                 clear();
 
             }

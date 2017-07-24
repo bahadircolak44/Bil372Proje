@@ -121,6 +121,7 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
                 cmd2.Parameters.AddWithValue("@yayin_yili", kitap_yayin_yili.Text);
                 cmd2.ExecuteNonQuery();
                 kayitGetir();
+                label7.Text = totalfiyatgetir() + " TL";
                 clear();
 
             }
