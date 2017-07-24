@@ -68,5 +68,12 @@ namespace Bil372Proje.Pages.okul
             this.Hide();
             guncelle.Show();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            gecmis gec = new gecmis(kAdi);
+            this.Hide();
+            gec.Show();
+        }
     }
 }
