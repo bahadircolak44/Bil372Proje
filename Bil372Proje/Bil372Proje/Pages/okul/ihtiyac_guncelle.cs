@@ -30,7 +30,7 @@ namespace Bil372Proje.Pages
 
         private void kayitGetir()
         {
-            string kayit = "SELECT isim,marka,adet from ihtiyac ";
+            string kayit = "SELECT Id,isim,marka,adet from ihtiyac ";
 
             SqlCommand komut = new SqlCommand(kayit, con);
             SqlDataAdapter da = new SqlDataAdapter(komut);
@@ -43,7 +43,7 @@ namespace Bil372Proje.Pages
         private void button1_Click(object sender, EventArgs e)
         {
             con.Open();
-            int Id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[1].Value.ToString());
+            int Id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
             SqlCommand cmd = new SqlCommand("delete from ihtiyac where Id=@Id", con);
             cmd.Parameters.AddWithValue("@Id", Id);
             cmd.ExecuteNonQuery();
@@ -60,7 +60,7 @@ namespace Bil372Proje.Pages
 
         private void Guncelle_Click(object sender, EventArgs e)
         {
-            int Id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[1].Value.ToString());
+            int Id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
             guncelle gun = new guncelle(Id,kAdi);
             this.Hide();
             gun.Show();
