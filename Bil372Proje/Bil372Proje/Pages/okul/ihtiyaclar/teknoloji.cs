@@ -28,7 +28,7 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
         {
             comboboxGetir();
             kayitGetir();
-            button3.Text = totalfiyatgetir() + " TL";
+            label7.Text = totalfiyatgetir() + " TL";
         }
 
         private void comboboxGetir()
