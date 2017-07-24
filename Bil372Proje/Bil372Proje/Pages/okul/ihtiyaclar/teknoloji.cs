@@ -31,6 +31,19 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             label7.Text = totalfiyatgetir() + " TL";
         }
 
+        private int fiyatHesapla(string ad, string marka, string model, string uretim_yili)
+        {
+
+            SqlCommand cmd = new SqlCommand("select fiyat from urun where ad=@ad and  marka = @marka and model = @model and uretim_yili = @uretim_yili", con);
+            cmd.Parameters.AddWithValue("@ad", ad);
+            cmd.Parameters.AddWithValue("@marka", marka);        
+            cmd.Parameters.AddWithValue("@model", model);
+            cmd.Parameters.AddWithValue("@uretim_yili", uretim_yili);
+           int fiyat = Convert.ToInt32(cmd.ExecuteScalar());
+
+            return fiyat;
+
+        }
         private void comboboxGetir()
         {
             SqlCommand komut = new SqlCommand();
@@ -139,12 +152,19 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             {
                 //var olan adeti istenen kadar arttırıyor
                 SqlCommand cmd = new SqlCommand("Update ihtiyac set adet=@Adet Where isim = @isim and Id=@Id", con);
+                SqlCommand cmd3 = new SqlCommand("Update ihtiyac set fiyat=@fiyat Where isim = @isim and Id=@Id", con);
                 int cnt = Convert.ToInt32(kontrol.ExecuteScalar()) + Convert.ToInt32(teknoloji_adet.Text.Trim());
                 int cnt2 = Convert.ToInt32(kontrol2.ExecuteScalar());
+                    //string ad, string marka, string renk, string model, string uretim_yili
+                int fiyat = cnt * (fiyatHesapla(teknoloji_ihtiyac.Text, teknoloji_marka.Text, teknoloji_model.Text,teknoloji_uretim_yili.Text));
 
                 cmd.Parameters.AddWithValue("@Adet", cnt);
                 cmd.Parameters.AddWithValue("@isim", teknoloji_ihtiyac.Text);
                 cmd.Parameters.AddWithValue("@Id", cnt2);
+
+                cmd3.Parameters.AddWithValue("@Id", cnt2);
+                cmd3.Parameters.AddWithValue("@isim", teknoloji_ihtiyac.Text);
+                cmd3.Parameters.AddWithValue("@fiyat", fiyat);
                 cmd.ExecuteNonQuery();
             }
             else
@@ -156,7 +176,9 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
                 cmd.Parameters.AddWithValue("@adet", teknoloji_adet.Text);
                 cmd.Parameters.AddWithValue("@marka", teknoloji_marka.Text);
                 cmd.Parameters.AddWithValue("@okul_id", okul_id);
-                cmd.ExecuteNonQuery();
+                int fiyat = Convert.ToInt32(teknoloji_adet.Text) *(fiyatHesapla(teknoloji_ihtiyac.Text, teknoloji_marka.Text, teknoloji_model.Text, teknoloji_model.Text));
+                    cmd.Parameters.AddWithValue("fiyat", fiyat);
+                    cmd.ExecuteNonQuery();
             }
 
 
@@ -171,7 +193,8 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
         
             cmd2.ExecuteNonQuery();
             kayitGetir();
-            clear();
+                label7.Text = totalfiyatgetir() + " TL";
+                clear();
             }
             else
             {
