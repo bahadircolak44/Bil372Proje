@@ -107,6 +107,12 @@
     <Compile Include="Pages\admin\silme_sayfalari\yardimsever_sil.Designer.cs">
       <DependentUpon>yardimsever_sil.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\okul\guncelle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\okul\guncelle.Designer.cs">
+      <DependentUpon>guncelle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\okul\ihtiyaclar\giysi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +160,12 @@
     </Compile>
     <Compile Include="Pages\okul\ihtiyac_karsila.Designer.cs">
       <DependentUpon>ihtiyac_karsila.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\okul\ihtiyac_guncelle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\okul\ihtiyac_guncelle.Designer.cs">
+      <DependentUpon>ihtiyac_guncelle.cs</DependentUpon>
     </Compile>
     <Compile Include="Pages\okul\okul_pages.cs">
       <SubType>Form</SubType>
@@ -265,6 +277,9 @@
     <EmbeddedResource Include="Pages\admin\silme_sayfalari\yardimsever_sil.resx">
       <DependentUpon>yardimsever_sil.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\okul\guncelle.resx">
+      <DependentUpon>guncelle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pages\okul\ihtiyaclar\giysi.resx">
       <DependentUpon>giysi.cs</DependentUpon>
     </EmbeddedResource>
@@ -285,6 +300,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\okul\ihtiyac_karsila.resx">
       <DependentUpon>ihtiyac_karsila.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\okul\ihtiyac_guncelle.resx">
+      <DependentUpon>ihtiyac_guncelle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\okul\okul_pages.resx">
       <DependentUpon>okul_pages.cs</DependentUpon>

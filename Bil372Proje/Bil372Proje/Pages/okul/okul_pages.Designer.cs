@@ -32,32 +32,34 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // bakiye_btn
             // 
-            this.bakiye_btn.Location = new System.Drawing.Point(997, 53);
-            this.bakiye_btn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.bakiye_btn.Location = new System.Drawing.Point(748, 43);
+            this.bakiye_btn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.bakiye_btn.Name = "bakiye_btn";
-            this.bakiye_btn.Size = new System.Drawing.Size(133, 52);
+            this.bakiye_btn.Size = new System.Drawing.Size(100, 42);
             this.bakiye_btn.TabIndex = 0;
             this.bakiye_btn.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1044, 132);
+            this.label1.Location = new System.Drawing.Point(783, 107);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 17);
+            this.label1.Size = new System.Drawing.Size(39, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Bakiye";
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(504, 181);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button2.Location = new System.Drawing.Point(378, 147);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(145, 62);
+            this.button2.Size = new System.Drawing.Size(109, 50);
             this.button2.TabIndex = 2;
             this.button2.Text = "İhtiyaç Ekle";
             this.button2.UseVisualStyleBackColor = true;
@@ -65,25 +67,38 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(504, 321);
+            this.button1.Location = new System.Drawing.Point(378, 238);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(145, 62);
+            this.button1.Size = new System.Drawing.Size(109, 50);
             this.button1.TabIndex = 3;
             this.button1.Text = "İhtiyaçlarımı Karşıla";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(378, 332);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(109, 50);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "İhtiyaç Güncelle";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // okul_pages
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(1201, 684);
+            this.ClientSize = new System.Drawing.Size(901, 556);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bakiye_btn);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "okul_pages";
             this.Text = "okul_ekrani";
             this.Load += new System.EventHandler(this.okul_pages_Load);
@@ -98,5 +113,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button3;
     }
 }

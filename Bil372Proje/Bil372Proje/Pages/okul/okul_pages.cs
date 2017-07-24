@@ -58,5 +58,12 @@ namespace Bil372Proje.Pages.okul
             this.Hide();
             karsila.Show();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ihtiyac_guncelle guncelle = new ihtiyac_guncelle(kAdi);
+            this.Hide();
+            guncelle.Show();
+        }
     }
 }

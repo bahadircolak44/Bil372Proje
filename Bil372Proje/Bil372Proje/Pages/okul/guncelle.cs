@@ -2,82 +2,62 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
-namespace Bil372Proje.Pages.tedarikci
+namespace Bil372Proje.Pages.okul
 {
     public partial class guncelle : Form
     {
+        int u_id;
+        String kAdi;
         SqlConnection con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
-        int urun_Id;
-        public guncelle(int Id)
+        public guncelle(int Id, String kadi)
         {
-            urun_Id = Id;
+            u_id = Id;
+            kAdi = kadi;
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+
             con.Open();
             if (!(adet.Text.Equals(string.Empty)))
             {
-                string kayit = "update urun set stok_miktari=@adet where Id=@Id";
+                string kayit = "update ihtiyac set stok_miktari=@adet where Id=@Id";
                 SqlCommand komut = new SqlCommand(kayit, con);
                 komut.Parameters.AddWithValue("@adet", adet.Text);
-                komut.Parameters.AddWithValue("@Id", urun_Id);
+                komut.Parameters.AddWithValue("@Id", u_id);
                 komut.ExecuteNonQuery();
             }
-  
+
             if (!(fiyat.Text.Equals(string.Empty)))
             {
-                string kayit2 = "update urun set fiyat=@fiyat where Id=@Id";
+                string kayit2 = "update ihtiyac set fiyat=@fiyat where Id=@Id";
                 SqlCommand komut2 = new SqlCommand(kayit2, con);
                 komut2.Parameters.AddWithValue("@fiyat", fiyat.Text);
-                komut2.Parameters.AddWithValue("@Id", urun_Id);
+                komut2.Parameters.AddWithValue("@Id", u_id);
                 komut2.ExecuteNonQuery();
             }
 
             con.Close();
-            urun_guncelle guncelle = new urun_guncelle();
+            okul_pages okul = new okul_pages(kAdi);
             this.Hide();
-            guncelle.Show();
+            okul.Show();
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            urun_guncelle guncelle = new urun_guncelle();
+            okul_pages okul = new okul_pages(kAdi);
             this.Hide();
-            guncelle.Show();
-        }
-
-        private void guncelle_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void adet_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void fiyat_TextChanged(object sender, EventArgs e)
-        {
-
+            okul.Show();
         }
     }
 }
