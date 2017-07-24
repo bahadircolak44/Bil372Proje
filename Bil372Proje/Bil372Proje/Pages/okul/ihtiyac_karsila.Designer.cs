@@ -34,6 +34,7 @@
             this.listView1 = new System.Windows.Forms.ListView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.karsila = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,7 +59,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(390, 415);
+            this.button1.Location = new System.Drawing.Point(388, 406);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(129, 50);
             this.button1.TabIndex = 3;
@@ -92,11 +93,22 @@
             this.label2.Size = new System.Drawing.Size(0, 17);
             this.label2.TabIndex = 6;
             // 
+            // karsila
+            // 
+            this.karsila.Location = new System.Drawing.Point(808, 445);
+            this.karsila.Name = "karsila";
+            this.karsila.Size = new System.Drawing.Size(313, 56);
+            this.karsila.TabIndex = 7;
+            this.karsila.Text = "Karşıla";
+            this.karsila.UseVisualStyleBackColor = true;
+            this.karsila.Click += new System.EventHandler(this.karsila_Click);
+            // 
             // ihtiyac_karsila
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1133, 550);
+            this.Controls.Add(this.karsila);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listView1);
@@ -120,5 +132,6 @@
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button karsila;
     }
 }

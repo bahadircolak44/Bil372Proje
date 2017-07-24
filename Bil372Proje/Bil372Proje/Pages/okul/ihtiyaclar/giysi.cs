@@ -87,6 +87,8 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
                 cmd.Parameters.AddWithValue("@Adet", cnt);
                 cmd.Parameters.AddWithValue("@isim", giysi_ihtiyac.Text);
                 cmd.Parameters.AddWithValue("@Id", cnt2);
+                cmd3.Parameters.AddWithValue("@Id", cnt2);
+                cmd3.Parameters.AddWithValue("@isim", giysi_ihtiyac.Text);
                 cmd3.Parameters.AddWithValue("@fiyat",fiyat);
                 cmd.ExecuteNonQuery();
                 cmd3.ExecuteNonQuery();
