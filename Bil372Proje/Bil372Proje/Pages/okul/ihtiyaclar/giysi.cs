@@ -108,7 +108,7 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             }
 
 
-            //en son da gerekli bilgileri mobilyaya ekliyor
+            //en son da gerekli bilgileri giysiye ekliyor
             SqlCommand komut = new SqlCommand("select max(id) from ihtiyac", con);
             int count = Convert.ToInt32(komut.ExecuteScalar());
             SqlCommand cmd2 = new SqlCommand("insert into giysi(ihtiyac_id,beden,renk,kumas,cinsiyet)" +
