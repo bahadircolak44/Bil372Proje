@@ -23,7 +23,19 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             InitializeComponent();
         }
 
+        private int fiyatHesapla(string ad, string tur, string yayin_evi, string yazar, string yayin_yili)
+        {
+          
+            SqlCommand cmd = new SqlCommand("select fiyat from urun where ad=@ad and  tur = @tur and yayin_evi = @yayin_evi and yazar = @yazar and yayin_yili = @yayin_yili", con);
+            cmd.Parameters.AddWithValue("@ad", ad);
+            cmd.Parameters.AddWithValue("@tur", tur);
+            cmd.Parameters.AddWithValue("@yayin_evi", yayin_evi);
+            cmd.Parameters.AddWithValue("@yazar", yazar);
+            cmd.Parameters.AddWithValue("@yayin_yili", yayin_yili);
+            int fiyat = Convert.ToInt32(cmd.ExecuteScalar());
+            return fiyat;
 
+        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -66,12 +78,22 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
                 if (i > 0 && j > 0)
                 {
                     SqlCommand cmd = new SqlCommand("Update ihtiyac set adet=@Adet Where isim = @isim and Id=@Id", con);
+                    SqlCommand cmd3 = new SqlCommand("Update ihtiyac set fiyat=@fiyat Where isim = @isim and Id=@Id", con);
+                   
                     int cnt = Convert.ToInt32(kontrol.ExecuteScalar()) + Convert.ToInt32(kitap_adet.Text.Trim());
                     int cnt2 = Convert.ToInt32(kontrol2.ExecuteScalar());
+                    int fiyat = cnt * (fiyatHesapla(kitap_ihtiyac.Text,kitap_tur.Text,kitap_yayin_evi.Text,kitap_yazar.Text,kitap_yayin_yili.Text));
+
                     cmd.Parameters.AddWithValue("@Adet", cnt);
                     cmd.Parameters.AddWithValue("@isim", kitap_ihtiyac.Text);
                     cmd.Parameters.AddWithValue("@Id", cnt2);
+
+                    cmd3.Parameters.AddWithValue("@Id", cnt2);
+                    cmd3.Parameters.AddWithValue("@isim", kitap_ihtiyac.Text);
+                    cmd3.Parameters.AddWithValue("@fiyat", fiyat);
+
                     cmd.ExecuteNonQuery();
+                    cmd3.ExecuteNonQuery();
                 }
                 else
                 {
@@ -81,6 +103,8 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
                     cmd.Parameters.AddWithValue("@adet", kitap_adet.Text);
                     cmd.Parameters.AddWithValue("@marka", string.Empty);
                     cmd.Parameters.AddWithValue("@okul_id", okul_id);
+                    int fiyat = Convert.ToInt32(kitap_adet.Text) * (fiyatHesapla(kitap_ihtiyac.Text, kitap_tur.Text, kitap_yayin_evi.Text, kitap_yazar.Text, kitap_yayin_yili.Text));
+                    cmd.Parameters.AddWithValue("fiyat", fiyat);
                     cmd.ExecuteNonQuery();
                 }
 
@@ -116,6 +140,8 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             kitap_yazar.Text = string.Empty;
 
         }
+
+
         private void kayitGetir()
         {
             string kayit = "SELECT isim,marka,adet " +
