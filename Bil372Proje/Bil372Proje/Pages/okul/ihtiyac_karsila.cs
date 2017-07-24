@@ -107,8 +107,19 @@ namespace Bil372Proje.Pages.okul
                 MessageBox.Show(listView1.Items[i].SubItems[5].Text);
                 string kayit = "insert into gecmis(okul_id,yardimsever_id,ad,marka,adet,fiyat,tur) values(@okul_id,1,@ad,@marka,@adet,@fiyat,@tur)";
                 string kayit2 = "delete from "+ listView1.Items[i].SubItems[5].Text + " where ihtiyac_id = @ihtiyac_id";
+                string kayit3 ="";
+                if (toplam == Convert.ToInt32(listView1.Items[i].SubItems[2].Text))
+                {
+                    kayit3 = "delete from ihtiyac where id = @ihtiyac_id";
+                }
+                else
+                {
+                    int kalanAdet =toplam - Convert.ToInt32(listView1.Items[i].SubItems[2].Text) ;
+                    kayit3 = "update ihtiyac set adet="+ kalanAdet +"  where id = @ihtiyac_id";
+                }
                 SqlCommand komut = new SqlCommand(kayit, con);
                 SqlCommand komut2 = new SqlCommand(kayit2, con);
+                SqlCommand komut3 = new SqlCommand(kayit3, con);
                 komut.Parameters.AddWithValue("@okul_id",Id);
                 komut.Parameters.AddWithValue("@ad", listView1.Items[i].SubItems[1].Text);
                 komut.Parameters.AddWithValue("@adet", listView1.Items[i].SubItems[2].Text);
@@ -117,9 +128,11 @@ namespace Bil372Proje.Pages.okul
                 komut.Parameters.AddWithValue("@tur", listView1.Items[i].SubItems[5].Text);
                 komut.Parameters.AddWithValue("@table", listView1.Items[i].SubItems[5].Text);
                 komut2.Parameters.AddWithValue("@ihtiyac_id", ihtiyac_id);
+                komut3.Parameters.AddWithValue("@ihtiyac_id", ihtiyac_id);
                 komut.ExecuteNonQuery();
                 komut2.ExecuteNonQuery();
-                
+               
+                komut3.ExecuteNonQuery();
             }
             con.Close();
             okul_pages okul = new okul_pages(kAdi);
