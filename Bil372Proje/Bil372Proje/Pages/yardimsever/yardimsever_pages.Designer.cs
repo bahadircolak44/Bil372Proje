@@ -38,7 +38,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.LavenderBlush;
             this.button1.Location = new System.Drawing.Point(352, 145);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(137, 50);
             this.button1.TabIndex = 0;
@@ -50,7 +50,7 @@
             // 
             this.bakiye_btn.BackColor = System.Drawing.Color.LavenderBlush;
             this.bakiye_btn.Location = new System.Drawing.Point(731, 37);
-            this.bakiye_btn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.bakiye_btn.Margin = new System.Windows.Forms.Padding(2);
             this.bakiye_btn.Name = "bakiye_btn";
             this.bakiye_btn.Size = new System.Drawing.Size(110, 39);
             this.bakiye_btn.TabIndex = 1;
@@ -72,7 +72,7 @@
             // 
             this.button3.BackColor = System.Drawing.Color.LavenderBlush;
             this.button3.Location = new System.Drawing.Point(352, 250);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(137, 50);
             this.button3.TabIndex = 3;
@@ -91,9 +91,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bakiye_btn);
             this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "yardimsever1";
-            this.Text = "Form1";
+            this.Text = "Yardımsever";
             this.Load += new System.EventHandler(this.yardimsever1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

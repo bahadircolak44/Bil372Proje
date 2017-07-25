@@ -71,7 +71,7 @@ namespace Bil372Proje.Pages.yardimsever
                 string[] row = { Id.ToString(), isim, adet.ToString(), marka, fiyat.ToString(), tur };
                 var satir = new ListViewItem(row);
                 listView1.Items.Add(satir);
-                label2.Text = price.ToString();
+                label2.Text = price.ToString() + " TL";
                 if (adet == toplam)
                 {
                     dataGridView1.Rows.RemoveAt(dataGridView1.CurrentRow.Index);

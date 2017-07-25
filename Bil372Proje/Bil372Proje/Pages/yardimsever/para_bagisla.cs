@@ -44,10 +44,16 @@ namespace Bil372Proje.Pages.yardimsever
             da.Fill(dt);
             //Bir DataTable oluşturarak DataAdapter ile getirilen verileri tablo içerisine dolduruyoruz.
             int bakiye = Convert.ToInt32(komut.ExecuteScalar());
+            if (miktar.Text == "")
+            {
+                MessageBox.Show("Miktarı boş bırakamazsınız!");
+                con.Close();
+                return false;
+            }
             int mik = Convert.ToInt32(miktar.Text);
             if ((bakiye == 0 || bakiye < mik))
             {
-                MessageBox.Show("Bakiyeniz Yetersiz");
+                MessageBox.Show("Bakiyeniz Yetersiz!");
                 con.Close();
                 return false;
             }
