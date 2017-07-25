@@ -203,7 +203,7 @@ namespace Bil372Proje.Pages
                                 cmd.Parameters.AddWithValue("@mahalle", okul_mahalle.Text);
                                 cmd.Parameters.AddWithValue("@adres", okul_adres.Text);
                                 cmd.Parameters.AddWithValue("@posta", okul_posta.Text);
-                                cmd.Parameters.AddWithValue("@telefon", okul_telefon.Text);
+                                cmd.Parameters.AddWithValue("@telefon", Convert.ToInt32(okul_telefon.Text));
 
 
 
@@ -280,7 +280,7 @@ namespace Bil372Proje.Pages
                                 cmd.Parameters.AddWithValue("@mahalle", tedarikci_mahalle.Text);
                                 cmd.Parameters.AddWithValue("@adres", tedarikci_adres.Text);
                                 cmd.Parameters.AddWithValue("@posta", tedarikci_posta.Text);
-                                cmd.Parameters.AddWithValue("@telefon", tedarikci_telefon.Text);
+                                cmd.Parameters.AddWithValue("@telefon", Convert.ToInt32(tedarikci_telefon.Text));
 
                                 cmd.ExecuteNonQuery();
 
