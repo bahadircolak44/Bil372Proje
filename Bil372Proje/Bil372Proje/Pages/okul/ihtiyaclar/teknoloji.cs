@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,8 +14,8 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
 {
     public partial class teknoloji : Form
     {
-       
-        SqlConnection con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
+
+        NpgsqlConnection conn = new NpgsqlConnection("Server=bil372db.postgres.database.azure.com;Database=bil372;Port=5432;User Id=bahadir@bil372db;Password=Qwerty123;");
         public string kAdi;
         public int okul_id;
         public teknoloji(string kullanici, int Id)
@@ -34,7 +35,7 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
         private int fiyatHesapla(string ad, string marka, string model, string uretim_yili)
         {
 
-            SqlCommand cmd = new SqlCommand("select fiyat from urun where ad=@ad and  marka = @marka and model = @model and uretim_yili = @uretim_yili", con);
+            NpgsqlCommand cmd = new NpgsqlCommand("select fiyat from urun where ad=@ad and  marka = @marka and model = @model and uretim_yili = @uretim_yili", conn);
             cmd.Parameters.AddWithValue("@ad", ad);
             cmd.Parameters.AddWithValue("@marka", marka);        
             cmd.Parameters.AddWithValue("@model", model);
@@ -46,14 +47,14 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
         }
         private void comboboxGetir()
         {
-            SqlCommand komut = new SqlCommand();
+            NpgsqlCommand komut = new NpgsqlCommand();
             komut.CommandText = "SELECT * FROM urun where kategori = @kategori";
             komut.Parameters.AddWithValue("@kategori", "teknoloji");
-            komut.Connection = con;
+            komut.Connection = conn;
             komut.CommandType = CommandType.Text;
 
-            SqlDataReader dr;
-            con.Open();
+            NpgsqlDataReader dr;
+            conn.Open();
             dr = komut.ExecuteReader();
             while (dr.Read())
             {
@@ -63,7 +64,7 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
                 teknoloji_uretim_yili.Items.Add(dr["uretim_yili"]);
 
             }
-            con.Close();
+            conn.Close();
 
         }
 
@@ -79,37 +80,32 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             string kayit = "SELECT isim,marka,adet " +
                           " from ihtiyac where ihtiyac.okul_id =@okul_id";
 
-            //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
-            SqlCommand komut = new SqlCommand(kayit, con);
+            NpgsqlCommand komut = new NpgsqlCommand(kayit, conn);
             komut.Parameters.AddWithValue("@okul_id", okul_id);
-            //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
-            SqlDataAdapter da = new SqlDataAdapter(komut);
-            //SqlDataAdapter sınıfı verilerin databaseden aktarılması işlemini gerçekleştirir.
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(komut);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            //Bir DataTable oluşturarak DataAdapter ile getirilen verileri tablo içerisine dolduruyoruz.
             dataGridView1.DataSource = dt;
-            //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
-            con.Close();
+            conn.Close();
         }
         private String totalfiyatgetir()
         {
-            con.Open();
+            conn.Open();
             string kayit = "SELECT SUM(fiyat) " +
                           " from ihtiyac where ihtiyac.okul_id =@okul_id";
 
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
-            SqlCommand komut = new SqlCommand(kayit, con);
+            NpgsqlCommand komut = new NpgsqlCommand(kayit, conn);
             komut.Parameters.AddWithValue("@okul_id", okul_id);
-            //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
-            SqlDataAdapter da = new SqlDataAdapter(komut);
+            //Sorgumuzu ve baglantimizi parametre olarak alan bir NpgsqlCommand nesnesi oluşturuyoruz.
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(komut);
             //SqlDataAdapter sınıfı verilerin databaseden aktarılması işlemini gerçekleştirir.
             DataTable dt = new DataTable();
             da.Fill(dt);
             //Bir DataTable oluşturarak DataAdapter ile getirilen verileri tablo içerisine dolduruyoruz.
             var total = komut.ExecuteScalar().ToString();
             //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
-            con.Close();
+            conn.Close();
 
             return total;
         }
@@ -124,10 +120,10 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             {
 
            
-            con.Open();
+            conn.Open();
             //sql den adet çekiliyor
-            SqlCommand kontrol = new SqlCommand("select adet from ihtiyac where isim=@isim and marka=@marka", con);
-            SqlCommand kontrol2 = new SqlCommand("select ihtiyac_id from teknoloji where model=@model and uretim_yili=@uretim_yili ", con);
+            NpgsqlCommand kontrol = new NpgsqlCommand("select adet from ihtiyac where isim=@isim and marka=@marka", conn);
+            NpgsqlCommand kontrol2 = new NpgsqlCommand("select ihtiyac_id from teknoloji where model=@model and uretim_yili=@uretim_yili ", conn);
 
             kontrol.Parameters.AddWithValue("@isim", teknoloji_ihtiyac.Text);
             kontrol.Parameters.AddWithValue("@marka", teknoloji_marka.Text);
@@ -135,8 +131,8 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             kontrol2.Parameters.AddWithValue("@model", teknoloji_model.Text);
             kontrol2.Parameters.AddWithValue("@uretim_yili", teknoloji_uretim_yili.Text);
             
-            SqlDataAdapter adapt = new SqlDataAdapter(kontrol);
-            SqlDataAdapter adapt2 = new SqlDataAdapter(kontrol2);
+            NpgsqlDataAdapter adapt = new NpgsqlDataAdapter(kontrol);
+            NpgsqlDataAdapter adapt2 = new NpgsqlDataAdapter(kontrol2);
             DataSet ds = new DataSet();
             DataSet ds2 = new DataSet();
             adapt.Fill(ds);
@@ -151,8 +147,8 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             if (i > 0 && j > 0)
             {
                 //var olan adeti istenen kadar arttırıyor
-                SqlCommand cmd = new SqlCommand("Update ihtiyac set adet=@Adet Where isim = @isim and Id=@Id", con);
-                SqlCommand cmd3 = new SqlCommand("Update ihtiyac set fiyat=@fiyat Where isim = @isim and Id=@Id", con);
+                NpgsqlCommand cmd = new NpgsqlCommand("Update ihtiyac set adet=@Adet Where isim = @isim and Id=@Id", conn);
+                NpgsqlCommand cmd3 = new NpgsqlCommand("Update ihtiyac set fiyat=@fiyat Where isim = @isim and Id=@Id", conn);
                 int cnt = Convert.ToInt32(kontrol.ExecuteScalar()) + Convert.ToInt32(teknoloji_adet.Text.Trim());
                 int cnt2 = Convert.ToInt32(kontrol2.ExecuteScalar());
                     //string ad, string marka, string renk, string model, string uretim_yili
@@ -170,8 +166,8 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             else
             {
                 //eski bir kayıt yoksa yenisini ekliyor
-                SqlCommand cmd = new SqlCommand("insert into ihtiyac(okul_id,isim,adet,marka,fiyat,tur)" +
-    " values(@okul_id,@isim,@adet,@marka,10,'teknoloji')", con);
+                NpgsqlCommand cmd = new NpgsqlCommand("insert into ihtiyac(okul_id,isim,adet,marka,fiyat,tur)" +
+    " values(@okul_id,@isim,@adet,@marka,10,'teknoloji')", conn);
                 cmd.Parameters.AddWithValue("@isim", teknoloji_ihtiyac.Text);
                 cmd.Parameters.AddWithValue("@adet", teknoloji_adet.Text);
                 cmd.Parameters.AddWithValue("@marka", teknoloji_marka.Text);
@@ -183,10 +179,10 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
 
 
             //en son da gerekli bilgileri mobilyaya ekliyor
-            SqlCommand komut = new SqlCommand("select max(id) from ihtiyac", con);
+            NpgsqlCommand komut = new NpgsqlCommand("select max(id) from ihtiyac", conn);
             int count = Convert.ToInt32(komut.ExecuteScalar());
-            SqlCommand cmd2 = new SqlCommand("insert into teknoloji(ihtiyac_id,model,uretim_yili)" +
-            " values(@ihtiyac_id,@model,@uretim_yili)", con);
+            NpgsqlCommand cmd2 = new NpgsqlCommand("insert into teknoloji(ihtiyac_id,model,uretim_yili)" +
+            " values(@ihtiyac_id,@model,@uretim_yili)", conn);
             cmd2.Parameters.AddWithValue("@ihtiyac_id", count);
             cmd2.Parameters.AddWithValue("@model", teknoloji_model.Text);
             cmd2.Parameters.AddWithValue("@uretim_yili", teknoloji_uretim_yili.Text);

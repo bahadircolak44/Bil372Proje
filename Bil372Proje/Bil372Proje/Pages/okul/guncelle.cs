@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Npgsql;
 
 namespace Bil372Proje.Pages.okul
 {
@@ -15,7 +16,7 @@ namespace Bil372Proje.Pages.okul
     {
         int u_id;
         String kAdi;
-        SqlConnection con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
+        NpgsqlConnection conn = new NpgsqlConnection("Server=bil372db.postgres.database.azure.com;Database=bil372;Port=5432;User Id=bahadir@bil372db;Password=Qwerty123;");
         public guncelle(int Id, String kadi)
         {
             u_id = Id;
@@ -27,13 +28,13 @@ namespace Bil372Proje.Pages.okul
         {
 
 
-            con.Open();
+            conn.Open();
 
             if (!(adet.Text.Equals(string.Empty)))
             {
                
                 string kayit = "update ihtiyac set adet=@adet where Id=@Id";
-                SqlCommand komut = new SqlCommand(kayit, con);
+                NpgsqlCommand komut = new NpgsqlCommand(kayit, conn);
                 komut.Parameters.AddWithValue("@adet", adet.Text);
                 komut.Parameters.AddWithValue("@Id", u_id.ToString());
                 komut.ExecuteNonQuery();
@@ -42,13 +43,13 @@ namespace Bil372Proje.Pages.okul
             if (!(fiyat.Text.Equals(string.Empty)))
             {
                 string kayit2 = "update ihtiyac set fiyat=@fiyat where Id=@Id";
-                SqlCommand komut2 = new SqlCommand(kayit2, con);
+                NpgsqlCommand komut2 = new NpgsqlCommand(kayit2, conn);
                 komut2.Parameters.AddWithValue("@fiyat", fiyat.Text);
                 komut2.Parameters.AddWithValue("@Id", u_id.ToString());
                 komut2.ExecuteNonQuery();
             }
 
-            con.Close();
+            conn.Close();
             okul_pages okul = new okul_pages(kAdi);
             this.Hide();
             okul.Show();
@@ -60,6 +61,11 @@ namespace Bil372Proje.Pages.okul
             okul_pages okul = new okul_pages(kAdi);
             this.Hide();
             okul.Show();
+        }
+
+        private void guncelle_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

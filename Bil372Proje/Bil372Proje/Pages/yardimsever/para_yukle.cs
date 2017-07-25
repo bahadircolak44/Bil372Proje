@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +14,7 @@ namespace Bil372Proje.Pages.yardimsever
 {
     public partial class para_yukle : Form
     {
-        SqlConnection con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
+        NpgsqlConnection conn = new NpgsqlConnection("Server=bil372db.postgres.database.azure.com;Database=bil372;Port=5432;User Id=bahadir@bil372db;Password=Qwerty123;");
         public string kullanici_adi;
         public para_yukle(string kAdi)
         {
@@ -35,21 +36,21 @@ namespace Bil372Proje.Pages.yardimsever
         }
         private void kayiitGuncelle()
         {
-            con.Open();
+            conn.Open();
             string kayit1 = "select bakiye from yardimsever where kAdi=@kullanici_adi ";
-            SqlCommand komut1 = new SqlCommand(kayit1, con);
+            NpgsqlCommand komut1 = new NpgsqlCommand(kayit1, conn);
             komut1.Parameters.AddWithValue("@kullanici_adi", kullanici_adi);
 
             string kayit = "update yardimsever set bakiye=@bakiye where kAdi=@kullanici_adi";
             
             int bakiye1 = Convert.ToInt32(komut1.ExecuteScalar());
             int bakiye2 = bakiye1 + Convert.ToInt32(miktar.Text);
-            SqlCommand komut = new SqlCommand(kayit, con);
+            NpgsqlCommand komut = new NpgsqlCommand(kayit, conn);
 
             komut.Parameters.AddWithValue("@kullanici_adi", kullanici_adi);
             komut.Parameters.AddWithValue("@bakiye", bakiye2);
             komut.ExecuteNonQuery();
-            con.Close();
+            conn.Close();
             MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir");
             yardimsever1 y1 = new yardimsever1(kullanici_adi);
             this.Hide();

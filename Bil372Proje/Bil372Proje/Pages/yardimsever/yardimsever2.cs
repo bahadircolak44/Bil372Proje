@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,7 +22,7 @@ namespace Bil372Proje.Pages
             InitializeComponent();
         }
 
-        SqlConnection baglanti = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
+      NpgsqlConnection conn = new NpgsqlConnection("Server=bil372db.postgres.database.azure.com;Database=bil372;Port=5432;User Id=bahadir@bil372db;Password=Qwerty123;");
 
 
         private void Form1_Load(object sender, EventArgs e)
@@ -30,27 +31,27 @@ namespace Bil372Proje.Pages
         }
         private void kayitGetir()
         {
-            baglanti.Open();
+            conn.Open();
             string kayit = "SELECT okul.okul_adi,il,ilce,telefon,puan from kullanici inner join okul on okul.kAdi = kullanici.kullanici_adi where yetki = 2 order by puan asc";
-            SqlCommand komut = new SqlCommand(kayit, baglanti);
-            SqlDataAdapter da = new SqlDataAdapter(komut);
+            NpgsqlCommand komut = new NpgsqlCommand(kayit, conn);
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(komut);
             DataTable dt = new DataTable();
             da.Fill(dt);
             dataGridView1.DataSource = dt;
-            baglanti.Close();
+            conn.Close();
         }
 
         private void goto_okulpage(object sender, MouseEventArgs e)
         {
-            baglanti.Open();
+            conn.Open();
             string kullaniciAdi = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            SqlCommand cmd = new SqlCommand("select Id from okul where kAdi=@kullanici_adi" , baglanti);
+            NpgsqlCommand cmd = new NpgsqlCommand("select Id from okul where kAdi=@kullanici_adi" , conn);
             cmd.Parameters.AddWithValue("@kullanici_adi", kullaniciAdi);
             int Id= Convert.ToInt32(cmd.ExecuteScalar());
             OkulIhtiyac okul = new OkulIhtiyac(Id,kullanici_adi);
             this.Hide();
             okul.Show();
-            baglanti.Close();
+            conn.Close();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -64,14 +65,14 @@ namespace Bil372Proje.Pages
         {
             if (okul_adi.Text.Equals(string.Empty)) { kayitGetir(); }
             else { 
-            baglanti.Open();
-            SqlCommand komut = new SqlCommand("SELECT kullanici_adi,il,ilce,telefon from kullanici where yetki =2 and kullanici_adi=@okul_adi ", baglanti);
+            conn.Open();
+            NpgsqlCommand komut = new NpgsqlCommand("SELECT kullanici_adi,il,ilce,telefon from kullanici where yetki =2 and kullanici_adi=@okul_adi ", conn);
             komut.Parameters.AddWithValue("@okul_adi", okul_adi.Text);
-            SqlDataAdapter da = new SqlDataAdapter(komut);
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(komut);
             DataTable dt = new DataTable();
             da.Fill(dt);
             dataGridView1.DataSource = dt;
-            baglanti.Close();
+            conn.Close();
             }
 
         }

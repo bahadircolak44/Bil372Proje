@@ -124,6 +124,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ihtiyac_ekle";
             this.Text = "ihtiyac_ekle";
+            this.Load += new System.EventHandler(this.ihtiyac_ekle_Load);
             this.ResumeLayout(false);
 
         }

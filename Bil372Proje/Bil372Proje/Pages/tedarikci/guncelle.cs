@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using Npgsql;
+using System;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Bil372Proje.Pages.tedarikci
 {
     public partial class guncelle : Form
     {
-        SqlConnection con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
+        NpgsqlConnection conn = new NpgsqlConnection("Server=bil372db.postgres.database.azure.com;Database=bil372;Port=5432;User Id=bahadir@bil372db;Password=Qwerty123;");
         int urun_Id;
         public guncelle(int Id)
         {
@@ -23,11 +17,11 @@ namespace Bil372Proje.Pages.tedarikci
 
         private void button1_Click(object sender, EventArgs e)
         {
-            con.Open();
+            conn.Open();
             if (!(adet.Text.Equals(string.Empty)))
             {
                 string kayit = "update urun set stok_miktari=@adet where Id=@Id";
-                SqlCommand komut = new SqlCommand(kayit, con);
+                NpgsqlCommand komut = new NpgsqlCommand(kayit, conn);
                 komut.Parameters.AddWithValue("@adet", adet.Text);
                 komut.Parameters.AddWithValue("@Id", urun_Id);
                 komut.ExecuteNonQuery();
@@ -36,13 +30,13 @@ namespace Bil372Proje.Pages.tedarikci
             if (!(fiyat.Text.Equals(string.Empty)))
             {
                 string kayit2 = "update urun set fiyat=@fiyat where Id=@Id";
-                SqlCommand komut2 = new SqlCommand(kayit2, con);
+                NpgsqlCommand komut2 = new NpgsqlCommand(kayit2, conn);
                 komut2.Parameters.AddWithValue("@fiyat", fiyat.Text);
                 komut2.Parameters.AddWithValue("@Id", urun_Id);
                 komut2.ExecuteNonQuery();
             }
 
-            con.Close();
+            conn.Close();
             urun_guncelle guncelle = new urun_guncelle();
             this.Hide();
             guncelle.Show();

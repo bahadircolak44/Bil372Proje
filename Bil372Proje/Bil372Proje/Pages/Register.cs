@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,12 +20,13 @@ namespace Bil372Proje.Pages
          *  Okul =2
          *  Tedarikci =3 şeklinde olacak
          */
+        NpgsqlConnection conn;
         Login login;
-        SqlConnection con;
+
         public Register()
         {
             InitializeComponent();
-            con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
+            conn = new NpgsqlConnection("Server=bil372db.postgres.database.azure.com;Database=bil372;Port=5432;User Id=bahadir@bil372db;Password=Qwerty123;");
             login = new Login();
 
 
@@ -57,10 +59,10 @@ namespace Bil372Proje.Pages
                         //Password ların eşitliğini kontrol ediyor
                         if (sifre.Text.Equals(sifre_tekrar.Text))
                         {
-                            con.Open();
-                               // SqlCommand cmd1 = con.CreateCommand();
-                            SqlCommand cmd = new SqlCommand("insert into kullanici(kullanici_adi,sifre,email,il,ilce,mahalle,adress,posta_kodu,telefon,yetki)" +
-                            " values(@kullanici_adi, @sifre, @email, @il, @ilce, @mahalle, @adres, @posta, @telefon ,1)", con);
+                            conn.Open();
+                                // NpgsqlCommand cmd1 = con.CreateCommand();
+                                NpgsqlCommand cmd = new NpgsqlCommand("insert into kullanici(kullanici_adi,sifre,email,il,ilce,mahalle,adress,posta_kodu,telefon,yetki)" +
+                            " values(@kullanici_adi, @sifre, @email, @il, @ilce, @mahalle, @adres, @posta, @telefon ,1)", conn);
 
                                 cmd.Parameters.AddWithValue("@kullanici_adi", kullanici_adi.Text);
                                 cmd.Parameters.AddWithValue("@sifre", sifre.Text);
@@ -70,12 +72,12 @@ namespace Bil372Proje.Pages
                                 cmd.Parameters.AddWithValue("@mahalle", mahalle.Text);
                                 cmd.Parameters.AddWithValue("@adres", adres.Text);
                                 cmd.Parameters.AddWithValue("@posta", posta_kutusu.Text);
-                                cmd.Parameters.AddWithValue("@telefon", tel.Text);
+                                cmd.Parameters.AddWithValue("@telefon", Convert.ToInt32(tel.Text));
                                                                 
                                 cmd.ExecuteNonQuery();
-                                
-                                 SqlCommand cmd2 = new SqlCommand("insert into yardimsever(kAdi,ad,soyad,cinsiyet,bakiye)"+
-                                     " values(@kAdi, @ad, @soyAd, @cinsiyet, 0)" ,con );
+
+                                NpgsqlCommand cmd2 = new NpgsqlCommand("insert into yardimsever(kAdi,ad,soyad,cinsiyet,bakiye)"+
+                                     " values(@kAdi, @ad, @soyAd, @cinsiyet, 0)" ,conn );
                                 cmd2.Parameters.AddWithValue("@kAdi", kullanici_adi.Text);
                                 cmd2.Parameters.AddWithValue("@ad", Ad.Text);
                                 cmd2.Parameters.AddWithValue("@soyAd", soyAd.Text);
@@ -83,7 +85,7 @@ namespace Bil372Proje.Pages
 
                                 //bakiye icin yapmadim cunku ilk baslangicta hep 0 veriyoruz.
                                 cmd2.ExecuteScalar();
-                                con.Close();
+                                conn.Close();
                                 MessageBox.Show("Kayıt Başarılı", "BASARILI");
                             this.Hide();
                             login.Show();
@@ -188,10 +190,10 @@ namespace Bil372Proje.Pages
                             if (okul_sifre.Text.Equals(okul_sifre_tekrar.Text))
                             {
                                 //Database sistemi oluşturulduktan sonra
-                                con.Open();
-                               
-                                SqlCommand cmd = new SqlCommand("insert into kullanici(kullanici_adi,sifre,email,il,ilce,mahalle,adress,posta_kodu,telefon,yetki)" +
-                            " values(@kullanici_adi, @sifre, @email, @il, @ilce, @mahalle, @adres, @posta, @telefon ,2)", con);
+                                conn.Open();
+
+                                NpgsqlCommand cmd = new NpgsqlCommand("insert into kullanici(kullanici_adi,sifre,email,il,ilce,mahalle,adress,posta_kodu,telefon,yetki)" +
+                            " values(@kullanici_adi, @sifre, @email, @il, @ilce, @mahalle, @adres, @posta, @telefon ,2)", conn);
 
                                 cmd.Parameters.AddWithValue("@kullanici_adi", okul_kullanici_adi.Text);
                                 cmd.Parameters.AddWithValue("@sifre", okul_sifre.Text);
@@ -203,15 +205,15 @@ namespace Bil372Proje.Pages
                                 cmd.Parameters.AddWithValue("@posta", okul_posta.Text);
                                 cmd.Parameters.AddWithValue("@telefon", okul_telefon.Text);
 
-                               
-                                
-                                SqlCommand cmd2 = new SqlCommand("insert into okul(kAdi,bakiye,valid,okul_adi) values(@kAdi,0,0,@okul_adi)", con);
+
+
+                                NpgsqlCommand cmd2 = new NpgsqlCommand("insert into okul(kAdi,bakiye,valid,okul_adi) values(@kAdi,0,0,@okul_adi)", conn);
 
                                 cmd2.Parameters.AddWithValue("@kAdi", okul_kullanici_adi.Text);
                                 cmd2.Parameters.AddWithValue("@okul_adi", okul_adi.Text);
                                 cmd.ExecuteNonQuery();
                                 cmd2.ExecuteScalar();
-                                con.Close();
+                                conn.Close();
                                 MessageBox.Show("Kaydınız Alınmıştır. Kontrol Sonrası Bilgilendirileceksiniz", "BAŞARILI");
                                 this.Hide();
                                 login.Show();
@@ -243,7 +245,7 @@ namespace Bil372Proje.Pages
             }
             finally
             {
-                con.Close();
+                conn.Close();
             }
         }
         //Tedarikci kayıt ekranında register düğmesine bastığında yapılacak olan
@@ -266,9 +268,9 @@ namespace Bil372Proje.Pages
                             if (tedarikci_sifre.Text.Equals(tedarikci_sifre_tekrar.Text))
                             {
                                 //Database sistemi oluşturulduktan sonra
-                                con.Open();
-                                SqlCommand cmd = new SqlCommand("insert into kullanici(kullanici_adi,sifre,email,il,ilce,mahalle,adress,posta_kodu,telefon,yetki)" +
-                            " values(@kullanici_adi, @sifre, @email, @il, @ilce, @mahalle, @adres, @posta, @telefon ,3)", con);
+                                conn.Open();
+                                NpgsqlCommand cmd = new NpgsqlCommand("insert into kullanici(kullanici_adi,sifre,email,il,ilce,mahalle,adress,posta_kodu,telefon,yetki)" +
+                            " values(@kullanici_adi, @sifre, @email, @il, @ilce, @mahalle, @adres, @posta, @telefon ,3)", conn);
 
                                 cmd.Parameters.AddWithValue("@kullanici_adi", tedarikci_kullanici_adi.Text);
                                 cmd.Parameters.AddWithValue("@sifre", tedarikci_sifre.Text);
@@ -283,13 +285,13 @@ namespace Bil372Proje.Pages
                                 cmd.ExecuteNonQuery();
 
 
-                                SqlCommand cmd2 = new SqlCommand("insert into tedarikci(kAdi,firma_adi,bakiye,valid) values(@kAdi,@firma_adi,0,0)", con);
+                                NpgsqlCommand cmd2 = new NpgsqlCommand("insert into tedarikci(kAdi,firma_adi,bakiye,valid) values(@kAdi,@firma_adi,0,0)", conn);
 
                                 cmd2.Parameters.AddWithValue("@kAdi", tedarikci_kullanici_adi.Text);
                                 cmd2.Parameters.AddWithValue("@firma_adi", firma_adi.Text);
 
                                 cmd2.ExecuteScalar();
-                                con.Close();
+                                conn.Close();
                                 MessageBox.Show("Kaydınız Alınmıştır. Kontrol Sonrası Bilgilendirileceksiniz", "BAŞARILI");
                                 this.Hide();
                                 login.Show();

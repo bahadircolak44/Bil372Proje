@@ -1,4 +1,5 @@
 ﻿using Bil372Proje.Pages.okul;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +16,7 @@ namespace Bil372Proje.Pages
     public partial class ihtiyac_guncelle : Form
     {
         String kAdi;
-        SqlConnection con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
+        NpgsqlConnection conn = new NpgsqlConnection("Server=bil372db.postgres.database.azure.com;Database=bil372;Port=5432;User Id=bahadir@bil372db;Password=Qwerty123;");
 
         public ihtiyac_guncelle(String kullaniciAdi)
         {
@@ -32,22 +33,22 @@ namespace Bil372Proje.Pages
         {
             string kayit = "SELECT Id,isim,marka,adet from ihtiyac ";
 
-            SqlCommand komut = new SqlCommand(kayit, con);
-            SqlDataAdapter da = new SqlDataAdapter(komut);
+            NpgsqlCommand komut = new NpgsqlCommand(kayit, conn);
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(komut);
             DataTable dt = new DataTable();
             da.Fill(dt);
             dataGridView1.DataSource = dt;
-            con.Close();
+            conn.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            con.Open();
+            conn.Open();
             int Id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-            SqlCommand cmd = new SqlCommand("delete from ihtiyac where Id=@Id", con);
+            NpgsqlCommand cmd = new NpgsqlCommand("delete from ihtiyac where Id=@Id", conn);
             cmd.Parameters.AddWithValue("@Id", Id);
             cmd.ExecuteNonQuery();
-            con.Close();
+            conn.Close();
             kayitGetir();
         }
 

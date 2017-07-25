@@ -1,4 +1,5 @@
 ﻿using Bil372Proje.Pages.yardimsever;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +15,7 @@ namespace Bil372Proje.Pages
 {
     public partial class yardimsever1 : Form
     {
-        SqlConnection con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
+        NpgsqlConnection conn = new NpgsqlConnection("Server=bil372db.postgres.database.azure.com;Database=bil372;Port=5432;User Id=bahadir@bil372db;Password=Qwerty123;");
         public string kullanici_adi;
         public yardimsever1(string kAdi)
         {
@@ -37,19 +38,19 @@ namespace Bil372Proje.Pages
         }
         private int kayitGetir()
         {
-            con.Open();
+            conn.Open();
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
-            SqlCommand komut = new SqlCommand("SELECT bakiye from yardimsever where kAdi=@kullanici_adi", con);
+            NpgsqlCommand komut = new NpgsqlCommand("SELECT bakiye from yardimsever where kAdi=@kullanici_adi", conn);
             komut.Parameters.AddWithValue("@kullanici_adi", kullanici_adi);
-            //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
-            SqlDataAdapter da = new SqlDataAdapter(komut);
+            //Sorgumuzu ve baglantimizi parametre olarak alan bir NpgsqlCommand nesnesi oluşturuyoruz.
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(komut);
             //SqlDataAdapter sınıfı verilerin databaseden aktarılması işlemini gerçekleştirir.
             DataTable dt = new DataTable();
             da.Fill(dt);
             //Bir DataTable oluşturarak DataAdapter ile getirilen verileri tablo içerisine dolduruyoruz.
             int bakiye = Convert.ToInt32(komut.ExecuteScalar());
             //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
-            con.Close();
+            conn.Close();
             return bakiye;
         }
 

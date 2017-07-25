@@ -8,13 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Npgsql;
 
 namespace Bil372Proje.Pages.okul
 {
     public partial class gecmis : Form
     {
 
-        SqlConnection con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
+        NpgsqlConnection conn = new NpgsqlConnection("Server=bil372db.postgres.database.azure.com;Database=bil372;Port=5432;User Id=bahadir@bil372db;Password=Qwerty123;");
         String kAdi;
         public gecmis(String k)
         {
@@ -36,24 +37,24 @@ namespace Bil372Proje.Pages.okul
         }
         private string kayitGetir()
         {
-            con.Open();
+            conn.Open();
             string kayit = "SELECT SUM(fiyat) " +
                           " from gecmis";
 
             string kayit2 = "SELECT * " +
                           " from gecmis";
 
-            SqlCommand komut2 = new SqlCommand(kayit, con);
-            SqlCommand komut = new SqlCommand(kayit2, con);
+            NpgsqlCommand komut2 = new NpgsqlCommand(kayit, conn);
+            NpgsqlCommand komut = new NpgsqlCommand(kayit2, conn);
 
-            SqlDataAdapter da = new SqlDataAdapter(komut);
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(komut);
             DataTable dt = new DataTable();
             da.Fill(dt);
             dataGridView1.DataSource = dt;
 
             var total = komut2.ExecuteScalar().ToString();
 
-            con.Close();
+            conn.Close();
 
             return total;
         }

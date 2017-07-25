@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,7 +23,7 @@ namespace Bil372Proje.Pages.yardimsever
             //Yardimsever2 den sonra bu sayfaya gelinir seçilen okulun ihtiyaçlarını listeler
             InitializeComponent();
         }
-        SqlConnection con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
+        NpgsqlConnection conn = new NpgsqlConnection("Server=bil372db.postgres.database.azure.com;Database=bil372;Port=5432;User Id=bahadir@bil372db;Password=Qwerty123;");
 
 
         private void Geri_Click(object sender, EventArgs e)
@@ -33,12 +34,12 @@ namespace Bil372Proje.Pages.yardimsever
         }
         private bool kayitGuncelle()
         {
-            con.Open();
+            conn.Open();
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
-            SqlCommand komut = new SqlCommand("SELECT bakiye from yardimsever where kAdi=@kullanici_adi", con);
+            NpgsqlCommand komut = new NpgsqlCommand("SELECT bakiye from yardimsever where kAdi=@kullanici_adi", conn);
             komut.Parameters.AddWithValue("@kullanici_adi", kullanici_adi);
-            //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
-            SqlDataAdapter da = new SqlDataAdapter(komut);
+            //Sorgumuzu ve baglantimizi parametre olarak alan bir NpgsqlCommand nesnesi oluşturuyoruz.
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(komut);
             //SqlDataAdapter sınıfı verilerin databaseden aktarılması işlemini gerçekleştirir.
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -48,11 +49,11 @@ namespace Bil372Proje.Pages.yardimsever
             if ((bakiye == 0 || bakiye < mik))
             {
                 MessageBox.Show("Bakiyeniz Yetersiz");
-                con.Close();
+                conn.Close();
                 return false;
             }
-            SqlCommand yardimsever = new SqlCommand("update yardimsever set bakiye=bakiye - @ybakiye where kAdi=@kullanici_adi ", con);
-            SqlCommand okul = new SqlCommand("update okul set bakiye=bakiye + @obakiye where id=@okul_id", con);
+            NpgsqlCommand yardimsever = new NpgsqlCommand("update yardimsever set bakiye=bakiye - @ybakiye where kAdi=@kullanici_adi ", conn);
+            NpgsqlCommand okul = new NpgsqlCommand("update okul set bakiye=bakiye + @obakiye where id=@okul_id", conn);
             yardimsever.Parameters.AddWithValue("@kullanici_adi", kullanici_adi);
             yardimsever.Parameters.AddWithValue("@ybakiye", miktar.Text);
             okul.Parameters.AddWithValue("@obakiye", miktar.Text);
@@ -64,7 +65,7 @@ namespace Bil372Proje.Pages.yardimsever
             this.Hide();
             y1.Show();
             //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
-            con.Close();
+            conn.Close();
             return true;
 
         }
@@ -78,19 +79,19 @@ namespace Bil372Proje.Pages.yardimsever
 
         private int bakiyeGetir()
         {
-            con.Open();
+            conn.Open();
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
-            SqlCommand komut = new SqlCommand("SELECT bakiye from yardimsever where kAdi=@kullanici_adi", con);
+            NpgsqlCommand komut = new NpgsqlCommand("SELECT bakiye from yardimsever where kAdi=@kullanici_adi", conn);
             komut.Parameters.AddWithValue("@kullanici_adi", kullanici_adi);
-            //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
-            SqlDataAdapter da = new SqlDataAdapter(komut);
+            //Sorgumuzu ve baglantimizi parametre olarak alan bir NpgsqlCommand nesnesi oluşturuyoruz.
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(komut);
             //SqlDataAdapter sınıfı verilerin databaseden aktarılması işlemini gerçekleştirir.
             DataTable dt = new DataTable();
             da.Fill(dt);
             //Bir DataTable oluşturarak DataAdapter ile getirilen verileri tablo içerisine dolduruyoruz.
             int bakiye = Convert.ToInt32(komut.ExecuteScalar());
             //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
-            con.Close();
+            conn.Close();
             return bakiye;
         }
 

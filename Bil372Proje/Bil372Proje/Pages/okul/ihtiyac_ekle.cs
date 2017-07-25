@@ -1,4 +1,5 @@
 ﻿using Bil372Proje.Pages.okul.ihtiyaclar;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,14 +19,14 @@ namespace Bil372Proje.Pages.okul
         public int Id;
         public ihtiyac_ekle(string kullanici )
         {
-            SqlConnection con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
-            con.Open();
+            NpgsqlConnection conn = new NpgsqlConnection("Server=bil372db.postgres.database.azure.com;Database=bil372;Port=5432;User Id=bahadir@bil372db;Password=Qwerty123;");
+            conn.Open();
             kAdi = kullanici;
-            SqlCommand cmd = new SqlCommand("select Id from okul where kAdi=@kullanici", con);
+            NpgsqlCommand cmd = new NpgsqlCommand("select Id from okul where kAdi=@kullanici", conn);
             cmd.Parameters.AddWithValue("@kullanici", kullanici);
             Id = Convert.ToInt32(cmd.ExecuteScalar());
             InitializeComponent();
-            con.Close();
+            conn.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -74,6 +75,11 @@ namespace Bil372Proje.Pages.okul
         private void button7_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void ihtiyac_ekle_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

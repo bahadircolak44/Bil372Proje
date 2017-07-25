@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using Npgsql;
+using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Bil372Proje.Pages.okul.ihtiyaclar
@@ -14,7 +9,7 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
 
     public partial class kirtasiye : Form
     {
-        SqlConnection con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
+        NpgsqlConnection conn = new NpgsqlConnection("Server=bil372db.postgres.database.azure.com;Database=bil372;Port=5432;User Id=bahadir@bil372db;Password=Qwerty123;");
         public string kAdi;
         public int okul_id;
         public kirtasiye(string kullanici,int Id)
@@ -26,8 +21,8 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
         private int fiyatHesapla(string ad, string marka, string renk, string cinsiyet)
         {
 
-            SqlCommand cmd = new SqlCommand("select fiyat from urun where ad=@ad and marka=@marka" +
-                " and renk =@renk and cinsiyet =@cinsiyet", con);
+            NpgsqlCommand cmd = new NpgsqlCommand("select fiyat from urun where ad=@ad and marka=@marka" +
+                " and renk =@renk and cinsiyet =@cinsiyet", conn);
             cmd.Parameters.AddWithValue("@ad", ad);
             cmd.Parameters.AddWithValue("@marka", marka);
             cmd.Parameters.AddWithValue("@renk", renk);
@@ -53,18 +48,18 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
                 kirtasiye_ihtiyac.Text.Equals(string.Empty) ||
                 kirtasiye_marka.Text.Equals(string.Empty)))
             {
-                con.Open();
-                SqlCommand kontrol = new SqlCommand("select adet from ihtiyac where isim=@isim and marka=@marka", con);
+                conn.Open();
+                NpgsqlCommand kontrol = new NpgsqlCommand("select adet from ihtiyac where isim=@isim and marka=@marka", conn);
                 kontrol.Parameters.AddWithValue("@isim", kirtasiye_ihtiyac.Text);
                 kontrol.Parameters.AddWithValue("@marka", kirtasiye_marka.Text);
-                SqlDataAdapter adapt = new SqlDataAdapter(kontrol);
+                NpgsqlDataAdapter adapt = new NpgsqlDataAdapter(kontrol);
                 DataSet ds = new DataSet();
                 adapt.Fill(ds);
                 int i = ds.Tables[0].Rows.Count;
                 if (i > 0)
                 {
-                    SqlCommand cmd = new SqlCommand("Update ihtiyac set adet=@Adet Where isim = @isim", con);
-                    SqlCommand cmd3 = new SqlCommand("Update ihtiyac set fiyat=@fiyat Where isim = @isim", con);
+                    NpgsqlCommand cmd = new NpgsqlCommand("Update ihtiyac set adet=@Adet Where isim = @isim", conn);
+                    NpgsqlCommand cmd3 = new NpgsqlCommand("Update ihtiyac set fiyat=@fiyat Where isim = @isim", conn);
                     int cnt = Convert.ToInt32(kontrol.ExecuteScalar()) + Convert.ToInt32(kirtasiye_adet.Text.Trim());
                     cmd.Parameters.AddWithValue("@Adet", cnt);
                     cmd.Parameters.AddWithValue("@isim", kirtasiye_ihtiyac.Text);
@@ -75,8 +70,8 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
                 }
                 else
                 {
-                    SqlCommand cmd = new SqlCommand("insert into ihtiyac(okul_id,isim,adet,marka,fiyat,tur)" +
-        " values(@okul_id,@isim,@adet,@marka,@fiyat,'kirtasiye')", con);
+                    NpgsqlCommand cmd = new NpgsqlCommand("insert into ihtiyac(okul_id,isim,adet,marka,fiyat,tur)" +
+        " values(@okul_id,@isim,@adet,@marka,@fiyat,'kirtasiye')", conn);
                     cmd.Parameters.AddWithValue("@isim", kirtasiye_ihtiyac.Text);
                     cmd.Parameters.AddWithValue("@adet", kirtasiye_adet.Text);
                     cmd.Parameters.AddWithValue("@marka", kirtasiye_marka.Text);
@@ -88,10 +83,10 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
 
 
 
-                SqlCommand komut = new SqlCommand("select max(id) from ihtiyac", con);
+                NpgsqlCommand komut = new NpgsqlCommand("select max(id) from ihtiyac", conn);
                 int count = Convert.ToInt32(komut.ExecuteScalar());
-                SqlCommand cmd2 = new SqlCommand("insert into kirtasiye(ihtiyac_id)" +
-                " values(@ihtiyac_id)", con);
+                NpgsqlCommand cmd2 = new NpgsqlCommand("insert into kirtasiye(ihtiyac_id)" +
+                " values(@ihtiyac_id)", conn);
                 cmd2.Parameters.AddWithValue("@ihtiyac_id", count);
                 cmd2.ExecuteNonQuery();
                 kayitGetir();
@@ -117,17 +112,17 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
                           " from ihtiyac where ihtiyac.okul_id =@okul_id";
 
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
-            SqlCommand komut = new SqlCommand(kayit, con);
+            NpgsqlCommand komut = new NpgsqlCommand(kayit, conn);
             komut.Parameters.AddWithValue("@okul_id", okul_id);
-            //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
-            SqlDataAdapter da = new SqlDataAdapter(komut);
+            //Sorgumuzu ve baglantimizi parametre olarak alan bir NpgsqlCommand nesnesi oluşturuyoruz.
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(komut);
             //SqlDataAdapter sınıfı verilerin databaseden aktarılması işlemini gerçekleştirir.
             DataTable dt = new DataTable();
             da.Fill(dt);
             //Bir DataTable oluşturarak DataAdapter ile getirilen verileri tablo içerisine dolduruyoruz.
             dataGridView1.DataSource = dt;
             //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
-            con.Close();
+            conn.Close();
         }
 
         private void kirtasiye_Load(object sender, EventArgs e)
@@ -139,14 +134,14 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
 
         private void comboboxGetir()
         {
-            SqlCommand komut = new SqlCommand();
+            NpgsqlCommand komut = new NpgsqlCommand();
             komut.CommandText = "SELECT * FROM urun where kategori = @kategori";
             komut.Parameters.AddWithValue("@kategori", "kirtasiye");
-            komut.Connection = con;
+            komut.Connection = conn;
             komut.CommandType = CommandType.Text;
 
-            SqlDataReader dr;
-            con.Open();
+            NpgsqlDataReader dr;
+            conn.Open();
             dr = komut.ExecuteReader();
             while (dr.Read())
             {
@@ -155,27 +150,22 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
                 kirtasiye_renk.Items.Add(dr["renk"]);
 
             }
-            con.Close();
+            conn.Close();
         }
 
         private String totalfiyatgetir()
         {
-            con.Open();
+            conn.Open();
             string kayit = "SELECT SUM(fiyat) " +
                           " from ihtiyac where ihtiyac.okul_id =@okul_id";
 
-            //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
-            SqlCommand komut = new SqlCommand(kayit, con);
+            NpgsqlCommand komut = new NpgsqlCommand(kayit, conn);
             komut.Parameters.AddWithValue("@okul_id", okul_id);
-            //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
-            SqlDataAdapter da = new SqlDataAdapter(komut);
-            //SqlDataAdapter sınıfı verilerin databaseden aktarılması işlemini gerçekleştirir.
-            DataTable dt = new DataTable();
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(komut);
+            DataSet dt = new DataSet();
             da.Fill(dt);
-            //Bir DataTable oluşturarak DataAdapter ile getirilen verileri tablo içerisine dolduruyoruz.
             var total = komut.ExecuteScalar().ToString();
-            //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
-            con.Close();
+            conn.Close();
 
             return total;
         }

@@ -6,6 +6,7 @@ using Bil372Proje.Pages;
 using Bil372Proje.Pages.okul;
 using Bil372Proje.Pages.admin;
 using Bil372Proje.Pages.tedarikci;
+using Npgsql;
 
 namespace Bil372Proje
 {
@@ -26,16 +27,17 @@ namespace Bil372Proje
            
             try
             {
-            SqlConnection con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
-                con.Open();
-                SqlCommand cmd = new SqlCommand("Select yetki from kullanici where kullanici_adi=@kullanici_adi and sifre=@sifre", con);
+                NpgsqlConnection conn = new NpgsqlConnection("Server=bil372db.postgres.database.azure.com;Database=bil372;Port=5432;User Id=bahadir@bil372db;Password=Qwerty123;");
+
+                conn.Open();
+                NpgsqlCommand cmd = new NpgsqlCommand("Select yetki from kullanici where kullanici_adi=@kullanici_adi and sifre=@sifre", conn);
                 cmd.Parameters.AddWithValue("@kullanici_adi", kullanici_adi.Text);
                 cmd.Parameters.AddWithValue("@sifre", sifre.Text);
-               SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+                NpgsqlDataAdapter adapt = new NpgsqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
                 adapt.Fill(ds);
                 int yetki = Convert.ToInt32(cmd.ExecuteScalar()); //yetkiyi burada alıyoruz. dönen degere göre bir sayfaya yönlendirilecek
-                con.Close();
+                conn.Close();
                 int count = ds.Tables[0].Rows.Count; 
 
                 if (count == 1)

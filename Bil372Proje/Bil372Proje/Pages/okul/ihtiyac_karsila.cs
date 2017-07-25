@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,7 +20,7 @@ namespace Bil372Proje.Pages.okul
         String kAdi;
         int Id;
         int ihtiyac_id;
-        SqlConnection con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
+        NpgsqlConnection conn = new NpgsqlConnection("Server=bil372db.postgres.database.azure.com;Database=bil372;Port=5432;User Id=bahadir@bil372db;Password=Qwerty123;");
 
         public ihtiyac_karsila(String kullaniciAdi,int okul_id)
         {
@@ -89,20 +90,19 @@ namespace Bil372Proje.Pages.okul
         {
 
             string kayit = "SELECT id,isim,adet,marka,fiyat,tur  from ihtiyac ";
-
-            SqlCommand komut = new SqlCommand(kayit, con);
-            SqlDataAdapter da = new SqlDataAdapter(komut);
+            NpgsqlCommand komut = new NpgsqlCommand(kayit, conn);
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(komut);
             DataTable dt = new DataTable();
             da.Fill(dt);
             dataGridView1.DataSource = dt;
            
-            con.Close();
+            conn.Close();
         }
 
         private void karsila_Click(object sender, EventArgs e)
         {
             MessageBox.Show(ihtiyac_id.ToString());
-            con.Open();
+            conn.Open();
             for (int i = 0; i < count; i++)
             {
                 MessageBox.Show(listView1.Items[i].SubItems[5].Text);
@@ -118,9 +118,9 @@ namespace Bil372Proje.Pages.okul
                     int kalanAdet =toplam - Convert.ToInt32(listView1.Items[i].SubItems[2].Text) ;
                     kayit3 = "update ihtiyac set adet="+ kalanAdet +"  where id = @ihtiyac_id";
                 }
-                SqlCommand komut = new SqlCommand(kayit, con);
-                SqlCommand komut2 = new SqlCommand(kayit2, con);
-                SqlCommand komut3 = new SqlCommand(kayit3, con);
+                NpgsqlCommand komut = new NpgsqlCommand(kayit, conn);
+                NpgsqlCommand komut2 = new NpgsqlCommand(kayit2, conn);
+                NpgsqlCommand komut3 = new NpgsqlCommand(kayit3, conn);
                 komut.Parameters.AddWithValue("@okul_id",Id);
                 komut.Parameters.AddWithValue("@ad", listView1.Items[i].SubItems[1].Text);
                 komut.Parameters.AddWithValue("@adet", listView1.Items[i].SubItems[2].Text);
@@ -135,7 +135,7 @@ namespace Bil372Proje.Pages.okul
                
                 komut3.ExecuteNonQuery();
             }
-            con.Close();
+            conn.Close();
             okul_pages okul = new okul_pages(kAdi);
             this.Hide();
             okul.Show();

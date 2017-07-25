@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,8 +14,7 @@ namespace Bil372Proje.Pages.tedarikci
 {
     public partial class urun_ekle : Form
     {
-        SqlConnection con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
-
+        NpgsqlConnection conn = new NpgsqlConnection("Server=bil372db.postgres.database.azure.com;Database=bil372;Port=5432;User Id=bahadir@bil372db;Password=Qwerty123;");
         public urun_ekle()
         {
             InitializeComponent();
@@ -34,17 +34,17 @@ namespace Bil372Proje.Pages.tedarikci
             if (! ( katagori.Text.Equals(string.Empty) ||ad.Text.Equals(string.Empty) ||
                  marka.Text.Equals(string.Empty) || stok_miktari.Text.Equals(string.Empty) ||
                  fiyat.Text.Equals(string.Empty) )) {
-                con.Open();
+                conn.Open();
                 string kayit = "insert into urun(kategori,ad,stok_miktari,fiyat,marka) " +
                     "values(@kategori,@ad,@stok_miktari,@fiyat,@marka)";
-                SqlCommand komut = new SqlCommand(kayit, con);
+                NpgsqlCommand komut = new NpgsqlCommand(kayit, conn);
                 komut.Parameters.AddWithValue("@kategori", katagori.Text);
                 komut.Parameters.AddWithValue("@ad", ad.Text);
-                komut.Parameters.AddWithValue("@stok_miktari", stok_miktari.Text);
-                komut.Parameters.AddWithValue("@fiyat", fiyat.Text);
+                komut.Parameters.AddWithValue("@stok_miktari", Convert.ToInt32(stok_miktari.Text));
+                komut.Parameters.AddWithValue("@fiyat", Convert.ToInt32(fiyat.Text));
                 komut.Parameters.AddWithValue("@marka", marka.Text);
                 komut.ExecuteNonQuery();
-                con.Close();
+                conn.Close();
                 kayitGetir();
                 clear();
             }
@@ -74,17 +74,12 @@ namespace Bil372Proje.Pages.tedarikci
 
             string kayit = "SELECT *  from urun ";
 
-            //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
-            SqlCommand komut = new SqlCommand(kayit, con);
-            //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
-            SqlDataAdapter da = new SqlDataAdapter(komut);
-            //SqlDataAdapter sınıfı verilerin databaseden aktarılması işlemini gerçekleştirir.
+            NpgsqlCommand komut = new NpgsqlCommand(kayit, conn);
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(komut);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            //Bir DataTable oluşturarak DataAdapter ile getirilen verileri tablo içerisine dolduruyoruz.
             dataGridView1.DataSource = dt;
-            //Formumuzdaki DataGridViewin veri kaynağını oluşturduğumuz tablo olarak gösteriyoruz.
-            con.Close();
+            conn.Close();
         }
     }
 }

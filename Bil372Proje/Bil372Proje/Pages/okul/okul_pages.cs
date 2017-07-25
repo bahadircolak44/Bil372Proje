@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using Npgsql;
+using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Bil372Proje.Pages.okul
@@ -15,7 +10,7 @@ namespace Bil372Proje.Pages.okul
     {
         String kAdi;
         int okul_id=0;
-        SqlConnection con = new SqlConnection("Data Source=bil372.database.windows.net;Initial Catalog=bil372DB;User ID=bahadir;Password=Qwerty123");
+        NpgsqlConnection conn = new NpgsqlConnection("Server=bil372db.postgres.database.azure.com;Database=bil372;Port=5432;User Id=bahadir@bil372db;Password=Qwerty123;");
 
         public okul_pages(String kullaniciAdi)
         {
@@ -39,19 +34,19 @@ namespace Bil372Proje.Pages.okul
 
         private String kayitGetir()
         {
-            con.Open();
+            conn.Open();
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
-            SqlCommand komut = new SqlCommand("SELECT bakiye from okul where kAdi=@kullanici_adi", con);
-            SqlCommand komut2 = new SqlCommand("SELECT Id from okul where kAdi=@kullanici_adi", con);
+            NpgsqlCommand komut = new NpgsqlCommand("SELECT bakiye from okul where kAdi=@kullanici_adi", conn);
+            NpgsqlCommand komut2 = new NpgsqlCommand("SELECT Id from okul where kAdi=@kullanici_adi", conn);
             komut.Parameters.AddWithValue("@kullanici_adi",kAdi );
             komut2.Parameters.AddWithValue("@kullanici_adi", kAdi);
             okul_id = Convert.ToInt32(komut2.ExecuteScalar());
             
-            SqlDataAdapter da = new SqlDataAdapter(komut);
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(komut);
             DataTable dt = new DataTable();
             da.Fill(dt);
             var bakiye= komut.ExecuteScalar().ToString();
-            con.Close();
+            conn.Close();
             return bakiye;
         }
 
