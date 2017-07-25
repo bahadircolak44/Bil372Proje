@@ -29,7 +29,7 @@ namespace Bil372Proje.Pages.okul
         {
             
            bakiye_btn.Text= kayitGetir()+ " TL";
-            MessageBox.Show(okul_id.ToString());
+            //MessageBox.Show(okul_id.ToString());
         }
 
         private String kayitGetir()
