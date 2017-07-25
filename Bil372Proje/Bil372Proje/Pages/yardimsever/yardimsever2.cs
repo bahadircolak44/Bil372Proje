@@ -31,7 +31,7 @@ namespace Bil372Proje.Pages
         private void kayitGetir()
         {
             baglanti.Open();
-            string kayit = "SELECT kullanici_adi,il,ilce,telefon from kullanici where yetki =2";
+            string kayit = "SELECT okul.okul_adi,il,ilce,telefon,puan from kullanici inner join okul on okul.kAdi = kullanici.kullanici_adi where yetki = 2 order by puan asc";
             SqlCommand komut = new SqlCommand(kayit, baglanti);
             SqlDataAdapter da = new SqlDataAdapter(komut);
             DataTable dt = new DataTable();

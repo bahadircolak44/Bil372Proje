@@ -69,7 +69,7 @@ namespace Bil372Proje.Pages
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ihtiyac_karsila karsila = new ihtiyac_karsila();
+            ihtiyac_karsila karsila = new ihtiyac_karsila(kullanici_adi, okul_id);
             this.Hide();
             karsila.Show();
         }

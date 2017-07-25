@@ -47,6 +47,7 @@ namespace Bil372Proje.Pages.okul
         private void listeye_ekle_Click(object sender, EventArgs e)
         {
             int adet = Convert.ToInt32(dataGridView1.CurrentRow.Cells[2].Value.ToString());
+            
             if (adet <= toplam)
             {
             int Id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
