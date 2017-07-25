@@ -17,11 +17,11 @@ namespace Bil372Proje.Pages.tedarikci
 
         private void button1_Click(object sender, EventArgs e)
         {
-            conn.Open();
+            con.Open();
             if (!(adet.Text.Equals(string.Empty)))
             {
                 string kayit = "update urun set stok_miktari=@adet where Id=@Id";
-                NpgsqlCommand komut = new NpgsqlCommand(kayit, conn);
+                SqlCommand komut = new SqlCommand(kayit, con);
                 komut.Parameters.AddWithValue("@adet", adet.Text);
                 komut.Parameters.AddWithValue("@Id", urun_Id);
                 komut.ExecuteNonQuery();
@@ -30,7 +30,7 @@ namespace Bil372Proje.Pages.tedarikci
             if (!(fiyat.Text.Equals(string.Empty)))
             {
                 string kayit2 = "update urun set fiyat=@fiyat where Id=@Id";
-                NpgsqlCommand komut2 = new NpgsqlCommand(kayit2, conn);
+                SqlCommand komut2 = new SqlCommand(kayit2, con);
                 komut2.Parameters.AddWithValue("@fiyat", fiyat.Text);
                 komut2.Parameters.AddWithValue("@Id", urun_Id);
                 komut2.ExecuteNonQuery();
