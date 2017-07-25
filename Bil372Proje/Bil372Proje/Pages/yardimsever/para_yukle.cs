@@ -47,7 +47,7 @@ namespace Bil372Proje.Pages.yardimsever
             if (miktar.Text == "")
             {
                 MessageBox.Show("Miktarı boş bırakamazsınız!");
-                con.Close();
+                conn.Close();
                 return ;
             }
 

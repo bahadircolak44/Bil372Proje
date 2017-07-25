@@ -48,14 +48,14 @@ namespace Bil372Proje.Pages.yardimsever
             if (miktar.Text == "")
             {
                 MessageBox.Show("Miktarı boş bırakamazsınız!");
-                con.Close();
+                conn.Close();
                 return false;
             }
             int mik = Convert.ToInt32(miktar.Text);
             if ((bakiye == 0 || bakiye < mik))
             {
                 MessageBox.Show("Bakiyeniz Yetersiz");
-                con.Close();
+                conn.Close();
                 return false;
             }
             NpgsqlCommand yardimsever = new NpgsqlCommand("update yardimsever set bakiye=bakiye - @ybakiye where kAdi=@kullanici_adi ", conn);
