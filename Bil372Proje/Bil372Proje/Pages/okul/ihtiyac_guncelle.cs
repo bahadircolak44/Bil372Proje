@@ -61,7 +61,9 @@ namespace Bil372Proje.Pages
 
         private void Guncelle_Click(object sender, EventArgs e)
         {
-            int Id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+            int Id = 0;
+
+            Id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
             guncelle gun = new guncelle(Id,kAdi);
             this.Hide();
             gun.Show();

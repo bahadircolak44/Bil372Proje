@@ -30,7 +30,7 @@ namespace Bil372Proje.Pages.tedarikci
         private void sil_btn_Click(object sender, EventArgs e)
         {
             conn.Open();
-            string Id = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            int Id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[1].Value.ToString());
             NpgsqlCommand cmd = new NpgsqlCommand("delete urun where Id=@Id",conn);
             cmd.Parameters.AddWithValue("@Id",Id);
             cmd.ExecuteNonQuery();

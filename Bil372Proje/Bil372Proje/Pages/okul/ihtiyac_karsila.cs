@@ -123,7 +123,7 @@ namespace Bil372Proje.Pages.okul
                 NpgsqlCommand komut3 = new NpgsqlCommand(kayit3, conn);
                 komut.Parameters.AddWithValue("@okul_id",Id);
                 komut.Parameters.AddWithValue("@ad", listView1.Items[i].SubItems[1].Text);
-                komut.Parameters.AddWithValue("@adet", listView1.Items[i].SubItems[2].Text);
+                komut.Parameters.AddWithValue("@adet", Convert.ToInt32(listView1.Items[i].SubItems[2].Text));
                 komut.Parameters.AddWithValue("@marka", listView1.Items[i].SubItems[3].Text);
                 komut.Parameters.AddWithValue("@fiyat", listView1.Items[i].SubItems[4].Text);
                 komut.Parameters.AddWithValue("@tur", listView1.Items[i].SubItems[5].Text);
