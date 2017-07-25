@@ -43,6 +43,13 @@ namespace Bil372Proje.Pages.yardimsever
             string kayit = "update yardimsever set bakiye=@bakiye where kAdi=@kullanici_adi";
             
             int bakiye1 = Convert.ToInt32(komut1.ExecuteScalar());
+            if (miktar.Text == "")
+            {
+                MessageBox.Show("Miktarı boş bırakamazsınız!");
+                con.Close();
+                return ;
+            }
+
             int bakiye2 = bakiye1 + Convert.ToInt32(miktar.Text);
             SqlCommand komut = new SqlCommand(kayit, con);
 
