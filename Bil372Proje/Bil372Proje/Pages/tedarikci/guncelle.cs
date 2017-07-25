@@ -24,22 +24,55 @@ namespace Bil372Proje.Pages.tedarikci
         private void button1_Click(object sender, EventArgs e)
         {
             con.Open();
+
             if (!(adet.Text.Equals(string.Empty)))
             {
-                string kayit = "update urun set stok_miktari=@adet where Id=@Id";
-                SqlCommand komut = new SqlCommand(kayit, con);
-                komut.Parameters.AddWithValue("@adet", adet.Text);
-                komut.Parameters.AddWithValue("@Id", urun_Id);
-                komut.ExecuteNonQuery();
+                int value;
+                if (int.TryParse(adet.Text, out value))
+                {
+                    string kayit = "update urun set stok_miktari=@adet where Id=@Id";
+                    SqlCommand komut = new SqlCommand(kayit, con);
+                    komut.Parameters.AddWithValue("@adet", adet.Text);
+                    komut.Parameters.AddWithValue("@Id", urun_Id);
+                    komut.ExecuteNonQuery();
+                }
+                else
+                {
+                    MessageBox.Show("Adete tam sayı girmelisiniz!");
+                    con.Close();
+                    return;
+                }
             }
-  
+            else
+            {
+                MessageBox.Show("Adeti boş bırakamazsınız!");
+                con.Close();
+                return;
+            }
+
             if (!(fiyat.Text.Equals(string.Empty)))
             {
-                string kayit2 = "update urun set fiyat=@fiyat where Id=@Id";
-                SqlCommand komut2 = new SqlCommand(kayit2, con);
-                komut2.Parameters.AddWithValue("@fiyat", fiyat.Text);
-                komut2.Parameters.AddWithValue("@Id", urun_Id);
-                komut2.ExecuteNonQuery();
+                int value;
+                if (int.TryParse(fiyat.Text, out value))
+                {
+                    string kayit2 = "update urun set fiyat=@fiyat where Id=@Id";
+                    SqlCommand komut2 = new SqlCommand(kayit2, con);
+                    komut2.Parameters.AddWithValue("@fiyat", fiyat.Text);
+                    komut2.Parameters.AddWithValue("@Id", urun_Id);
+                    komut2.ExecuteNonQuery();
+                }
+                else
+                {
+                    MessageBox.Show("Fiyata tam sayı girmelisiniz!");
+                    con.Close();
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Fiyatı boş bırakamazsınız!");
+                con.Close();
+                return;
             }
 
             con.Close();
