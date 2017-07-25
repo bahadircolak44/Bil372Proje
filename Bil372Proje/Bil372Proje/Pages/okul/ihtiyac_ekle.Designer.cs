@@ -38,11 +38,11 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.Pink;
-            this.button1.Location = new System.Drawing.Point(197, 148);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.BackColor = System.Drawing.Color.LavenderBlush;
+            this.button1.Location = new System.Drawing.Point(342, 172);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(116, 40);
+            this.button1.Size = new System.Drawing.Size(155, 49);
             this.button1.TabIndex = 0;
             this.button1.Text = "Kırtasiye İhtiyaçları Ekle";
             this.button1.UseVisualStyleBackColor = false;
@@ -50,22 +50,23 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(197, 226);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.BackColor = System.Drawing.Color.LavenderBlush;
+            this.button2.Location = new System.Drawing.Point(342, 327);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(116, 40);
+            this.button2.Size = new System.Drawing.Size(155, 49);
             this.button2.TabIndex = 1;
             this.button2.Text = "Kitap İhtiyaçları Ekle";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.Color.Thistle;
-            this.button3.Location = new System.Drawing.Point(465, 148);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.BackColor = System.Drawing.Color.LavenderBlush;
+            this.button3.Location = new System.Drawing.Point(698, 327);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(116, 42);
+            this.button3.Size = new System.Drawing.Size(154, 49);
             this.button3.TabIndex = 2;
             this.button3.Text = "Mobilya İhtiyaçları Ekle";
             this.button3.UseVisualStyleBackColor = false;
@@ -73,50 +74,54 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(465, 226);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button4.BackColor = System.Drawing.Color.LavenderBlush;
+            this.button4.Location = new System.Drawing.Point(520, 260);
+            this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(116, 40);
+            this.button4.Size = new System.Drawing.Size(155, 49);
             this.button4.TabIndex = 3;
             this.button4.Text = "Giysi İhtiyaçları Ekle";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(326, 320);
-            this.button5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button5.BackColor = System.Drawing.Color.LavenderBlush;
+            this.button5.Location = new System.Drawing.Point(698, 172);
+            this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(116, 40);
+            this.button5.Size = new System.Drawing.Size(155, 49);
             this.button5.TabIndex = 4;
             this.button5.Text = "Teknoloji İhtiyaçları Ekle";
-            this.button5.UseVisualStyleBackColor = true;
+            this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(465, 410);
-            this.button6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button6.BackColor = System.Drawing.Color.LavenderBlush;
+            this.button6.Location = new System.Drawing.Point(520, 425);
+            this.button6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(116, 37);
+            this.button6.Size = new System.Drawing.Size(155, 46);
             this.button6.TabIndex = 5;
             this.button6.Text = "Geri";
-            this.button6.UseVisualStyleBackColor = true;
+            this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // ihtiyac_ekle
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(909, 560);
+            this.BackgroundImage = global::Bil372Proje.Properties.Resources.homeBox_fdcd3087cd12079a35c76302932e6356;
+            this.ClientSize = new System.Drawing.Size(1212, 689);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ihtiyac_ekle";
             this.Text = "ihtiyac_ekle";
             this.ResumeLayout(false);

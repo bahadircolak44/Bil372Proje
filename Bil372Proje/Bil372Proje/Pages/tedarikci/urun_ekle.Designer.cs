@@ -48,10 +48,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(130, 68);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(224, 86);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 13);
+            this.label1.Size = new System.Drawing.Size(79, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Kategori :";
             // 
@@ -59,10 +58,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.Location = new System.Drawing.Point(130, 125);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(224, 156);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(30, 13);
+            this.label2.Size = new System.Drawing.Size(37, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "Ad :";
             // 
@@ -70,10 +68,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.Location = new System.Drawing.Point(130, 242);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(224, 300);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(83, 13);
+            this.label3.Size = new System.Drawing.Size(103, 17);
             this.label3.TabIndex = 2;
             this.label3.Text = "Stok Miktarı :";
             // 
@@ -81,10 +78,9 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label4.Location = new System.Drawing.Point(130, 310);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(224, 384);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(42, 13);
+            this.label4.Size = new System.Drawing.Size(53, 17);
             this.label4.TabIndex = 3;
             this.label4.Text = "Fiyat :";
             // 
@@ -97,20 +93,19 @@
             "Kırtasiye",
             "Teknoloji",
             "Mobilya"});
-            this.katagori.Location = new System.Drawing.Point(316, 70);
-            this.katagori.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.katagori.Location = new System.Drawing.Point(421, 86);
+            this.katagori.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.katagori.Name = "katagori";
-            this.katagori.Size = new System.Drawing.Size(169, 21);
+            this.katagori.Size = new System.Drawing.Size(224, 24);
             this.katagori.TabIndex = 4;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label5.Location = new System.Drawing.Point(130, 185);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(224, 230);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(50, 13);
+            this.label5.Size = new System.Drawing.Size(62, 17);
             this.label5.TabIndex = 5;
             this.label5.Text = "Marka :";
             // 
@@ -125,73 +120,78 @@
             "f",
             "g",
             "h"});
-            this.ad.Location = new System.Drawing.Point(316, 127);
-            this.ad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ad.Location = new System.Drawing.Point(421, 156);
+            this.ad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ad.Name = "ad";
-            this.ad.Size = new System.Drawing.Size(169, 20);
+            this.ad.Size = new System.Drawing.Size(224, 22);
             this.ad.TabIndex = 6;
             // 
             // marka
             // 
-            this.marka.Location = new System.Drawing.Point(316, 183);
-            this.marka.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.marka.Location = new System.Drawing.Point(421, 225);
+            this.marka.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.marka.Name = "marka";
-            this.marka.Size = new System.Drawing.Size(169, 20);
+            this.marka.Size = new System.Drawing.Size(224, 22);
             this.marka.TabIndex = 7;
             // 
             // stok_miktari
             // 
-            this.stok_miktari.Location = new System.Drawing.Point(316, 240);
-            this.stok_miktari.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.stok_miktari.Location = new System.Drawing.Point(421, 295);
+            this.stok_miktari.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.stok_miktari.Name = "stok_miktari";
-            this.stok_miktari.Size = new System.Drawing.Size(169, 20);
+            this.stok_miktari.Size = new System.Drawing.Size(224, 22);
             this.stok_miktari.TabIndex = 8;
             // 
             // fiyat
             // 
-            this.fiyat.Location = new System.Drawing.Point(316, 307);
-            this.fiyat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.fiyat.Location = new System.Drawing.Point(421, 378);
+            this.fiyat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.fiyat.Name = "fiyat";
-            this.fiyat.Size = new System.Drawing.Size(169, 20);
+            this.fiyat.Size = new System.Drawing.Size(224, 22);
             this.fiyat.TabIndex = 9;
             // 
             // ekle_btn
             // 
-            this.ekle_btn.Location = new System.Drawing.Point(170, 362);
-            this.ekle_btn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ekle_btn.BackColor = System.Drawing.Color.LavenderBlush;
+            this.ekle_btn.Location = new System.Drawing.Point(227, 446);
+            this.ekle_btn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ekle_btn.Name = "ekle_btn";
-            this.ekle_btn.Size = new System.Drawing.Size(104, 51);
+            this.ekle_btn.Size = new System.Drawing.Size(139, 63);
             this.ekle_btn.TabIndex = 10;
             this.ekle_btn.Text = "Ekle";
-            this.ekle_btn.UseVisualStyleBackColor = true;
+            this.ekle_btn.UseVisualStyleBackColor = false;
             this.ekle_btn.Click += new System.EventHandler(this.ekle_btn_Click);
             // 
             // geri_btn
             // 
-            this.geri_btn.Location = new System.Drawing.Point(380, 362);
-            this.geri_btn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.geri_btn.BackColor = System.Drawing.Color.LavenderBlush;
+            this.geri_btn.Location = new System.Drawing.Point(507, 446);
+            this.geri_btn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.geri_btn.Name = "geri_btn";
-            this.geri_btn.Size = new System.Drawing.Size(104, 50);
+            this.geri_btn.Size = new System.Drawing.Size(139, 62);
             this.geri_btn.TabIndex = 11;
             this.geri_btn.Text = "Geri";
-            this.geri_btn.UseVisualStyleBackColor = true;
+            this.geri_btn.UseVisualStyleBackColor = false;
             this.geri_btn.Click += new System.EventHandler(this.geri_btn_Click);
             // 
             // dataGridView1
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(543, 60);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Location = new System.Drawing.Point(724, 74);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(335, 352);
+            this.dataGridView1.Size = new System.Drawing.Size(447, 433);
             this.dataGridView1.TabIndex = 12;
             // 
             // urun_ekle
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(887, 465);
+            this.BackColor = System.Drawing.Color.Azure;
+            this.BackgroundImage = global::Bil372Proje.Properties.Resources.homeBox_fdcd3087cd12079a35c76302932e6356;
+            this.ClientSize = new System.Drawing.Size(1183, 572);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.geri_btn);
             this.Controls.Add(this.ekle_btn);
@@ -205,7 +205,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "urun_ekle";
             this.Text = "urun_ekle";
             this.Load += new System.EventHandler(this.urun_ekle_Load);

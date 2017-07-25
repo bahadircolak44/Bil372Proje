@@ -37,5 +37,10 @@ namespace Bil372Proje.Pages.tedarikci
             this.Hide();
             guncelle.Show();
         }
+
+        private void tedarikci_pages_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

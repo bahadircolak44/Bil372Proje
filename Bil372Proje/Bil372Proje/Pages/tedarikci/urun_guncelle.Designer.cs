@@ -37,6 +37,7 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(32, 28);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
@@ -47,40 +48,45 @@
             // 
             // Guncelle
             // 
+            this.Guncelle.BackColor = System.Drawing.Color.LavenderBlush;
             this.Guncelle.Location = new System.Drawing.Point(240, 425);
             this.Guncelle.Margin = new System.Windows.Forms.Padding(4);
             this.Guncelle.Name = "Guncelle";
             this.Guncelle.Size = new System.Drawing.Size(139, 46);
             this.Guncelle.TabIndex = 1;
             this.Guncelle.Text = "Guncelle";
-            this.Guncelle.UseVisualStyleBackColor = true;
+            this.Guncelle.UseVisualStyleBackColor = false;
             this.Guncelle.Click += new System.EventHandler(this.Guncelle_Click);
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.LavenderBlush;
             this.button2.Location = new System.Drawing.Point(710, 425);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(139, 47);
             this.button2.TabIndex = 2;
             this.button2.Text = "Geri";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.LavenderBlush;
             this.button1.Location = new System.Drawing.Point(471, 425);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(139, 46);
             this.button1.TabIndex = 3;
             this.button1.Text = "Sil";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // urun_guncelle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Azure;
+            this.BackgroundImage = global::Bil372Proje.Properties.Resources.homeBox_fdcd3087cd12079a35c76302932e6356;
             this.ClientSize = new System.Drawing.Size(1103, 539);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
