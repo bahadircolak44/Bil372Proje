@@ -9,9 +9,11 @@ namespace Bil372Proje.Pages.tedarikci
     {
         NpgsqlConnection conn = new NpgsqlConnection("Server=bil372db.postgres.database.azure.com;Database=bil372;Port=5432;User Id=bahadir@bil372db;Password=Qwerty123;");
         int urun_Id;
-        public guncelle(int Id)
+        string kAdi;
+        public guncelle(int Id,string k)
         {
             urun_Id = Id;
+            k = kAdi;
             InitializeComponent();
         }
 
@@ -37,14 +39,14 @@ namespace Bil372Proje.Pages.tedarikci
             }
 
             conn.Close();
-            urun_guncelle guncelle = new urun_guncelle();
+            urun_guncelle guncelle = new urun_guncelle(kAdi);
             this.Hide();
             guncelle.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            urun_guncelle guncelle = new urun_guncelle();
+            urun_guncelle guncelle = new urun_guncelle(kAdi);
             this.Hide();
             guncelle.Show();
         }

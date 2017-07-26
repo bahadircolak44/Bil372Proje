@@ -121,7 +121,7 @@ namespace Bil372Proje.Pages.yardimsever
                 NpgsqlCommand komut = new NpgsqlCommand(kayit, conn);
                 NpgsqlCommand komut2 = new NpgsqlCommand(kayit2, conn);
                 NpgsqlCommand komut3 = new NpgsqlCommand(kayit3, conn);
-                NpgsqlCommand komut4 = new NpgsqlCommand(kayit3, conn);
+                NpgsqlCommand komut4 = new NpgsqlCommand(kayit4, conn);
                 komut.Parameters.AddWithValue("@okul_id", Id);
                 komut.Parameters.AddWithValue("@ad", listView1.Items[i].SubItems[1].Text);
                 komut.Parameters.AddWithValue("@adet", listView1.Items[i].SubItems[2].Text);
