@@ -129,7 +129,7 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             kontrol.Parameters.AddWithValue("@marka", teknoloji_marka.Text);
 
             kontrol2.Parameters.AddWithValue("@model", teknoloji_model.Text);
-            kontrol2.Parameters.AddWithValue("@uretim_yili", teknoloji_uretim_yili.Text);
+            kontrol2.Parameters.AddWithValue("@uretim_yili", DateTime.Parse(teknoloji_uretim_yili.Text));
             
             NpgsqlDataAdapter adapt = new NpgsqlDataAdapter(kontrol);
             NpgsqlDataAdapter adapt2 = new NpgsqlDataAdapter(kontrol2);

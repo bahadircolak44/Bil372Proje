@@ -185,6 +185,36 @@
     <Compile Include="Pages\tedarikci\tedarikci_pages.Designer.cs">
       <DependentUpon>tedarikci_pages.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\tedarikci\urunler\giysi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\tedarikci\urunler\giysi.Designer.cs">
+      <DependentUpon>giysi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\tedarikci\urunler\kirtasiye.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\tedarikci\urunler\kirtasiye.Designer.cs">
+      <DependentUpon>kirtasiye.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\tedarikci\urunler\kitap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\tedarikci\urunler\kitap.Designer.cs">
+      <DependentUpon>kitap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\tedarikci\urunler\mobilya.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\tedarikci\urunler\mobilya.Designer.cs">
+      <DependentUpon>mobilya.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\tedarikci\urunler\teknoloji.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\tedarikci\urunler\teknoloji.Designer.cs">
+      <DependentUpon>teknoloji.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\tedarikci\urun_cikar.cs">
       <SubType>Form</SubType>
     </Compile>
