@@ -59,7 +59,12 @@ namespace Bil372Proje.Pages
                         //Password ların eşitliğini kontrol ediyor
                         if (sifre.Text.Equals(sifre_tekrar.Text))
                         {
-                            conn.Open();
+                                if (userCheck(kullanici_adi.Text))
+                                {
+                                    MessageBox.Show("Kullanıcı adı mevcut, değiştirin. ", "Geçersiz!");
+                                    return;
+                                }
+                                conn.Open();
                                 // NpgsqlCommand cmd1 = con.CreateCommand();
                                 NpgsqlCommand cmd = new NpgsqlCommand("insert into kullanici(kullanici_adi,sifre,email,il,ilce,mahalle,adress,posta_kodu,telefon,yetki)" +
                             " values(@kullanici_adi, @sifre, @email, @il, @ilce, @mahalle, @adres, @posta, @telefon ,1)", conn);
@@ -189,6 +194,11 @@ namespace Bil372Proje.Pages
                             //Şifrelerin uyuşup uyuşmadığını kontrol ediyor.
                             if (okul_sifre.Text.Equals(okul_sifre_tekrar.Text))
                             {
+                                if (userCheck(okul_kullanici_adi.Text))
+                                {
+                                    MessageBox.Show("Kullanıcı adı mevcut, değiştirin. ", "Geçersiz!");
+                                    return;
+                                }
                                 //Database sistemi oluşturulduktan sonra
                                 conn.Open();
 
@@ -268,6 +278,11 @@ namespace Bil372Proje.Pages
                             if (tedarikci_sifre.Text.Equals(tedarikci_sifre_tekrar.Text))
                             {
                                 //Database sistemi oluşturulduktan sonra
+                                if (userCheck(tedarikci_kullanici_adi.Text))
+                                {
+                                    MessageBox.Show("Kullanıcı adı mevcut, değiştirin. ", "Geçersiz!");
+                                    return;
+                                }
                                 conn.Open();
                                 NpgsqlCommand cmd = new NpgsqlCommand("insert into kullanici(kullanici_adi,sifre,email,il,ilce,mahalle,adress,posta_kodu,telefon,yetki)" +
                             " values(@kullanici_adi, @sifre, @email, @il, @ilce, @mahalle, @adres, @posta, @telefon ,3)", conn);
@@ -321,6 +336,26 @@ namespace Bil372Proje.Pages
             {
                 MessageBox.Show(exc.ToString(), "HATA");
             }
+        }
+
+        private Boolean userCheck(String kullanıcı_name)
+        {
+            conn.Open();
+            NpgsqlCommand cmd = new NpgsqlCommand("select kullanici_adi from kullanici where kullanici_adi=@kullanici_adi ", conn);
+            cmd.Parameters.AddWithValue("@kullanici_adi", kullanici_adi.Text);     
+            NpgsqlDataAdapter adapt = new NpgsqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            adapt.Fill(ds);
+            conn.Close();
+            int count = ds.Tables[0].Rows.Count;
+
+            if (count > 0)
+            {
+                return true;
+            }
+           
+
+            return false;
         }
 
         private void tabPage4_Click(object sender, EventArgs e)

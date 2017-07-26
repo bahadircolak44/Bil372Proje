@@ -14,15 +14,17 @@ namespace Bil372Proje.Pages.tedarikci
 {
     public partial class urun_cikar : Form
     {
+        String kAdi;
         NpgsqlConnection conn = new NpgsqlConnection("Server=bil372db.postgres.database.azure.com;Database=bil372;Port=5432;User Id=bahadir@bil372db;Password=Qwerty123;");
-        public urun_cikar()
+        public urun_cikar(String k)
         {
+            kAdi = k;
             InitializeComponent();
         }
 
         private void geri_btn_Click(object sender, EventArgs e)
         {
-            tedarikci_pages tedarikci = new tedarikci_pages();
+            tedarikci_pages tedarikci = new tedarikci_pages(kAdi);
             this.Hide();
             tedarikci.Show();
         }

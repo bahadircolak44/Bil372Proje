@@ -14,9 +14,11 @@ namespace Bil372Proje.Pages.tedarikci
 {
     public partial class urun_guncelle : Form
     {
+        String kAdi;
         NpgsqlConnection conn = new NpgsqlConnection("Server=bil372db.postgres.database.azure.com;Database=bil372;Port=5432;User Id=bahadir@bil372db;Password=Qwerty123;");
-        public urun_guncelle()
+        public urun_guncelle(String k)
         {
+            kAdi = k;
             InitializeComponent();
         }
 
@@ -39,7 +41,7 @@ namespace Bil372Proje.Pages.tedarikci
 
         private void button2_Click(object sender, EventArgs e)
         {
-            tedarikci_pages tedarikci = new tedarikci_pages();
+            tedarikci_pages tedarikci = new tedarikci_pages(kAdi);
             this.Hide();
             tedarikci.Show();
         }
@@ -47,7 +49,7 @@ namespace Bil372Proje.Pages.tedarikci
         private void Guncelle_Click(object sender, EventArgs e)
         {
             int Id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[1].Value.ToString());
-            guncelle gun = new guncelle(Id);
+            guncelle gun = new guncelle(Id,kAdi);
             this.Hide();
             gun.Show();
         }

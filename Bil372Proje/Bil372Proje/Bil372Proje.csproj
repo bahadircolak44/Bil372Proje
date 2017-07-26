@@ -197,11 +197,41 @@
     <Compile Include="Pages\tedarikci\urun_ekle.Designer.cs">
       <DependentUpon>urun_ekle.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\tedarikci\yeni_urun\giysi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\tedarikci\yeni_urun\giysi.Designer.cs">
+      <DependentUpon>giysi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\tedarikci\urun_guncelle.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Pages\tedarikci\urun_guncelle.Designer.cs">
       <DependentUpon>urun_guncelle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\tedarikci\yeni_urun\kirtasiye.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\tedarikci\yeni_urun\kirtasiye.Designer.cs">
+      <DependentUpon>kirtasiye.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\tedarikci\yeni_urun\kitap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\tedarikci\yeni_urun\kitap.Designer.cs">
+      <DependentUpon>kitap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\tedarikci\yeni_urun\mobilya.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\tedarikci\yeni_urun\mobilya.Designer.cs">
+      <DependentUpon>mobilya.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\tedarikci\yeni_urun\teknoloji.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\tedarikci\yeni_urun\teknoloji.Designer.cs">
+      <DependentUpon>teknoloji.cs</DependentUpon>
     </Compile>
     <Compile Include="Pages\yapilacaklar.cs">
       <SubType>Form</SubType>
@@ -322,8 +352,23 @@
     <EmbeddedResource Include="Pages\tedarikci\urun_ekle.resx">
       <DependentUpon>urun_ekle.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\tedarikci\yeni_urun\giysi.resx">
+      <DependentUpon>giysi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pages\tedarikci\urun_guncelle.resx">
       <DependentUpon>urun_guncelle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\tedarikci\yeni_urun\kirtasiye.resx">
+      <DependentUpon>kirtasiye.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\tedarikci\yeni_urun\kitap.resx">
+      <DependentUpon>kitap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\tedarikci\yeni_urun\mobilya.resx">
+      <DependentUpon>mobilya.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\tedarikci\yeni_urun\teknoloji.resx">
+      <DependentUpon>teknoloji.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\yapilacaklar.resx">
       <DependentUpon>yapilacaklar.cs</DependentUpon>

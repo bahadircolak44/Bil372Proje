@@ -55,7 +55,7 @@ namespace Bil372Proje
 
                     }else if (yetki == 3)
                     {
-                        tedarikci_pages tedarikcipages = new tedarikci_pages();
+                        tedarikci_pages tedarikcipages = new tedarikci_pages(kullanici_adi.Text);
                         tedarikcipages.Show();
                     }
                     else
