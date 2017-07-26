@@ -96,13 +96,13 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
                 {
                     //eski bir kayıt yoksa yenisini ekliyor
                     NpgsqlCommand cmd = new NpgsqlCommand("insert into ihtiyac(okul_id,isim,adet,marka,fiyat,tur)" +
-        " values(@okul_id,@isim,@adet,@marka,10,'mobilya')", conn);
+        " values(@okul_id,@isim,@adet,@marka,@fiyat",'mobilya')", conn);
                     cmd.Parameters.AddWithValue("@isim", mobilya_ihtiyac.Text);
                     cmd.Parameters.AddWithValue("@adet", Convert.ToInt32(mobilya_adet.Text));
                     cmd.Parameters.AddWithValue("@marka", mobilya_marka.Text);
                     int fiyat = Convert.ToInt32(mobilya_adet.Text) * (fiyatHesapla(mobilya_ihtiyac.Text, mobilya_marka.Text, mobilya_renk.Text, mobilya_olcu.Text));
                     cmd.Parameters.AddWithValue("@okul_id", okul_id);
-                    cmd.Parameters.AddWithValue("fiyat", fiyat);
+                    cmd.Parameters.AddWithValue("@fiyat", fiyat);
                     cmd.ExecuteNonQuery();
                 }
 

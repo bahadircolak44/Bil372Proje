@@ -93,13 +93,13 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
                 else
                 {
                     NpgsqlCommand cmd = new NpgsqlCommand("insert into ihtiyac(okul_id,isim,adet,marka,fiyat,tur)" +
-        " values(@okul_id,@isim,@adet,@marka,10,'kitap')", conn);
+        " values(@okul_id,@isim,@adet,@marka,@fiyat,'kitap')", conn);
                     cmd.Parameters.AddWithValue("@isim", kitap_ihtiyac.Text);
-                    cmd.Parameters.AddWithValue("@adet", kitap_adet.Text);
+                    cmd.Parameters.AddWithValue("@adet", Convert.ToInt32(kitap_adet.Text));
                     cmd.Parameters.AddWithValue("@marka", string.Empty);
                     cmd.Parameters.AddWithValue("@okul_id", okul_id);
                     int fiyat = Convert.ToInt32(kitap_adet.Text) * (fiyatHesapla(kitap_ihtiyac.Text, kitap_tur.Text, kitap_yayin_evi.Text, kitap_yazar.Text, kitap_yayin_yili.Text));
-                    cmd.Parameters.AddWithValue("fiyat", fiyat);
+                    cmd.Parameters.AddWithValue("@fiyat", fiyat);
                     cmd.ExecuteNonQuery();
                 }
 
@@ -140,7 +140,7 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
 
         private void kayitGetir()
         {
-            string kayit = "SELECT isim,marka,adet " +
+            string kayit = "SELECT isim,marka,adet,fiyat " +
                 " from ihtiyac where ihtiyac.okul_id =@okul_id";
 
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.

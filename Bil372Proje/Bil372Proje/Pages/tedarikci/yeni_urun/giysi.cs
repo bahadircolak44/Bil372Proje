@@ -39,7 +39,7 @@ namespace Bil372Proje.Pages.tedarikci.urun_ekleme
                 conn.Open();
                 NpgsqlCommand kontrol = new NpgsqlCommand("insert into urun(kategori,ad,stok_miktari,fiyat,marka,beden,renk," +
                     "kumas,cinsiyet,tur,yazar,yayin_evi,yayin_yili,olcu,model,uretim_yili)" +
-                    "values('giysi',@ad,@stok_miktari,@fiyat,@marka,@beden,@renk,null,@cinsiyet,null,null,null,null,null,null,null)", conn);
+                    "values('giysi',@ad,@stok_miktari,@fiyat,@marka,@beden,@renk,@kumas,@cinsiyet,null,null,null,null,null,null,null)", conn);
 
                 kontrol.Parameters.AddWithValue("@ad", giysi_ad.Text);
                 kontrol.Parameters.AddWithValue("@marka", giysi_marka.Text);
@@ -47,6 +47,7 @@ namespace Bil372Proje.Pages.tedarikci.urun_ekleme
                 kontrol.Parameters.AddWithValue("@fiyat", Convert.ToInt32(giysi_fiyat.Text));
                 kontrol.Parameters.AddWithValue("@beden", giysi_beden.Text);
                 kontrol.Parameters.AddWithValue("@renk", giysi_renk.Text);
+                kontrol.Parameters.AddWithValue("@kumas", giysi_kumas.Text);
                 kontrol.Parameters.AddWithValue("@cinsiyet", giysi_cinsiyet.Text);
                 kontrol.ExecuteNonQuery();
                 conn.Close();

@@ -31,7 +31,7 @@ namespace Bil372Proje.Pages.tedarikci.yeni_urun
                 conn.Open();
                 NpgsqlCommand kontrol = new NpgsqlCommand("insert into urun(kategori,ad,stok_miktari,fiyat,marka,beden,renk," +
                     "kumas,cinsiyet,tur,yazar,yayin_evi,yayin_yili,olcu,model,uretim_yili)" +
-                    "values('kitap',@ad,@stok_miktari,@fiyat,'',null,null,null,null,null,null,null,null,null,null,null)", conn);
+                    "values('kitap',@ad,@stok_miktari,@fiyat,'',null,null,null,null,@kitap_tur,@kitap_yazar,@kitap_yayin_evi,@kitap_yayin_yili,null,null,null)", conn);
 
                 kontrol.Parameters.AddWithValue("@ad", kitap_adi.Text);
                 kontrol.Parameters.AddWithValue("@stok_miktari", Convert.ToInt32(kitap_stok.Text));

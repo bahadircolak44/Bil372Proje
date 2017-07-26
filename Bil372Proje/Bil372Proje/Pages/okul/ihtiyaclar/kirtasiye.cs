@@ -63,7 +63,8 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
                     int cnt = Convert.ToInt32(kontrol.ExecuteScalar()) + Convert.ToInt32(kirtasiye_adet.Text.Trim());
                     cmd.Parameters.AddWithValue("@Adet", cnt);
                     cmd.Parameters.AddWithValue("@isim", kirtasiye_ihtiyac.Text);
-                    int fiyat = cnt * (fiyatHesapla(kirtasiye_ihtiyac.Text, kirtasiye_marka.Text, kirtasiye_renk.Text, "erkek-kadin"));
+                    int fiyat = cnt * (fiyatHesapla(kirtasiye_ihtiyac.Text, kirtasiye_marka.Text, kirtasiye_renk.Text, "kız/erkek"));
+                    MessageBox.Show(fiyat.ToString());
                     cmd3.Parameters.AddWithValue("@fiyat",fiyat);
                     cmd3.ExecuteNonQuery();
                     cmd.ExecuteNonQuery();
@@ -76,7 +77,7 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
                     cmd.Parameters.AddWithValue("@adet", Convert.ToInt32(kirtasiye_adet.Text));
                     cmd.Parameters.AddWithValue("@marka", kirtasiye_marka.Text);
                     cmd.Parameters.AddWithValue("@okul_id", okul_id);
-                    int fiyat = Convert.ToInt32(kirtasiye_adet.Text) * (fiyatHesapla(kirtasiye_ihtiyac.Text, kirtasiye_marka.Text, kirtasiye_renk.Text, "erkek-kadin"));
+                    int fiyat = Convert.ToInt32(kirtasiye_adet.Text) * (fiyatHesapla(kirtasiye_ihtiyac.Text, kirtasiye_marka.Text, kirtasiye_renk.Text, "kız/erkek"));
                     cmd.Parameters.AddWithValue("@fiyat", fiyat);
                     cmd.ExecuteNonQuery();
                 }
@@ -108,7 +109,7 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
         }
         private void kayitGetir()
         {
-            string kayit = "SELECT isim,marka,adet " +
+            string kayit = "SELECT isim,marka,adet,fiyat " +
                           " from ihtiyac where ihtiyac.okul_id =@okul_id";
 
             //musteriler tablosundaki tüm kayıtları çekecek olan sql sorgusu.
