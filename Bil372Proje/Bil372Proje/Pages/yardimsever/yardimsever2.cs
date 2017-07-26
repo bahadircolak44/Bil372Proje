@@ -66,7 +66,7 @@ namespace Bil372Proje.Pages
             if (okul_adi.Text.Equals(string.Empty)) { kayitGetir(); }
             else { 
             conn.Open();
-            NpgsqlCommand komut = new NpgsqlCommand("SELECT kullanici_adi,il,ilce,telefon from kullanici where yetki =2 and kullanici_adi=@okul_adi ", conn);
+            NpgsqlCommand komut = new NpgsqlCommand("SELECT o.okul_adi,k.il,k.ilce,k.telefon from okul o inner join kullanici k on o.kAdi=k.kullanici_adi where yetki =2 and okul_adi=@okul_adi ", conn);
             komut.Parameters.AddWithValue("@okul_adi", okul_adi.Text);
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(komut);
             DataTable dt = new DataTable();

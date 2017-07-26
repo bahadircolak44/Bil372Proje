@@ -31,7 +31,7 @@ namespace Bil372Proje.Pages
 
         private void kayitGetir()
         {
-            string kayit = "SELECT Id,isim,marka,adet from ihtiyac ";
+            string kayit = "SELECT Id,isim,marka,adet,tur from ihtiyac ";
 
             NpgsqlCommand komut = new NpgsqlCommand(kayit, conn);
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(komut);
@@ -45,9 +45,14 @@ namespace Bil372Proje.Pages
         {
             conn.Open();
             int Id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
-            NpgsqlCommand cmd = new NpgsqlCommand("delete from ihtiyac where Id=@Id", conn);
+            string tur = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+            NpgsqlCommand cmd = new NpgsqlCommand("delete from "+ tur + " where ihtiyac_id=@Id", conn);
+            NpgsqlCommand cmd2 = new NpgsqlCommand("delete from ihtiyac where Id=@Id", conn);
+            cmd.Parameters.AddWithValue("@tur", tur);
             cmd.Parameters.AddWithValue("@Id", Id);
-            cmd.ExecuteNonQuery();
+            cmd2.Parameters.AddWithValue("@Id", Id);
+           cmd.ExecuteNonQuery();
+            cmd2.ExecuteNonQuery();
             conn.Close();
             kayitGetir();
         }

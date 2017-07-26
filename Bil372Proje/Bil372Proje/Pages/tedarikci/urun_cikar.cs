@@ -33,7 +33,7 @@ namespace Bil372Proje.Pages.tedarikci
         {
             conn.Open();
             int Id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[1].Value.ToString());
-            NpgsqlCommand cmd = new NpgsqlCommand("delete from urun where Id=Id",conn);
+            NpgsqlCommand cmd = new NpgsqlCommand("delete from urun where Id=@Id",conn);
             cmd.Parameters.AddWithValue("@Id",Id);
             cmd.ExecuteNonQuery();
             conn.Close();
