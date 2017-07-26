@@ -14,15 +14,17 @@ namespace Bil372Proje.Pages.tedarikci
 {
     public partial class urun_cikar : Form
     {
+        String kAdi;
         NpgsqlConnection conn = new NpgsqlConnection("Server=bil372db.postgres.database.azure.com;Database=bil372;Port=5432;User Id=bahadir@bil372db;Password=Qwerty123;");
-        public urun_cikar()
+        public urun_cikar(String k)
         {
+            kAdi = k;
             InitializeComponent();
         }
 
         private void geri_btn_Click(object sender, EventArgs e)
         {
-            tedarikci_pages tedarikci = new tedarikci_pages();
+            tedarikci_pages tedarikci = new tedarikci_pages(kAdi);
             this.Hide();
             tedarikci.Show();
         }
@@ -30,8 +32,8 @@ namespace Bil372Proje.Pages.tedarikci
         private void sil_btn_Click(object sender, EventArgs e)
         {
             conn.Open();
-            string Id = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            NpgsqlCommand cmd = new NpgsqlCommand("delete urun where Id=@Id",conn);
+            int Id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[1].Value.ToString());
+            NpgsqlCommand cmd = new NpgsqlCommand("delete from urun where Id=@Id",conn);
             cmd.Parameters.AddWithValue("@Id",Id);
             cmd.ExecuteNonQuery();
             conn.Close();

@@ -41,7 +41,7 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             cmd.Parameters.AddWithValue("@model", model);
             cmd.Parameters.AddWithValue("@uretim_yili", uretim_yili);
            int fiyat = Convert.ToInt32(cmd.ExecuteScalar());
-
+            MessageBox.Show(fiyat.ToString());
             return fiyat;
 
         }
@@ -153,8 +153,8 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
                 int cnt2 = Convert.ToInt32(kontrol2.ExecuteScalar());
                     //string ad, string marka, string renk, string model, string uretim_yili
                 int fiyat = cnt * (fiyatHesapla(teknoloji_ihtiyac.Text, teknoloji_marka.Text, teknoloji_model.Text,teknoloji_uretim_yili.Text));
-
-                cmd.Parameters.AddWithValue("@Adet", cnt);
+                    MessageBox.Show(fiyat.ToString());
+                    cmd.Parameters.AddWithValue("@Adet", cnt);
                 cmd.Parameters.AddWithValue("@isim", teknoloji_ihtiyac.Text);
                 cmd.Parameters.AddWithValue("@Id", cnt2);
 
@@ -167,13 +167,14 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             {
                 //eski bir kayıt yoksa yenisini ekliyor
                 NpgsqlCommand cmd = new NpgsqlCommand("insert into ihtiyac(okul_id,isim,adet,marka,fiyat,tur)" +
-    " values(@okul_id,@isim,@adet,@marka,10,'teknoloji')", conn);
+    " values(@okul_id,@isim,@adet,@marka,@fiyat,'teknoloji')", conn);
                 cmd.Parameters.AddWithValue("@isim", teknoloji_ihtiyac.Text);
-                cmd.Parameters.AddWithValue("@adet", teknoloji_adet.Text);
+                cmd.Parameters.AddWithValue("@adet", Convert.ToInt32(teknoloji_adet.Text));
                 cmd.Parameters.AddWithValue("@marka", teknoloji_marka.Text);
                 cmd.Parameters.AddWithValue("@okul_id", okul_id);
-                int fiyat = Convert.ToInt32(teknoloji_adet.Text) *(fiyatHesapla(teknoloji_ihtiyac.Text, teknoloji_marka.Text, teknoloji_model.Text, teknoloji_model.Text));
-                    cmd.Parameters.AddWithValue("fiyat", fiyat);
+                int fiyat = Convert.ToInt32(teknoloji_adet.Text) *(fiyatHesapla(teknoloji_ihtiyac.Text, teknoloji_marka.Text, teknoloji_model.Text, teknoloji_uretim_yili.Text));
+
+                    cmd.Parameters.AddWithValue("@fiyat", fiyat);
                     cmd.ExecuteNonQuery();
             }
 
@@ -189,7 +190,7 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
         
             cmd2.ExecuteNonQuery();
             kayitGetir();
-                label7.Text = totalfiyatgetir() + " TL";
+                label7.Text = Convert.ToInt32(dataGridView1.CurrentRow.Cells[2].Value.ToString()) * (fiyatHesapla(teknoloji_ihtiyac.Text, teknoloji_marka.Text, teknoloji_model.Text, teknoloji_uretim_yili.Text)) + " TL";
                 clear();
             }
             else

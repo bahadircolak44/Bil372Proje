@@ -42,22 +42,62 @@ namespace Bil372Proje
                     if (yetki == 1)
                     {
                         yardimsever1 yardimseverpages = new yardimsever1(kullanici_adi.Text);
+                        this.Hide();
                         yardimseverpages.Show();
+                        
 
-                    }else if (yetki==2)
+                    }
+                    else if (yetki==2)
                     {
-                        okul_pages okulpages = new okul_pages(kullanici_adi.Text);
-                        okulpages.Show();
+                        conn.Open();
+                        NpgsqlCommand cmd2 = new NpgsqlCommand("Select valid from okul where kAdi=@kullanici_adi", conn);
+                        cmd2.Parameters.AddWithValue("@kullanici_adi", kullanici_adi.Text);
+                        int valid = Convert.ToInt32(cmd2.ExecuteScalar());
+                        if (valid == 1)
+                        {
+                            okul_pages okulpages = new okul_pages(kullanici_adi.Text);
+                            this.Hide();
+                            okulpages.Show();
+                            conn.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Kaydınız henüz onaylanmamıştır");
+                            conn.Close();
+                            Login login = new Login();
+                            login.Show();
+                        }
+
 
                     }else if (yetki == 3)
                     {
-                        tedarikci_pages tedarikcipages = new tedarikci_pages();
-                        tedarikcipages.Show();
+                        conn.Open();
+                        NpgsqlCommand cmd2 = new NpgsqlCommand("Select valid from tedarikci where kAdi=@kullanici_adi", conn);
+                        cmd2.Parameters.AddWithValue("@kullanici_adi", kullanici_adi.Text);
+                        int valid = Convert.ToInt32(cmd2.ExecuteScalar());
+                        if (valid == 1)
+                        {
+                            tedarikci_pages tedarikci = new tedarikci_pages(kullanici_adi.Text);
+                            this.Hide();
+                            tedarikci.Show();
+                            conn.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Kaydınız henüz onaylanmamıştır");
+                            conn.Close();
+                            Login login = new Login();
+                            login.Show();
+                        }
+
                     }
                     else
                     {
                         admin_pages admin = new admin_pages();
+
+                        this.Hide();
                         admin.Show();
+                        
                     }
                 
                 

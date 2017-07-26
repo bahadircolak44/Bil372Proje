@@ -12,28 +12,30 @@ namespace Bil372Proje.Pages.tedarikci
 {
     public partial class tedarikci_pages : Form
     {
-        public tedarikci_pages()
+        String kAdi;
+        public tedarikci_pages(String k)
         {
+            kAdi = k;
             InitializeComponent();
         }
 
         private void ekle_btn_Click(object sender, EventArgs e)
         {
-            urun_ekle ekle = new urun_ekle();
+            urun_ekle ekle = new urun_ekle(kAdi);
             this.Hide();
             ekle.Show();
         }
 
         private void cikar_btn_Click(object sender, EventArgs e)
         {
-            urun_cikar cikar = new urun_cikar();
+            urun_cikar cikar = new urun_cikar(kAdi);
             this.Hide();
             cikar.Show();
         }
 
         private void update_btn_Click(object sender, EventArgs e)
         {
-            urun_guncelle guncelle = new urun_guncelle();
+            urun_guncelle guncelle = new urun_guncelle(kAdi);
             this.Hide();
             guncelle.Show();
         }

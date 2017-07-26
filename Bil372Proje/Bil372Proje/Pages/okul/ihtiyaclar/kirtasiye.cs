@@ -73,7 +73,7 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
                     NpgsqlCommand cmd = new NpgsqlCommand("insert into ihtiyac(okul_id,isim,adet,marka,fiyat,tur)" +
         " values(@okul_id,@isim,@adet,@marka,@fiyat,'kirtasiye')", conn);
                     cmd.Parameters.AddWithValue("@isim", kirtasiye_ihtiyac.Text);
-                    cmd.Parameters.AddWithValue("@adet", kirtasiye_adet.Text);
+                    cmd.Parameters.AddWithValue("@adet", Convert.ToInt32(kirtasiye_adet.Text));
                     cmd.Parameters.AddWithValue("@marka", kirtasiye_marka.Text);
                     cmd.Parameters.AddWithValue("@okul_id", okul_id);
                     int fiyat = Convert.ToInt32(kirtasiye_adet.Text) * (fiyatHesapla(kirtasiye_ihtiyac.Text, kirtasiye_marka.Text, kirtasiye_renk.Text, "erkek-kadin"));

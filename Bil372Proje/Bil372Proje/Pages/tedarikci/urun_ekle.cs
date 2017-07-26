@@ -9,77 +9,62 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Bil372Proje.Pages.tedarikci.urun_ekleme;
+using Bil372Proje.Pages.tedarikci.yeni_urun;
 
 namespace Bil372Proje.Pages.tedarikci
 {
     public partial class urun_ekle : Form
     {
+        String kAdi;
         NpgsqlConnection conn = new NpgsqlConnection("Server=bil372db.postgres.database.azure.com;Database=bil372;Port=5432;User Id=bahadir@bil372db;Password=Qwerty123;");
-        public urun_ekle()
+        public urun_ekle(String k)
         {
+            kAdi = k;
             InitializeComponent();
         }
 
         private void geri_btn_Click(object sender, EventArgs e)
         {
-            tedarikci_pages tedarikci = new tedarikci_pages();
+            tedarikci_pages tedarikci = new tedarikci_pages(kAdi);
             this.Hide();
             tedarikci.Show();
         
         }
 
-        private void ekle_btn_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e)
         {
-
-            if (! ( katagori.Text.Equals(string.Empty) ||ad.Text.Equals(string.Empty) ||
-                 marka.Text.Equals(string.Empty) || stok_miktari.Text.Equals(string.Empty) ||
-                 fiyat.Text.Equals(string.Empty) )) {
-                conn.Open();
-                string kayit = "insert into urun(kategori,ad,stok_miktari,fiyat,marka) " +
-                    "values(@kategori,@ad,@stok_miktari,@fiyat,@marka)";
-                NpgsqlCommand komut = new NpgsqlCommand(kayit, conn);
-                komut.Parameters.AddWithValue("@kategori", katagori.Text);
-                komut.Parameters.AddWithValue("@ad", ad.Text);
-                komut.Parameters.AddWithValue("@stok_miktari", Convert.ToInt32(stok_miktari.Text));
-                komut.Parameters.AddWithValue("@fiyat", Convert.ToInt32(fiyat.Text));
-                komut.Parameters.AddWithValue("@marka", marka.Text);
-                komut.ExecuteNonQuery();
-                conn.Close();
-                kayitGetir();
-                clear();
-            }
-            else
-            {
-                MessageBox.Show("Tüm Alanların Doldurulması Gerekli", "HATA");
-
-            }
-
-            
+            kitap kitap = new kitap(kAdi);
+            this.Hide();
+            kitap.Show();
         }
-        private void clear()
-        {
-            katagori.Text = string.Empty;
-            ad.Text = string.Empty;
-            stok_miktari.Text = string.Empty;
-            fiyat.Text = string.Empty;
-            marka.Text = string.Empty;
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            kirtasiye kirtasiye = new kirtasiye(kAdi);
+            this.Hide();
+            kirtasiye.Show();
         }
-        private void urun_ekle_Load(object sender, EventArgs e)
+
+        private void button2_Click(object sender, EventArgs e)
         {
-            kayitGetir();
+            giysi giysi = new giysi(kAdi);
+            this.Hide();
+            giysi.Show();
         }
-        private void kayitGetir()
+
+        private void button4_Click(object sender, EventArgs e)
         {
+            mobilya mobilya = new mobilya(kAdi);
+            this.Hide();
+            mobilya.Show();
+        }
 
-            string kayit = "SELECT *  from urun ";
-
-            NpgsqlCommand komut = new NpgsqlCommand(kayit, conn);
-            NpgsqlDataAdapter da = new NpgsqlDataAdapter(komut);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            dataGridView1.DataSource = dt;
-            conn.Close();
+        private void button3_Click(object sender, EventArgs e)
+        {
+            teknoloji mobilya = new teknoloji(kAdi);
+            this.Hide();
+            mobilya.Show();
         }
     }
 }
