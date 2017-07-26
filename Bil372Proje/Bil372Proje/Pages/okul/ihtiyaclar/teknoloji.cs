@@ -178,7 +178,7 @@ namespace Bil372Proje.Pages.okul.ihtiyaclar
             }
 
 
-            //en son da gerekli bilgileri mobilyaya ekliyor
+            
             NpgsqlCommand komut = new NpgsqlCommand("select max(id) from ihtiyac", conn);
             int count = Convert.ToInt32(komut.ExecuteScalar());
             NpgsqlCommand cmd2 = new NpgsqlCommand("insert into teknoloji(ihtiyac_id,model,uretim_yili)" +

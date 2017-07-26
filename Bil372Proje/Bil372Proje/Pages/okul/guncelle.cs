@@ -34,7 +34,7 @@ namespace Bil372Proje.Pages.okul
             {
                
                 string kayit = "update ihtiyac set adet=@adet where Id=@Id";
-                SqlCommand komut = new SqlCommand(kayit, con);
+                NpgsqlCommand komut = new NpgsqlCommand(kayit, conn);
                 komut.Parameters.AddWithValue("@adet", adet.Text);
                 komut.Parameters.AddWithValue("@Id", u_id.ToString());
                 komut.ExecuteNonQuery();
@@ -43,7 +43,7 @@ namespace Bil372Proje.Pages.okul
             if (!(fiyat.Text.Equals(string.Empty)))
             {
                 string kayit2 = "update ihtiyac set fiyat=@fiyat where Id=@Id";
-                SqlCommand komut2 = new SqlCommand(kayit2, con);
+                NpgsqlCommand komut2 = new NpgsqlCommand(kayit2, conn);
                 komut2.Parameters.AddWithValue("@fiyat", fiyat.Text);
                 komut2.Parameters.AddWithValue("@Id", u_id.ToString());
                 komut2.ExecuteNonQuery();

@@ -106,6 +106,7 @@ namespace Bil372Proje.Pages.yardimsever
                 string kayit = "insert into gecmis(okul_id,yardimsever_id,ad,marka,adet,fiyat,tur) values(@okul_id,1,@ad,@marka,@adet,@fiyat,@tur)";
                 string kayit2 = "delete from " + listView1.Items[i].SubItems[5].Text + " where ihtiyac_id = @ihtiyac_id";
                 string kayit3 = "";
+                string kayit4 = "";
                 if (toplam == Convert.ToInt32(listView1.Items[i].SubItems[2].Text))
                 {
                     kayit3 = "delete from ihtiyac where id = @ihtiyac_id";
@@ -114,10 +115,13 @@ namespace Bil372Proje.Pages.yardimsever
                 {
                     int kalanAdet = toplam - Convert.ToInt32(listView1.Items[i].SubItems[2].Text);
                     kayit3 = "update ihtiyac set adet=" + kalanAdet + "  where id = @ihtiyac_id";
+                    kayit4 = "update yardimsever set bakiye=bakiye-@price where kullaniciAdi=@kullaniciAdi ";
+
                 }
                 NpgsqlCommand komut = new NpgsqlCommand(kayit, conn);
                 NpgsqlCommand komut2 = new NpgsqlCommand(kayit2, conn);
                 NpgsqlCommand komut3 = new NpgsqlCommand(kayit3, conn);
+                NpgsqlCommand komut4 = new NpgsqlCommand(kayit3, conn);
                 komut.Parameters.AddWithValue("@okul_id", Id);
                 komut.Parameters.AddWithValue("@ad", listView1.Items[i].SubItems[1].Text);
                 komut.Parameters.AddWithValue("@adet", listView1.Items[i].SubItems[2].Text);
@@ -127,9 +131,11 @@ namespace Bil372Proje.Pages.yardimsever
                 komut.Parameters.AddWithValue("@table", listView1.Items[i].SubItems[5].Text);
                 komut2.Parameters.AddWithValue("@ihtiyac_id", ihtiyac_id);
                 komut3.Parameters.AddWithValue("@ihtiyac_id", ihtiyac_id);
+                komut4.Parameters.AddWithValue("@price", price);
+                komut4.Parameters.AddWithValue("@kullaniciAdi", kAdi);
                 komut.ExecuteNonQuery();
                 komut2.ExecuteNonQuery();
-
+                komut4.ExecuteNonQuery();
                 komut3.ExecuteNonQuery();
             }
             conn.Close();
