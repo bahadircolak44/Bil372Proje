@@ -46,22 +46,52 @@ namespace Bil372Proje
                     if (yetki == 1)
                     {
                         yardimsever1 yardimseverpages = new yardimsever1(kullanici_adi.Text);
+                        this.Hide();
                         yardimseverpages.Show();
+                        
 
-                    }else if (yetki==2)
+                    }
+                    else if (yetki==2)
                     {
-                        okul_pages okulpages = new okul_pages(kullanici_adi.Text);
-                        okulpages.Show();
+                        NpgsqlCommand cmd2 = new NpgsqlCommand("Select valid from okul where kullanici_adi=@kullanici_adi", conn);
+                        cmd2.Parameters.AddWithValue("@kullanici_adi", kullanici_adi);
+                        int valid = Convert.ToInt32(cmd2.ExecuteScalar());
+                        if (valid == 1)
+                        {
+                            okul_pages okulpages = new okul_pages(kullanici_adi.Text);
+                            this.Hide();
+                            okulpages.Show();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Kaydınız henüz onaylanmamıştır");
+                        }
+
 
                     }else if (yetki == 3)
                     {
-                        tedarikci_pages tedarikcipages = new tedarikci_pages(kullanici_adi.Text);
-                        tedarikcipages.Show();
+                        NpgsqlCommand cmd2 = new NpgsqlCommand("Select valid from okul where kullanici_adi=@kullanici_adi", conn);
+                        cmd2.Parameters.AddWithValue("@kullanici_adi", kullanici_adi);
+                        int valid = Convert.ToInt32(cmd2.ExecuteScalar());
+                        if (valid == 1)
+                        {
+                            tedarikci_pages tedarikci = new tedarikci_pages(kullanici_adi.Text);
+                            this.Hide();
+                            tedarikci.Show();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Kaydınız henüz onaylanmamıştır");
+                        }
+
                     }
                     else
                     {
                         admin_pages admin = new admin_pages();
+
+                        this.Hide();
                         admin.Show();
+                        
                     }
                 
                 
