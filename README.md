@@ -1,4 +1,8 @@
 # Bil372Proje (Class Project)
+<font style='color:red'>"Please look at Bil372FinalRaporu Okul İhtiyaç Karşılama Sistemi.pdf"</font> for more explanation.
+
+
+
 Unavailable right now because of Azure Database time.
 C# project
 Desktop App with Windows Form Application
